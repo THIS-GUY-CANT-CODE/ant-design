@@ -29,3 +29,11 @@ Running record of everything built, decided, and learned. Newest first.
 1. Landing page for Product #1 (needs live Gumroad URL for the buy button).
 2. Product #2: Side Hustle Profit Tracker (Vinted/Etsy/eBay sellers; £1,000 trading allowance logic).
 3. Recurring build-and-content loop once the store is live.
+
+## 2026-07-24 (later) — Product #2 complete
+
+- **Side Hustle Profit Tracker** built & verified (575 formulas, 0 errors). Trading-allowance
+  logic stress-tested: over-£1,000 scenario exact to the penny (taxable £1,043.50, tax £208.70).
+- Launch kit written (listing at £9, Reddit/TikTok content).
+- Landing page for the storefront: next.
+- Git push still blocked (403) — awaiting write access grant from the user.
