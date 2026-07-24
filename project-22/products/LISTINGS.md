@@ -68,3 +68,29 @@
 - 3 templates: Standard, Career-Changer, Graduate — plain-parse structures that pass ATS
 - The 10 ATS rules + a 15-minute per-application tailoring checklist
 - 40 bullet-starter verbs that carry numbers well
+
+# Batch 3 — Gumroad Listing Copy
+
+## Invoice Generator (spreadsheet) — £7
+**Tagline:** Professional invoices in 60 seconds — fill the yellow cells, print to PDF, done.
+- Set your business details once; every invoice pulls them automatically
+- Auto line totals, subtotal, VAT (settable to 0 if not registered), due date from your payment terms
+- Clean printable layout — no logo-soup, no software subscription
+
+## Student Budget Tracker (UK) — £5
+**Tagline:** Your maintenance loan has to last the term. This is the one number that makes it happen.
+- Enter loan + income + weeks; log spending as it happens
+- The headline figure: SAFE TO SPEND PER WEEK, updating as the term burns down
+- Built for the loan-instalment cycle, not monthly salaries
+
+## ADHD-Friendly Daily Planner — £7
+**Tagline:** A one-page daily system designed around how ADHD brains actually work.
+- The Only 3 + 2-minute ignition steps, event anchors instead of clock times
+- Brain dump that stops mid-task hijacks; pre-planned dopamine menu; 2-minute shutdown ritual
+- Printable page + honest manual + 10-minute weekly reset
+
+## House Move Master Pack — £8 (bundle)
+**Tagline:** 8 weeks to moving day without a single "oh no, we forgot to—".
+- Week-by-week UK checklist: notice periods, Royal Mail redirection, broadband lead times, deposit-protecting photo lists
+- The Essentials Box list that saves night one
+- Moving Budget spreadsheet: 15 cost lines, budget vs actual, over/under per line
