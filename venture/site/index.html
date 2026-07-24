@@ -1,0 +1,183 @@
+<title>Sorted Sheets — spreadsheets that keep HMRC boring</title>
+<style>
+  :root {
+    --paper: #F4F6F3;
+    --ink: #1A2E24;
+    --ink-soft: #48584F;
+    --green: #1F6E4A;
+    --red: #C0392B;
+    --rule: #D8DFD9;
+    --card: #FFFFFF;
+    --mono: ui-monospace, "SF Mono", "Cascadia Code", Consolas, Menlo, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #101815; --ink: #E4EBE6; --ink-soft: #93A69B;
+      --green: #4CAF82; --red: #E06355; --rule: #24312A; --card: #18231D;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #101815; --ink: #E4EBE6; --ink-soft: #93A69B;
+    --green: #4CAF82; --red: #E06355; --rule: #24312A; --card: #18231D;
+  }
+  :root[data-theme="light"] {
+    --paper: #F4F6F3; --ink: #1A2E24; --ink-soft: #48584F;
+    --green: #1F6E4A; --red: #C0392B; --rule: #D8DFD9; --card: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); line-height: 1.55;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 31px, var(--rule) 31px 32px);
+  }
+  .margin-rule {
+    position: fixed; top: 0; bottom: 0; left: clamp(12px, 5vw, 72px);
+    width: 2px; background: var(--red); opacity: .35; pointer-events: none;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 0 24px 96px; }
+  .eyebrow {
+    font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--green); margin: 0 0 8px;
+  }
+  header.hero { padding: 88px 0 40px; }
+  .brand { font-family: var(--mono); font-size: 13px; color: var(--ink-soft); margin: 0 0 48px; }
+  .brand b { color: var(--green); }
+  h1 {
+    font-size: clamp(34px, 6vw, 52px); line-height: 1.06; letter-spacing: -0.02em;
+    font-weight: 800; margin: 0 0 20px; text-wrap: balance;
+  }
+  h1 .red { color: var(--red); }
+  .lede { font-size: 18px; color: var(--ink-soft); max-width: 56ch; margin: 0 0 36px; }
+
+  .ticker {
+    background: var(--card); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 20px 24px; font-family: var(--mono); font-size: 14px;
+    display: grid; grid-template-columns: 1fr auto; row-gap: 10px; column-gap: 16px;
+    font-variant-numeric: tabular-nums; box-shadow: 0 1px 0 var(--rule);
+  }
+  .ticker .lbl { color: var(--ink-soft); }
+  .ticker .val { text-align: right; }
+  .ticker .owed { color: var(--red); font-weight: 700; }
+  .ticker .top { grid-column: 1 / -1; font-size: 11px; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--green); border-bottom: 1px solid var(--rule); padding-bottom: 8px; }
+
+  section { padding: 48px 0 0; }
+  h2 { font-size: 24px; letter-spacing: -0.01em; margin: 0 0 24px; text-wrap: balance; }
+
+  .product {
+    background: var(--card); border: 1px solid var(--rule); border-radius: 6px;
+    padding: 28px; margin-bottom: 24px;
+  }
+  .product-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .product h3 { margin: 0; font-size: 20px; }
+  .price { font-family: var(--mono); font-size: 18px; font-weight: 700; color: var(--green); white-space: nowrap; }
+  .price s { color: var(--ink-soft); font-weight: 400; margin-left: 8px; }
+  .who { font-family: var(--mono); font-size: 12.5px; color: var(--ink-soft); margin: 6px 0 16px; }
+  .product ul { margin: 0 0 20px; padding: 0; list-style: none; }
+  .product li { padding: 7px 0 7px 26px; position: relative; border-top: 1px dashed var(--rule); font-size: 15px; }
+  .product li::before { content: "✓"; position: absolute; left: 2px; color: var(--green); font-family: var(--mono); }
+  .btn {
+    display: inline-block; font-family: var(--mono); font-size: 14px; font-weight: 700;
+    padding: 12px 22px; border-radius: 4px; border: 1.5px dashed var(--ink-soft);
+    color: var(--ink-soft); text-decoration: none; cursor: not-allowed; letter-spacing: .02em;
+  }
+  .btn-note { font-family: var(--mono); font-size: 12px; color: var(--ink-soft); margin-left: 12px; }
+
+  .steps { counter-reset: step; padding: 0; margin: 0; list-style: none; }
+  .steps li { counter-increment: step; padding: 14px 0 14px 56px; position: relative; border-top: 1px solid var(--rule); }
+  .steps li::before {
+    content: counter(step, decimal-leading-zero); position: absolute; left: 0; top: 12px;
+    font-family: var(--mono); font-size: 14px; font-weight: 700; color: var(--red);
+  }
+  .steps b { display: block; }
+  .steps span { color: var(--ink-soft); font-size: 15px; }
+
+  .honest {
+    border: 1px solid var(--rule); border-left: 3px solid var(--green); border-radius: 0 6px 6px 0;
+    background: var(--card); padding: 20px 24px; font-size: 15px; color: var(--ink-soft);
+  }
+  .honest b { color: var(--ink); }
+  footer { margin-top: 72px; font-family: var(--mono); font-size: 12px; color: var(--ink-soft);
+    border-top: 1px solid var(--rule); padding-top: 20px; }
+  @media (prefers-reduced-motion: no-preference) {
+    .product { transition: border-color .15s ease; }
+    .product:hover { border-color: var(--green); }
+  }
+</style>
+
+<div class="margin-rule" aria-hidden="true"></div>
+<main>
+  <header class="hero">
+    <p class="brand"><b>SORTED&nbsp;SHEETS</b> · plain spreadsheets for UK tax anxiety</p>
+    <p class="eyebrow">Self Assessment, minus the dread</p>
+    <h1>Your tax bill isn't a surprise. <span class="red">You just weren't tracking it.</span></h1>
+    <p class="lede">Two honest spreadsheets that log what you earn, estimate what HMRC will
+      want, and tell you the one number that matters: how much to set aside — today, not in January.</p>
+    <div class="ticker" role="img" aria-label="Sample dashboard figures from the tracker">
+      <span class="top">Live from the dashboard tab</span>
+      <span class="lbl">Invoiced this year</span><span class="val">£1,450.00</span>
+      <span class="lbl">Received (paid)</span><span class="val">£850.00</span>
+      <span class="lbl">Estimated tax + NI</span><span class="val">£0.00</span>
+      <span class="lbl">Set aside this much</span><span class="val owed">£183.25</span>
+    </div>
+  </header>
+
+  <section>
+    <p class="eyebrow">The ledger</p>
+    <h2>Two tools. One job: no January panic.</h2>
+
+    <article class="product">
+      <div class="product-head">
+        <h3>Freelancer Finance OS</h3>
+        <span class="price">£9 <s>£12</s></span>
+      </div>
+      <p class="who">For sole traders &amp; freelancers · Excel / Google Sheets / LibreOffice</p>
+      <ul>
+        <li>Income log with invoice status — paid, awaiting, overdue at a glance</li>
+        <li>Real HMRC 2025/26 estimator: Income Tax bands + Class 4 NI, allowance taper included</li>
+        <li>A running "set this much aside" figure that updates with every invoice</li>
+        <li>Every rate editable, so it never goes out of date</li>
+      </ul>
+      <a class="btn" aria-disabled="true">BUY — STORE OPENING SOON</a><span class="btn-note">Gumroad link lands here</span>
+    </article>
+
+    <article class="product">
+      <div class="product-head">
+        <h3>Side Hustle Profit Tracker</h3>
+        <span class="price">£7 <s>£9</s></span>
+      </div>
+      <p class="who">For Vinted / eBay / Etsy / Depop sellers</p>
+      <ul>
+        <li>Logs every sale with platform fees and postage — real profit per item, automatically</li>
+        <li>Live £1,000 trading-allowance indicator: a clear YES/NO on whether HMRC needs to hear from you</li>
+        <li>Compares both HMRC deduction methods and picks the one that saves you more</li>
+        <li>Platform dropdowns, monthly breakdown, worked examples</li>
+      </ul>
+      <a class="btn" aria-disabled="true">BUY — STORE OPENING SOON</a><span class="btn-note">Gumroad link lands here</span>
+    </article>
+  </section>
+
+  <section>
+    <p class="eyebrow">How it works</p>
+    <h2>Three entries. That's the whole system.</h2>
+    <ol class="steps">
+      <li><b>Log the money as it moves</b><span>An invoice paid, a jacket sold — one row, ten seconds.</span></li>
+      <li><b>Read one number</b><span>The dashboard keeps a running estimate of your HMRC bill and the amount to move to savings.</span></li>
+      <li><b>Move it and forget it</b><span>Transfer the set-aside figure the day you're paid. January becomes a formality.</span></li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="eyebrow">The small print, in large print</p>
+    <div class="honest">
+      <b>These are planning tools, not tax advice.</b> They estimate using real HMRC rates and
+      honest assumptions (cash basis, sole traders), and every figure is checkable — the formulas
+      are open, nothing is hidden. Confirm your final numbers with HMRC's own calculation or an
+      accountant. No subscription, no account, no data leaves your spreadsheet — because it's
+      just a spreadsheet.
+    </div>
+  </section>
+
+  <footer>SORTED SHEETS · Made in the UK for UK tax rules · Prices are launch offers</footer>
+</main>
