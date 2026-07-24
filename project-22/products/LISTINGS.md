@@ -94,3 +94,23 @@
 - Week-by-week UK checklist: notice periods, Royal Mail redirection, broadband lead times, deposit-protecting photo lists
 - The Essentials Box list that saves night one
 - Moving Budget spreadsheet: 15 cost lines, budget vs actual, over/under per line
+
+# Batch 4 — Gumroad Listing Copy (final)
+
+## Host Income Tracker — £10
+**Tagline:** Airbnb, Booking.com, Vrbo, direct — every stay, every fee, your real profit per night.
+- Stays log with per-stay net (gross minus platform fees), 400 rows
+- Dashboard: profit, net per booked night, occupancy % over your chosen period
+- Hosting expense log with cleaning/supplies/utilities categories
+
+## "Going Freelance" Starter Kit — £24 (bundle, saves £4)
+**Tagline:** Everything between "I'm thinking about it" and your third paying client.
+- Freelancer Finance OS + Client Onboarding Pack + Cold Outreach 30, packaged
+- A 30-day launch plan that tells you exactly when each piece comes into play
+- The honest FAQ: timelines, sole trader vs ltd, and what to do if you hate selling
+
+## Pet Care Budget & Health Log — £6
+**Tagline:** What the floof actually costs — and when the next jab is due.
+- Cost log with vet/food/insurance categories; true average-per-month figure
+- Health log: vaccinations, flea/worm treatments, weight checks — with next-due dates
+- The insurance-vs-savings-pot decision, answered with your own numbers
