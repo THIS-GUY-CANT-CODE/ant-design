@@ -36,3 +36,35 @@
 - Keyword research using Etsy's own autocomplete (no paid tools)
 - Title formula, all-13-tags strategy, 10-image plan, post-launch triage
 - Fill-in template to reuse for every listing
+
+# Batch 2 — Gumroad Listing Copy
+
+## Landlord Income & Expense Tracker (UK) — £12
+**Tagline:** Rental profit and a realistic tax estimate — with Section 24 mortgage-interest rules handled correctly.
+- Rent log + categorised expense log (500 rows each)
+- Estimator applies your marginal rate, then the 20% mortgage-interest credit — the bit most landlords get wrong
+- Set-aside figure so January never surprises you
+
+## Car Total-Cost Tracker — £6
+**Tagline:** Your car costs more than fuel. See the real number — per month and per mile.
+- Log fuel, insurance, tax, servicing, repairs; depreciation calculated from purchase vs resale value
+- Cost-per-month and cost-per-mile update live
+- The spreadsheet to open before buying your next car
+
+## Debt Snowball Planner — £8
+**Tagline:** Smallest debt first. Momentum beats maths — that's the method that actually sticks.
+- Lists up to 20 debts; auto-identifies your focus debt and your attack payment
+- Months-to-kill countdown on the focus debt
+- Explains snowball vs avalanche honestly — the one you stick to wins
+
+## Content Calendar + 100-Hook Bank — £9 (bundle)
+**Tagline:** Plan it, post it, never start from a blank page again.
+- Calendar spreadsheet: 200 slots, platform & status dropdowns, posted/drafted/idea counters
+- 100 fill-in-the-blank hooks grouped by job: curiosity, numbers, confessions, how-to, contrarian, story, urgency
+- Works for any niche — swap the brackets
+
+## ATS-Friendly CV Pack — £8
+**Tagline:** Most CVs are rejected by software before a human reads them. These three aren't.
+- 3 templates: Standard, Career-Changer, Graduate — plain-parse structures that pass ATS
+- The 10 ATS rules + a 15-minute per-application tailoring checklist
+- 40 bullet-starter verbs that carry numbers well
