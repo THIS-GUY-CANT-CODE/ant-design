@@ -41,7 +41,7 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 - **Use only their public copy and your own or licensed imagery.** Don't lift their photos into a public portfolio without permission. Placeholders are fine in demos.
 - **Cold email (PECR)**: emailing a business's generic address (info@, hello@) is fine. Always include an opt-out line and your company details.
 
-## The first 6 (proof of concept)
+## Portfolio concepts
 
 | # | Business | Area | Industry | Status |
 | - | --- | --- | --- | --- |
@@ -51,6 +51,8 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 | 4 | Walthamstow Osteopaths | Walthamstow Village, E17 | Health (osteopathy) | Brand book and site built |
 | 5 | W J Meade | Bow, E3 | Professional services (estate agent) | Brand book and site built |
 | 6 | Clapton Beauty Parlour | Lower Clapton, E5 | Beauty (hair and beauty salon) | Brand book and site built |
+| 7 | The Thatched House Dental Practice | Leytonstone, E15 | Health (private dentist) | Brand book and site built |
+| 8 | The Queen's Head | Limehouse, E14 | Hospitality (community pub, no website) | Brand book and site built |
 
 The industries are spread on purpose so the portfolio shows range. Trades and health have the worst sites and the highest lifetime value.
 

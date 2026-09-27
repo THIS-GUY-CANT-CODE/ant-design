@@ -195,7 +195,7 @@ footer .wrap{display:grid;gap:12px}
 
   <section id="work" class="wrap" style="padding-top:0">
     <span class="eyebrow">The makeovers</span>
-    <h2>Six East London businesses, rebuilt.</h2>
+    <h2>${['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve'][clients.length] || clients.length} East London businesses, rebuilt.</h2>
     <p class="lede">Each one comes with a full brand book and a new website. These are unsolicited concepts: we chose businesses we love and showed what their sites could be. None of them are clients unless marked.</p>
     <div class="works">${clients.map(card).join('')}
     </div>
