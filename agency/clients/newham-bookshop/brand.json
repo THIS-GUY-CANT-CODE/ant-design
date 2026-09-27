@@ -42,7 +42,7 @@
     "title": "A reader's serif, a friendly sans.",
     "lead": "Literata was designed for comfortable long-form reading and gives headlines a literary warmth. Source Sans 3 is clear and friendly for listings and events. Both are free on Google Fonts.",
     "samples": [
-      { "label": "Display", "style": "font:800 clamp(2.2rem,6vw,4rem)/1.02 Literata,serif;color:#232B5C", "text": "A bookshop <em style=\"color:#F2A93B\">for all.</em>" },
+      { "label": "Display", "style": "font:800 clamp(2.2rem,6vw,4rem)/1.02 Literata,serif;color:#232B5C", "text": "A bookshop <em style=\"color:#A8620A\">for all.</em>" },
       { "label": "Heading", "style": "font:600 1.5rem Literata,serif", "text": "Author visits for schools" },
       { "label": "Body", "style": "font-size:1.05rem;font-family:'Source Sans 3',sans-serif", "text": "Books for adults and children of all ages, author events, and bookstalls across London." },
       { "label": "Label", "style": "font:700 .78rem 'Source Sans 3',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#232B5C", "text": "Since 1978 · Barking Road" }

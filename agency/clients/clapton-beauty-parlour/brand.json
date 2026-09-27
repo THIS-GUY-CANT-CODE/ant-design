@@ -42,10 +42,10 @@
     "title": "Fashion-plate serif, deco sans.",
     "lead": "Bodoni Moda has the high contrast of 1930s beauty adverts, and Jost is a geometric sans in the spirit of Futura (1927). Set labels in wide-tracked caps for the deco signage feel. Both are free on Google Fonts.",
     "samples": [
-      { "label": "Display 500", "style": "font:500 clamp(2.2rem,6vw,4rem)/1 'Bodoni Moda',serif", "text": "Doing Clapton's hair <em style=\"color:#C6A15B\">since 1930.</em>" },
+      { "label": "Display 500", "style": "font:500 clamp(2.2rem,6vw,4rem)/1 'Bodoni Moda',serif", "text": "Doing Clapton's hair <em style=\"color:#7E5F24\">since 1930.</em>" },
       { "label": "Heading", "style": "font:500 1.6rem 'Bodoni Moda',serif", "text": "Colour &amp; highlights" },
       { "label": "Body 400", "style": "font-size:1.05rem;font-family:Jost,sans-serif", "text": "Cuts, colour, extensions and beauty treatments on Lower Clapton Road." },
-      { "label": "Label 500", "style": "font:500 .78rem Jost,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#C6A15B", "text": "21 Lower Clapton Road · E5" }
+      { "label": "Label 500", "style": "font:500 .78rem Jost,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#7E5F24", "text": "21 Lower Clapton Road · E5" }
     ]
   },
   "voice": {
