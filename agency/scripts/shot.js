@@ -15,6 +15,8 @@ const path = require('path');
     await p.goto('file://' + path.join(dir, src), { waitUntil: 'load', timeout: 15000 }).catch(() => {});
     await p.waitForTimeout(600);
     await p.screenshot({ path: path.join(dir, 'after', out), fullPage: true });
+    // Viewport-only JPEG previews for the portfolio cards
+    if (src.startsWith('site/')) await p.screenshot({ path: path.join(dir, 'after', out.replace('.png', '-card.jpg')), type: 'jpeg', quality: 78 });
     const sw = await p.evaluate(() => document.documentElement.scrollWidth);
     if (sw > w || errs.length) bad = true;
     console.log(`${out}: width ${sw}/${w}${errs.length ? ' errors: ' + errs.join('; ') : ''}`);

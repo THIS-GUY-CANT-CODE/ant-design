@@ -1,10 +1,30 @@
 # Second Coat: agency workspace
 
-- `PLAN.md`: the business plan, pricing, pipeline and guardrails
-- `.claude/skills/`: the repeatable machine (prospect, revamp, outreach)
-- `clients/<slug>/`: audit, before screenshots, brand book and demo site for each business
-- `portfolio/`: the agency's own site
-- `pipeline.csv`: lead tracker
-- `LEARNINGS.md`: what to improve after every build
+We rebuild East London businesses' websites before they pay. See `PLAN.md` for the offer, pricing and guardrails.
 
-Deploy: import into Vercel with the root directory set to `agency/`, or push to GitLab and let `.gitlab-ci.yml` deploy it.
+| Path | What |
+| --- | --- |
+| `index.html` | The agency portfolio site (generated, don't hand-edit) |
+| `clients/<slug>/` | For each business: `audit.md`, `brand.json`, `brand-book/`, `site/`, `before/`, `after/`, `meta.json` |
+| `.claude/skills/` | The machine: `prospect`, `revamp` and `outreach` skills |
+| `scripts/brandbook.js <slug>` | Builds the brand book from `brand.json` |
+| `scripts/shot.js <slug>` | After screenshots plus overflow and JS error checks |
+| `scripts/portfolio.js` | Rebuilds `index.html` from every client's `meta.json` |
+| `pipeline.csv` | Lead tracker |
+| `LEARNINGS.md` | One line per build: what to improve next time |
+
+## Build a new client
+```bash
+# research → write clients/<slug>/{audit.md,meta.json,brand.json,site/index.html}
+node scripts/brandbook.js <slug>
+NODE_PATH=$(npm root -g) node scripts/shot.js <slug>   # needs Playwright
+node scripts/portfolio.js
+```
+
+## Deploy
+- **Vercel:** import the repo, set the root directory to `agency/`, framework "Other", no build command. `vercel.json` adds `noindex` headers to all client concepts.
+- **GitLab:** push this folder to a GitLab project and add a `VERCEL_TOKEN` CI variable. `.gitlab-ci.yml` deploys previews on branches and production on `main`.
+
+## Before going public
+- Replace `hello@example.com` in `scripts/portfolio.js` with the real agency email, and rebuild.
+- Add `before/desktop-card.jpg` (1440×900) for each client to switch on the before/after sliders.
