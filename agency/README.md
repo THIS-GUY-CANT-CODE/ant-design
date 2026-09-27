@@ -23,6 +23,9 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 
 ## Build a new client
 ```bash
+# one command once the JSON briefs exist:
+node scripts/build.js <slug>          # or --all to rebuild everything
+
 # research → write clients/<slug>/{audit.md,meta.json,brand.json,site.json}
 node scripts/brandbook.js <slug>
 node scripts/site.js <slug>

@@ -35,6 +35,8 @@ Hand-write the HTML only when a concept needs a layout the generator can't do. T
 - Must: `<meta name="robots" content="noindex">` and the concept banner (copy the one from `clients/biscuit-bunker/site/index.html`) until they pay.
 
 ## 3b. Verify
+Shortcut: `node scripts/build.js <slug>` runs brand book → site → checks → leave-behind in one go (`--all` rebuilds everything, plus the portfolio, landing pages and dashboard).
+
 `NODE_PATH=$(npm root -g) node scripts/shot.js <slug>` saves after screenshots and fails on horizontal overflow, JS errors or unreadable text (contrast under 2.5:1). Run it with `VERBOSE=1` to also list weaker-contrast warnings. Look at desktop.png and mobile.png before committing. Watch for: grids of fixed-ratio items need `minmax(0,1fr)`; hide the header CTA under 520px if there's a sticky mobile bar.
 
 ## 4. meta.json

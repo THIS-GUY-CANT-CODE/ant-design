@@ -1,17 +1,27 @@
-# Deploys the agency folder to Vercel on every push.
-# Setup: in GitLab, go to Settings > CI/CD > Variables and add VERCEL_TOKEN, VERCEL_ORG_ID and VERCEL_PROJECT_ID.
-image: node:20-alpine
+# Checks every client site, then deploys the agency folder to Vercel.
+# Setup: in GitLab, go to Settings > CI/CD > Variables and add VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID and SITE_URL.
+stages: [check, deploy]
 
-stages: [deploy]
+check:
+  stage: check
+  image: mcr.microsoft.com/playwright:v1.47.0-jammy
+  script:
+    - cd scripts && npm install --no-audit --no-fund && cd ..
+    - node scripts/build.js --all   # fails on mobile overflow, JS errors or unreadable text
+  artifacts:
+    paths: [clients/*/after/, index.html, for/, sitemap.xml, robots.txt]
+    expire_in: 1 week
 
 preview:
   stage: deploy
+  image: node:20-alpine
   except: [main]
   script:
     - npx vercel@latest deploy --yes --token "$VERCEL_TOKEN"
 
 production:
   stage: deploy
+  image: node:20-alpine
   only: [main]
   script:
     - npx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"
