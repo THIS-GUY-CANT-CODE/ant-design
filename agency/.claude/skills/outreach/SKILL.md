@@ -21,7 +21,7 @@ Subject: I rebuilt the <Business> website (no strings)
 
 ## Follow-ups
 - Day 3: one line + a 60s screen recording walking through before/after.
-- Day 7: walk in / phone. Local is the unfair advantage — use it.
+- Day 7: walk in or phone. Being local is the unfair advantage, so use it. Print the leave-behind first: `node scripts/leavebehind.js <slug> <previewUrl>`, then open `clients/<slug>/leave-behind.html` and print it at A5.
 - Day 14: "Taking the preview down Friday — want me to keep it up?" Then stop.
 
 ## Closing

@@ -15,6 +15,7 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 | `sales/` | Proposal template, terms, go-live and handover checklist |
 | `scripts/site.js <slug>` | Builds the demo site from `site.json` + `brand.json` (default way to build) |
 | `scripts/landing.js` | Builds `/for/<industry>/` landing pages, `sitemap.xml` and `robots.txt` (set `SITE_URL`) |
+| `scripts/leavebehind.js <slug> [previewUrl]` | Printable A5 leave-behind for walk-in pitches (new site, 3 fixes, price, QR code to the preview) |
 | `scripts/dashboard.js` | Builds `internal/dashboard.html` (lead funnel, next action per lead). Open it locally |
 | `pipeline.csv` | Lead tracker |
 | `LEARNINGS.md` | One line per build: what to improve next time |

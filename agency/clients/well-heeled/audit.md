@@ -18,3 +18,8 @@
 
 ## To confirm
 Whether Ken is still at the bench (the 2016 article is 10 years old), current services and prices, the branch list, and whether they do bag and leather repairs.
+
+## The pitch angle
+1. **Your own website,** so "shoe repair Bethnal Green" finds you, not a chain.
+2. **The craft first:** heels, soles and stitching, then keys and engraving.
+3. **Opening hours and the 7am start up front,** with a live "open now" sign.

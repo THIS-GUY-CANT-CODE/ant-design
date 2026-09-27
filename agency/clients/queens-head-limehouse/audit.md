@@ -21,3 +21,8 @@ N/A (no site). Use a screenshot of the Tripadvisor/Google listing as the "before
 
 ## To confirm
 Phone, opening hours, food menu, quiz night day, private hire, and whether the founding team is happy to be named.
+
+## The pitch angle
+1. **A home of your own online:** no more relying on Tripadvisor and Facebook.
+2. **The story up front:** 1827, the Queen Mother's pint, and the Queen Vic connection.
+3. **A weekly what's-on (quiz night and more)** that we keep updated for you.
