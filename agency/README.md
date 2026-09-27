@@ -10,6 +10,7 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 | `scripts/brandbook.js <slug>` | Builds the brand book from `brand.json` |
 | `scripts/shot.js <slug>` | After screenshots plus overflow and JS error checks |
 | `scripts/portfolio.js` | Rebuilds `index.html` from every client's `meta.json` |
+| `outreach/first-six.md` | Pitch emails for the first six |
 | `pipeline.csv` | Lead tracker |
 | `LEARNINGS.md` | One line per build: what to improve next time |
 
