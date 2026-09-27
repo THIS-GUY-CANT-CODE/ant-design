@@ -1,0 +1,69 @@
+{
+  "name": "W J Meade Estate Agents",
+  "wordmark": "W J Meade",
+  "wordmarkSub": "Estate Agents · Since 1953",
+  "coverTitle": "W J Meade<br><em>since 1953.</em>",
+  "descriptor": "Independent estate & letting agents · East London",
+  "since": "Est. 1953",
+  "theme": { "bg": "#F8F5EE", "bg2": "#EFE9DC", "ink": "#14191F", "primary": "#14263A", "accent": "#D8B26E", "onPrimary": "#F8F5EE", "muted": "#66707C" },
+  "fonts": {
+    "href": "https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter+Tight:wght@400;500;600;700&display=swap",
+    "display": "\"DM Serif Display\",Georgia,serif",
+    "body": "\"Inter Tight\",system-ui,sans-serif",
+    "coverWeight": 400,
+    "italicAccent": true
+  },
+  "logo": {
+    "viewBox": "0 0 48 48",
+    "svg": "<rect width=\"48\" height=\"48\" rx=\"10\" fill=\"var(--l1)\"/><path d=\"M10 37V19l7-7 7 7 7-7 7 7v18\" fill=\"none\" stroke=\"var(--l3)\" stroke-width=\"3.6\" stroke-linejoin=\"round\"/><rect x=\"21\" y=\"27\" width=\"6\" height=\"10\" rx=\"1\" fill=\"var(--l2)\"/>",
+    "title": "The Roofline M.",
+    "lead": "An M drawn as two East London gables, with a brick-red front door. It's the Meade initial and a terraced house in one mark. It sits in a navy tile that works as a sign, an app icon or a board topper. The wordmark is set in DM Serif Display."
+  },
+  "story": {
+    "title": "Seventy years. Three owners. One name.",
+    "lead": "Walter Joseph Meade opened on Hoe Street, Walthamstow, in 1953. Seven decades and only three owners later, W J Meade has five offices across East and North London and is still independent. The brand should feel established without feeling old: London stock brick, a navy front door and a firm handshake.",
+    "positioning": "The independent East London agent with more history than any chain on the high street.",
+    "promise": "East London's estate agent since 1953.",
+    "values": ["Local, for real.", "Straight answers.", "Relationships over transactions.", "Still independent."]
+  },
+  "colour": {
+    "title": "Navy door, stock brick.",
+    "lead": "Navy is the classic front-door colour. London stock brick yellow (the colour of every Victorian terrace in E3) is the warm accent, and brick red is kept for the one thing that matters most: the valuation button.",
+    "swatches": [
+      { "name": "Front Door Navy", "hex": "#14263A", "use": "Primary" },
+      { "name": "Stock Brick", "hex": "#D8B26E", "use": "Accent" },
+      { "name": "Red Brick", "hex": "#B5533C", "use": "Valuation CTA only" },
+      { "name": "Portland", "hex": "#F8F5EE", "use": "Background" },
+      { "name": "Mortar", "hex": "#EFE9DC", "use": "Panels" },
+      { "name": "Slate", "hex": "#66707C", "use": "Secondary text" }
+    ]
+  },
+  "type": {
+    "title": "Heritage serif, modern sans.",
+    "lead": "DM Serif Display carries the \"since 1953\" confidence in headlines and prices. Inter Tight keeps property details, forms and small print crisp. Both are free on Google Fonts.",
+    "samples": [
+      { "label": "Display 400", "style": "font:400 clamp(2.2rem,6vw,4rem)/1 'DM Serif Display',serif;color:#14263A", "text": "East London <em style=\"color:#B5533C\">since 1953.</em>" },
+      { "label": "Price", "style": "font:400 2rem 'DM Serif Display',serif;color:#14263A", "text": "£575,000" },
+      { "label": "Body 400", "style": "font-size:1.05rem;font-family:'Inter Tight',sans-serif", "text": "Two-bedroom Victorian conversion, moments from Roman Road Market." },
+      { "label": "Label 600", "style": "font:600 .8rem 'Inter Tight',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#B5533C", "text": "For sale · Bow E3" }
+    ]
+  },
+  "voice": {
+    "title": "Straight-talking and local.",
+    "lead": "Talk like the negotiator who's been on these streets for years: specific, honest and no agent-speak. Property descriptions must be accurate (Consumer Protection Regulations), so no puffery.",
+    "pairs": [
+      ["\"Two minutes from Roman Road Market, with a south-facing garden.\"", "\"Stunning, must-see, deceptively spacious!\""],
+      ["\"We'll tell you what it's really worth.\"", "\"Guaranteed highest valuation in E3!\""],
+      ["\"Since 1953.\"", "\"Your premier property solutions partner.\""]
+    ]
+  },
+  "imagery": {
+    "title": "Streets, doors, daylight.",
+    "lead": "Straight-on shots of East London terraces and front doors, bright interiors shot level, and the team out on the streets they cover. Avoid ultra-wide lenses that make rooms look bigger than they are. Buyers notice, and it costs trust."
+  },
+  "apps": {
+    "social": { "label": "Instagram · Just sold", "headline": "Just sold<br>in Bow.", "footer": "W J Meade · Since 1953" },
+    "print": "For sale board topper",
+    "card": { "label": "Leaflet drop", "headline": "What's your home<br>worth in 2026?", "footer": "Free valuation · 020 8981 3331" }
+  }
+}
