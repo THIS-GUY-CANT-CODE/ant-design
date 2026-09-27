@@ -1,0 +1,30 @@
+---
+name: prospect
+description: Find and score East London small businesses with weak websites as revamp candidates. Use when asked to find new prospects, leads, or "the next business to redo".
+---
+
+# Prospect
+
+Goal: a shortlist of businesses where a redesign is obviously better *and* the owner can afford £500+.
+
+## Where to look
+- Google Maps searches like "<trade> <area> London". Areas: Hackney, Shoreditch, Bethnal Green, Whitechapel, Bow, Stratford, Leyton, Walthamstow, Dalston, Clapton, Hackney Wick, Canning Town.
+- Industries that convert best: trades, physio/dental/clinics, independent restaurants, salons/barbers, accountants/solicitors, venues, studios.
+- Skip chains, franchises, and anyone whose site was clearly rebuilt in the last 2 years.
+
+## Scoring rubric (current site, out of 50 — lower = better prospect)
+| Area | 0 (bad) → 10 (good) |
+| --- | --- |
+| Mobile | Broken layout, tiny text, horizontal scroll → flawless |
+| Speed | PageSpeed mobile < 40 → > 90 |
+| Clarity | Can't tell what they do / where / how to contact in 5s → instant |
+| Trust | No reviews, dead links, © 2016, stock photos → strong social proof |
+| Conversion | No CTA/phone/booking above the fold → one-tap call/book |
+
+Prospect if score ≤ 25 **and** the business has ≥ 20 Google reviews (proves they're real and trading).
+
+## Output
+Append a row to `pipeline.csv`:
+`slug,name,url,area,industry,score,reviews,contact_email,status,date`
+
+Create `clients/<slug>/audit.md` using the audit template in the `revamp` skill.

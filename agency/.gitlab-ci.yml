@@ -1,0 +1,17 @@
+# Deploys the agency folder to Vercel on every push.
+# Setup: in GitLab, go to Settings > CI/CD > Variables and add VERCEL_TOKEN, VERCEL_ORG_ID and VERCEL_PROJECT_ID.
+image: node:20-alpine
+
+stages: [deploy]
+
+preview:
+  stage: deploy
+  except: [main]
+  script:
+    - npx vercel@latest deploy --yes --token "$VERCEL_TOKEN"
+
+production:
+  stage: deploy
+  only: [main]
+  script:
+    - npx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"
