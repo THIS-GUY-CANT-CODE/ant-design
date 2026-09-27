@@ -245,3 +245,54 @@ The contact addresses in brackets come from public listings. Check each one befo
 > It's £500 to go live, including a proper @drivingforcelondon.com email address to replace the Hotmail one. No obligation.
 >
 > <your name> · Second Coat · <phone>
+
+---
+
+## 15. Brick Lane Bookshop (bookshop, E1)
+**To:** info@bricklanebookshop.co.uk · **Tier:** Refresh £500 plus Care (events). **Don't reuse Newham Bookshop's wording.**
+
+**Subject:** Brick Lane's bookshop, and a website to match the street
+
+> Hi Denise, Kalina and Kate,
+>
+> From THAP in Watney Market in 1977 to Sarah Waters and Iain Sinclair reading upstairs, the bookshop's story is one of the best on Brick Lane. But the website's history page lives at a URL called "Our%20History%20-%20The%20Bookshop.html", and your email and site are on two different domains.
+>
+> I've built a concept with a bold Brick Lane look, open-today hours for the thousands of people walking past, and a readings page: <preview>
+>
+> It's £500 to go live on one domain, and £49 a month if you'd like me to keep events updated. No obligation.
+>
+> <your name> · Second Coat · <phone>
+
+---
+
+## 16. Bowling & Co Solicitors (law, E15)
+**To:** info@bowlinglaw.co.uk, for the attention of the managing partner · **Tier:** Rebrand £1,200 plus Care
+
+**Subject:** "Best Legal Consultant in London UK": a quick note about your page titles
+
+> Dear Sir or Madam,
+>
+> Every page on bowlinglaw.co.uk is titled "Best Legal Consultant in London UK". As well as reading as spam in Google, an unverifiable "best" claim sits awkwardly with the SRA's rules on not misleading clients.
+>
+> I've built a concept that fixes that and tells your real story, from Gilbert Bowling's rooms above Burton's in 1957 (at £175 a year) to today, with a price transparency section ready for the SRA Transparency Rules: <preview>
+>
+> The site is £500, or £1,200 with a full brand refresh across letterhead, signage and LinkedIn. Happy to talk it through.
+>
+> <your name> · Second Coat · <phone>
+
+---
+
+## 17. Denningtons Florist (florist, E3)
+**To:** call 020 8981 1121 or pop into 461 Roman Road · **Tier:** Refresh £500 plus Care (seasonal). **Don't pitch with Kelly's wording.**
+
+**Subject (if emailing):** Roman Road's florist since 1950
+
+> Hi Lee,
+>
+> Denningtons has done East End weddings and funerals since 1950, but your website still says "Flowers in Bow | London |" in its titles and runs on pages from a much older web.
+>
+> I've built a concept with two clear paths, weddings and funerals, plus your family story and today's opening hours: <preview>
+>
+> It's £500 to go live, and £49 a month keeps seasonal pages fresh (Valentine's, Mother's Day, Christmas). No obligation.
+>
+> <your name> · Second Coat · <phone>

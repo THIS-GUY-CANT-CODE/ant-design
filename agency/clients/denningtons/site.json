@@ -1,0 +1,242 @@
+{
+  "name": "Denningtons Florist",
+  "title": "Denningtons Florist: Wedding & Funeral Flowers, Roman Road, Bow, Since 1950",
+  "description": "Family-run florist on Roman Road, Bow, since 1950. Wedding and funeral flowers, occasions, local and international delivery.",
+  "schemaType": "Florist",
+  "founded": 1950,
+  "phone": "020 8981 1121",
+  "address": {
+    "street": "461 Roman Road",
+    "area": "Bow",
+    "postcode": "E3 5LX"
+  },
+  "radius": 20,
+  "nav": [
+    [
+      "Weddings",
+      "weddings"
+    ],
+    [
+      "Funerals",
+      "funerals"
+    ],
+    [
+      "Flowers",
+      "flowers"
+    ],
+    [
+      "Visit",
+      "visit"
+    ]
+  ],
+  "headerCta": {
+    "label": "020 8981 1121",
+    "href": "tel"
+  },
+  "mobileBar": [
+    {
+      "label": "Call to order",
+      "href": "tel"
+    },
+    {
+      "label": "Visit",
+      "href": "#visit"
+    }
+  ],
+  "hours": {
+    "0": "Closed",
+    "1": "9am – 5:30pm",
+    "2": "9am – 5:30pm",
+    "3": "9am – 5:30pm",
+    "4": "9am – 5:30pm",
+    "5": "9am – 5:30pm",
+    "6": "9am – 5:30pm"
+  },
+  "openRanges": {
+    "1": [
+      [
+        9,
+        17.5
+      ]
+    ],
+    "2": [
+      [
+        9,
+        17.5
+      ]
+    ],
+    "3": [
+      [
+        9,
+        17.5
+      ]
+    ],
+    "4": [
+      [
+        9,
+        17.5
+      ]
+    ],
+    "5": [
+      [
+        9,
+        17.5
+      ]
+    ],
+    "6": [
+      [
+        9,
+        17.5
+      ]
+    ]
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "dark": true,
+      "eyebrow": "461 Roman Road, Bow · Since 1950",
+      "title": "For life's <em>biggest days.</em>",
+      "text": "Wedding and funeral flowers, and everything in between, from the East End's family florist on Roman Road.",
+      "primary": {
+        "label": "Call to order",
+        "href": "tel"
+      },
+      "secondary": {
+        "label": "Wedding flowers",
+        "href": "#weddings"
+      },
+      "badge": "EST. 1950"
+    },
+    {
+      "type": "stats",
+      "items": [
+        {
+          "value": "1950",
+          "label": "Opened on Roman Road"
+        },
+        {
+          "value": "1970s",
+          "label": "Same family ever since"
+        },
+        {
+          "value": "Weddings",
+          "label": "And funerals, our speciality"
+        },
+        {
+          "value": "Worldwide",
+          "label": "Local and international delivery"
+        }
+      ]
+    },
+    {
+      "type": "split",
+      "id": "weddings",
+      "tone": "light",
+      "eyebrow": "Weddings",
+      "title": "Your day, your flowers.",
+      "paragraphs": [
+        "From bridal bouquets to buttonholes and venue flowers, tell us about your day and we'll design around it."
+      ],
+      "points": [
+        [
+          "Bridal bouquets",
+          "Designed around your dress, colours and season."
+        ],
+        [
+          "Buttonholes & corsages",
+          "For the whole wedding party."
+        ],
+        [
+          "Ceremony & venue",
+          "Arches, table centres and pew ends. [Confirm.]"
+        ]
+      ],
+      "cta": {
+        "label": "Book a consultation",
+        "href": "tel"
+      }
+    },
+    {
+      "type": "split",
+      "id": "funerals",
+      "tone": "dark",
+      "eyebrow": "Funeral flowers",
+      "title": "Saying goodbye, beautifully.",
+      "paragraphs": [
+        "We've made funeral tributes for East End families for over seventy years. Call us and we'll guide you gently through the choices."
+      ],
+      "points": [
+        [
+          "Wreaths & sprays",
+          "Traditional and modern designs."
+        ],
+        [
+          "Lettered tributes",
+          "Names and words in flowers. [Confirm.]"
+        ],
+        [
+          "Delivered with care",
+          "To funeral directors and homes. [Confirm area.]"
+        ]
+      ],
+      "cta": {
+        "label": "Speak to us: 020 8981 1121",
+        "href": "tel"
+      }
+    },
+    {
+      "type": "cards",
+      "id": "flowers",
+      "eyebrow": "Everyday flowers",
+      "title": "And for every other day.",
+      "items": [
+        {
+          "title": "Bouquets",
+          "text": "Fresh, seasonal bouquets for any occasion."
+        },
+        {
+          "title": "Birthdays & anniversaries",
+          "text": "Something lovely, delivered locally."
+        },
+        {
+          "title": "International delivery",
+          "text": "Send flowers abroad from Roman Road. [Confirm network.]"
+        }
+      ]
+    },
+    {
+      "type": "timeline",
+      "id": "story",
+      "eyebrow": "Our story",
+      "title": "Seventy-five years on the Roman.",
+      "items": [
+        [
+          "1950",
+          "Mr Dennington opens",
+          "A flower shop opens a few doors down from where we are now."
+        ],
+        [
+          "1970s",
+          "A new family",
+          "The business passes to the family who still run it today."
+        ],
+        [
+          "Later",
+          "No.461",
+          "When the landlord sells up, Denningtons moves a few doors along to 461 Roman Road."
+        ],
+        [
+          "Today",
+          "Still family",
+          "The grandson of the man who took it over still works in the shop."
+        ]
+      ]
+    },
+    {
+      "type": "visit",
+      "eyebrow": "Visit the shop",
+      "title": "On Roman Road, E3.",
+      "extra": "Near Roman Road Market. [Add nearest stations: Mile End, Bow Road.]"
+    }
+  ]
+}

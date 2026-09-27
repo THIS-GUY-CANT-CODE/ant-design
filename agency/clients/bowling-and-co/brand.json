@@ -1,0 +1,69 @@
+{
+  "name": "Bowling & Co Solicitors",
+  "wordmark": "Bowling & Co",
+  "wordmarkSub": "Solicitors · Stratford · Since 1957",
+  "coverTitle": "Bowling &amp; Co<br><em>since 1957.</em>",
+  "descriptor": "Solicitors · 62 The Broadway, Stratford E15",
+  "since": "Est. 1957",
+  "theme": { "bg": "#F6F2EA", "bg2": "#EAE3D6", "ink": "#161D21", "primary": "#1F2A30", "accent": "#C07A4A", "onPrimary": "#F6F2EA", "muted": "#5E676C" },
+  "fonts": {
+    "href": "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,700;1,500&family=Public+Sans:wght@400;600;700&display=swap",
+    "display": "\"EB Garamond\",Georgia,serif",
+    "body": "\"Public Sans\",system-ui,sans-serif",
+    "coverWeight": 700,
+    "italicAccent": true
+  },
+  "logo": {
+    "viewBox": "0 0 48 48",
+    "svg": "<circle cx=\"24\" cy=\"24\" r=\"22\" fill=\"var(--l1)\"/><circle cx=\"24\" cy=\"24\" r=\"18\" fill=\"none\" stroke=\"var(--l2)\" stroke-width=\"1.2\"/><text x=\"24\" y=\"31\" text-anchor=\"middle\" font-family=\"EB Garamond,Georgia,serif\" font-size=\"20\" font-style=\"italic\" fill=\"var(--l3)\" textLength=\"22\" lengthAdjust=\"spacingAndGlyphs\">B&amp;</text>",
+    "title": "The Seal.",
+    "lead": "A simple round seal with an italic \"B&\": the firm's initial and the ampersand of partnership. It's traditional without being stuffy. Copper on slate, like a brass nameplate on a Broadway door. The wordmark is set in EB Garamond."
+  },
+  "story": {
+    "title": "Stratford's solicitors since 1957.",
+    "lead": "On 17 July 1957, Gilbert Bowling began practising in a few rooms above Burton's on Stratford Broadway, having talked the rent down from £200 to £175 a year. Nearly seventy years later, Bowling & Co is still on the Broadway, advising individuals and businesses across East London. The brand should feel like a good solicitor: calm, clear, trustworthy, and human.",
+    "positioning": "Stratford's long-established law firm. Clear advice for people and businesses, from a firm that's been on the Broadway since 1957.",
+    "promise": "Clear advice, since 1957.",
+    "values": ["Clarity over jargon.", "Straight on fees.", "Local and long-standing.", "People first."]
+  },
+  "colour": {
+    "title": "Slate, parchment, copper.",
+    "lead": "Deep slate is authority without the cliché of navy-and-gold. Parchment is warmth, and copper, like a brass nameplate, marks actions and details.",
+    "swatches": [
+      { "name": "Slate", "hex": "#1F2A30", "use": "Primary" },
+      { "name": "Parchment", "hex": "#F6F2EA", "use": "Background" },
+      { "name": "Copper", "hex": "#C07A4A", "use": "Accent on dark" },
+      { "name": "Deep Copper", "hex": "#8E5230", "use": "Accent on light" },
+      { "name": "Vellum", "hex": "#EAE3D6", "use": "Panels" },
+      { "name": "Pewter", "hex": "#5E676C", "use": "Secondary text" }
+    ]
+  },
+  "type": {
+    "title": "Classic serif, clear sans.",
+    "lead": "EB Garamond carries tradition and trust. Public Sans, a typeface designed for public-service clarity, keeps fees and service details plain. Both are free on Google Fonts.",
+    "samples": [
+      { "label": "Display", "style": "font:700 clamp(2.2rem,6vw,4rem)/1.02 'EB Garamond',serif;color:#1F2A30", "text": "Clear advice, <em style=\"color:#8E5230\">since 1957.</em>" },
+      { "label": "Heading", "style": "font:500 1.6rem 'EB Garamond',serif", "text": "Residential conveyancing" },
+      { "label": "Body", "style": "font-size:1.05rem;font-family:'Public Sans',sans-serif", "text": "We'll tell you what it costs before we start, in writing." },
+      { "label": "Label", "style": "font:700 .78rem 'Public Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8E5230", "text": "62 The Broadway · Stratford" }
+    ]
+  },
+  "voice": {
+    "title": "Plain English, always.",
+    "lead": "Explain the law the way you would to a friend across the desk. No Latin, no superlatives, and no promises of outcomes (SRA). Be warm on family matters and precise on business ones.",
+    "pairs": [
+      ["\"Buying your first home? Here's exactly what we'll do, and what it costs.\"", "\"Best Legal Consultant in London UK\""],
+      ["\"Stratford's solicitors since 1957.\"", "\"London's #1 law firm.\""],
+      ["\"Going through a separation is hard. We'll take it one step at a time.\"", "\"Aggressive litigators who WIN!\""]
+    ]
+  },
+  "imagery": {
+    "title": "People, not gavels.",
+    "lead": "Natural portraits of the team at work and in meetings (with consent), the Broadway office front, and Stratford streets. No gavels, scales of justice or handshake stock photography."
+  },
+  "apps": {
+    "social": { "label": "LinkedIn · Guide", "headline": "Buying in<br>Stratford?<br><em>Read this first.</em>", "footer": "Bowling & Co · Since 1957" },
+    "print": "Letterhead seal",
+    "card": { "label": "Office plaque", "headline": "Bowling &amp; Co<br><em>Solicitors</em>", "footer": "Est. 1957 · 62 The Broadway" }
+  }
+}

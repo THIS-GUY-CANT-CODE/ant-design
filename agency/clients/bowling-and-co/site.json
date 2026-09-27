@@ -1,0 +1,46 @@
+{
+  "name": "Bowling & Co Solicitors",
+  "title": "Bowling & Co Solicitors: Stratford, East London, Since 1957",
+  "description": "Solicitors on Stratford Broadway since 1957. Property, family, employment, wills and probate, and business law.",
+  "schemaType": "LegalService",
+  "founded": 1957,
+  "phone": "020 8221 8000",
+  "address": { "street": "62 The Broadway", "area": "Stratford", "postcode": "E15 1NG" },
+  "radius": 6,
+  "buttonRadius": 6,
+  "nav": [["For you", "people"], ["For business", "business"], ["Prices", "prices"], ["Our story", "story"]],
+  "headerCta": { "label": "020 8221 8000", "href": "tel" },
+  "mobileBar": [{ "label": "Call us", "href": "tel" }, { "label": "Email", "href": "mailto:info@bowlinglaw.co.uk" }],
+  "footerExtra": "Authorised and regulated by the Solicitors Regulation Authority, SRA no. [add] · [Complaints procedure] · [PII details]",
+  "sections": [
+    { "type": "hero", "dark": true, "eyebrow": "Solicitors · Stratford Broadway · Since 1957", "title": "Clear legal advice, <em>since 1957.</em>", "text": "Property, family, employment, wills and business law, from a Stratford firm that has been on the Broadway for nearly seventy years.", "primary": { "label": "Book a consultation", "href": "tel" }, "secondary": { "label": "See our prices", "href": "#prices" }, "badge": "EST. 1957" },
+    { "type": "stats", "items": [{ "value": "1957", "label": "Founded on Stratford Broadway" }, { "value": "12+", "label": "Areas of law" }, { "value": "People", "label": "And businesses" }, { "value": "SRA", "label": "Regulated firm" }] },
+    { "type": "cards", "id": "people", "eyebrow": "For you and your family", "title": "Help with life's big moments.", "featureFirst": true, "items": [
+      { "title": "Buying & selling a home", "text": "Residential conveyancing from offer to keys, with clear fees up front." },
+      { "title": "Family & children", "text": "Separation, divorce and arrangements for children, handled with care." },
+      { "title": "Wills & probate", "text": "Wills, lasting powers of attorney and administering an estate." },
+      { "title": "Employment", "text": "Advice if things have gone wrong at work." },
+      { "title": "Property disputes", "text": "Landlord and tenant, boundary and property litigation." },
+      { "title": "Private client", "text": "Personal legal and financial planning." }
+    ] },
+    { "type": "cards", "id": "business", "eyebrow": "For business", "title": "Practical advice for East London businesses.", "items": [
+      { "title": "Commercial property", "text": "Leases, acquisitions and sales." },
+      { "title": "Corporate", "text": "Company formations, shareholder matters and transactions." },
+      { "title": "Disputes", "text": "Dispute resolution and litigation." },
+      { "title": "Employment", "text": "Contracts, policies and staff issues, for employers." },
+      { "title": "Banking & finance", "text": "Lending and security work." },
+      { "title": "Healthcare", "text": "Legal support for healthcare providers." }
+    ] },
+    { "type": "menu", "id": "prices", "eyebrow": "Prices", "title": "Our fees, up front.", "lede": "We publish prices for common services, in line with SRA transparency rules. Every quote is confirmed in writing before we start.", "groups": [
+      { "title": "Property", "items": [["Residential purchase (freehold)", "from £— + VAT"], ["Residential sale", "from £— + VAT"], ["Remortgage", "from £— + VAT"]] },
+      { "title": "Wills & probate", "items": [["Single will", "from £— + VAT"], ["Lasting power of attorney", "from £— + VAT"], ["Uncontested probate", "from £— + VAT"]] }
+    ], "note": "Concept preview: add prices, what's included, disbursements and timescales as required by the SRA Transparency Rules." },
+    { "type": "timeline", "id": "story", "eyebrow": "Our story", "title": "It started above Burton's.", "items": [
+      ["1957", "Gilbert Bowling", "Starts practising on 17 July in a few rooms above Burton's at 2–8 Broadway."],
+      ["£175", "A good deal", "He talks the rent down from £200 to £175 a year for the first two years."],
+      ["2002", "Bowling & Co LLP", "The firm becomes a limited liability partnership."],
+      ["Today", "Still on the Broadway", "Now at 62 The Broadway, advising people and businesses across East London."]
+    ] },
+    { "type": "visit", "eyebrow": "Contact", "title": "On Stratford Broadway.", "extra": "Email info@bowlinglaw.co.uk. [Add office hours and the nearest station: Stratford.]" }
+  ]
+}

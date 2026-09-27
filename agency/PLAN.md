@@ -59,6 +59,9 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 | 12 | Repton Boxing Club | Bethnal Green, E2 | Community / sport (two competing sites) | Brand book and site built |
 | 13 | Abbott's Interiors | Roman Road, E3 | Trades (blinds, shutters, flooring; est. 1882) | Brand book and site built |
 | 14 | Driving Force | Walthamstow, E17 | Trades (garage, keyword-stuffed title) | Brand book and site built |
+| 15 | Brick Lane Bookshop | Brick Lane, E1 | Retail (bookshop, messy URLs, two domains) | Brand book and site built |
+| 16 | Bowling & Co Solicitors | Stratford, E15 | Professional (solicitors, spam titles) | Brand book and site built |
+| 17 | Denningtons Florist | Roman Road, E3 | Retail (wedding and funeral florist) | Brand book and site built |
 
 The industries are spread on purpose so the portfolio shows range. Trades and health have the worst sites and the highest lifetime value.
 

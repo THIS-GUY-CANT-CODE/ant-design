@@ -14,9 +14,10 @@ const meta = JSON.parse(fs.readFileSync(path.join(dir, 'meta.json'), 'utf8'));
 const t = b.theme;
 // Pick readable text for anything sitting on the accent colour
 const lum = hex => { const n = parseInt(hex.slice(1), 16); const c = [n >> 16, (n >> 8) & 255, n & 255].map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
-const onAccent = lum(t.accent) > 0.35 ? t.ink : '#FFFFFF';
+const cr = (a, c) => { const [x, y] = [lum(a), lum(c)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+const onAccent = cr(t.accent, t.ink) >= cr(t.accent, '#FFFFFF') ? t.ink : '#FFFFFF';
 const linkOnInk = lum(t.accent) > 0.2 ? t.accent : t.bg;
-const accentOnLight = lum(t.accent) > 0.35 ? t.primary : t.accent; // accent used as text on light backgrounds
+const accentOnLight = t.accentOnLight || (cr(t.accent, t.bg) >= 4.5 ? t.accent : t.primary); // accent used as text on light backgrounds
 const txt = v => String(v ?? '').replace(/&(?![a-z#0-9]+;)/gi, '&amp;');
 const attr = v => String(v ?? '').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
 const tel = s.phone ? '+44' + s.phone.replace(/\D/g, '').replace(/^0/, '') : '';
