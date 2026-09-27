@@ -5,3 +5,8 @@ sales/
 pipeline.csv
 LEARNINGS.md
 .claude/
+clients/*/audit.md
+clients/*/*.json
+clients/*/leave-behind.html
+clients/*/before/report.md
+clients/*/after/*.png
