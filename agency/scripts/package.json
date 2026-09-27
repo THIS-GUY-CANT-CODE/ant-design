@@ -1,0 +1,14 @@
+{
+  "name": "second-coat-scripts",
+  "private": true,
+  "description": "Build tools for the Second Coat agency. Kept out of the agency root so Vercel serves the site as plain static files.",
+  "scripts": {
+    "before": "node before.js",
+    "shot": "node shot.js",
+    "brandbook": "node brandbook.js",
+    "portfolio": "node portfolio.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.47.0"
+  }
+}
