@@ -13,16 +13,19 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 | `scripts/portfolio.js` | Rebuilds `index.html` from every client's `meta.json` |
 | `outreach/pitches.md` | Pitch emails for every concept |
 | `sales/` | Proposal template, terms, go-live and handover checklist |
+| `scripts/site.js <slug>` | Builds the demo site from `site.json` + `brand.json` (default way to build) |
+| `scripts/landing.js` | Builds `/for/<industry>/` landing pages, `sitemap.xml` and `robots.txt` (set `SITE_URL`) |
 | `scripts/dashboard.js` | Builds `internal/dashboard.html` (lead funnel, next action per lead). Open it locally |
 | `pipeline.csv` | Lead tracker |
 | `LEARNINGS.md` | One line per build: what to improve next time |
 
 ## Build a new client
 ```bash
-# research → write clients/<slug>/{audit.md,meta.json,brand.json,site/index.html}
+# research → write clients/<slug>/{audit.md,meta.json,brand.json,site.json}
 node scripts/brandbook.js <slug>
+node scripts/site.js <slug>
 NODE_PATH=$(npm root -g) node scripts/shot.js <slug>   # needs Playwright
-node scripts/portfolio.js
+node scripts/portfolio.js && node scripts/landing.js
 ```
 
 ## Deploy

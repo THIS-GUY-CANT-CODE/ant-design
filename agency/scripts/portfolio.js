@@ -6,7 +6,7 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const order = ['biscuit-bunker', 'green-papaya', 'rose-locksmith', 'walthamstow-osteopaths', 'wj-meade', 'clapton-beauty-parlour', 'thatched-house-dental', 'queens-head-limehouse', 'kellys-florist', 'well-heeled'];
+const order = ['biscuit-bunker', 'green-papaya', 'rose-locksmith', 'walthamstow-osteopaths', 'wj-meade', 'clapton-beauty-parlour', 'thatched-house-dental', 'queens-head-limehouse', 'kellys-florist', 'well-heeled', 'newham-bookshop', 'repton-boxing-club', 'abbotts-interiors', 'driving-force'];
 
 const clients = fs.readdirSync(path.join(root, 'clients'))
   .filter(d => fs.existsSync(path.join(root, 'clients', d, 'meta.json')))
@@ -123,6 +123,8 @@ h2{font:400 clamp(2.4rem,5.4vw,4.6rem)/1 var(--serif);letter-spacing:-.02em;max-
 .links a{font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:2px}
 .links a:hover{color:var(--wet);border-color:var(--wet)}
 .nosite{color:var(--muted);font-weight:600}
+.industries{margin-top:22px;color:var(--muted);line-height:2}
+.industries a{color:var(--ink);font-weight:600}
 @media (max-width:900px){.work{grid-template-columns:1fr;gap:24px}.work:nth-child(even) .shot{order:0}}
 
 .pricing{background:var(--ink);color:var(--paper)}
@@ -197,6 +199,7 @@ footer .wrap{display:grid;gap:12px}
     <span class="eyebrow">The makeovers</span>
     <h2>${['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve'][clients.length] || clients.length} East London businesses, rebuilt.</h2>
     <p class="lede">Each one comes with a full brand book and a new website. These are unsolicited concepts: we chose businesses we love and showed what their sites could be. None of them are clients unless marked.</p>
+    <p class="industries">Browse by industry: <a href="for/restaurants-pubs/">Restaurants &amp; pubs</a> · <a href="for/shops-salons/">Shops &amp; salons</a> · <a href="for/trades-garages/">Trades &amp; garages</a> · <a href="for/health-clinics/">Dentists &amp; clinics</a> · <a href="for/agencies-estate-agents/">Estate agents &amp; firms</a></p>
     <div class="works">${clients.map(card).join('')}
     </div>
   </section>

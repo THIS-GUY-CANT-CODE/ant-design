@@ -55,6 +55,10 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 | 8 | The Queen's Head | Limehouse, E14 | Hospitality (community pub, no website) | Brand book and site built |
 | 9 | Kelly's Florist | Well Street, E9 | Retail (florist, free template site) | Brand book and site built |
 | 10 | Well Heeled | Bethnal Green, E2 | Trades (shoe repair, no website) | Brand book and site built |
+| 11 | Newham Bookshop | Upton Park, E13 | Retail (independent bookshop) | Brand book and site built |
+| 12 | Repton Boxing Club | Bethnal Green, E2 | Community / sport (two competing sites) | Brand book and site built |
+| 13 | Abbott's Interiors | Roman Road, E3 | Trades (blinds, shutters, flooring; est. 1882) | Brand book and site built |
+| 14 | Driving Force | Walthamstow, E17 | Trades (garage, keyword-stuffed title) | Brand book and site built |
 
 The industries are spread on purpose so the portfolio shows range. Trades and health have the worst sites and the highest lifetime value.
 
