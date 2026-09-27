@@ -7,7 +7,10 @@ description: Find and score East London small businesses with weak websites as r
 
 Goal: a shortlist of businesses where a redesign is obviously better *and* the owner can afford £500+.
 
-## Where to look
+## Fastest route
+Run `node scripts/find-prospects.js` on a machine with `GOOGLE_PLACES_API_KEY` set. It gives a ranked CSV of real businesses (20+ reviews) with weak sites, already flagged. Take the top rows, check them by eye, then add them to `pipeline.csv`.
+
+## Where to look (manual)
 - Google Maps searches like "<trade> <area> London". Areas: Hackney, Shoreditch, Bethnal Green, Whitechapel, Bow, Stratford, Leyton, Walthamstow, Dalston, Clapton, Hackney Wick, Canning Town.
 - Industries that convert best: trades, physio/dental/clinics, independent restaurants, salons/barbers, accountants/solicitors, venues, studios.
 - Skip chains, franchises, and anyone whose site was clearly rebuilt in the last 2 years.

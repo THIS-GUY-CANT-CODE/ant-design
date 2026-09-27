@@ -8,6 +8,7 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 | `clients/<slug>/` | For each business: `audit.md`, `brand.json`, `brand-book/`, `site/`, `before/`, `after/`, `meta.json` |
 | `.claude/skills/` | The machine: `prospect`, `revamp` and `outreach` skills |
 | `scripts/brandbook.js <slug>` | Builds the brand book from `brand.json` |
+| `scripts/find-prospects.js [trades…] --areas "A,B"` | **Run locally with a Google Places API key.** Finds businesses with 20+ reviews, checks their websites (HTTPS, spammy titles, free builders, mobile, © year…) and writes a ranked `prospects/<date>.csv` |
 | `scripts/before.js [slug]` | **Run locally.** Screenshots each client's current site and writes `before/report.md` (load time, mobile overflow, missing tap-to-call, copyright year) |
 | `scripts/shot.js <slug>` | After screenshots plus overflow and JS error checks |
 | `scripts/portfolio.js` | Rebuilds `index.html` from every client's `meta.json` |
