@@ -1,4 +1,4 @@
-# Pitch emails: the first six
+# Pitch emails
 
 Send these once each preview URL is live on Vercel. Replace `<preview>`, `<your name>` and `<phone>`. Follow up per `.claude/skills/outreach/SKILL.md` (day 3 screen recording, day 7 walk in, day 14 last call).
 
@@ -106,5 +106,39 @@ The contact addresses in brackets come from public listings. Check each one befo
 > Since you opened in 1930, I designed an Art Deco brand and website to match, with online booking on every page: <preview>
 >
 > It's £500 for the site, or £1,200 with the full brand book (window gilding, loyalty cards, social templates). No obligation. The preview comes down in 14 days if you'd rather not.
+>
+> <your name> · Second Coat · <phone>
+
+---
+
+## 7. The Thatched House Dental Practice (dentist, E15)
+**To:** [practice email from thatchedhousedental.co.uk/contact] · **Tier:** Rebrand £1,200 (one new private patient covers it)
+
+**Subject:** 60 years on Leytonstone High Road, and a website to match
+
+> Dear Harmik,
+>
+> The Thatched House has looked after Leytonstone since 1965, and your 4.7-star reviews show it. But your page titles in Google read "Dental Practice In Leytonstone Leytonstone", which undersells a practice with this much history.
+>
+> I've built a concept that leads with "Leytonstone's dentist since 1965", with a calm path for nervous patients and a clear fees section (as GDC guidance expects): <preview>
+>
+> It's £500 for the site, or £1,200 with a full brand refresh for signage and appointment cards. No obligation.
+>
+> <your name> · Second Coat · <phone>
+
+---
+
+## 8. The Queen's Head, Limehouse (community pub, E14)
+**To:** [Facebook message, or in person on quiz night] · **Tier:** Refresh £500 plus Care £49/mo (the weekly what's-on updates are the real value)
+
+**Subject:** The Queen's Head deserves its own website (I made you one)
+
+> Hi all,
+>
+> Huge respect for saving the Queen's Head. A pub from 1827, where the Queen Mother pulled a pint and the Queen Vic may have come from, and right now people searching for it end up on Tripadvisor.
+>
+> I've made you a website: the history, what's on each week, the bar and kitchen, and how to find you: <preview>
+>
+> It's £500 to go live. For £49 a month I'll update the what's-on and menu for you every week, so you never have to touch it. Happy to talk it over at the bar.
 >
 > <your name> · Second Coat · <phone>
