@@ -142,3 +142,38 @@ The contact addresses in brackets come from public listings. Check each one befo
 > It's £500 to go live. For £49 a month I'll update the what's-on and menu for you every week, so you never have to touch it. Happy to talk it over at the bar.
 >
 > <your name> · Second Coat · <phone>
+
+---
+
+## 9. Kelly's Florist (florist, E9)
+**To:** [email or contact form on their UENI page, or pop into 217–219 Well Street] · **Tier:** Refresh £500 plus Care £49/mo (seasonal banners for Valentine's, Mother's Day and Christmas)
+
+**Subject:** 90 years of Kelly's deserves more than a free template
+
+> Hi,
+>
+> Kelly's has been a family florist in Hackney for over ninety years, but your website lives on a free ueniweb.com address, and the relay sites with names like "florist hackney" are taking orders that should be yours.
+>
+> I've built you a proper site: your story, a gentle funeral tributes page, and ordering by phone one tap away: <preview>
+>
+> It's £500 to put it live on your own domain. For £49 a month I'll swap in seasonal pages (Valentine's, Mother's Day, Christmas) so you're ready for the busy weeks.
+>
+> <your name> · Second Coat · <phone>
+
+---
+
+## 10. Well Heeled (shoe repair, E2)
+**To:** [in person at 443 Bethnal Green Road; cobblers are usually at the bench] · **Tier:** Refresh £500. A multi-branch site is the upsell if Paul's branches are still going.
+**⚠️ Don't pitch in the same month as Rose Locksmith (same road, both cut keys).**
+
+**Subject (if emailing):** Bethnal Green's cobbler, now on Google
+
+> Hi,
+>
+> Spitalfields Life called Well Heeled the last shoe repairer standing in Bethnal Green, but search "shoe repair Bethnal Green" and you'll only find directories and chains.
+>
+> I've made you a website that puts the craft first: heels, soles and stitching, then keys and engraving, with your hours and the 7am opening up front: <preview>
+>
+> It's £500 to go live. No obligation. If you don't want it, it comes down in 14 days.
+>
+> <your name> · Second Coat · <phone>

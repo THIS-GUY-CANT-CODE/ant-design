@@ -6,7 +6,7 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const order = ['biscuit-bunker', 'green-papaya', 'rose-locksmith', 'walthamstow-osteopaths', 'wj-meade', 'clapton-beauty-parlour', 'thatched-house-dental', 'queens-head-limehouse'];
+const order = ['biscuit-bunker', 'green-papaya', 'rose-locksmith', 'walthamstow-osteopaths', 'wj-meade', 'clapton-beauty-parlour', 'thatched-house-dental', 'queens-head-limehouse', 'kellys-florist', 'well-heeled'];
 
 const clients = fs.readdirSync(path.join(root, 'clients'))
   .filter(d => fs.existsSync(path.join(root, 'clients', d, 'meta.json')))
