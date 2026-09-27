@@ -53,6 +53,8 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 | 6 | Clapton Beauty Parlour | Lower Clapton, E5 | Beauty (hair and beauty salon) | Brand book and site built |
 | 7 | The Thatched House Dental Practice | Leytonstone, E15 | Health (private dentist) | Brand book and site built |
 | 8 | The Queen's Head | Limehouse, E14 | Hospitality (community pub, no website) | Brand book and site built |
+| 9 | Kelly's Florist | Well Street, E9 | Retail (florist, free template site) | Brand book and site built |
+| 10 | Well Heeled | Bethnal Green, E2 | Trades (shoe repair, no website) | Brand book and site built |
 
 The industries are spread on purpose so the portfolio shows range. Trades and health have the worst sites and the highest lifetime value.
 

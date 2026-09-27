@@ -13,6 +13,7 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 | `scripts/portfolio.js` | Rebuilds `index.html` from every client's `meta.json` |
 | `outreach/first-six.md` | Pitch emails for every concept |
 | `sales/` | Proposal template, terms, go-live and handover checklist |
+| `scripts/dashboard.js` | Builds `internal/dashboard.html` (lead funnel, next action per lead). Open it locally |
 | `pipeline.csv` | Lead tracker |
 | `LEARNINGS.md` | One line per build: what to improve next time |
 
@@ -25,7 +26,7 @@ node scripts/portfolio.js
 ```
 
 ## Deploy
-- **Vercel:** import the repo, set the root directory to `agency/`, framework "Other", no build command. `vercel.json` adds `noindex` headers to all client concepts.
+- **Vercel:** import the repo, set the root directory to `agency/`, framework "Other", no build command. `vercel.json` adds `noindex` headers to all client concepts. `.vercelignore` keeps `internal/`, `outreach/`, `sales/`, `scripts/` and `pipeline.csv` off the public site.
 - **GitLab:** push this folder to a GitLab project and add a `VERCEL_TOKEN` CI variable. `.gitlab-ci.yml` deploys previews on branches and production on `main`.
 
 ## Capture before screenshots (on your machine)
