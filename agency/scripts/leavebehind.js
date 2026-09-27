@@ -1,4 +1,4 @@
-// Usage: node scripts/leavebehind.js <slug> [previewUrl]
+// Usage: node scripts/leavebehind.js <slug> [previewUrl]   (previewUrl defaults to meta.json → previewUrl)
 // Builds clients/<slug>/leave-behind.html, a printable A5 page for walk-in pitches.
 // It shows the new site, the top 3 fixes (from the "angle" list in audit.md), the price and a QR code to the preview.
 // Open it in a browser and print at A5 (or A4 at 71%). The QR code needs internet access (loads qrcode from cdnjs).
@@ -15,7 +15,8 @@ const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 // Pull the numbered list under the "angle" heading, strip markdown, keep the first 3
 const angle = (audit.split(/^## .*angle.*$/mi)[1] || '').split(/^## /m)[0];
 const fixes = [...angle.matchAll(/^\d+\.\s+(.*)$/gm)].map(m => m[1].replace(/\*\*(.*?)\*\*/g, '$1').replace(/`/g, '')).slice(0, 3);
-const url = preview || `https://<your-domain>/clients/${slug}/site/`;
+const url = preview || meta.previewUrl || `https://<your-domain>/clients/${slug}/site/`;
+if (!preview && !meta.previewUrl) console.warn(`! ${slug}: no previewUrl in meta.json, so the QR code points at a placeholder. Set meta.previewUrl before printing.`);
 
 const html = `<!doctype html>
 <html lang="en-GB">

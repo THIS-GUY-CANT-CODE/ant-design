@@ -12,7 +12,9 @@ const path = require('path');
 const KEY = process.env.GOOGLE_PLACES_API_KEY;
 const args = process.argv.slice(2);
 const areaIdx = args.indexOf('--areas');
-const areas = (areaIdx >= 0 ? args.splice(areaIdx, 2)[1] : 'Hackney,Shoreditch,Bethnal Green,Whitechapel,Bow,Stratford,Leyton,Leytonstone,Walthamstow,Dalston,Clapton,Forest Gate,Poplar')
+const areaArg = areaIdx >= 0 ? args.splice(areaIdx, 2)[1] : undefined;
+if (areaIdx >= 0 && !areaArg) console.warn('--areas given without a value, so using the default areas');
+const areas = (areaArg || 'Hackney,Shoreditch,Bethnal Green,Whitechapel,Bow,Stratford,Leyton,Leytonstone,Walthamstow,Dalston,Clapton,Forest Gate,Poplar')
   .split(',').map(s => s.trim()).filter(Boolean);
 const trades = args.length ? args : ['florist', 'barber', 'garage MOT', 'locksmith', 'dentist', 'physiotherapist', 'cafe', 'estate agent', 'solicitor', 'dry cleaner'];
 const MIN_REVIEWS = +(process.env.MIN_REVIEWS || 20);

@@ -41,7 +41,7 @@ Shortcut: `node scripts/build.js <slug>` runs brand book → site → checks →
 
 ## 4. meta.json
 ```json
-{ "slug": "", "name": "", "industry": "", "area": "", "url": "", "scoreBefore": 0, "scoreAfter": 0, "status": "concept", "summary": "" }
+{ "slug": "", "name": "", "industry": "", "area": "", "url": "", "sector": "hospitality|retail|trades|health|professional", "previewUrl": "", "scoreBefore": 0, "scoreAfter": 0, "status": "concept", "summary": "" }
 ```
 `status` is `concept` until paid/permission → then `client`. The portfolio reads this; don't label concepts as clients.
 
