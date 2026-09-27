@@ -25,7 +25,7 @@ Subject: I rebuilt the <Business> website (no strings)
 - Day 14: "Taking the preview down Friday — want me to keep it up?" Then stop.
 
 ## Closing
-- Stripe payment link for £500 (Refresh) / £1,200 (Rebrand). Upsell the £49/mo care plan at handover, not before.
+- Stripe payment link for £500 (Refresh) or £1,200 (Rebrand). Send `sales/intake.md` the same day. Upsell the £49/mo care plan at handover, not before.
 - Ask for permission to show them as a client + a one-line testimonial the day they go live.
 - Update `pipeline.csv` status: `demo_sent → replied → paid → live → care`.
 
