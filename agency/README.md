@@ -11,7 +11,7 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 | `scripts/before.js [slug]` | **Run locally.** Screenshots each client's current site and writes `before/report.md` (load time, mobile overflow, missing tap-to-call, copyright year) |
 | `scripts/shot.js <slug>` | After screenshots plus overflow and JS error checks |
 | `scripts/portfolio.js` | Rebuilds `index.html` from every client's `meta.json` |
-| `outreach/first-six.md` | Pitch emails for every concept |
+| `outreach/pitches.md` | Pitch emails for every concept |
 | `sales/` | Proposal template, terms, go-live and handover checklist |
 | `scripts/dashboard.js` | Builds `internal/dashboard.html` (lead funnel, next action per lead). Open it locally |
 | `pipeline.csv` | Lead tracker |

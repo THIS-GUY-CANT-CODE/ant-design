@@ -177,3 +177,71 @@ The contact addresses in brackets come from public listings. Check each one befo
 > It's £500 to go live. No obligation. If you don't want it, it comes down in 14 days.
 >
 > <your name> · Second Coat · <phone>
+
+---
+
+## 11. Newham Bookshop (bookshop, E13)
+**To:** info@newhambooks.co.uk · **Tier:** Refresh £500 plus Care £49/mo (a monthly events update). Keep their identity; don't push a rebrand.
+
+**Subject:** A website as good as the bookshop
+
+> Dear Vivian,
+>
+> ACHUKA called Newham Bookshop "the Shakespeare & Company of London's East End", and after nearly 50 years of author events and school work, it deserves a website that shows that off.
+>
+> I've built a concept with your events up front, a clear route for schools to book author visits, and "order online" linking to your Bookshop.org and Hive shops, so online sales still support you: <preview>
+>
+> It's £500 to go live, and I can keep the events page updated each month for £49. No obligation. If it's not for you, I'll take it down.
+>
+> <your name> · Second Coat · <phone>
+
+---
+
+## 12. Repton Boxing Club (amateur boxing, E2)
+**To:** club office (check who runs the website first) · **Tier:** Refresh £500, framed as *consolidation*: one site, one domain, redirect the other. Offer to find a sponsor to cover it.
+
+**Subject:** Repton has two websites. Here's one that does both jobs.
+
+> Hi,
+>
+> Repton has been training East End kids since 1884, but right now there are two Repton websites, .co.uk and .com, and one describes the club as a "Professional Boxing Gym". New parents and juniors can't tell which is real.
+>
+> I've built one clear site: how to join by age group, training times, the bath house history, and location hire: <preview>
+>
+> It's £500 to go live on one domain, with the other redirected. If budget is tight, I'm happy to help approach a local sponsor to cover it.
+>
+> <your name> · Second Coat · <phone>
+
+---
+
+## 13. Abbott's Interiors (interiors, E3)
+**To:** info@abbottsinteriors.co.uk · **Tier:** Rebrand £1,200 plus Care. One shutters job covers it.
+
+**Subject:** Roman Road's oldest trader, and your website doesn't say so
+
+> Hi,
+>
+> Abbott's has been on Roman Road since 1882, perhaps the oldest trader on the street, and your showroom is one of the best in East London. But your site leads with "Flooring, blinds & curtain specialists", which any national chain could say.
+>
+> I've built a concept around "Dressing East London's homes since 1882", with one clear action (book a home measure) and your 470m² showroom as the destination: <preview>
+>
+> The site is £500, or £1,200 with a full brand refresh for vans, signage and quotes. No obligation.
+>
+> <your name> · Second Coat · <phone>
+
+---
+
+## 14. Driving Force (garage, E17)
+**To:** call or visit (they use a Hotmail address, so email may not get read) · **Tier:** Refresh £500 plus a domain email address
+
+**Subject:** Your website title is 40 words long, and Google is ignoring it
+
+> Hi,
+>
+> You're a Which? Trusted Trader with great reviews, but your website's title is "Quality Affordable Cheap MOT Used Car Services | Used Cars | Walthamstow MOT | …", about 40 words. Google treats that as spam, and customers do too.
+>
+> I rebuilt it: a clean brand, "book your MOT" one tap away, clear prices and your used cars on their own page: <preview>
+>
+> It's £500 to go live, including a proper @drivingforcelondon.com email address to replace the Hotmail one. No obligation.
+>
+> <your name> · Second Coat · <phone>
