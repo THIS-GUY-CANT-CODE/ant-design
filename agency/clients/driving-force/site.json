@@ -1,0 +1,37 @@
+{
+  "name": "Driving Force",
+  "title": "Driving Force: MOT, Servicing & Used Cars, Lea Bridge Road, Walthamstow",
+  "description": "Family-run garage on Lea Bridge Road, Walthamstow E17: MOT testing, servicing and repairs, tyres, air con and used cars.",
+  "schemaType": "AutoRepair",
+  "phone": "020 8521 1882",
+  "address": { "street": "817–823 Lea Bridge Road", "area": "Walthamstow", "postcode": "E17 9DS" },
+  "radius": 10,
+  "buttonRadius": 8,
+  "nav": [["MOT & service", "services"], ["Prices", "prices"], ["Used cars", "cars"], ["Find us", "visit"]],
+  "headerCta": { "label": "Book an MOT", "href": "tel" },
+  "mobileBar": [{ "label": "Book an MOT", "href": "tel" }, { "label": "Find us", "href": "#visit" }],
+  "sections": [
+    { "type": "hero", "dark": true, "eyebrow": "Family-run · Lea Bridge Road, Walthamstow", "title": "MOT, service, sorted. <em>Good to go.</em>", "text": "Walthamstow's family garage for MOTs, servicing, repairs and used cars, with straight talk and no surprises on the bill.", "primary": { "label": "Call to book: 020 8521 1882", "href": "tel" }, "secondary": { "label": "See prices", "href": "#prices" }, "badge": "E17 · LEA BRIDGE RD" },
+    { "type": "stats", "items": [{ "value": "25+", "label": "Years, family-run" }, { "value": "Which?", "label": "Trusted Trader member" }, { "value": "Good Garage", "label": "Scheme member" }, { "value": "M11 / A406", "label": "About 5 minutes away" }] },
+    { "type": "cards", "id": "services", "eyebrow": "What we do", "title": "Everything to keep you on the road.", "featureFirst": true, "items": [
+      { "title": "MOT testing", "text": "MOTs in our own test bay. Book ahead or call for today's availability." },
+      { "title": "Servicing & repairs", "text": "Interim and full services, and repairs for most makes and models." },
+      { "title": "Diagnostics", "text": "Warning light on? We'll find out what's wrong and explain it in plain English." },
+      { "title": "Tyres & tracking", "text": "New tyres, puncture repairs and computerised wheel alignment." },
+      { "title": "Air con regas", "text": "Get your air con blowing cold again." },
+      { "title": "Used cars", "text": "Quality used cars from a family dealership with its own workshop." }
+    ] },
+    { "type": "menu", "id": "prices", "eyebrow": "Prices", "title": "Clear prices, up front.", "groups": [
+      { "title": "MOT & service", "items": [["MOT (class 4)", "£— (DVSA max £54.85)"], ["Interim service", "£—"], ["Full service", "£—"]] },
+      { "title": "Tyres & more", "items": [["Puncture repair", "£—"], ["Wheel alignment", "£—"], ["Air con regas", "£—"], ["Diagnostic check", "£—"]] }
+    ], "note": "Concept preview: add current prices. We'll always call before doing work you haven't agreed to. [Confirm policy.]" },
+    { "type": "split", "id": "cars", "tone": "light", "eyebrow": "Used cars", "title": "Used cars from people who fix cars.", "paragraphs": ["Every car on our forecourt comes from a family business with its own workshop. [Add: warranty, HPI checks and finance, if offered.]"], "points": [["[Make · Model · Year]", "£— · [miles] · [fuel]"], ["[Make · Model · Year]", "£— · [miles] · [fuel]"], ["[Make · Model · Year]", "£— · [miles] · [fuel]"]], "cta": { "label": "Ask about a car", "href": "tel" } },
+    { "type": "faq", "eyebrow": "Questions", "title": "Good to know.", "items": [
+      ["How long does an MOT take?", "Usually around an hour. You're welcome to wait or drop off. [Confirm.]"],
+      ["What if my car fails?", "We'll explain what failed and why, and give you a price to fix it. The choice is yours."],
+      ["Do you work on all makes?", "[Confirm makes, EVs and hybrids.]"],
+      ["Can I pay by card?", "[Confirm payment methods.]"]
+    ] },
+    { "type": "visit", "eyebrow": "Find us", "title": "On Lea Bridge Road.", "extra": "About 5 minutes from the M11 and A406." }
+  ]
+}
