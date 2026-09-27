@@ -1,0 +1,69 @@
+{
+  "name": "Kelly's Florist",
+  "wordmark": "Kelly's",
+  "wordmarkSub": "Florist · Well Street, Hackney",
+  "coverTitle": "Kelly's<br><em>florist, 90+ years.</em>",
+  "descriptor": "Family florist · 217–219 Well Street, Hackney E9",
+  "since": "Family-run for 90+ years",
+  "theme": { "bg": "#FCF8F3", "bg2": "#F4ECE2", "ink": "#2A1A20", "primary": "#3B1F2B", "accent": "#E8A0A8", "onPrimary": "#FCF8F3", "muted": "#7A6A6F" },
+  "fonts": {
+    "href": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito+Sans:wght@400;600;700&display=swap",
+    "display": "\"Cormorant Garamond\",Georgia,serif",
+    "body": "\"Nunito Sans\",system-ui,sans-serif",
+    "coverWeight": 500,
+    "italicAccent": true
+  },
+  "logo": {
+    "viewBox": "0 0 40 46",
+    "svg": "<path d=\"M20 26C10 22 10 8 14 4c2 6 4 8 6 8s4-2 6-8c4 4 4 18-6 22z\" fill=\"var(--l2)\"/><rect x=\"19\" y=\"26\" width=\"2\" height=\"18\" rx=\"1\" fill=\"var(--l1)\"/><path d=\"M21 37c5-6 11-6 13-4-4 4-8 5-13 4z\" fill=\"var(--l1)\"/>",
+    "title": "The Single Tulip.",
+    "lead": "One hand-drawn tulip: simple, generous and unmistakably a florist. It works on a ribbon, a card tag or a van. The wordmark is just \"Kelly's\" in Cormorant Garamond, the name Hackney already uses."
+  },
+  "story": {
+    "title": "Ninety years of Hackney flowers.",
+    "lead": "Kelly's has been a family-run florist in Hackney for more than ninety years, arranging bouquets for births, birthdays and weddings, and tributes for goodbyes. The brand must hold both joy and grief, so it's warm, gentle and never twee.",
+    "positioning": "The real family florist on Well Street, not a relay website. Arranged by people who know Hackney.",
+    "promise": "Hackney's family florist for over 90 years.",
+    "values": ["Fresh, always.", "Gentle when it matters.", "Personal service.", "Family, since the start."]
+  },
+  "colour": {
+    "title": "Aubergine, peony, stem.",
+    "lead": "Deep aubergine gives the brand dignity, which matters for tributes. Peony pink brings the joy, and stem green grounds it in nature. Cream keeps everything soft. Never use bright red or harsh black: flowers should always be the loudest thing on the page.",
+    "swatches": [
+      { "name": "Aubergine", "hex": "#3B1F2B", "use": "Primary, text" },
+      { "name": "Peony", "hex": "#E8A0A8", "use": "Accent" },
+      { "name": "Stem", "hex": "#6B8F5E", "use": "Secondary accent" },
+      { "name": "Petal", "hex": "#F7DDE0", "use": "Soft panels" },
+      { "name": "Tissue", "hex": "#FCF8F3", "use": "Background" },
+      { "name": "Kraft", "hex": "#F4ECE2", "use": "Panels, wrapping" }
+    ]
+  },
+  "type": {
+    "title": "Elegant serif, gentle sans.",
+    "lead": "Cormorant Garamond is graceful for headlines and card messages. Nunito Sans is soft and legible for prices and ordering. Both are free on Google Fonts.",
+    "samples": [
+      { "label": "Display", "style": "font:500 clamp(2.4rem,6vw,4.2rem)/1 'Cormorant Garamond',serif;color:#3B1F2B", "text": "Hackney's family florist for <em style=\"color:#6B8F5E\">over 90 years.</em>" },
+      { "label": "Heading", "style": "font:600 1.7rem 'Cormorant Garamond',serif", "text": "Funeral tributes" },
+      { "label": "Body", "style": "font-size:1.05rem;font-family:'Nunito Sans',sans-serif", "text": "Call us and we'll talk it through with you gently." },
+      { "label": "Label", "style": "font:700 .78rem 'Nunito Sans',sans-serif;letter-spacing:.18em;text-transform:uppercase;color:#6B8F5E", "text": "217–219 Well Street · E9" }
+    ]
+  },
+  "voice": {
+    "title": "Warm, gentle, personal.",
+    "lead": "Talk like the florist behind the counter who has helped thousands of people find the right flowers. Be joyful for celebrations, quiet and kind for tributes, and never salesy about grief.",
+    "pairs": [
+      ["\"When you're saying goodbye, we're here to help.\"", "\"Funeral flowers from just £29.99! Order now!\""],
+      ["\"Tell us the occasion and your budget, and we'll suggest something lovely.\"", "\"Browse our 500+ SKU catalogue.\""],
+      ["\"Hackney's family florist for over 90 years.\"", "\"Best flower services in London.\""]
+    ]
+  },
+  "imagery": {
+    "title": "Real stems, real hands.",
+    "lead": "Photograph actual arrangements from the shop in soft daylight against kraft paper or the shop wall, hands tying a bouquet, and the Well Street shopfront with buckets outside. Tribute photos should be respectful and simple, never staged with props."
+  },
+  "apps": {
+    "social": { "label": "Instagram · In the shop today", "headline": "Peonies are<br>in. Come<br>and see.", "footer": "Kelly's · 217 Well Street" },
+    "print": "Card tag & ribbon",
+    "card": { "label": "Message card", "headline": "With love,<br><em>from Well Street.</em>", "footer": "Kelly's Florist · 020 8986 0250" }
+  }
+}
