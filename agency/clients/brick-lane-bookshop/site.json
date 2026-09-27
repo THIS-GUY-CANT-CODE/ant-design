@@ -1,0 +1,36 @@
+{
+  "name": "Brick Lane Bookshop",
+  "title": "Brick Lane Bookshop: Independent Bookshop on Brick Lane Since 1978",
+  "description": "Independent bookshop at 166 Brick Lane, E1. Open daily 10am–6pm. East London books, new fiction and author readings since 1978.",
+  "schemaType": "BookStore",
+  "founded": 1978,
+  "phone": "020 7247 0216",
+  "address": { "street": "166 Brick Lane", "area": "Spitalfields", "postcode": "E1 6RU" },
+  "radius": 2,
+  "buttonRadius": 2,
+  "nav": [["In the shop", "shop"], ["Readings", "readings"], ["History", "history"], ["Visit", "visit"]],
+  "headerCta": { "label": "Visit today", "href": "#visit" },
+  "mobileBar": [{ "label": "Call", "href": "tel" }, { "label": "Visit", "href": "#visit" }],
+  "hours": { "0": "10am – 6pm", "1": "10am – 6pm", "2": "10am – 6pm", "3": "10am – 6pm", "4": "10am – 6pm", "5": "10am – 6pm", "6": "10am – 6pm" },
+  "openRanges": { "0": [[10, 18]], "1": [[10, 18]], "2": [[10, 18]], "3": [[10, 18]], "4": [[10, 18]], "5": [[10, 18]], "6": [[10, 18]] },
+  "sections": [
+    { "type": "hero", "dark": true, "eyebrow": "166 Brick Lane · Open every day", "title": "Brick Lane's bookshop <em>since 1978.</em>", "text": "An independent bookshop in the middle of East London's most famous street: local history, new fiction, and nearly fifty years of readings.", "primary": { "label": "Visit today", "href": "#visit" }, "secondary": { "label": "Readings & events", "href": "#readings" }, "badge": "INDEPENDENT · E1" },
+    { "type": "stats", "items": [{ "value": "1977", "label": "Began in Watney Market" }, { "value": "Daily", "label": "Open 10am–6pm" }, { "value": "E1", "label": "Books about East London" }, { "value": "50 yrs", "label": "Of author readings, nearly" }] },
+    { "type": "cards", "id": "shop", "eyebrow": "In the shop", "title": "Come in for one book. Leave with three.", "featureFirst": true, "items": [
+      { "title": "East London shelf", "text": "Histories, memoirs and fiction of the East End, Brick Lane and Spitalfields." },
+      { "title": "New fiction", "text": "The latest novels, chosen by booksellers who read them." },
+      { "title": "Non-fiction", "text": "Politics, art, food, London and more." },
+      { "title": "Children's", "text": "Picture books to young adult." },
+      { "title": "Recommendations", "text": "Ask us. It's our favourite question." },
+      { "title": "Orders", "text": "Not on the shelf? We can order it in. [Confirm online ordering.]" }
+    ] },
+    { "type": "split", "id": "readings", "tone": "dark", "eyebrow": "Readings", "title": "Writers have read with us for nearly fifty years.", "paragraphs": ["Readings and launches over the years have included Michael Rosen, Adrian Mitchell, Andrea Levy, Hanif Kureishi, Jeanette Winterson, Sarah Waters, Beryl Bainbridge, Lionel Shriver, Jennifer Worth and Iain Sinclair."], "points": [["[Date]: [Author]", "[Event details]"], ["[Date]: [Book launch]", "[Event details]"], ["[Date]: [Reading]", "[Event details]"]], "cta": { "label": "Ask about events", "href": "mailto:info@bricklanebookshop.co.uk" } },
+    { "type": "timeline", "id": "history", "eyebrow": "Our history", "title": "From Watney Market to Brick Lane.", "items": [
+      ["1977", "THAP Bookshop", "Launches in Watney Market as part of the Tower Hamlets Arts Project."],
+      ["1980", "Whitechapel", "Moves to Whitechapel, near the London Hospital."],
+      ["1994", "Eastside", "Renamed Eastside Books."],
+      ["Today", "Brick Lane Bookshop", "Independent, open daily at 166 Brick Lane."]
+    ] },
+    { "type": "visit", "eyebrow": "Visit us", "title": "Halfway down Brick Lane.", "extra": "Open every day, 10am–6pm. [Confirm hours, and add the nearest stations: Shoreditch High Street, Aldgate East.]" }
+  ]
+}
