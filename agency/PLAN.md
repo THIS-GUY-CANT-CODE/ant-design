@@ -47,8 +47,8 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 | - | --- | --- | --- | --- |
 | 1 | Biscuit Bunker | Shoreditch, EC2A | Video production | Brand book and site built |
 | 2 | Green Papaya Xi'Viet | Hackney, E8 | Restaurant (Vietnamese and Xi'an) | Brand book and site built |
-| 3 | TBC | Bethnal Green / Whitechapel | Trades (plumber, electrician, builder) | Next |
-| 4 | TBC | Walthamstow / Leyton | Health (physio, dentist, gym) | |
+| 3 | Rose Locksmith & DIY | Bethnal Green, E2 | Trades (locksmith and hardware) | Brand book and site built |
+| 4 | TBC | Walthamstow / Leyton | Health (physio, dentist, gym) | Next |
 | 5 | TBC | Stratford / Bow | Professional services (accountant, solicitor) | |
 | 6 | TBC | Dalston / Clapton | Retail or beauty (barber, florist, salon) | |
 
