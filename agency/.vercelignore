@@ -10,3 +10,5 @@ clients/*/*.json
 clients/*/leave-behind.html
 clients/*/before/report.md
 clients/*/after/*.png
+PLAN.md
+README.md
