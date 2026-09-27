@@ -50,7 +50,7 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 | 3 | Rose Locksmith & DIY | Bethnal Green, E2 | Trades (locksmith and hardware) | Brand book and site built |
 | 4 | Walthamstow Osteopaths | Walthamstow Village, E17 | Health (osteopathy) | Brand book and site built |
 | 5 | W J Meade | Bow, E3 | Professional services (estate agent) | Brand book and site built |
-| 6 | TBC | Dalston / Clapton | Retail or beauty (barber, florist, salon) | Next |
+| 6 | Clapton Beauty Parlour | Lower Clapton, E5 | Beauty (hair and beauty salon) | Brand book and site built |
 
 The industries are spread on purpose so the portfolio shows range. Trades and health have the worst sites and the highest lifetime value.
 
