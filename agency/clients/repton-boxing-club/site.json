@@ -1,0 +1,199 @@
+{
+  "name": "Repton Boxing Club",
+  "title": "Repton Boxing Club: The UK's Oldest Amateur Boxing Club, Bethnal Green, Est. 1884",
+  "description": "Amateur boxing club in a Victorian bath house on Cheshire Street, Bethnal Green, since 1971. Founded 1884. Juniors, seniors and a Saturday nursery.",
+  "schemaType": "SportsClub",
+  "founded": 1884,
+  "phone": "020 7739 8567",
+  "address": {
+    "street": "116 Cheshire Street",
+    "area": "Bethnal Green",
+    "postcode": "E2 6EG"
+  },
+  "radius": 4,
+  "buttonRadius": 4,
+  "nav": [
+    [
+      "Join",
+      "join"
+    ],
+    [
+      "Training times",
+      "times"
+    ],
+    [
+      "History",
+      "history"
+    ],
+    [
+      "Hire",
+      "hire"
+    ]
+  ],
+  "headerCta": {
+    "label": "How to join",
+    "href": "#join"
+  },
+  "mobileBar": [
+    {
+      "label": "How to join",
+      "href": "#join"
+    },
+    {
+      "label": "Find us",
+      "href": "#visit"
+    }
+  ],
+  "hours": {
+    "0": "10:30am – 1:30pm (competition prep)",
+    "1": "4:30 – 7:30pm · Seniors",
+    "2": "4:30 – 7:30pm · Juniors",
+    "3": "4:30 – 7:30pm · Seniors",
+    "4": "4:30 – 7:30pm · Juniors",
+    "5": "4:30 – 7:30pm · Seniors",
+    "6": "Morning · Nursery (8–10)"
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "dark": true,
+      "eyebrow": "Est. 1884 · Cheshire Street, Bethnal Green",
+      "title": "Walk in. Work hard. <em>Belong.</em>",
+      "text": "Widely regarded as the oldest amateur boxing club in the UK, training East End kids and adults in a Victorian bath house since 1971.",
+      "primary": {
+        "label": "How to join",
+        "href": "#join"
+      },
+      "secondary": {
+        "label": "Training times",
+        "href": "#visit"
+      },
+      "badge": "BETHNAL GREEN"
+    },
+    {
+      "type": "stats",
+      "items": [
+        {
+          "value": "1884",
+          "label": "Founded"
+        },
+        {
+          "value": "1971",
+          "label": "In the bath house"
+        },
+        {
+          "value": "8+",
+          "label": "Nursery from age 8"
+        },
+        {
+          "value": "Olympic",
+          "label": "Champions among our alumni"
+        }
+      ]
+    },
+    {
+      "type": "cards",
+      "id": "join",
+      "eyebrow": "How to join",
+      "title": "Find your group. Then just turn up.",
+      "featureFirst": true,
+      "items": [
+        {
+          "title": "Seniors · 17–28",
+          "text": "Come along on a Monday, Wednesday or Friday, 4:30–7:30pm, and ask for the Senior Coach."
+        },
+        {
+          "title": "Juniors · 11–16",
+          "text": "Come along on a Tuesday or Thursday, 4:30–7:30pm, and ask for the Head Junior Coach."
+        },
+        {
+          "title": "Nursery · 8–10",
+          "text": "Saturday morning sessions for younger children. [Confirm times.]"
+        },
+        {
+          "title": "Competing?",
+          "text": "Sunday 10:30am–1:30pm is for boxers preparing for competition."
+        }
+      ]
+    },
+    {
+      "type": "split",
+      "id": "history",
+      "tone": "dark",
+      "eyebrow": "Our history",
+      "title": "140 years of East End boxing.",
+      "paragraphs": [
+        "Repton was founded in 1884 by Repton School to support boys in the East End. Boxing was on the top floor of a Bethnal Green townhouse, next to chess, whist and bagatelle.",
+        "After homes in Victoria Park Square and Pollard Row, the club moved into a former Victorian bath house on Cheshire Street in 1971. It has trained there ever since, producing Olympic gold medallists and world title holders."
+      ],
+      "points": [
+        [
+          "1884",
+          "Founded by Repton School"
+        ],
+        [
+          "Victoria Park Square",
+          "Part boxing club, part youth club"
+        ],
+        [
+          "Pollard Row",
+          "The next home"
+        ],
+        [
+          "1971",
+          "Moves into the Cheshire Street bath house"
+        ]
+      ]
+    },
+    {
+      "type": "cards",
+      "id": "hire",
+      "eyebrow": "Hire the gym",
+      "title": "Film, shoot or host in the bath house.",
+      "items": [
+        {
+          "title": "Location hire",
+          "text": "An iconic Victorian bath house gym for film, TV and photography. [Confirm terms and contact.]"
+        },
+        {
+          "title": "Events",
+          "text": "Club shows and community events. [Add upcoming dates.]"
+        },
+        {
+          "title": "Support the club",
+          "text": "Sponsorship and donations keep training affordable for local young people. [Add how to give.]"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "eyebrow": "Questions",
+      "title": "Before your first session.",
+      "items": [
+        [
+          "Do I need experience?",
+          "[Confirm: beginners welcome in each group?] Tell the coach if it's your first time."
+        ],
+        [
+          "What should I bring?",
+          "Trainers, comfortable kit and water. [Confirm: wraps and gloves, and whether the club lends kit.]"
+        ],
+        [
+          "How much does it cost?",
+          "[Add subs and fees.]"
+        ],
+        [
+          "Is it safe for my child?",
+          "[Link the club's safeguarding policy and welfare officer contact.]"
+        ]
+      ]
+    },
+    {
+      "type": "visit",
+      "eyebrow": "Find us",
+      "title": "The bath house on Cheshire Street.",
+      "extra": "The times shown are training sessions, not open-gym hours. Check your group before you come."
+    }
+  ],
+  "hoursTitle": "Training times"
+}

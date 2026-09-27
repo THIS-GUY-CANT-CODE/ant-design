@@ -1,0 +1,34 @@
+{
+  "name": "Newham Bookshop",
+  "title": "Newham Bookshop: East London's Independent Bookshop Since 1978",
+  "description": "Independent bookshop on Barking Road, E13, since 1978. Books for all ages, author events and school visits.",
+  "schemaType": "BookStore",
+  "founded": 1978,
+  "phone": "020 8552 9993",
+  "address": { "street": "743–745 Barking Road", "area": "Upton Park", "postcode": "E13 9ER" },
+  "nav": [["Events", "events"], ["Schools", "schools"], ["Our story", "story"], ["Visit", "visit"]],
+  "headerCta": { "label": "Order a book", "href": "https://uk.bookshop.org/shop/newhambookshop" },
+  "mobileBar": [{ "label": "Order online", "href": "https://uk.bookshop.org/shop/newhambookshop" }, { "label": "Visit", "href": "#visit" }],
+  "sections": [
+    { "type": "hero", "dark": true, "eyebrow": "Independent since 1978 · Barking Road, E13", "title": "A bookshop <em>for all.</em>", "text": "East London's independent bookshop: books for every age, author events, and a team that loves putting the right book in your hands.", "primary": { "label": "Order online", "href": "https://uk.bookshop.org/shop/newhambookshop" }, "secondary": { "label": "Find the shop", "href": "#visit" }, "badge": "SINCE 1978" },
+    { "type": "stats", "items": [{ "value": "1978", "label": "Opened on Barking Road" }, { "value": "All ages", "label": "From board books to biography" }, { "value": "Events", "label": "Author talks and signings" }, { "value": "Schools", "label": "Visits and bookstalls" }] },
+    { "type": "cards", "id": "shop", "eyebrow": "In the shop", "title": "Something for every reader.", "featureFirst": true, "items": [
+      { "title": "Children's books", "text": "From first picture books to teen fiction, chosen by booksellers who read them." },
+      { "title": "Fiction", "text": "New releases, prize-winners and old favourites." },
+      { "title": "Non-fiction", "text": "History, politics, cooking, travel and much more." },
+      { "title": "Local interest", "text": "Books about Newham, East London and the people who made it." },
+      { "title": "Orders", "text": "Can't see it on the shelf? We can order most books in." },
+      { "title": "Online", "text": "Shop with us on Bookshop.org and Hive. Your order still supports the shop." }
+    ] },
+    { "type": "split", "id": "events", "tone": "light", "eyebrow": "Events", "title": "Meet the authors.", "lede": "We host signings, talks and launches in the shop and across London.", "points": [["[Date]: [Author event]", "[Details: time, free or ticketed]"], ["[Date]: [Children's event]", "[Details]"], ["[Date]: [Book launch]", "[Details]"]], "cta": { "label": "Ask about events", "href": "mailto:info@newhambooks.co.uk" } },
+    { "type": "split", "id": "schools", "tone": "dark", "eyebrow": "For schools", "title": "Bring books and authors to your school.", "paragraphs": ["We work with schools and community groups across East London: author visits, book fairs, bookstalls and supplying school libraries."], "points": [["Author visits", "We arrange visits and supply signed books for pupils."], ["Bookstalls", "We bring a stall to your event, fair or conference."], ["Library supply", "Book lists and orders for school libraries."]], "cta": { "label": "Email the shop", "href": "mailto:info@newhambooks.co.uk" } },
+    { "type": "timeline", "id": "story", "eyebrow": "Our story", "title": "From a parents' centre to East London's bookshop.", "items": [
+      ["1973", "An idea", "Local parents begin an initiative to tackle low educational achievement in Newham."],
+      ["1978", "The shop opens", "In March, Newham Bookshop opens as part of the Newham Parents' Centre."],
+      ["1988", "Vivian arrives", "Manager Vivian Archer joins, ten years after the shop opened."],
+      ["Today", "Still independent", "Author events, school visits and bookstalls across London."]
+    ] },
+    { "type": "quote", "eyebrow": "They said it", "text": "\"The Shakespeare &amp; Company of London's East End.\"", "cite": "ACHUKA" },
+    { "type": "visit", "eyebrow": "Visit us", "title": "On Barking Road.", "extra": "Under ten minutes' walk from Upton Park station: turn right along Green Street and we're a few yards along Barking Road. Buses 5, 58, 104, 115, 147, 330 and 376 all stop nearby." }
+  ]
+}
