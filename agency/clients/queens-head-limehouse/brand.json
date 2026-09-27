@@ -1,0 +1,69 @@
+{
+  "name": "The Queen's Head, Limehouse",
+  "wordmark": "The Queen's Head",
+  "wordmarkSub": "Limehouse · Est. 1827",
+  "coverTitle": "The Queen's Head<br><em>est. 1827.</em>",
+  "descriptor": "Community free house · 8 Flamborough Street, E14",
+  "since": "Est. 1827",
+  "theme": { "bg": "#F6EEDC", "bg2": "#EDE1C6", "ink": "#1A1413", "primary": "#5B1A1E", "accent": "#D4A941", "onPrimary": "#F6EEDC", "muted": "#6F625C" },
+  "fonts": {
+    "href": "https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:wght@400;500;600;700&display=swap",
+    "display": "\"Abril Fatface\",Georgia,serif",
+    "body": "\"Karla\",system-ui,sans-serif",
+    "coverWeight": 400,
+    "italicAccent": false
+  },
+  "logo": {
+    "viewBox": "0 0 40 50",
+    "svg": "<path d=\"M8 14V4l6 5 6-7 6 7 6-5v10z\" fill=\"var(--l2)\"/><path d=\"M9 18h22l-3 30H12z\" fill=\"var(--l1)\"/><path d=\"M9 18h22l-.6 6H9.6z\" fill=\"var(--l3)\"/>",
+    "title": "The Crown & Pint.",
+    "lead": "A crown sitting on a full pint: the Queen's Head, and the Queen Mother's famous pint, in one mark. It's gold on oxblood like a Victorian gilded pub sign, and it works on a beer mat, a chalkboard or a hanging sign. The wordmark is set in Abril Fatface, the heavy display type of old signwriting."
+  },
+  "story": {
+    "title": "Saved by locals, for locals.",
+    "lead": "The Queen's Head has stood on Flamborough Street since 1827. It's Grade II listed, believed to have inspired the Queen Vic, and the Queen Mother once famously pulled a pint here. In December 2023 a group of locals reopened it as a free house at community prices. The brand should feel like the best version of a proper East End boozer: gilded, warm, a bit cheeky and completely unpretentious.",
+    "positioning": "The historic East End pub the neighbourhood saved. Real heritage, community prices, no pretension.",
+    "promise": "Limehouse's local, run by locals.",
+    "values": ["Everyone's welcome.", "Community prices.", "Proud of our history.", "Proper pints."]
+  },
+  "colour": {
+    "title": "Oxblood, gold leaf, bar tile.",
+    "lead": "Oxblood and gold leaf come straight from Victorian pub signs and etched mirrors. Bottle-green tile is the classic East End pub frontage. Cream is the nicotine-free ceiling we all remember as nicotine yellow.",
+    "swatches": [
+      { "name": "Oxblood", "hex": "#5B1A1E", "use": "Primary" },
+      { "name": "Gold Leaf", "hex": "#D4A941", "use": "Accent, lettering" },
+      { "name": "Bar Tile", "hex": "#1F4A3A", "use": "What's-on, events" },
+      { "name": "Ceiling Cream", "hex": "#F6EEDC", "use": "Background" },
+      { "name": "Pale Gold", "hex": "#EED9A0", "use": "Highlights" },
+      { "name": "Porter", "hex": "#1A1413", "use": "Text" }
+    ]
+  },
+  "type": {
+    "title": "Signwriter's display, honest sans.",
+    "lead": "Abril Fatface has the fat, high-contrast look of hand-painted pub signs and chalkboards. Karla is plain and friendly for the menu, prices and quiz dates. Both are free on Google Fonts.",
+    "samples": [
+      { "label": "Display", "style": "font:400 clamp(2.4rem,6vw,4.2rem)/1 'Abril Fatface',serif;color:#5B1A1E", "text": "Proper pints. Community prices." },
+      { "label": "Event", "style": "font:400 1.7rem 'Abril Fatface',serif", "text": "Pub Quiz" },
+      { "label": "Body 400", "style": "font-size:1.05rem;font-family:Karla,sans-serif", "text": "The quiz, plus mini games between rounds. Teams welcome." },
+      { "label": "Label 700", "style": "font:700 .8rem Karla,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#5B1A1E", "text": "Est. 1827 · Limehouse" }
+    ]
+  },
+  "voice": {
+    "title": "Like the landlord at the bar.",
+    "lead": "Warm, funny and to the point. Be proud of the history without being precious about it. Always make it clear everyone is welcome. Never trade on the royal family in a way that implies endorsement.",
+    "pairs": [
+      ["\"Pull up a stool.\"", "\"An elevated gastropub experience.\""],
+      ["\"The Queen Mother pulled a pint here. You can too, if you're buying.\"", "\"By Royal Appointment.\" (We're not, and it's a protected phrase.)"],
+      ["\"Limehouse's local, run by locals.\"", "\"London's best pub, guaranteed.\""]
+    ]
+  },
+  "imagery": {
+    "title": "Pints, faces, the bar.",
+    "lead": "Warm, grainy photos of regulars (with permission), the bar and the tiles, quiz night mid-laugh, and the pub from the street at dusk. Archive photos of the Queen Mother's visit if the rights can be cleared. No stock beer splashes."
+  },
+  "apps": {
+    "social": { "label": "Instagram · What's on", "headline": "Quiz night.<br>Bring brains.", "footer": "The Queen's Head · 8 Flamborough St" },
+    "print": "Beer mat",
+    "card": { "label": "A-board chalkboard", "headline": "Est. 1827.<br>Still pouring.", "footer": "Saved by locals · Dec 2023" }
+  }
+}

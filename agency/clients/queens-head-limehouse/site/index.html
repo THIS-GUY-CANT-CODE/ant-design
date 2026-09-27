@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>The Queen's Head, Limehouse: Community Pub Since 1827 (Concept)</title>
+<meta name="description" content="Concept website. A Grade II listed East End pub from 1827, reopened by locals in 2023.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BarOrPub","name":"The Queen's Head","foundingDate":"1827",
+"address":{"@type":"PostalAddress","streetAddress":"8 Flamborough Street","addressLocality":"London","postalCode":"E14 7LS","addressCountry":"GB"}}
+</script>
+<style>
+:root{
+  --oxblood:#5B1A1E; --oxblood-2:#72242A; --gold:#D4A941; --gold-light:#EED9A0; --tile:#1F4A3A; --tile-2:#2A6150;
+  --cream:#F6EEDC; --cream-2:#EDE1C6; --ink:#1A1413; --muted:#6F625C; --line:rgba(26,20,19,.14);
+  --display:"Abril Fatface",Georgia,serif; --sans:"Karla",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--cream);color:var(--ink);font:400 17px/1.65 var(--sans)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1160px;margin-inline:auto;padding-inline:20px}
+.concept{background:var(--ink);color:var(--gold-light);text-align:center;font-size:.8rem;padding:8px 16px}
+.eyebrow{font:700 .76rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--oxblood)}
+
+header{position:sticky;top:0;z-index:10;background:var(--oxblood);color:var(--cream);border-bottom:3px solid var(--gold)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo b{font:400 1.45rem/1 var(--display);letter-spacing:.01em}
+.nav ul{display:flex;gap:26px;list-style:none}
+.nav ul a{text-decoration:none;color:var(--gold-light);font-weight:600}
+.nav ul a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;gap:8px;background:var(--gold);color:var(--ink);text-decoration:none;font-weight:700;padding:13px 22px;border-radius:4px;transition:background .2s,transform .2s;font-size:.95rem}
+.btn:hover{background:var(--gold-light);transform:translateY(-1px)}
+.btn.dark{background:var(--oxblood);color:var(--cream)}
+.btn.dark:hover{background:var(--oxblood-2)}
+.btn.line{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 2px var(--gold)}
+@media (max-width:860px){.nav ul{display:none}}
+
+.hero{background:var(--oxblood);color:var(--cream);text-align:center;padding-block:80px 100px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:22px;border:2px solid var(--gold);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:30px;border:1px solid rgba(212,169,65,.45);pointer-events:none}
+.hero .est{font:700 .8rem var(--sans);letter-spacing:.4em;color:var(--gold)}
+h1{font:400 clamp(3.4rem,11vw,8.6rem)/.92 var(--display);margin-block:22px 18px;color:var(--cream);text-shadow:0 3px 0 rgba(0,0,0,.25)}
+h1 small{display:block;font-size:.34em;color:var(--gold);margin-top:10px;letter-spacing:.02em}
+.hero p{max-width:40ch;margin-inline:auto;color:#e9d9c3;font-size:1.18rem}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+.hero svg{width:84px;margin-inline:auto;margin-bottom:18px}
+
+.saved{background:var(--tile);color:var(--cream)}
+.saved .wrap{display:flex;gap:18px;align-items:center;justify-content:center;padding-block:20px;flex-wrap:wrap;text-align:center;font-weight:600}
+.saved b{color:var(--gold-light)}
+
+section{padding-block:100px}
+h2{font:400 clamp(2.4rem,5.4vw,4.2rem)/1 var(--display);color:var(--oxblood);max-width:18ch}
+.lede{color:var(--muted);font-size:1.12rem;max-width:56ch;margin-top:14px}
+
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.card{background:#fff;border:1px solid var(--line);padding:30px;position:relative}
+.card::before{content:"";position:absolute;inset:6px;border:1px solid var(--gold-light);pointer-events:none}
+.card b{display:block;font:400 2.4rem/1 var(--display);color:var(--gold)}
+.card h3{font:700 1.15rem var(--sans);margin-block:12px 6px;color:var(--oxblood)}
+.card p{color:var(--muted);font-size:.96rem}
+@media (max-width:860px){.legend{grid-template-columns:1fr}}
+
+.whatson{background:var(--tile);color:var(--cream)}
+.whatson h2{color:var(--cream)}
+.whatson .lede{color:#c5d6ce}
+.week{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.ev{background:var(--tile-2);padding:24px;border-top:4px solid var(--gold)}
+.ev .day{font:700 .74rem var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light)}
+.ev h3{font:400 1.7rem/1.1 var(--display);margin-block:10px 6px}
+.ev p{color:#c5d6ce;font-size:.93rem}
+@media (max-width:900px){.week{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.week{grid-template-columns:1fr}}
+
+.bar-menu{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:44px}
+.bar-menu h3{font:400 2rem var(--display);color:var(--oxblood);border-bottom:2px solid var(--oxblood);padding-bottom:8px}
+.bar-menu ul{list-style:none;margin-top:14px}
+.bar-menu li{display:flex;justify-content:space-between;gap:12px;padding-block:10px;border-bottom:1px dotted var(--line)}
+.bar-menu li span:last-child{color:var(--muted)}
+@media (max-width:760px){.bar-menu{grid-template-columns:1fr}}
+
+.history{background:var(--cream-2)}
+.hist{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.plaque{aspect-ratio:1;border-radius:50%;background:var(--tile);color:var(--cream);display:grid;place-items:center;text-align:center;border:6px solid var(--gold);max-width:340px;width:100%;margin-inline:auto;box-shadow:inset 0 0 0 6px var(--tile),inset 0 0 0 8px var(--gold-light)}
+.plaque b{display:block;font:400 4.6rem/1 var(--display);color:var(--gold-light)}
+.plaque span{font:700 .72rem var(--sans);letter-spacing:.24em;text-transform:uppercase}
+.tl{list-style:none;margin-top:26px;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:110px 1fr;gap:20px;padding-block:14px;border-top:1px solid var(--line)}
+.tl b{font:400 1.5rem var(--display);color:var(--oxblood)}
+@media (max-width:860px){.hist{grid-template-columns:1fr}}
+
+.visit{background:var(--oxblood);color:var(--cream)}
+.visit .cols{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+.visit h2{color:var(--cream)}
+.visit .addr{font:400 1.8rem/1.2 var(--display);color:var(--gold-light);margin-block:20px}
+.visit p{color:#e9d9c3}
+@media (max-width:860px){.visit .cols{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:#9c8f88;padding-block:28px;font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="crownpint" viewBox="0 0 40 50"><path d="M8 14V4l6 5 6-7 6 7 6-5v10z" fill="var(--l2,#D4A941)"/><path d="M9 18h22l-3 30H12z" fill="var(--l1,#F6EEDC)"/><path d="M9 18h22l-.6 6H9.6z" fill="var(--l3,#fff)"/></symbol>
+</defs></svg>
+
+<div class="concept" role="note">Concept website by Second Coat. Not affiliated with the Queen's Head. The pub currently has no official website.</div>
+
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a class="logo" href="#top" aria-label="The Queen's Head home">
+      <svg width="30" height="38" aria-hidden="true" style="--l1:#F6EEDC;--l3:#EED9A0"><use href="#crownpint"/></svg>
+      <b>The Queen's Head</b>
+    </a>
+    <ul>
+      <li><a href="#whats-on">What's on</a></li>
+      <li><a href="#bar">Bar &amp; food</a></li>
+      <li><a href="#history">History</a></li>
+      <li><a href="#visit">Find us</a></li>
+    </ul>
+    <a class="btn" href="#visit">Find us</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <svg viewBox="0 0 40 50" aria-hidden="true" style="--l1:#F6EEDC;--l3:#fff"><use href="#crownpint"/></svg>
+      <span class="est">EST. 1827 · LIMEHOUSE</span>
+      <h1>The Queen's Head<small>Limehouse's local, run by locals.</small></h1>
+      <p>A Grade II listed East End boozer, saved and reopened by the neighbourhood in 2023. Good beer, good food, community prices.</p>
+      <div class="ctas"><a class="btn" href="#whats-on">What's on this week</a><a class="btn line" href="#history">The story</a></div>
+    </div>
+  </section>
+
+  <div class="saved"><div class="wrap"><span>★</span><span>Reopened <b>December 2023</b> by a group of locals as a free house</span><span>★</span></div></div>
+
+  <section class="wrap">
+    <span class="eyebrow">The legend</span>
+    <h2>You might already know this pub.</h2>
+    <div class="legend">
+      <div class="card"><b>1827</b><h3>Nearly 200 years</h3><p>Pouring pints on Flamborough Street since 1827. It's now a Grade II listed building.</p></div>
+      <div class="card"><b>The Vic</b><h3>The original Queen Vic?</h3><p>The Queen's Head is believed to have inspired the Queen Vic on EastEnders.</p></div>
+      <div class="card"><b>A Royal Pint</b><h3>The Queen Mother's pint</h3><p>This is the pub where the Queen Mother famously pulled a pint behind the bar.</p></div>
+    </div>
+  </section>
+
+  <section id="whats-on" class="whatson">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--gold)">What's on</span>
+      <h2>This week at the Queen's.</h2>
+      <p class="lede">Updated every week. Follow us for last-minute additions.</p>
+      <div class="week">
+        <div class="ev"><span class="day">[Day]</span><h3>Pub Quiz</h3><p>The quiz, plus mini games between rounds. Teams welcome.</p></div>
+        <div class="ev"><span class="day">[Day]</span><h3>[Event]</h3><p>[Live music, darts, sports screening…]</p></div>
+        <div class="ev"><span class="day">[Day]</span><h3>[Event]</h3><p>[Details]</p></div>
+        <div class="ev"><span class="day">Sunday</span><h3>[Sunday food]</h3><p>[Details]</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="bar" class="wrap">
+    <span class="eyebrow">Bar &amp; kitchen</span>
+    <h2>Proper pints. Community prices.</h2>
+    <p class="lede">We keep prices at community rates, because a local should be affordable for locals.</p>
+    <div class="bar-menu">
+      <div><h3>On the bar</h3><ul>
+        <li><span>Premium lagers</span><span>£—</span></li>
+        <li><span>Local craft beers (rotating)</span><span>£—</span></li>
+        <li><span>[Cask ale]</span><span>£—</span></li>
+        <li><span>Wine, spirits &amp; soft drinks</span><span>£—</span></li>
+      </ul></div>
+      <div><h3>From the kitchen</h3><ul>
+        <li><span>[Dish]</span><span>£—</span></li>
+        <li><span>[Dish]</span><span>£—</span></li>
+        <li><span>[Dish]</span><span>£—</span></li>
+        <li><span>[Sunday roast?]</span><span>£—</span></li>
+      </ul></div>
+    </div>
+  </section>
+
+  <section id="history" class="history">
+    <div class="wrap hist">
+      <div class="plaque" aria-hidden="true"><div><span>Grade II listed</span><b>1827</b><span>Flamborough St · E14</span></div></div>
+      <div>
+        <span class="eyebrow">Our history</span>
+        <h2>Nearly two centuries of East End life.</h2>
+        <ul class="tl">
+          <li><b>1827</b><span>The Queen's Head opens on Flamborough Street.</span></li>
+          <li><b>Royal visit</b><span>The Queen Mother pulls a pint behind the bar.</span></li>
+          <li><b>On screen</b><span>The pub is believed to have inspired the Queen Vic in EastEnders.</span></li>
+          <li><b>Dec 2023</b><span>A group of locals take it on and reopen it as a free house.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="visit">
+    <div class="wrap cols">
+      <div>
+        <span class="eyebrow" style="color:var(--gold)">Find us</span>
+        <h2>Pull up a stool.</h2>
+        <p class="addr">8 Flamborough Street<br>Limehouse, London E14 7LS</p>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Queens+Head+8+Flamborough+Street+E14+7LS">Get directions</a>
+      </div>
+      <div>
+        <span class="eyebrow" style="color:var(--gold)">Opening hours</span>
+        <p style="margin-top:16px">[Add opening hours]</p>
+        <p style="margin-top:18px">Private hire and parties: [ask at the bar / contact details]</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© <span id="y">2026</span> The Queen's Head, Limehouse · Est. 1827</span><span>Concept by Second Coat</span></div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>

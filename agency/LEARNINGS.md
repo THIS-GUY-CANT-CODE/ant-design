@@ -9,3 +9,4 @@ One line per build. What was slow, and what to turn into a template next time.
 - 2026-09-27 · wj-meade · Estate agents are the best-value prospects: high revenue per client, multiple branches (upsell), stale award badges. Lead with the valuation form and pitch the £1,200 tier.
 - 2026-09-27 · clapton-beauty-parlour · Heritage press (Spitalfields Life, local Gazette) is the fastest way to find businesses with a real story. Check every historical claim wording against the source ("used the salon" is not "trained here").
 - 2026-09-27 · thatched-house-dental · Dentists: GDC rules mean fees and GDC numbers go on the page. Nested-selector gotcha: use `.band>div`, not `.band div`, when inner divs exist.
+- 2026-09-27 · queens-head-limehouse · "No website at all" is its own prospect type: search for heritage or community businesses that only have Tripadvisor or Facebook. Portfolio now handles a missing url. Pitch the Care plan (weekly what's-on updates) as the main value.

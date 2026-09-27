@@ -6,7 +6,7 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const order = ['biscuit-bunker', 'green-papaya', 'rose-locksmith', 'walthamstow-osteopaths', 'wj-meade', 'clapton-beauty-parlour'];
+const order = ['biscuit-bunker', 'green-papaya', 'rose-locksmith', 'walthamstow-osteopaths', 'wj-meade', 'clapton-beauty-parlour', 'thatched-house-dental', 'queens-head-limehouse'];
 
 const clients = fs.readdirSync(path.join(root, 'clients'))
   .filter(d => fs.existsSync(path.join(root, 'clients', d, 'meta.json')))
@@ -39,7 +39,7 @@ const card = (c, i) => {
       <div class="links">
         <a href="clients/${c.slug}/site/">View new site →</a>
         <a href="clients/${c.slug}/brand-book/">Brand book →</a>
-        <a href="${esc(c.url)}" rel="noopener">Original site ↗</a>
+        ${c.url ? `<a href="${esc(c.url)}" rel="noopener">Original site ↗</a>` : '<span class="nosite">They had no website</span>'}
       </div>
     </div>
   </article>`;
@@ -122,6 +122,7 @@ h2{font:400 clamp(2.4rem,5.4vw,4.6rem)/1 var(--serif);letter-spacing:-.02em;max-
 .links{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}
 .links a{font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:2px}
 .links a:hover{color:var(--wet);border-color:var(--wet)}
+.nosite{color:var(--muted);font-weight:600}
 @media (max-width:900px){.work{grid-template-columns:1fr;gap:24px}.work:nth-child(even) .shot{order:0}}
 
 .pricing{background:var(--ink);color:var(--paper)}
