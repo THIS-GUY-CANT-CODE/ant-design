@@ -1,0 +1,69 @@
+{
+  "name": "F. Cooke",
+  "wordmark": "F. Cooke",
+  "wordmarkSub": "Pie · Mash · Eels · Hoxton",
+  "coverTitle": "F. Cooke<br><em>pie &amp; mash.</em>",
+  "descriptor": "Pie, mash & eels · 150 Hoxton Street, N1",
+  "since": "Family since 1862",
+  "theme": { "bg": "#F4F6F1", "bg2": "#E3EADF", "ink": "#17221B", "primary": "#1E4D36", "accent": "#E8E3CF", "onPrimary": "#F4F6F1", "muted": "#5A6A5F", "accentOnLight": "#1E4D36" },
+  "fonts": {
+    "href": "https://fonts.googleapis.com/css2?family=Rye&family=Work+Sans:wght@400;600;700&display=swap",
+    "display": "\"Rye\",Georgia,serif",
+    "body": "\"Work Sans\",system-ui,sans-serif",
+    "coverWeight": 400,
+    "italicAccent": false
+  },
+  "logo": {
+    "viewBox": "0 0 48 40",
+    "svg": "<ellipse cx=\"24\" cy=\"30\" rx=\"21\" ry=\"8\" fill=\"var(--l1)\"/><path d=\"M8 27c0-9 7-15 16-15s16 6 16 15z\" fill=\"var(--l3)\"/><path d=\"M13 22c3-2 5 1 8-1s5 1 8-1 5 1 8-1\" fill=\"none\" stroke=\"var(--l2)\" stroke-width=\"1.8\" stroke-linecap=\"round\"/><circle cx=\"24\" cy=\"10\" r=\"3\" fill=\"var(--l2)\"/>",
+    "title": "The Pie on a Plate.",
+    "lead": "A domed pie with a crimped crust line, sitting on a plate. That's the whole menu in one shape. Tile green and cream come from the classic pie shop interior. The wordmark is set in Rye, a Victorian poster face that looks as if it's painted on the fascia."
+  },
+  "story": {
+    "title": "Pie and mash, the Cooke way, since 1862.",
+    "lead": "The Cooke family's pie and mash story goes back to 1862, and they're one of the handful of families who defined London's original fast food. At 150 Hoxton Street the family still serves minced beef pies, mash, green liquor and eels. The brand should feel like walking into the shop: tiled, scrubbed, no-nonsense and proud.",
+    "positioning": "A proper East End pie and mash shop, from one of London's oldest pie-making families.",
+    "promise": "Pie, mash and liquor, the proper way.",
+    "values": ["Proper food, done right.", "Family recipes.", "Fair prices.", "Everyone's welcome."]
+  },
+  "colour": {
+    "title": "Tile green and cream.",
+    "lead": "Deep tile green and cream come straight from the shop's walls. Liquor green is a lighter tint for panels. Keep it simple, like the menu.",
+    "swatches": [
+      { "name": "Tile Green", "hex": "#1E4D36", "use": "Primary" },
+      { "name": "Cream Tile", "hex": "#E8E3CF", "use": "Accent on dark" },
+      { "name": "Scrubbed", "hex": "#F4F6F1", "use": "Background" },
+      { "name": "Liquor", "hex": "#E3EADF", "use": "Panels" },
+      { "name": "Marble", "hex": "#5A6A5F", "use": "Secondary text" },
+      { "name": "Crust", "hex": "#B7863F", "use": "Small details" }
+    ]
+  },
+  "type": {
+    "title": "Victorian poster, honest sans.",
+    "lead": "Rye has the look of Victorian shop signs, used for headlines only. Work Sans is plain and readable for the menu board. Both are free on Google Fonts.",
+    "samples": [
+      { "label": "Display", "style": "font:400 clamp(2rem,6vw,3.6rem)/1.05 Rye,serif;color:#1E4D36", "text": "Pie, mash &amp; liquor." },
+      { "label": "Menu", "style": "font:700 1.3rem 'Work Sans',sans-serif", "text": "1 pie · 1 mash · liquor" },
+      { "label": "Body", "style": "font-size:1.05rem;font-family:'Work Sans',sans-serif", "text": "Liquor is a parsley sauce, not a drink, and it's the best bit." },
+      { "label": "Label", "style": "font:700 .78rem 'Work Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#1E4D36", "text": "150 Hoxton Street · N1" }
+    ]
+  },
+  "voice": {
+    "title": "Proper, plain, a bit cheeky.",
+    "lead": "Short sentences, East End warmth, and patience with first-timers who've never heard of liquor.",
+    "pairs": [
+      ["\"First time? Pie, mash, liquor. Trust us.\"", "\"An artisanal reinterpretation of heritage cuisine.\""],
+      ["\"Eels: hot or jellied. Your call.\"", "\"Sustainably sourced premium seafood offering.\""],
+      ["\"Family since 1862.\"", "\"London's best pie shop!!!\""]
+    ]
+  },
+  "imagery": {
+    "title": "Tiles, steam, plates.",
+    "lead": "Overhead plates on marble tables, steam off the liquor, the tiled walls and wooden benches, and the family at the counter. Honest daylight, no food styling tricks."
+  },
+  "apps": {
+    "social": { "label": "Instagram · First timers", "headline": "What is<br>liquor?<br>(Not a drink.)", "footer": "F. Cooke · 150 Hoxton St" },
+    "print": "Paper takeaway bag",
+    "card": { "label": "Window menu", "headline": "Pie · Mash<br>Liquor · Eels", "footer": "F. Cooke · Hoxton" }
+  }
+}

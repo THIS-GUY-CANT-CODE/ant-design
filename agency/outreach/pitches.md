@@ -296,3 +296,20 @@ The contact addresses in brackets come from public listings. Check each one befo
 > It's £500 to go live, and £49 a month keeps seasonal pages fresh (Valentine's, Mother's Day, Christmas). No obligation.
 >
 > <your name> · Second Coat · <phone>
+
+---
+
+## 18. F. Cooke (pie & mash, N1)
+**To:** walk in on a weekday afternoon, or DM @f.cooke150 · **Tier:** Refresh £500 (simple site) plus Care
+
+**Subject (if messaging):** Pie and mash since 1862, and no website of your own
+
+> Hi,
+>
+> F. Cooke is one of the last proper pie and mash shops in London, with a family story going back to 1862. But there's no official website, so Google shows opening hours from random listings, and they don't agree with each other.
+>
+> I've made you a simple site: the family story, the menu, a "first time? here's how to order" guide for tourists, and the right hours: <preview>
+>
+> It's £500 to put it live on your own domain. No obligation. I'll pop in with it on my phone if that's easier.
+>
+> <your name> · Second Coat · <phone>

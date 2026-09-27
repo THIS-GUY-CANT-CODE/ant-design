@@ -62,6 +62,7 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 | 15 | Brick Lane Bookshop | Brick Lane, E1 | Retail (bookshop, messy URLs, two domains) | Brand book and site built |
 | 16 | Bowling & Co Solicitors | Stratford, E15 | Professional (solicitors, spam titles) | Brand book and site built |
 | 17 | Denningtons Florist | Roman Road, E3 | Retail (wedding and funeral florist) | Brand book and site built |
+| 18 | F. Cooke | Hoxton, N1 | Hospitality (pie and mash, no website) | Brand book and site built |
 
 The industries are spread on purpose so the portfolio shows range. Trades and health have the worst sites and the highest lifetime value.
 
