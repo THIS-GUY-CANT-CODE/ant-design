@@ -1,18 +1,18 @@
 # Client intake: send this the moment they say yes
 
-Copy the questions into a Google Form or Tally form (or just an email). Each answer maps to a field, shown in brackets, so filling in `site.json` and `brand.json` is copy and paste.
+Copy the questions into a Google Form or Tally form (or just an email). Each answer maps to a field, shown in brackets, so filling in the concept's content in `web/apps/studio` is copy and paste.
 
 ## 1. The basics
-1. Business name exactly as you want it shown. *(site.json → `name`)*
-2. Phone number customers should call. *(site.json → `phone`)*
+1. Business name exactly as you want it shown.
+2. Phone number customers should call.
 3. Email address for enquiries. We can set up a free `you@yourbusiness.co.uk` address.
-4. Full address, and anything that helps people find you ("opposite the Young Prince pub"). *(site.json → `address`, `visit.extra`)*
-5. Opening hours for each day, including closed days. *(site.json → `hours`, `openRanges`)*
+4. Full address, and anything that helps people find you ("opposite the Young Prince pub").
+5. Opening hours for each day, including closed days.
 6. Your domain name, if you have one, and who it's registered with. Or shall we buy one for you?
 
 ## 2. What you sell
-7. Your main services or products, most important first. *(site.json → `cards`)*
-8. Prices, or "from" prices, for your top 5–10 items. *(site.json → `menu`)*
+7. Your main services or products, most important first.
+8. Prices, or "from" prices, for your top 5–10 items.
 9. Anything you **don't** want to advertise (services you're winding down, and so on).
 
 ## 3. Your story
@@ -38,4 +38,4 @@ Copy the questions into a Google Form or Tally form (or just an email). Each ans
 18. When do you want it live? (Our standard is 7 days from receiving these answers.)
 
 ---
-*Internal: once answers arrive → update `site.json` → `node scripts/build.js <slug>` → remove the concept banner and noindex (see `sales/handover-checklist.md`) → send the revised preview.*
+*Internal: once answers arrive → update the concept's content in `web/apps/studio` → move it to its own app for their domain, without the concept notice and noindex (see `web/README.md` and `sales/handover-checklist.md`) → send the revised preview.*

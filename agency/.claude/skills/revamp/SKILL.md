@@ -1,71 +1,49 @@
 ---
 name: revamp
-description: Build the before/after package for one business - audit, brand book, and new one-page site - in clients/<slug>/. Use when asked to "redo", "revamp" or "rebuild" a business website.
+description: Rebrand one East London business and build its concept site and case study in the Next.js app (web/). Use when asked to "redo", "revamp", "rebrand" or "rebuild" a business.
 ---
 
 # Revamp
 
-Target: 2–3 hours per business. Output lives in `clients/<slug>/`:
+Output: a new brand, a live concept at `/concepts/<slug>` and a case study at `/work/<slug>`, all in `web/apps/studio`. Research lives in `clients/<slug>/`.
 
-```
-audit.md          # scores + problems + what we'll fix
-before/           # screenshots of the current site (desktop.png, mobile.png)
-brand-book/index.html
-site/index.html   # the demo
-meta.json         # used by the portfolio page
-```
+## 0. The design standard (read this first)
+We are not "modernising" old businesses. We're giving them a brand that could launch today. The first round of concepts failed this test: they had navy and gold, Art Deco sunbursts, synthwave grids, clipart shopfronts, gold shimmer text and heritage serifs, and the owner of this studio rightly called it 80s garbage. Don't repeat it.
 
-## 1. Audit (`audit.md`)
-- Capture: name, what they sell, address, hours, phone, email, socials, services, prices, story, reviews. **Only real public facts. Never invent clients, stats, awards or testimonials** — use clearly marked placeholders instead.
-- Screenshot desktop (1440px) + mobile (390px) into `before/`. If the sandbox can't reach the site, ask the user to drop screenshots in.
-- Score with the rubric from the `prospect` skill. List the top 5 problems in plain English (these become the pitch).
+**Do:**
+- Build **one sharp idea from something true** (the building, the founding story, the trade object, the street). Examples: a tennis ball for Biscuit Bunker ("Fetched"), a key-cut profile for Rose, the shopfront arch for No.72, a diagonal "cut" for the salon where Sassoon once worked.
+- Use **one contemporary typeface family**, set big and tight (tracking -0.04 to -0.07em), with at most one contrasting accent face used sparingly. Current shortlist: Geist, Host Grotesk, Schibsted Grotesk, Bricolage Grotesque (condensed), Instrument Sans and Serif, Gloock, Inter.
+- Use a **small palette**: near-black, off-white, and one confident colour that owns the brand (chartreuse, papaya, hot rose, cobalt, cherry). Secondary colours only with a job to do (e.g. one per city on a menu).
+- Keep layouts **type-led and editorial**: huge headlines, generous space, hairlines, rounded cards (24–32px), index lists, bento grids, full-bleed colour sections.
+- Give each site **one signature interaction** that expresses the idea (a 3D ball, a key blade that draws itself, a sliced headline), plus the shared motion set: masked text reveals, magnetic buttons, context cursor and smooth scroll.
+- Imagery: real photography when we have rights. Until then, use WebGL or shader art, 3D, typography, or clearly labelled photo placeholders. **Never clipart.**
 
-## 2. Brand book (`brand.json` → `brand-book/index.html`)
-Write `clients/<slug>/brand.json` (copy `clients/rose-locksmith/brand.json` as the template), then run
-`node scripts/brandbook.js <slug>`. Sections: Story & positioning · Logo (inline SVG using `var(--l1/--l2/--l3)`) · Colour (6 swatches) · Type (Google Fonts pair) · Voice (3 do/don't pairs) · Imagery · Applications.
-Derive the concept from something true and specific about the business (founding year, building, street, founder). That's what makes it feel bespoke. Proven concepts so far: origin building (Biscuit Bunker, No.72), founding era (1930 → Art Deco), trade object (key, papaya), local architecture (roofline M).
+**Don't:**
+- No retro pastiche: Art Deco, synthwave or neon grids, sepia, film leaders, vanity bulbs, gold gradients or shimmer, newspaper clippings, sparkles.
+- No heritage-costume palettes (navy and gold, moss and terracotta, cream and brown) or heritage serifs (Bitter, DM Serif, Fraunces, Playfair, Bodoni).
+- No illustrated scenes (houses, shopfronts, rooms), emoji icons, drop-shadowed card soup, or gimmicks without an idea behind them.
+- Don't treat the founding year as a design era. It's a fact to state proudly, not a costume.
 
-## 3. Site (`site.json` → `site/index.html`)
-**Default:** write `clients/<slug>/site.json` (copy `clients/newham-bookshop/site.json` or `clients/repton-boxing-club/site.json`) and run `node scripts/site.js <slug>`. It uses the colours, fonts and logo from `brand.json`. Section types: `hero`, `stats`, `cards`, `menu`, `split`, `timeline`, `steps`, `quote`, `faq`, `band`, `visit`. Optional: `hours` (by day number, 0 = Sunday), `hoursTitle`, `openRanges` (enables the live open/closed pill), `schemaType`, `radius`, `buttonRadius`, `mobileBar`.
-Hand-write the HTML only when a concept needs a layout the generator can't do. That takes about 5× longer.
+## 1. Audit (`clients/<slug>/audit.md`, `meta.json`)
+- Capture name, what they sell, address, hours, phone, email, socials, services, prices, story and reviews. **Only real public facts. Never invent clients, stats, awards, hours ("24/7") or testimonials.** Use clearly marked placeholders instead.
+- `before/`: `node scripts/before.js <slug>` (run locally; the cloud sandbox can't reach most sites).
+- The top problems go in the case study's `was` list, and **only if actually observed**. Say where they were observed.
 
-- One file, no build step, no JS framework. Google Fonts only external dependency. Target Lighthouse 95+.
-- Sections, in order: hero (what + where + one CTA) · proof · services · work/menu/products · about/story · reviews · contact (map link, phone tap-to-call, hours) · footer.
-- Must: mobile-first, CSS custom properties from the brand book, logical properties, `prefers-reduced-motion`, semantic HTML, alt text, visible focus.
-- Must: `<meta name="robots" content="noindex">` and the concept banner (copy the one from `clients/biscuit-bunker/site/index.html`) until they pay.
+## 2. Brand
+Add the brand to `web/apps/studio/src/brands/index.ts`: tokens, 4–5 named swatches, type, display settings. Design the mark as a simple inline SVG component in the concept (`Mark`). Write the idea, body and three to four points in `content/cases.ts`.
 
-### 3a. The signature moment (flagship case studies)
-The generator gets a site to "good". A case study has to be *memorable*, so every flagship site gets **one interaction only that business could own**, taken from its real story or trade. Examples in the repo:
-- Biscuit Bunker (video): viewfinder hero with a running timecode, services as a film strip, a clapperboard brief form
-- Green Papaya (restaurant): a lazy-susan menu that turns the chosen dish to you, and a two-cities comparison slider
-- Rose Locksmith: a working pin-tumbler lock animation, a name-to-key cutter, a Dulux wall mixer
-- Walthamstow Osteopaths: a spine that straightens as you scroll, the No.72 facade through its eras
-- W J Meade: a dusk terrace that draws itself and lights up, a bedroom slider on the valuation form, a real-coordinates offices map
-- Clapton Beauty Parlour: a deco sunburst, gold shimmer type, a sepia-to-colour decades scroll
+## 3. Build the concept (`web/apps/studio/src/app/concepts/<slug>/`)
+- `layout.tsx`: copy an existing one. It needs `robots: noindex`, `brandStyle(slug)`, `overflow-x-clip`, `<Cursor/>` and `<ConceptNotice/>` (required on every concept).
+- `page.tsx` plus `_components/`. Sections, as the business needs them: hero with the signature moment · proof · services/menu · story · reviews · visit/contact · giant-wordmark footer. Add a mobile quick-action bar for anything people call or book.
+- Live data from the browser (open now, clocks): `useLondonTime()` and `isOpenAt()` from `@sc/ui`. Never `setState` in an effect.
+- Reuse `@sc/ui`: `Reveal`, `FadeIn`, `Magnetic`, `Marquee`, `Counter`, `ShaderCanvas`, `gsap`/`useGSAP`. Respect `prefers-reduced-motion` everywhere.
 
-**Motion kit.** Every flagship site includes `kit/` (split-text reveals, a context cursor, magnetic buttons, tilt, scroll and mouse-depth parallax, a progress bar). Add `<style id="kit"></style>` in `<head>` and `<script id="kit"></script>` before `</body>`, then run `node scripts/kit.js`. Opt in with `data-split`, `.mag`, `data-tilt`, `data-speed`, `data-depth`, `data-cursor="Play"` and `<body data-kit-cursor>`, and theme it with `--kit-accent`. **Never put site CSS or JS inside the kit blocks: `kit.js` replaces them wholesale.** For sector inspiration, see `research/`.
+## 4. Case study and portfolio
+- Add the case to `content/cases.ts` (was / now / brand / marketing / tier) and the slug to `ORDER`.
+- Add the slug to `scripts/capture.mjs` and `tests/smoke.spec.ts`. Then run `pnpm build && pnpm start -p 3100` and, in another shell, `pnpm --filter studio capture`.
 
-Rules: it must work with a keyboard and with `prefers-reduced-motion` (give a static final state, because `shot.js` captures in reduced motion). Invent no facts to make it work. Use placeholders instead.
+## 5. Verify
+`pnpm lint && pnpm typecheck && pnpm build && pnpm test:e2e` from `web/`. Then **look at it**: screenshot the hero and every section at 1440 and 390, and fix anything that isn't at the level of the existing six. If it looks like a template, it's not done.
 
-## 3b. Verify
-Shortcut: `node scripts/build.js <slug>` runs brand book → site → checks → leave-behind in one go (`--all` rebuilds everything, plus the portfolio, landing pages and dashboard).
-
-`NODE_PATH=$(npm root -g) node scripts/shot.js <slug>` saves after screenshots and fails on horizontal overflow, JS errors or unreadable text (contrast under 2.5:1). Run it with `VERBOSE=1` to also list weaker-contrast warnings. Look at desktop.png and mobile.png before committing. Watch for: grids of fixed-ratio items need `minmax(0,1fr)`; hide the header CTA under 520px if there's a sticky mobile bar.
-
-## 4. meta.json
-```json
-{ "slug": "", "name": "", "industry": "", "area": "", "url": "", "sector": "hospitality|retail|trades|health|professional", "previewUrl": "", "scoreBefore": 0, "scoreAfter": 0, "status": "concept", "summary": "" }
-```
-`status` is `concept` until paid/permission → then `client`. The portfolio reads this; don't label concepts as clients.
-
-## 4b. Portfolio
-`node scripts/portfolio.js` rebuilds the agency homepage (`index.html`) from every `meta.json`. Once `before/desktop-card.jpg` exists (a 1440×900 screenshot of their current site), the card becomes a before/after slider automatically.
-
-## 4c. Case study (`case.json` → `work/<slug>/`)
-For flagship concepts, write `clients/<slug>/case.json` (copy `clients/rose-locksmith/case.json`) and run `node scripts/cases.js`. The fields are: `theme` (client colours plus display font), `headline`, `was`, `now` (signature features), `brand` (idea, body, points), `marketing` (idea, plus plays with `when`), `tier` and `tierWhy`. The portfolio homepage features every client that has a `case.json`.
-- **`was` may only contain things actually observed**: search titles, listings, or the live site if you've seen it. Never guess what their site "probably" does.
-- Marketing plays are proposals, so name real anniversaries (founding year + 25/50/75/90/100) and real seasons. Never promise numbers.
-- Case pages are `noindex` and disallowed in robots, because they name businesses that aren't clients.
-
-## 5. After every build — improve this skill
-Add one line to `LEARNINGS.md`: what took longest, what to template next time. If something repeats 3 times, turn it into a reusable snippet under `templates/`.
+## 6. After every build, improve this skill
+Add one line to `LEARNINGS.md`: what took longest and what to reuse next time. If something repeats three times, move it into `@sc/ui`.

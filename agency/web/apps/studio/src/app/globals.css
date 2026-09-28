@@ -28,6 +28,10 @@
   --accent: #ff4f1f;
   --accent-ink: #ffffff;
   --alt: #0c0c0c;
+  --f-display: var(--ff-geist);
+  --f-body: var(--ff-geist);
+  --f-mono: var(--ff-geist-mono);
+  --f-serif: var(--ff-instrument-serif);
 }
 
 html {

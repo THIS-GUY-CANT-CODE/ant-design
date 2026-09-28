@@ -1,27 +1,56 @@
-# Checks every client site, then deploys the agency folder to Vercel.
-# Setup: in GitLab, go to Settings > CI/CD > Variables and add VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID and SITE_URL.
-stages: [check, deploy]
+# Second Coat: lint, typecheck, build and smoke-test the Next.js app, then deploy it to Vercel.
+# This file assumes the GitLab project root is the agency/ folder.
+# GitLab > Settings > CI/CD > Variables: VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID (masked),
+# and NEXT_PUBLIC_SITE_URL once the domain is live. In Vercel, set the project's Root Directory to web/apps/studio.
+stages: [verify, deploy]
 
-check:
-  stage: check
-  image: mcr.microsoft.com/playwright:v1.47.0-jammy
+variables:
+  PNPM_VERSION: '10.33.0'
+
+.pnpm: &pnpm
+  - corepack enable && corepack prepare pnpm@$PNPM_VERSION --activate
+  - pnpm config set store-dir "$CI_PROJECT_DIR/.pnpm-store"
+
+verify:
+  stage: verify
+  image: mcr.microsoft.com/playwright:v1.56.1-noble # same Playwright as web/apps/studio
+  cache:
+    key: { files: [web/pnpm-lock.yaml] }
+    paths: [.pnpm-store]
   script:
-    - cd scripts && npm install --no-audit --no-fund && cd ..
-    - node scripts/build.js --all   # fails on mobile overflow, JS errors or unreadable text
+    - *pnpm
+    - cd web
+    - pnpm install --frozen-lockfile
+    - pnpm lint
+    - pnpm typecheck
+    - pnpm build
+    - pnpm test:e2e # every route: 200, concept notice present, no errors, no horizontal scroll, noindex
   artifacts:
-    paths: [clients/*/after/, index.html, for/, sitemap.xml, robots.txt]
+    when: on_failure
+    paths: [web/apps/studio/playwright-report/, web/apps/studio/test-results/]
     expire_in: 1 week
 
-preview:
+.deploy:
   stage: deploy
-  image: node:20-alpine
-  except: [main]
+  image: node:22
+  needs: [verify]
   script:
-    - npx vercel@latest deploy --yes --token "$VERCEL_TOKEN"
+    - *pnpm
+    - npm i -g vercel@latest
+    - vercel pull --yes --environment=$VERCEL_ENV --token=$VERCEL_TOKEN
+    - vercel build $VERCEL_ARGS --token=$VERCEL_TOKEN
+    - vercel deploy --prebuilt $VERCEL_ARGS --token=$VERCEL_TOKEN | tee deploy-url.txt
+  artifacts:
+    paths: [deploy-url.txt]
+
+preview:
+  extends: .deploy
+  variables: { VERCEL_ENV: preview, VERCEL_ARGS: '' }
+  rules:
+    - if: $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH
 
 production:
-  stage: deploy
-  image: node:20-alpine
-  only: [main]
-  script:
-    - npx vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN"
+  extends: .deploy
+  variables: { VERCEL_ENV: production, VERCEL_ARGS: '--prod' }
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

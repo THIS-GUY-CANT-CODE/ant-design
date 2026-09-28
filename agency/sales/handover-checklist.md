@@ -22,7 +22,7 @@ Run this for every paid client. Tick it off in `clients/<slug>/handover.md` (cop
 - [ ] PageSpeed (mobile) run and the score recorded in `audit.md` as `scoreAfter`
 
 ## After
-- [ ] `meta.json` status changed to `client` (only with written permission to show them as a client), then `node scripts/portfolio.js` run
+- [ ] `meta.json` status changed to `client` (only with written permission to show them as a client), then the portfolio card and case study updated in `web/apps/studio/src/content/cases.ts`
 - [ ] Testimonial requested (one or two lines, plus permission to use their name)
 - [ ] Referral offer sent: £100 off, or a free month of Care, for each referral that becomes a client
 - [ ] Care plan offered

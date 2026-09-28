@@ -28,8 +28,8 @@ Why tiers: £500 on its own only works if a demo takes under 3 hours. The £49/m
 
 1. **Prospect**: find East London businesses with weak sites (see `.claude/skills/prospect/SKILL.md` for the scoring rubric)
 2. **Audit**: score the current site out of 50 and screenshot it (`clients/<slug>/audit.md`)
-3. **Brand**: short brand book as one HTML page (`clients/<slug>/brand-book/`)
-4. **Build**: one-page site, no framework, fast, on their real content (`clients/<slug>/site/`)
+3. **Brand**: a contemporary identity with one idea taken from their real story (see the design standard in the revamp skill)
+4. **Build**: the concept site and case study in the Next.js app (`web/`), on their real content
 5. **Deploy**: private preview URL on Vercel, `noindex`, with a "concept" banner
 6. **Pitch**: send email and a Loom-style walkthrough (templates in `.claude/skills/outreach/SKILL.md`)
 7. **Close**: Stripe payment link, domain handover, and remove the concept banner
@@ -48,24 +48,24 @@ Every step lives as a skill in `.claude/skills/` so any session (or a contractor
 
 | # | Business | Area | Industry | Status |
 | - | --- | --- | --- | --- |
-| 1 | Biscuit Bunker | Shoreditch, EC2A | Video production | Brand book and site built |
-| 2 | Green Papaya Xi'Viet | Hackney, E8 | Restaurant (Vietnamese and Xi'an) | Brand book and site built |
-| 3 | Rose Locksmith & DIY | Bethnal Green, E2 | Trades (locksmith and hardware) | Brand book and site built |
-| 4 | Walthamstow Osteopaths | Walthamstow Village, E17 | Health (osteopathy) | Brand book and site built |
-| 5 | W J Meade | Bow, E3 | Professional services (estate agent) | Brand book and site built |
-| 6 | Clapton Beauty Parlour | Lower Clapton, E5 | Beauty (hair and beauty salon) | Brand book and site built |
-| 7 | The Thatched House Dental Practice | Leytonstone, E15 | Health (private dentist) | Brand book and site built |
-| 8 | The Queen's Head | Limehouse, E14 | Hospitality (community pub, no website) | Brand book and site built |
-| 9 | Kelly's Florist | Well Street, E9 | Retail (florist, free template site) | Brand book and site built |
-| 10 | Well Heeled | Bethnal Green, E2 | Trades (shoe repair, no website) | Brand book and site built |
-| 11 | Newham Bookshop | Upton Park, E13 | Retail (independent bookshop) | Brand book and site built |
-| 12 | Repton Boxing Club | Bethnal Green, E2 | Community / sport (two competing sites) | Brand book and site built |
-| 13 | Abbott's Interiors | Roman Road, E3 | Trades (blinds, shutters, flooring; est. 1882) | Brand book and site built |
-| 14 | Driving Force | Walthamstow, E17 | Trades (garage, keyword-stuffed title) | Brand book and site built |
-| 15 | Brick Lane Bookshop | Brick Lane, E1 | Retail (bookshop, messy URLs, two domains) | Brand book and site built |
-| 16 | Bowling & Co Solicitors | Stratford, E15 | Professional (solicitors, spam titles) | Brand book and site built |
-| 17 | Denningtons Florist | Roman Road, E3 | Retail (wedding and funeral florist) | Brand book and site built |
-| 18 | F. Cooke | Hoxton, N1 | Hospitality (pie and mash, no website) | Brand book and site built |
+| 1 | Biscuit Bunker | Shoreditch, EC2A | Video production | Rebranded, live concept + case study (new stack) |
+| 2 | Green Papaya Xi'Viet | Hackney, E8 | Restaurant (Vietnamese and Xi'an) | Rebranded, live concept + case study (new stack) |
+| 3 | Rose Locksmith & DIY | Bethnal Green, E2 | Trades (locksmith and hardware) | Rebranded, live concept + case study (new stack) |
+| 4 | Walthamstow Osteopaths | Walthamstow Village, E17 | Health (osteopathy) | Rebranded, live concept + case study (new stack) |
+| 5 | W J Meade | Bow, E3 | Professional services (estate agent) | Rebranded, live concept + case study (new stack) |
+| 6 | Clapton Beauty Parlour | Lower Clapton, E5 | Beauty (hair and beauty salon) | Rebranded, live concept + case study (new stack) |
+| 7 | The Thatched House Dental Practice | Leytonstone, E15 | Health (private dentist) | Audited; queued for the new treatment |
+| 8 | The Queen's Head | Limehouse, E14 | Hospitality (community pub, no website) | Audited; queued for the new treatment |
+| 9 | Kelly's Florist | Well Street, E9 | Retail (florist, free template site) | Audited; queued for the new treatment |
+| 10 | Well Heeled | Bethnal Green, E2 | Trades (shoe repair, no website) | Audited; queued for the new treatment |
+| 11 | Newham Bookshop | Upton Park, E13 | Retail (independent bookshop) | Audited; queued for the new treatment |
+| 12 | Repton Boxing Club | Bethnal Green, E2 | Community / sport (two competing sites) | Audited; queued for the new treatment |
+| 13 | Abbott's Interiors | Roman Road, E3 | Trades (blinds, shutters, flooring; est. 1882) | Audited; queued for the new treatment |
+| 14 | Driving Force | Walthamstow, E17 | Trades (garage, keyword-stuffed title) | Audited; queued for the new treatment |
+| 15 | Brick Lane Bookshop | Brick Lane, E1 | Retail (bookshop, messy URLs, two domains) | Audited; queued for the new treatment |
+| 16 | Bowling & Co Solicitors | Stratford, E15 | Professional (solicitors, spam titles) | Audited; queued for the new treatment |
+| 17 | Denningtons Florist | Roman Road, E3 | Retail (wedding and funeral florist) | Audited; queued for the new treatment |
+| 18 | F. Cooke | Hoxton, N1 | Hospitality (pie and mash, no website) | Audited; queued for the new treatment |
 
 The industries are spread on purpose so the portfolio shows range. Trades and health have the worst sites and the highest lifetime value.
 
@@ -82,6 +82,7 @@ The industries are spread on purpose so the portfolio shows range. Trades and he
 
 ## Tooling status
 
-- **GitHub**: work lives in `agency/` on this branch for now. It should move to its own repo.
-- **GitLab**: `.gitlab-ci.yml` is ready. Create a GitLab project, push this folder, and add a `VERCEL_TOKEN` CI variable.
-- **Vercel**: `vercel.json` is ready. Import the repo, set the root directory to `agency/`, and it serves every client and the portfolio.
+- **Stack:** `web/` is a pnpm + Turborepo monorepo. Next.js 16, React 19, TypeScript, Tailwind v4, GSAP, Motion, Lenis and React Three Fiber, with ESLint, Prettier and Playwright. See `web/README.md`.
+- **GitLab:** `.gitlab-ci.yml` runs lint, typecheck, build and smoke tests, then deploys to Vercel. Create a GitLab project from this folder and add the three Vercel variables.
+- **Vercel:** Root Directory `agency/web/apps/studio`. Concepts and case studies are `noindex`.
+- **Design standard:** contemporary brands only, with no heritage costume. See `.claude/skills/revamp/SKILL.md`.

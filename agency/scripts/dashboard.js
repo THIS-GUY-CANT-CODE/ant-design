@@ -3,6 +3,7 @@
 // internal/ is excluded from the Vercel deploy by .vercelignore, so open the file locally.
 const fs = require('fs');
 const path = require('path');
+const cfg = require('./config');
 
 const root = path.join(__dirname, '..');
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -44,6 +45,8 @@ const careCount = count('care');
 const pipelineValue = leads.filter(l => ['demo_built', 'demo_sent', 'replied'].includes(l.status)).length * 500;
 const maxReached = Math.max(...reached, 1);
 
+// Concepts rebuilt in the Next.js app (web/apps/studio/src/app/concepts)
+const FLAGSHIP = fs.existsSync(path.join(root, 'web/apps/studio/src/app/concepts')) ? fs.readdirSync(path.join(root, 'web/apps/studio/src/app/concepts')) : [];
 const hasMeta = slug => fs.existsSync(path.join(root, 'clients', slug, 'meta.json'));
 
 const html = `<!doctype html>
@@ -116,7 +119,7 @@ td a{color:var(--ink)}
         <td>${esc(l.industry)}</td>
         <td><span class="pill">${esc(labels[l.status] || l.status)}</span></td>
         <td>${esc(next[l.status] || '')}</td>
-        <td>${hasMeta(l.slug) ? `<a href="../clients/${esc(l.slug)}/site/">Demo</a> · <a href="../clients/${esc(l.slug)}/brand-book/">Brand</a> · <a href="../clients/${esc(l.slug)}/audit.md">Audit</a>` : ''}${l.url ? `${hasMeta(l.slug) ? ' · ' : ''}<a href="${esc(l.url)}">Current site</a>` : ''}</td>
+        <td>${hasMeta(l.slug) ? `${FLAGSHIP.includes(l.slug) ? `<a href="${esc(cfg.siteUrl)}/concepts/${esc(l.slug)}/">Concept</a> · <a href="${esc(cfg.siteUrl)}/work/${esc(l.slug)}/">Case study</a> · ` : ''}<a href="../clients/${esc(l.slug)}/audit.md">Audit</a>` : ''}${l.url ? `${hasMeta(l.slug) ? ' · ' : ''}<a href="${esc(l.url)}">Current site</a>` : ''}</td>
       </tr>`).join('')}
       </tbody>
     </table></div>

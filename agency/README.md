@@ -1,50 +1,31 @@
 # Second Coat: agency workspace
 
-We rebuild East London businesses' websites before they pay. See `PLAN.md` for the offer, pricing and guardrails.
+We rebuild East London businesses as modern brands, with the website to match, before they pay. See `PLAN.md` for the offer, pricing and guardrails.
 
 | Path | What |
 | --- | --- |
-| `index.html` | The agency portfolio site (generated, don't hand-edit) |
-| `clients/<slug>/` | For each business: `audit.md`, `brand.json`, `brand-book/`, `site/`, `before/`, `after/`, `meta.json` |
+| `web/` | **The websites.** pnpm + Turborepo monorepo: `apps/studio` (Next.js 16) serves the Second Coat portfolio, the six concept sites (`/concepts/<slug>`) and their case studies (`/work/<slug>`). See `web/README.md` |
+| `clients/<slug>/` | Research for each business: `audit.md` (verified facts and observed problems), `meta.json`, `before/` |
 | `.claude/skills/` | The machine: `prospect`, `revamp` and `outreach` skills |
-| `scripts/brandbook.js <slug>` | Builds the brand book from `brand.json` |
-| `scripts/find-prospects.js [trades…] --areas "A,B"` | **Run locally with a Google Places API key.** Finds businesses with 20+ reviews, checks their websites (HTTPS, spammy titles, free builders, mobile, © year…) and writes a ranked `prospects/<date>.csv` |
-| `scripts/before.js [slug]` | **Run locally.** Screenshots each client's current site and writes `before/report.md` (load time, mobile overflow, missing tap-to-call, copyright year) |
-| `scripts/shot.js <slug>` | After screenshots plus overflow and JS error checks |
-| `scripts/portfolio.js` | Rebuilds `index.html` from every client's `meta.json` |
-| `outreach/pitches.md` | Pitch emails for every concept |
-| `sales/` | Proposal, terms, intake questionnaire, handover checklist, and **partners.md** (grants, East End Trades Guild, press, referral partners) |
-| `scripts/site.js <slug>` | Builds the demo site from `site.json` + `brand.json` (default way to build) |
-| `scripts/landing.js` | Builds `/for/<industry>/` landing pages, `sitemap.xml` and `robots.txt` (set `SITE_URL`) |
-| `scripts/leavebehind.js <slug> [previewUrl]` | Printable A5 leave-behind for walk-in pitches (new site, 3 fixes, price, QR code to the preview) |
-| `scripts/dashboard.js` | Builds `internal/dashboard.html` (lead funnel, next action per lead). Open it locally |
+| `research/` | Design research by sector (e.g. what the best production-company sites do) |
+| `scripts/find-prospects.js [trades…] --areas "A,B"` | **Run locally with a Google Places API key.** Finds businesses with 20+ reviews, audits their websites and writes a ranked `prospects/<date>.csv` |
+| `scripts/healthcheck.js <url> "Name"` | Free one-page website health-check report (a lead magnet) |
+| `scripts/before.js [slug]` | **Run locally.** Screenshots a business's current site into `before/` |
+| `scripts/dashboard.js` | Builds `internal/dashboard.html` (lead funnel, next action per lead) |
 | `pipeline.csv` | Lead tracker |
+| `outreach/`, `sales/` | Pitches, proposal, terms, intake, handover checklist, partners and grants |
+| `finance/` | 12-month financial model |
 | `LEARNINGS.md` | One line per build: what to improve next time |
-| `finance/` | 12-month financial model (`model.xlsx`) and what it implies (`README.md`) |
 
-## Build a new client
+## Quick start
 ```bash
-# one command once the JSON briefs exist:
-node scripts/build.js <slug>          # or --all to rebuild everything
-
-# research → write clients/<slug>/{audit.md,meta.json,brand.json,site.json}
-node scripts/brandbook.js <slug>
-node scripts/site.js <slug>
-NODE_PATH=$(npm root -g) node scripts/shot.js <slug>   # needs Playwright
-node scripts/portfolio.js && node scripts/landing.js
+cd web
+pnpm install
+pnpm dev            # http://localhost:3000
+pnpm lint && pnpm typecheck && pnpm build && pnpm test:e2e
 ```
 
 ## Deploy
-- **Vercel:** import the repo, set the root directory to `agency/`, framework "Other", no build command. `vercel.json` adds `noindex` headers to all client concepts. `.vercelignore` keeps `internal/`, `outreach/`, `sales/`, `scripts/` and `pipeline.csv` off the public site.
-- **GitLab:** push this folder to a GitLab project and add a `VERCEL_TOKEN` CI variable. `.gitlab-ci.yml` deploys previews on branches and production on `main`.
-
-## Capture before screenshots (on your machine)
-```bash
-cd agency/scripts && npm install && npx playwright install chromium
-npm run before            # all clients, or: npm run before -- rose-locksmith
-npm run portfolio         # turns on the before/after sliders
-```
-
-## Before going public
-- Replace `hello@example.com` in `scripts/portfolio.js` with the real agency email, and rebuild.
-- Run `npm run before` (above) to switch on the before/after sliders.
+- **Vercel:** import the repo and set the project's Root Directory to `agency/web/apps/studio` (Vercel detects the pnpm workspace). `next.config.ts` sends `noindex` for `/concepts` and `/work`; `robots.ts` disallows them.
+- **GitLab:** push this folder to a GitLab project and add `VERCEL_TOKEN`, `VERCEL_ORG_ID` and `VERCEL_PROJECT_ID` as CI variables. `.gitlab-ci.yml` runs lint, typecheck, build and Playwright smoke tests, then deploys previews on branches and production on the default branch.
+- Before launch: set the studio email in `web/apps/studio/src/content/studio.ts` and `NEXT_PUBLIC_SITE_URL` in Vercel.

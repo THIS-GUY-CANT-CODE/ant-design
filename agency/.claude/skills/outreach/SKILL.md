@@ -21,7 +21,7 @@ Subject: I rebuilt the <Business> website (no strings)
 
 ## Follow-ups
 - Day 3: one line + a 60s screen recording walking through before/after.
-- Day 7: walk in or phone. Being local is the unfair advantage, so use it. Print the leave-behind first: set `previewUrl` in `clients/<slug>/meta.json` (so rebuilds keep it), run `node scripts/leavebehind.js <slug>`, then open `clients/<slug>/leave-behind.html` and print it at A5.
+- Day 7: walk in or phone. Being local is the unfair advantage, so use it. Bring the concept on your phone (`/concepts/<slug>`) and show the case study (`/work/<slug>`) on the spot.
 - Day 14: "Taking the preview down Friday — want me to keep it up?" Then stop.
 
 ## Closing

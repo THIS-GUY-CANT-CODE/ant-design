@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
-    "typecheck": "tsc --noEmit",
-    "test:e2e": "playwright test"
+    "typecheck": "next typegen && tsc --noEmit",
+    "test:e2e": "playwright test",
+    "capture": "node scripts/capture.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
@@ -28,7 +29,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@playwright/test": "1.47.0",
+    "@playwright/test": "1.56.1",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^22",
     "@types/react": "^19",
