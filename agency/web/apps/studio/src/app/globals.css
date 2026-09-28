@@ -81,3 +81,13 @@ html.lenis body {
     transition-duration: 0.01ms !important;
   }
 }
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
