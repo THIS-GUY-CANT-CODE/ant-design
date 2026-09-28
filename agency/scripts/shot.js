@@ -13,7 +13,7 @@ const path = require('path');
     const p = await b.newPage({ viewport: { width: w, height: 900 } });
     const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto('file://' + path.join(dir, src), { waitUntil: 'load', timeout: 15000 }).catch(() => {});
-    await p.waitForTimeout(600);
+    await p.waitForTimeout(2200); await p.evaluate(() => document.querySelectorAll('.rv').forEach(e => e.classList.add('in'))); await p.waitForTimeout(1100);
     await p.screenshot({ path: path.join(dir, 'after', out), fullPage: true });
     // Viewport-only JPEG previews for the portfolio cards
     if (src.startsWith('site/')) await p.screenshot({ path: path.join(dir, 'after', out.replace('.png', '-card.jpg')), type: 'jpeg', quality: 78 });
