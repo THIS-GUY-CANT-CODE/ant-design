@@ -1,0 +1,25 @@
+/* Second Coat motion kit: shared micro-interactions, inlined into each site by scripts/kit.js.
+   Theme it per site with --kit-accent (progress bar, cursor ring) and --kit-ink (cursor dot). */
+.kit-progress{position:fixed;inset-block-start:0;inset-inline:0;height:3px;z-index:120;pointer-events:none;background:var(--kit-accent,#FF5A36);transform-origin:0 50%;transform:scaleX(0)}
+[data-split] .kw{display:inline-block;overflow:hidden;vertical-align:top;padding-block-end:.08em;margin-block-end:-.08em}
+[data-split] .kw>span{display:inline-block;transform:translateY(105%) rotate(4deg);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 55ms)}
+[data-split].kit-in .kw>span{transform:none}
+.kit-cursor,.kit-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:130;border-radius:50%;transform:translate(-50%,-50%)}
+.kit-cursor{width:8px;height:8px;background:var(--kit-ink,#fff);mix-blend-mode:difference}
+.kit-ring{width:38px;height:38px;border:1.5px solid var(--kit-accent,#FF5A36);display:grid;place-items:center;transition:width .3s cubic-bezier(.2,.8,.2,1),height .3s cubic-bezier(.2,.8,.2,1),background .3s,border-color .3s,opacity .3s}
+.kit-ring span{font:700 .62rem/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--kit-on,#111);opacity:0;transition:opacity .2s}
+.kit-ring.link{width:64px;height:64px;background:color-mix(in srgb,var(--kit-accent,#FF5A36) 18%,transparent)}
+.kit-ring.label{width:92px;height:92px;background:var(--kit-accent,#FF5A36);border-color:transparent}
+.kit-ring.label span{opacity:1}
+.kit-ring.down{width:26px;height:26px}
+.kit-ring.gone,.kit-cursor.gone{opacity:0}
+html.kit-hide-cursor,html.kit-hide-cursor a,html.kit-hide-cursor button,html.kit-hide-cursor [data-cursor]{cursor:none}
+html.kit-hide-cursor input,html.kit-hide-cursor textarea,html.kit-hide-cursor select{cursor:auto}
+.mag{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+[data-tilt]{transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.kit-rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+.kit-rv.kit-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  [data-split] .kw>span,.kit-rv{transform:none!important;opacity:1!important;transition:none!important}
+  .kit-progress{display:none}
+}

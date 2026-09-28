@@ -178,6 +178,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .callbar a:first-child{background:var(--chilli);color:#fff}.callbar a:last-child{background:var(--leaf-dark);color:var(--rice)}
   body{padding-bottom:76px}
 }
+
+.navdish{flex-wrap:wrap}
+.navdish .choose{width:auto;border-radius:999px;padding-inline:20px;background:var(--turmeric);color:var(--ink);border-color:var(--turmeric);font:700 .92rem var(--sans)}
+.navdish .choose:hover{background:var(--rice);color:var(--leaf-dark)}
+.ring.long,.ring.long .plate{transition-duration:2.6s;transition-timing-function:cubic-bezier(.15,.7,.2,1)}
+.bowlbox canvas{position:absolute;inset:0 0 40% 0;width:100%;height:60%;pointer-events:none}
+.bowlbox.live .steam{display:none}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rv,h1 .w{opacity:1;transform:none}.leafy{display:none}
@@ -275,7 +282,7 @@ Banana leaf tilapia<span>✦</span>Concubine noodles<span>✦</span>Bún thịt 
       </div>
       <div>
         <div class="card" id="card" aria-live="polite"></div>
-        <div class="navdish"><button id="prev" aria-label="Previous dish">←</button><button id="next" aria-label="Next dish">→</button></div>
+        <div class="navdish"><button id="prev" aria-label="Previous dish">←</button><button id="next" aria-label="Next dish">→</button><button class="choose" id="choose" type="button">Let the chopsticks choose</button></div>
         <p class="note">Concept preview: prices and the full menu are still to add. Please tell staff about any allergies.</p>
       </div>
     </div>
@@ -390,9 +397,9 @@ const plateSVG = ([, , , , [a, b, c]], i) => { let dots = ''; for (let k = 0; k 
   return `<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="48" fill="#FBF8F0"/><circle cx="50" cy="50" r="40" fill="none" stroke="${i % 2 ? '#2F5D3A' : '#D2452B'}" stroke-width="2" stroke-dasharray="3 5"/><circle cx="50" cy="50" r="30" fill="${a}"/>${dots}</svg>`; };
 const plates = dishes.map((dsh, i) => { const b = document.createElement('button'); b.className = 'plate'; b.setAttribute('aria-label', dsh[0]); b.innerHTML = plateSVG(dsh, i); b.addEventListener('click', () => pick(i)); ring.appendChild(b); return b; });
 let cur = 0, turn = 0;
-function pick(i) {
+function pick(i, extra = 0) {
   // rotate the shortest way so dish i ends at the bottom (towards the reader)
-  let delta = ((cur - i) % N + N) % N; if (delta > N / 2) delta -= N; turn += delta * 360 / N; cur = i;
+  let delta = ((cur - i) % N + N) % N; if (delta > N / 2) delta -= N; turn += delta * 360 / N + extra * 360; cur = i;
   ring.style.transform = `rotate(${turn}deg)`;
   plates.forEach((p, k) => { const a = (k * 360 / N + 90) * Math.PI / 180; p.style.transform = `translate(${Math.cos(a) * R}%, ${Math.sin(a) * R}%) rotate(${-turn}deg)`; p.setAttribute('aria-pressed', k === i); });
   const [n, c, desc, fav] = dishes[i];
@@ -402,6 +409,36 @@ function pick(i) {
 pick(0);
 document.getElementById('next').onclick = () => pick((cur + 1) % N);
 document.getElementById('prev').onclick = () => pick((cur - 1 + N) % N);
+
+// "Let the chopsticks choose": a long spin that lands on a random dish
+document.getElementById('choose').onclick = () => { let i; do i = Math.floor(Math.random() * N); while (i === cur);
+  if (reduce) return pick(i);
+  ring.classList.add('long'); pick(i, 2); setTimeout(() => ring.classList.remove('long'), 2700); };
+
+// steam you can blow away: canvas wisps that rise from the bowl and part around the cursor
+if (!reduce) {
+  const box = document.querySelector('.bowlbox'), cv = document.createElement('canvas'), cx = cv.getContext('2d'); box.appendChild(cv); box.classList.add('live');
+  let W, H, ps = [], mx = -999, my = -999;
+  const size = () => { const r = cv.getBoundingClientRect(); W = cv.width = r.width * devicePixelRatio; H = cv.height = r.height * devicePixelRatio; };
+  size(); addEventListener('resize', size);
+  box.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(); mx = (e.clientX - r.left) * devicePixelRatio; my = (e.clientY - r.top) * devicePixelRatio; });
+  box.addEventListener('pointerleave', () => { mx = my = -999; });
+  (function tick(t) {
+    if (ps.length < 70) ps.push({ x: W * (.36 + Math.random() * .28), y: H * .98, vx: 0, vy: -(.5 + Math.random() * .7) * devicePixelRatio, r: (10 + Math.random() * 16) * devicePixelRatio, a: 0, life: 0, s: Math.random() * 6 });
+    cx.clearRect(0, 0, W, H);
+    ps = ps.filter(p => {
+      p.life++; p.vx += Math.sin(t / 900 + p.s + p.y / (60 * devicePixelRatio)) * .02 * devicePixelRatio;
+      const dx = p.x - mx, dy = p.y - my, d = Math.hypot(dx, dy), R = 110 * devicePixelRatio;
+      if (d < R) { const f = (1 - d / R) * 1.4; p.vx += dx / d * f; p.vy += dy / d * f * .5; }
+      p.vx *= .96; p.x += p.vx; p.y += p.vy; p.r += .12 * devicePixelRatio;
+      p.a = Math.min(.55, p.life / 60) * Math.max(0, p.y / H);
+      const g = cx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r); g.addColorStop(0, `rgba(255,252,245,${p.a})`); g.addColorStop(1, 'rgba(255,255,255,0)');
+      cx.fillStyle = g; cx.beginPath(); cx.arc(p.x, p.y, p.r, 0, 7); cx.fill();
+      return p.y > -p.r && p.a > .003 || p.life < 60;
+    });
+    requestAnimationFrame(tick);
+  })(0);
+}
 </script>
 </body>
 </html>

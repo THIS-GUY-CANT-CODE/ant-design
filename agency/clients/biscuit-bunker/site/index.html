@@ -5,16 +5,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Biscuit Bunker: Video Production, Shoreditch (Concept)</title>
-<meta name="description" content="Concept redesign. Biscuit Bunker is a London video production company making commercials, branded content, animation and podcasts since 2014.">
+<meta name="description" content="Concept redesign. Biscuit Bunker is a London video production company making commercials, branded content, corporate film, animation and podcasts since 2014.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style id="kit">
+/* Second Coat motion kit: shared micro-interactions, inlined into each site by scripts/kit.js.
+   Theme it per site with --kit-accent (progress bar, cursor ring) and --kit-ink (cursor dot). */
+.kit-progress{position:fixed;inset-block-start:0;inset-inline:0;height:3px;z-index:120;pointer-events:none;background:var(--kit-accent,#FF5A36);transform-origin:0 50%;transform:scaleX(0)}
+[data-split] .kw{display:inline-block;overflow:hidden;vertical-align:top;padding-block-end:.08em;margin-block-end:-.08em}
+[data-split] .kw>span{display:inline-block;transform:translateY(105%) rotate(4deg);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 55ms)}
+[data-split].kit-in .kw>span{transform:none}
+.kit-cursor,.kit-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:130;border-radius:50%;transform:translate(-50%,-50%)}
+.kit-cursor{width:8px;height:8px;background:var(--kit-ink,#fff);mix-blend-mode:difference}
+.kit-ring{width:38px;height:38px;border:1.5px solid var(--kit-accent,#FF5A36);display:grid;place-items:center;transition:width .3s cubic-bezier(.2,.8,.2,1),height .3s cubic-bezier(.2,.8,.2,1),background .3s,border-color .3s,opacity .3s}
+.kit-ring span{font:700 .62rem/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--kit-on,#111);opacity:0;transition:opacity .2s}
+.kit-ring.link{width:64px;height:64px;background:color-mix(in srgb,var(--kit-accent,#FF5A36) 18%,transparent)}
+.kit-ring.label{width:92px;height:92px;background:var(--kit-accent,#FF5A36);border-color:transparent}
+.kit-ring.label span{opacity:1}
+.kit-ring.down{width:26px;height:26px}
+.kit-ring.gone,.kit-cursor.gone{opacity:0}
+html.kit-hide-cursor,html.kit-hide-cursor a,html.kit-hide-cursor button,html.kit-hide-cursor [data-cursor]{cursor:none}
+html.kit-hide-cursor input,html.kit-hide-cursor textarea,html.kit-hide-cursor select{cursor:auto}
+.mag{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+[data-tilt]{transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.kit-rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+.kit-rv.kit-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  [data-split] .kw>span,.kit-rv{transform:none!important;opacity:1!important;transition:none!important}
+  .kit-progress{display:none}
+}
+</style>
 <style>
 :root{
-  --bunker:#0E0D0C; --bunker-2:#1A1917; --bunker-3:#24221F; --biscuit:#D9A566; --biscuit-2:#F0C98D;
-  --cream:#F4EDE3; --rec:#E8432E; --muted:#8C857B; --line:rgba(244,237,227,.12);
-  --display:"Archivo",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
-  --max:1240px;
+  --bunker:#0E0D0C; --bunker-2:#171614; --bunker-3:#22201D; --biscuit:#D9A566; --biscuit-2:#F0C98D;
+  --cream:#F4EDE3; --rec:#E8432E; --muted:#9C958A; --line:rgba(244,237,227,.13);
+  --display:"Archivo",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace; --max:1320px;
+  --kit-accent:#E8432E; --kit-ink:#F4EDE3; --kit-on:#fff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -22,167 +49,235 @@ body{background:var(--bunker);color:var(--cream);font:400 17px/1.6 var(--display
 a{color:inherit}
 :focus-visible{outline:3px solid var(--biscuit);outline-offset:3px;border-radius:4px}
 .wrap{max-width:var(--max);margin-inline:auto;padding-inline:20px}
-.mono{font-family:var(--mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase}
+.mono{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase}
 .concept{position:relative;z-index:60;background:var(--biscuit);color:var(--bunker);text-align:center;font:600 .74rem/1.4 var(--mono);padding:7px 16px}
 .concept a{font-weight:700}
 
-/* film grain + vignette over everything */
-.grain{position:fixed;inset:-50%;z-index:50;pointer-events:none;opacity:.07;
+/* film grain over everything */
+.grain{position:fixed;inset:-50%;z-index:95;pointer-events:none;opacity:.07;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation:grain 1s steps(6) infinite}
 @keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
 
-/* letterbox intro */
-.letterbox{position:fixed;inset-inline:0;height:50vh;background:#000;z-index:70;pointer-events:none;animation:open 1.4s cubic-bezier(.7,0,.2,1) .35s forwards}
-.letterbox.top{top:0}.letterbox.bot{bottom:0;animation-name:openb}
-@keyframes open{to{transform:translateY(-100%)}}@keyframes openb{to{transform:translateY(100%)}}
+/* PRELOADER: counts the reel in, then opens like a letterbox */
+.pre{position:fixed;inset:0;z-index:110;pointer-events:none}
+.pre .pane{position:absolute;inset-inline:0;height:50.5%;background:#000;transition:transform 1s cubic-bezier(.7,0,.2,1)}
+.pre .pane.t{top:0}.pre .pane.b{bottom:0}
+.pre.done .pane.t{transform:translateY(-100%)}.pre.done .pane.b{transform:translateY(100%)}
+.pre .c{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:22px;transition:opacity .3s}
+.pre.done .c{opacity:0}
+.pre svg{width:120px}
+.pre .count{font:600 .8rem var(--mono);letter-spacing:.3em;color:var(--muted)}
+.pre .count b{color:var(--cream);font-weight:600}
+.pre.skip{display:none}
 
-header{position:sticky;top:0;z-index:40;background:rgba(14,13,12,.72);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:16px}
+/* HEADER */
+header{position:fixed;inset-inline:0;top:32px;z-index:40;transition:top .3s,background .3s}
+header.stuck{top:0;background:rgba(14,13,12,.75);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:16px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:1.02rem;letter-spacing:-.01em}
-.logo svg{width:42px}
-.nav ul{display:flex;gap:30px;list-style:none}
-.nav ul a{text-decoration:none;color:var(--muted);font:500 .9rem var(--display);transition:color .2s}
-.nav ul a:hover{color:var(--cream)}
-.btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;background:var(--biscuit);color:var(--bunker);text-decoration:none;font-weight:700;padding:13px 22px;border-radius:999px;border:0;font-size:.92rem;cursor:pointer;transition:transform .25s,background .25s;font-family:inherit}
-.btn:hover{background:var(--cream);transform:translateY(-2px)}
-.btn.ghost{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px var(--line)}
+.logo svg{width:44px}
+.logo:hover .reclight{animation:blink .6s steps(1) infinite}
+.nav-r{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;background:var(--biscuit);color:var(--bunker);text-decoration:none;font:700 .92rem var(--display);padding:14px 22px;border-radius:999px;border:0;cursor:pointer;transition:background .25s,color .25s}
+.btn:hover{background:var(--cream)}
+.btn.ghost{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 1px rgba(244,237,227,.35)}
 .btn.ghost:hover{box-shadow:inset 0 0 0 1px var(--cream)}
+.btn .arrow{display:inline-block;transition:transform .3s}
+.btn:hover .arrow{transform:translateX(4px)}
+.menubtn{display:inline-flex;align-items:center;gap:10px;background:rgba(14,13,12,.35);border:1px solid rgba(244,237,227,.3);color:var(--cream);border-radius:999px;padding:12px 18px;cursor:pointer;font:600 .72rem var(--mono);letter-spacing:.16em;text-transform:uppercase}
+.menubtn i{display:grid;gap:4px}.menubtn i::before,.menubtn i::after{content:"";width:18px;height:1.5px;background:currentColor;transition:transform .3s}
+.menubtn[aria-expanded="true"] i::before{transform:translateY(2.75px) rotate(45deg)}.menubtn[aria-expanded="true"] i::after{transform:translateY(-2.75px) rotate(-45deg)}
 .dot{width:9px;height:9px;border-radius:50%;background:var(--rec);box-shadow:0 0 12px var(--rec);animation:blink 1.2s steps(1) infinite;display:inline-block}
 @keyframes blink{50%{opacity:.15}}
-@media (max-width:860px){.nav ul{display:none}}
-@media (max-width:520px){.nav>.btn{display:none}}
+@media (max-width:560px){.nav-r .btn{display:none}}
 
-/* HERO: a viewfinder */
-.hero{position:relative;min-height:calc(100svh - 96px);display:grid;align-items:center;padding-block:40px 80px;isolation:isolate}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;background:
-  radial-gradient(60% 50% at 78% 30%,rgba(217,165,102,.22),transparent 70%),
-  radial-gradient(40% 40% at 12% 85%,rgba(232,67,46,.16),transparent 70%)}
-.vf{position:absolute;inset:22px;pointer-events:none;z-index:-1}
-.vf i{position:absolute;width:38px;height:38px;border:2px solid rgba(244,237,227,.55)}
+/* FULLSCREEN MENU */
+.menu{position:fixed;inset:0;z-index:39;background:var(--bunker);clip-path:circle(0 at calc(100% - 60px) 60px);transition:clip-path .8s cubic-bezier(.7,0,.2,1),visibility 0s .8s;display:grid;align-content:center;visibility:hidden}
+.menu.open{clip-path:circle(150% at calc(100% - 60px) 60px);visibility:visible;transition:clip-path .8s cubic-bezier(.7,0,.2,1)}
+.menu ol{list-style:none}
+.menu li{overflow:hidden}
+.menu a{display:flex;align-items:baseline;gap:20px;text-decoration:none;font:900 clamp(2.8rem,9vw,7.5rem)/1 var(--display);font-stretch:125%;letter-spacing:-.04em;padding-block:4px;transform:translateY(110%);transition:transform .8s cubic-bezier(.2,.8,.2,1),color .3s}
+.menu.open a{transform:none}
+.menu li:nth-child(2) a{transition-delay:.06s}.menu li:nth-child(3) a{transition-delay:.12s}.menu li:nth-child(4) a{transition-delay:.18s}.menu li:nth-child(5) a{transition-delay:.24s}
+.menu a small{font:600 .8rem var(--mono);color:var(--rec);letter-spacing:.1em}
+.menu a:hover{color:var(--biscuit)}
+.menu .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:50px;color:var(--muted)}
+
+/* HERO: a reel of generated "shots" that hard-cut in time, under a viewfinder */
+.hero{position:relative;height:100svh;min-height:640px}
+.stage{position:absolute;inset:0;overflow:hidden;transform-origin:50% 0;will-change:transform;background:#000}
+.scene{position:absolute;inset:0;visibility:hidden;overflow:hidden}
+.scene.on{visibility:visible}
+.scene::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%,transparent 40%,rgba(0,0,0,.75))}
+/* 1 golden hour */
+.s1{background:linear-gradient(170deg,#4a2a10,#1a0f07 60%,#0e0d0c)}
+.s1 .sun{position:absolute;width:70vmax;aspect-ratio:1;border-radius:50%;left:40%;top:-20%;background:radial-gradient(circle,#FFE2B0 0,#F0C98D 12%,rgba(217,165,102,.4) 35%,transparent 65%);animation:sun 9s ease-in-out infinite alternate}
+.s1 .flare{position:absolute;left:-10%;right:-10%;top:38%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,230,190,.8),transparent);filter:blur(1px);box-shadow:0 0 30px 6px rgba(255,200,120,.35);animation:flare 9s ease-in-out infinite alternate}
+@keyframes sun{to{transform:translate(-18%,12%) scale(1.1)}}
+@keyframes flare{to{transform:translateY(40px) rotate(-3deg)}}
+/* 2 synth neon */
+.s2{background:linear-gradient(180deg,#12040a 0,#3a0c14 48%,#0b0304 48.2%)}
+.s2 .ball{position:absolute;left:50%;top:12%;width:36vmin;aspect-ratio:1;transform:translateX(-50%);border-radius:50%;background:linear-gradient(180deg,#F0C98D,#E8432E 70%);
+  -webkit-mask:repeating-linear-gradient(180deg,#000 0 12px,transparent 12px 16px);mask:repeating-linear-gradient(180deg,#000 0 12px,transparent 12px 16px);box-shadow:0 0 80px rgba(232,67,46,.6)}
+.s2 .floor{position:absolute;left:-50%;right:-50%;bottom:0;height:52%;transform:perspective(260px) rotateX(62deg);transform-origin:50% 0;
+  background:linear-gradient(transparent 0 94%,#E8432E 94%) 0 0/100% 46px,linear-gradient(90deg,transparent 0 97%,#E8432E 97%) 0 0/70px 100%;animation:floor .7s linear infinite;opacity:.9}
+@keyframes floor{to{background-position:0 46px,0 0}}
+/* 3 studio spotlight */
+.s3{background:radial-gradient(90% 60% at 50% 100%,#2a2724,#0b0a09)}
+.s3 .beam{position:absolute;left:50%;top:-10%;width:120vmax;height:140%;transform-origin:50% 0;background:conic-gradient(from 168deg at 50% 0,transparent 0deg,rgba(255,236,205,.28) 12deg,transparent 24deg);animation:beam 7s ease-in-out infinite alternate;translate:-50% 0}
+@keyframes beam{from{transform:rotate(-16deg)}to{transform:rotate(16deg)}}
+.s3 svg{position:absolute;left:50%;bottom:6%;height:44%;translate:-50% 0;opacity:.9}
+/* 4 animation blobs */
+.s4{background:#1b1512}
+.s4 i{position:absolute;width:42vmin;aspect-ratio:1;mix-blend-mode:screen;filter:blur(2px);animation:morph 8s ease-in-out infinite,spin 18s linear infinite}
+.s4 i:nth-child(1){left:18%;top:22%;background:#D9A566}
+.s4 i:nth-child(2){left:44%;top:30%;background:#E8432E;animation-duration:10s,22s;animation-direction:alternate,reverse}
+.s4 i:nth-child(3){left:32%;top:48%;background:#4a6fd1;animation-duration:9s,16s}
+@keyframes morph{0%,100%{border-radius:42% 58% 63% 37%/41% 44% 56% 59%}50%{border-radius:68% 32% 39% 61%/56% 63% 37% 44%}}
+@keyframes spin{to{rotate:360deg}}
+/* 5 bokeh */
+.s5{background:linear-gradient(160deg,#10151f,#07090d)}
+.s5 b{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,220,170,.9),rgba(255,200,140,.25) 60%,transparent 70%);animation:float linear infinite alternate}
+@keyframes float{from{transform:translateY(20px)}to{transform:translateY(-60px)}}
+/* 6 podcast waveform */
+.s6{background:radial-gradient(70% 60% at 50% 55%,#2b1d12,#0b0a09)}
+.s6 .wave{position:absolute;left:8%;right:8%;top:36%;height:30%;display:flex;align-items:center;gap:.6%}
+.s6 .wave i{flex:1;height:100%;background:linear-gradient(#F0C98D,#D9A566);border-radius:6px;transform:scaleY(.1);animation:eq ease-in-out infinite alternate}
+@keyframes eq{to{transform:scaleY(1)}}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:3}
+.flash.go{animation:cutflash .1s}
+@keyframes cutflash{50%{opacity:.5}}
+
+.vf{position:absolute;inset:24px;pointer-events:none;z-index:4}
+.vf i{position:absolute;width:40px;height:40px;border:2px solid rgba(244,237,227,.7)}
 .vf i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}.vf i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
 .vf i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}.vf i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
-.vf .cross{position:absolute;left:50%;top:50%;width:26px;height:26px;transform:translate(-50%,-50%);opacity:.35}
-.vf .cross::before,.vf .cross::after{content:"";position:absolute;background:var(--cream)}
-.vf .cross::before{left:50%;top:0;bottom:0;width:1px}.vf .cross::after{top:50%;left:0;right:0;height:1px}
-.hud{position:absolute;inset-inline:44px;display:flex;justify-content:space-between;color:var(--muted);z-index:1}
-.hud.t{top:36px}.hud.b{bottom:36px}
+.thirds{position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .6s;
+  background:linear-gradient(90deg,transparent calc(33.33% - .5px),rgba(244,237,227,.18) calc(33.33% - .5px) calc(33.33% + .5px),transparent 0 calc(66.66% - .5px),rgba(244,237,227,.18) 0 calc(66.66% + .5px),transparent 0),
+             linear-gradient(transparent calc(33.33% - .5px),rgba(244,237,227,.18) calc(33.33% - .5px) calc(33.33% + .5px),transparent 0 calc(66.66% - .5px),rgba(244,237,227,.18) 0 calc(66.66% + .5px),transparent 0)}
+.hero:hover .thirds{opacity:1}
+.hud{position:absolute;inset-inline:52px;display:flex;justify-content:space-between;gap:16px;z-index:5;color:rgba(244,237,227,.8);text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.hud.t{top:120px}.hud.b{bottom:40px}
 .hud .rec{display:flex;align-items:center;gap:8px;color:var(--cream)}
 .tc{font-variant-numeric:tabular-nums;color:var(--cream)}
-@media (max-width:640px){.hud{inset-inline:30px}.hud .hide-sm{display:none}.vf .cross{display:none}}
-h1{font-weight:900;font-size:clamp(3.2rem,11.5vw,10.5rem);line-height:.86;letter-spacing:-.055em;margin-block:18px 30px}
-h1 .ln{display:block;overflow:hidden}
-h1 .ln span{display:block;transform:translateY(105%);animation:rise 1s cubic-bezier(.2,.8,.2,1) forwards}
-h1 .ln:nth-child(2) span{animation-delay:.12s}
-h1 em{font-style:normal;color:var(--biscuit);-webkit-text-stroke:0}
-h1 .outline{color:transparent;-webkit-text-stroke:2px var(--cream)}
-@keyframes rise{to{transform:none}}
-.hero .lede{max-width:540px;font-size:1.15rem;color:#cfc7bb;opacity:0;animation:fade 1s ease 1.4s forwards}
-.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;opacity:0;animation:fade 1s ease 1.6s forwards}
-@keyframes fade{to{opacity:1}}
+.hero .copy{position:absolute;inset-inline:0;bottom:13vh;z-index:5}
+h1{font-weight:900;font-stretch:125%;font-size:clamp(2.6rem,8.4vw,9.6rem);line-height:.86;letter-spacing:-.05em;text-shadow:0 6px 40px rgba(0,0,0,.35)}
+h1 .l{display:block}
+h1 .scr{color:var(--biscuit);cursor:default}
+.kinetic{margin-top:26px;font:500 clamp(1.05rem,1.9vw,1.5rem)/1.3 var(--display);max-width:36em}
+.roll{display:inline-grid;overflow:hidden;height:1.3em;vertical-align:bottom}
+.roll span{grid-area:1/1;color:var(--biscuit);font-weight:800;transition:transform .5s cubic-bezier(.7,0,.2,1);white-space:nowrap}
+.roll span.out{transform:translateY(-110%)}.roll span.in{transform:translateY(110%)}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+@media (max-width:700px){.hud{inset-inline:36px}.hud .hide-sm{display:none}.hud.t{top:110px}.hero .copy{bottom:11vh}}
 
-/* marquee */
-.strip{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;background:var(--bunker-2)}
-.strip div{display:inline-block;padding-block:20px;animation:scroll 34s linear infinite;font-weight:900;font-size:clamp(1.4rem,3vw,2.2rem);letter-spacing:-.02em;color:var(--muted)}
-.strip b{color:var(--cream);font-weight:900}
-.strip span{color:var(--rec);margin-inline:26px;font-size:.6em;vertical-align:middle}
-@keyframes scroll{to{transform:translateX(-50%)}}
+/* VELOCITY MARQUEE */
+.strip{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;background:var(--bunker-2);padding-block:22px}
+.strip .row{display:inline-flex;align-items:center;will-change:transform}
+.strip .row span{font:900 clamp(1.6rem,4vw,3.4rem)/1 var(--display);font-stretch:125%;letter-spacing:-.03em;padding-inline:.4em;color:transparent;-webkit-text-stroke:1.2px rgba(244,237,227,.55)}
+.strip .row span:nth-of-type(odd){color:var(--cream);-webkit-text-stroke:0}
+.strip .row em{font-style:normal;color:var(--rec);font-size:1.2rem}
 
-section{padding-block:120px}
-.eyebrow{color:var(--biscuit);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+section{padding-block:130px}
+.eyebrow{color:var(--biscuit);margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .eyebrow::before{content:"";width:26px;height:1px;background:currentColor}
-h2{font-weight:900;font-size:clamp(2.4rem,5.8vw,4.8rem);line-height:.95;letter-spacing:-.045em;max-width:15ch}
+h2{font-weight:900;font-stretch:112%;font-size:clamp(2.4rem,6vw,5.6rem);line-height:.92;letter-spacing:-.045em;max-width:15ch}
 
-/* reveal on scroll */
-.rv{opacity:0;transform:translateY(40px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
-.rv.in{opacity:1;transform:none}
+/* STATEMENT: words light up as you read */
+.statement p{font:700 clamp(1.8rem,4.2vw,3.6rem)/1.12 var(--display);letter-spacing:-.03em;max-width:22ch}
+.statement .w{color:rgba(244,237,227,.16);transition:color .25s}
+.statement .w.lit{color:var(--cream)}
+.statement .w.hot.lit{color:var(--biscuit)}
 
-/* SERVICES as a film strip */
-.film{margin-top:60px;background:#050505;padding:26px 0;position:relative;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
-.film::before,.film::after{content:"";position:absolute;inset-inline:0;height:14px;background:repeating-linear-gradient(90deg,transparent 0 12px,var(--bunker-3) 12px 26px);opacity:.9}
-.film::before{top:6px}.film::after{bottom:6px}
-.frames{display:flex;gap:14px;padding-inline:max(20px,calc((100vw - var(--max))/2 + 20px));width:max-content}
-.frame{scroll-snap-align:start;width:min(78vw,330px);aspect-ratio:4/5;border-radius:6px;padding:26px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:var(--bunker-2)}
-.frame::before{content:"";position:absolute;inset:0;background:var(--g);opacity:.55;transition:opacity .4s,transform .8s;transform:scale(1.02)}
-.frame:hover::before{opacity:.85;transform:scale(1.1)}
-.frame>*{position:relative}
-.frame .n{color:var(--cream);opacity:.7}
-.frame h3{font-weight:900;font-size:2rem;line-height:.95;letter-spacing:-.03em}
-.frame p{color:#e6ddd0;font-size:.95rem;margin-top:10px}
-.hint{margin-top:14px;color:var(--muted)}
+/* SERVICES: pinned sideways scroll through five reels */
+.hs{position:relative}
+.hs .pin{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.hs h2{font-size:clamp(2.2rem,4.4vw,4.2rem);max-width:20ch}
+.hs .head{padding-top:70px;padding-inline:max(20px,calc((100vw - var(--max))/2 + 20px));margin-bottom:34px;display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap}
+.hs .track{display:flex;gap:22px;padding-inline:max(20px,calc((100vw - var(--max))/2 + 20px));will-change:transform}
+.reel{position:relative;flex:none;height:min(58vh,520px);aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:#000;isolation:isolate}
+.reel .scene{visibility:visible}
+.reel .meta{position:absolute;inset:0;z-index:3;padding:26px;background:linear-gradient(transparent 45%,rgba(0,0,0,.65));display:flex;flex-direction:column;justify-content:space-between}
+.reel .meta .top{display:flex;justify-content:space-between}
+.reel h3{font:900 clamp(2rem,3.4vw,2.8rem)/.92 var(--display);font-stretch:118%;letter-spacing:-.04em}
+.reel p{color:#e8e0d4;margin-top:10px;max-width:26ch}
+.hs .bar{height:2px;background:var(--line);margin:34px max(20px,calc((100vw - var(--max))/2 + 20px)) 0;position:relative}
+.hs .bar i{position:absolute;inset-block:0;left:0;width:0;background:var(--rec)}
+@media (max-width:900px){.reel{height:auto;width:min(80vw,400px)}.hs .pin{position:relative;height:auto;padding-block:110px}.hs .track{overflow-x:auto;scroll-snap-type:x mandatory}.reel{scroll-snap-align:start}.hs .bar{display:none}}
 
-/* WORK with play cursor */
+/* WORK: grid or index, with a floating preview */
 .work-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap}
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-.filters button{font:500 .88rem var(--display);background:transparent;color:var(--cream);border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;transition:all .2s}
-.filters button[aria-pressed="true"]{background:var(--cream);color:var(--bunker);border-color:var(--cream)}
-.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-top:44px}
-.tile{grid-column:span 2;text-decoration:none;display:block;cursor:none}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:4px}
+.seg button,.filters button{font:600 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--cream);border:0;border-radius:999px;padding:9px 14px;cursor:pointer;transition:background .2s,color .2s}
+.seg button[aria-pressed="true"],.filters button[aria-pressed="true"]{background:var(--cream);color:var(--bunker)}
+.filters{display:flex;gap:4px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-top:46px}
+.tile{grid-column:span 2;text-decoration:none;display:block}
 .tile.w{grid-column:span 4}
-.tile[hidden]{display:none}
-.shot{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:var(--bunker-3)}
-.tile.w .shot{aspect-ratio:auto;height:100%;min-height:300px}
-.shot .fx{position:absolute;inset:-30%;background:var(--g);filter:saturate(1.1);animation:drift 14s ease-in-out infinite alternate;transition:transform .8s}
-.tile:hover .shot .fx{transform:scale(1.12)}
-@keyframes drift{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(8%,-6%) rotate(8deg)}}
-.shot .leak{position:absolute;inset:0;background:radial-gradient(50% 60% at 80% 20%,rgba(255,200,120,.35),transparent 60%);mix-blend-mode:screen;animation:leak 6s ease-in-out infinite alternate}
-@keyframes leak{to{opacity:.3;transform:translateX(-10%)}}
-.shot .meta-tc{position:absolute;inset-block-start:12px;inset-inline:14px;display:flex;justify-content:space-between;color:rgba(255,255,255,.85);text-shadow:0 1px 2px rgba(0,0,0,.6)}
-.shot .ph{position:absolute;inset-block-end:12px;inset-inline-start:14px;background:rgba(0,0,0,.55);padding:4px 8px;border-radius:5px}
+.tile[hidden],.row-i[hidden]{display:none}
+.shot{position:relative;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:#000;isolation:isolate}
+.tile.w .shot{aspect-ratio:auto;height:calc(100% - 52px);min-height:300px}
+.shot .scene{visibility:visible;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.tile:hover .shot .scene{transform:scale(1.08)}
+.shot .tcx{position:absolute;inset-block-start:12px;inset-inline:14px;display:flex;justify-content:space-between;color:rgba(255,255,255,.85);z-index:3}
+.shot .ph{position:absolute;inset-block-end:12px;inset-inline-start:14px;background:rgba(0,0,0,.55);padding:4px 8px;border-radius:5px;z-index:3}
 .tile .meta{display:flex;justify-content:space-between;gap:12px;padding-block:14px 0}
 .tile h3{font-size:1.1rem;font-weight:700}
 .tile .meta .mono{color:var(--muted)}
-.g1{--g:radial-gradient(40% 50% at 30% 30%,#F0C98D,transparent),linear-gradient(135deg,#7a4a1c,#1a0f06)}
-.g2{--g:radial-gradient(40% 50% at 70% 40%,#8c7bff,transparent),linear-gradient(135deg,#2a1f6b,#0a0718)}
-.g3{--g:radial-gradient(50% 50% at 40% 60%,#ff6a4d,transparent),linear-gradient(135deg,#6b1509,#120302)}
-.g4{--g:radial-gradient(45% 55% at 60% 30%,#79c2c8,transparent),linear-gradient(135deg,#123c45,#030b0d)}
-.g5{--g:radial-gradient(45% 55% at 30% 60%,#b6d17a,transparent),linear-gradient(135deg,#34491f,#070b04)}
-.g6{--g:radial-gradient(45% 55% at 70% 70%,#f4ede3,transparent),linear-gradient(135deg,#7a6f60,#15130f)}
-@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}.tile,.tile.w{grid-column:auto}.tile.w .shot{aspect-ratio:16/10;min-height:0;height:auto}}
-.cursor{position:fixed;left:0;top:0;width:92px;height:92px;border-radius:50%;background:var(--rec);color:#fff;display:grid;place-items:center;font:700 .7rem var(--mono);letter-spacing:.14em;pointer-events:none;z-index:45;transform:translate(-50%,-50%) scale(0);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
-.cursor.on{transform:translate(-50%,-50%) scale(1)}
-@media (hover:none){.cursor{display:none}.tile{cursor:pointer}}
+.index{margin-top:46px;border-top:1px solid var(--line);display:none}
+.work.list .grid{display:none}.work.list .index{display:block}
+.row-i{display:grid;grid-template-columns:70px minmax(0,1fr) 180px 90px;gap:20px;align-items:center;padding-block:26px;border-bottom:1px solid var(--line);text-decoration:none;position:relative}
+.row-i .t{font:900 clamp(1.6rem,4vw,3.4rem)/1 var(--display);font-stretch:118%;letter-spacing:-.04em;transition:transform .5s cubic-bezier(.2,.8,.2,1),color .3s}
+.row-i:hover .t{transform:translateX(24px);color:var(--biscuit)}
+.row-i .mono{color:var(--muted)}
+.preview{position:fixed;left:0;top:0;width:340px;aspect-ratio:16/10;border-radius:10px;overflow:hidden;pointer-events:none;z-index:38;opacity:0;scale:.6;transition:opacity .3s,scale .4s cubic-bezier(.2,.8,.2,1);background:#000}
+.preview.on{opacity:1;scale:1}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}.tile,.tile.w{grid-column:auto}.tile.w .shot{aspect-ratio:16/10;min-height:0;height:auto}.row-i{grid-template-columns:40px minmax(0,1fr)}.row-i .hide-sm{display:none}}
+@media (hover:none){.preview{display:none}}
 
 /* STORY */
 .story{background:var(--cream);color:var(--bunker);position:relative;overflow:hidden}
-.story .cols{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:70px;align-items:center}
-.story .eyebrow{color:#9a6a2e}
-.story h2{color:var(--bunker)}
+.story .cols{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:70px;align-items:center;position:relative;z-index:1}
+.story .eyebrow{color:#8a5d25}
 .story p{font-size:1.15rem;margin-top:20px;color:#3d3a35;max-width:52ch}
 .stamp{aspect-ratio:1;border-radius:50%;background:var(--bunker);display:grid;place-items:center;position:relative}
 .stamp svg.bone{width:62%;animation:thud 3.2s cubic-bezier(.3,1.6,.5,1) infinite}
 @keyframes thud{0%,60%,100%{transform:scale(1) rotate(-6deg)}70%{transform:scale(.86) rotate(-6deg)}}
 .stamp .ring{position:absolute;inset:6%;animation:spin 30s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
 .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
 .fact{border-top:2px solid var(--bunker);padding-top:12px}
-.fact b{display:block;font-size:3rem;font-weight:900;letter-spacing:-.04em;line-height:1}
+.fact b{display:block;font-size:3.2rem;font-weight:900;font-stretch:118%;letter-spacing:-.04em;line-height:1}
+.story .big{position:absolute;inset-inline-start:-2%;bottom:-4%;font:900 22vw/.8 var(--display);font-stretch:125%;letter-spacing:-.06em;color:rgba(14,13,12,.05);pointer-events:none;white-space:nowrap}
 @media (max-width:860px){.story .cols{grid-template-columns:minmax(0,1fr)}.stamp{max-width:360px;width:100%;margin-inline:auto}}
 
 /* PROCESS as an edit timeline */
 .timeline{margin-top:56px;background:var(--bunker-2);border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;overflow:hidden}
 .ruler{display:grid;grid-template-columns:70px repeat(4,1fr);color:var(--muted);margin-bottom:10px}
 .ruler span{border-left:1px solid var(--line);padding-left:8px}
-.track{display:grid;grid-template-columns:70px repeat(4,1fr);gap:4px;align-items:stretch;margin-top:8px}
-.track .lab{color:var(--muted);display:flex;align-items:center}
-.clip{border-radius:6px;padding:14px 14px;min-height:92px;color:var(--bunker)}
-.clip h3{font-weight:900;font-size:1.05rem;letter-spacing:-.01em}
+.track2{display:grid;grid-template-columns:70px repeat(4,1fr);gap:4px;align-items:stretch;margin-top:8px}
+.track2 .lab{color:var(--muted);display:flex;align-items:center}
+.clip{border-radius:6px;padding:14px;min-height:92px;color:var(--bunker);transition:transform .3s,filter .3s}
+.clip:hover{transform:translateY(-4px);filter:brightness(1.08)}
+.clip h3{font-weight:900;font-size:1.05rem}
 .clip p{font-size:.85rem;margin-top:4px;opacity:.85}
 .c1{background:#D9A566}.c2{background:#F0C98D}.c3{background:#E8432E;color:#fff}.c4{background:#F4EDE3}
-.audio{height:34px;border-radius:6px;background:repeating-linear-gradient(90deg,rgba(217,165,102,.55) 0 2px,transparent 2px 5px);mask:linear-gradient(0deg,#000,#000);opacity:.6}
-.playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--rec);left:calc(22px + 70px);box-shadow:0 0 12px var(--rec);transition:left .12s linear}
+.audio{height:34px;border-radius:6px;background:repeating-linear-gradient(90deg,rgba(217,165,102,.55) 0 2px,transparent 2px 5px);opacity:.6}
+.playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--rec);left:92px;box-shadow:0 0 12px var(--rec)}
 .playhead::before{content:"";position:absolute;top:0;left:-7px;border:8px solid transparent;border-top-color:var(--rec)}
-@media (max-width:760px){.ruler,.track{grid-template-columns:minmax(0,1fr)}.ruler{display:none}.track .lab{display:none}.audio{display:none}.playhead{display:none}}
+@media (max-width:760px){.ruler,.track2{grid-template-columns:minmax(0,1fr)}.ruler,.track2 .lab,.audio,.playhead{display:none}}
 
-/* QUOTE */
 blockquote{font-weight:700;font-size:clamp(1.7rem,3.8vw,3rem);line-height:1.12;letter-spacing:-.025em;max-width:24ch}
 blockquote + p{margin-top:24px;color:var(--muted)}
 
-/* CONTACT as a clapperboard */
+/* CONTACT: a clapperboard */
 .slate{max-width:640px;border-radius:12px;overflow:hidden;background:#111;border:1px solid var(--line)}
 .clap{height:46px;background:repeating-linear-gradient(135deg,#f4ede3 0 26px,#111 26px 52px);transform-origin:left bottom;transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
 .slate:hover .clap,.slate:focus-within .clap{transform:rotate(-8deg)}
-.slate form{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:3px solid #000}
+.slate.snap .clap{animation:snap .35s cubic-bezier(.6,0,.4,1)}
+@keyframes snap{0%{transform:rotate(-14deg)}100%{transform:rotate(0)}}
+.slate form{display:grid;grid-template-columns:1fr 1fr;border-top:3px solid #000}
 .slate label{display:grid;gap:4px;padding:14px 16px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);color:var(--muted)}
 .slate label.full{grid-column:1/-1;border-right:0}
 .slate input,.slate select,.slate textarea{font:500 1rem var(--display);color:var(--cream);background:transparent;border:0;outline:0;padding:2px 0}
@@ -194,151 +289,196 @@ blockquote + p{margin-top:24px;color:var(--muted)}
 .details a{text-decoration:none;border-bottom:1px solid var(--biscuit);justify-self:start}
 @media (max-width:860px){.contact .cols{grid-template-columns:minmax(0,1fr)}.slate form{grid-template-columns:minmax(0,1fr)}.slate label{border-right:0}}
 
-footer{border-top:1px solid var(--line);padding-block:34px;color:var(--muted)}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+/* FOOTER: a title card */
+footer{border-top:1px solid var(--line);padding-top:60px;overflow:hidden}
+.bigword{font:900 clamp(3.4rem,15vw,17rem)/.8 var(--display);font-stretch:125%;letter-spacing:-.06em;color:var(--cream);white-space:nowrap;clip-path:inset(0 100% 0 0);transition:clip-path 1.6s cubic-bezier(.7,0,.2,1)}
+.bigword.in{clip-path:inset(0 0 0 0)}
+.bigword em{font-style:normal;color:var(--rec)}
+.fbar{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:26px 34px;color:var(--muted);border-top:1px solid var(--line);margin-top:30px}
+.fbar a{text-decoration:none}.fbar a:hover{color:var(--cream)}
+
+/* SHOWREEL LEADER */
+.leader{position:fixed;inset:0;z-index:90;background:#0b0a09;display:none;place-items:center;color:var(--cream)}
+.leader.on{display:grid}
+.leader .dial{position:relative;width:min(70vmin,560px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;overflow:hidden;
+  background:conic-gradient(from 0deg,rgba(217,165,102,.55) var(--a,0deg),rgba(244,237,227,.08) var(--a,0deg));box-shadow:0 0 0 3px rgba(244,237,227,.8),0 0 0 14px #0b0a09,0 0 0 16px rgba(244,237,227,.5)}
+.leader .dial::before,.leader .dial::after{content:"";position:absolute;background:rgba(244,237,227,.7)}
+.leader .dial::before{left:50%;top:0;bottom:0;width:2px;transform:translateX(-50%)}
+.leader .dial::after{top:50%;left:0;right:0;height:2px;transform:translateY(-50%)}
+.leader .n{position:relative;z-index:1;font:900 clamp(8rem,34vmin,20rem)/1 var(--display);letter-spacing:-.06em}
+.leader .end{display:none;position:relative;z-index:1;text-align:center;padding:20px}
+.leader.done .dial{display:none}.leader.done .end{display:block}
+.leader .end h2{max-width:none;margin-bottom:18px}
+.leader .end p{color:var(--muted);margin-bottom:24px}
+.leader .x{position:absolute;top:20px;right:20px;background:none;border:1px solid var(--line);color:var(--cream);border-radius:999px;width:48px;height:48px;font-size:1.3rem;cursor:pointer;z-index:2}
+.leader .lf{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+.leader .lf.go{animation:cutflash .12s}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .letterbox{display:none}.rv{opacity:1;transform:none}
-  h1 .ln span,.hero .lede,.hero .ctas{transform:none;opacity:1}
+  .pre{display:none}.bigword{clip-path:none}.menu a{transform:none}
+  .hs .pin{position:relative;height:auto;padding-block:110px}.hs .track{overflow-x:auto}.hs .bar{display:none}
 }
 </style>
 </head>
-<body>
-<div class="letterbox top" aria-hidden="true"></div><div class="letterbox bot" aria-hidden="true"></div>
+<body data-kit-cursor>
+<div class="pre" id="pre" aria-hidden="true">
+  <div class="pane t"></div><div class="pane b"></div>
+  <div class="c">
+    <svg viewBox="0 0 80 40"><defs><clipPath id="fillc"><rect id="fillr" x="0" y="40" width="80" height="40"/></clipPath></defs>
+      <g fill="none" stroke="#3a3632" stroke-width="1.5"><circle cx="10" cy="11" r="9"/><circle cx="10" cy="29" r="9"/><circle cx="70" cy="11" r="9"/><circle cx="70" cy="29" r="9"/><rect x="10" y="9" width="60" height="22" rx="4"/></g>
+      <g fill="#D9A566" clip-path="url(#fillc)"><circle cx="10" cy="11" r="9"/><circle cx="10" cy="29" r="9"/><circle cx="70" cy="11" r="9"/><circle cx="70" cy="29" r="9"/><rect x="10" y="9" width="60" height="22" rx="4"/></g>
+      <circle cx="40" cy="20" r="5" fill="#E8432E"/></svg>
+    <span class="count">LOADING REEL · <b id="pct">000</b></span>
+  </div>
+</div>
 <div class="grain" aria-hidden="true"></div>
-<div class="cursor" aria-hidden="true">▶ PLAY</div>
 
 <div class="concept" role="note">CONCEPT REDESIGN by Second Coat. This is not the official Biscuit Bunker website. <a href="https://biscuitbunker.com/">Visit the real site →</a></div>
 
-<header>
+<header id="hdr">
   <nav class="wrap nav" aria-label="Main">
     <a class="logo" href="#top" aria-label="Biscuit Bunker home">
-      <svg viewBox="0 0 80 40" aria-hidden="true"><g fill="#D9A566"><circle cx="10" cy="11" r="9"/><circle cx="10" cy="29" r="9"/><circle cx="70" cy="11" r="9"/><circle cx="70" cy="29" r="9"/><rect x="10" y="9" width="60" height="22" rx="4"/></g><circle cx="40" cy="20" r="5" fill="#E8432E"/></svg>
+      <svg viewBox="0 0 80 40" aria-hidden="true"><g fill="#D9A566"><circle cx="10" cy="11" r="9"/><circle cx="10" cy="29" r="9"/><circle cx="70" cy="11" r="9"/><circle cx="70" cy="29" r="9"/><rect x="10" y="9" width="60" height="22" rx="4"/></g><circle class="reclight" cx="40" cy="20" r="5" fill="#E8432E"/></svg>
       Biscuit Bunker
     </a>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#story">Story</a></li>
-      <li><a href="#process">Process</a></li>
-    </ul>
-    <a class="btn" href="#contact"><span class="dot"></span> Start a project</a>
+    <div class="nav-r">
+      <a class="btn mag" href="#contact"><span class="dot"></span> Start a project</a>
+      <button class="menubtn" id="menubtn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i><span>Menu</span></button>
+    </div>
   </nav>
 </header>
 
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="wrap">
+    <ol>
+      <li><a href="#work"><small>01</small><span>Work</span></a></li>
+      <li><a href="#services"><small>02</small><span>Services</span></a></li>
+      <li><a href="#story"><small>03</small><span>Story</span></a></li>
+      <li><a href="#process"><small>04</small><span>Process</span></a></li>
+      <li><a href="#contact"><small>05</small><span>Contact</span></a></li>
+    </ol>
+    <div class="foot mono"><span>Shoreditch · London EC2A 4NE</span><span>LDN <span class="clock">00:00:00</span></span></div>
+  </div>
+</div>
+
 <main id="top">
-  <section class="hero">
-    <div class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="cross"></span></div>
-    <div class="hud t mono" aria-hidden="true"><span class="rec"><span class="dot"></span> REC</span><span class="hide-sm">4K · 25FPS · ISO 800</span><span class="tc" id="tc">00:00:00:00</span></div>
-    <div class="hud b mono" aria-hidden="true"><span>SHOREDITCH · LONDON</span><span class="hide-sm">EST. 2014</span><span>▮▮▮▮▯ 82%</span></div>
-    <div class="wrap">
-      <span class="eyebrow mono">Video production · since 2014</span>
-      <h1><span class="ln"><span>Good content.</span></span><span class="ln"><span><em>Fetched.</em></span></span></h1>
-      <p class="lede">A full-service video production company working out of a converted dog biscuit factory. We make commercials, branded content, animation and podcasts for agencies and brands of every size.</p>
-      <div class="ctas">
-        <a class="btn" href="https://vimeo.com/biscuitbunker">▶&nbsp; Watch the showreel</a>
-        <a class="btn ghost" href="#contact">Start a project</a>
+  <section class="hero" style="padding:0" aria-label="Showreel">
+    <div class="stage" id="stage">
+      <div class="scene s1 on" data-name="Commercials"><div class="sun"></div><div class="flare"></div></div>
+      <div class="scene s2" data-name="Branded content"><div class="ball"></div><div class="floor"></div></div>
+      <div class="scene s3" data-name="Corporate film"><div class="beam"></div>
+        <svg viewBox="0 0 120 160" aria-hidden="true"><g fill="#060505"><rect x="22" y="18" width="62" height="38" rx="5"/><circle cx="36" cy="12" r="12"/><circle cx="64" cy="12" r="12"/><path d="M84 28 L108 18 V56 L84 46Z"/><rect x="50" y="56" width="6" height="14"/><path d="M53 70 L20 160 H28 L53 90 L78 160 H86Z"/></g></svg></div>
+      <div class="scene s4" data-name="Animation"><i></i><i></i><i></i></div>
+      <div class="scene s5" data-name="Motion graphics"></div>
+      <div class="scene s6" data-name="Podcasts"><div class="wave"></div></div>
+      <div class="thirds"></div>
+      <div class="flash" id="flash"></div>
+      <div class="vf" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+      <div class="hud t mono" aria-hidden="true"><span class="rec"><span class="dot"></span> REC</span><span class="hide-sm" id="slate">SC 01 · COMMERCIALS</span><span class="tc" id="tc">00:00:00:00</span></div>
+      <div class="hud b mono" aria-hidden="true"><span>SHOREDITCH · LONDON</span><span class="hide-sm">4K · 25FPS · ISO 800 · SINCE 2014</span><span>▮▮▮▮▯ 82%</span></div>
+      <div class="copy wrap" id="copy">
+        <h1><span class="l">Good content.</span><span class="l scr" id="scr" data-text="Fetched.">Fetched.</span></h1>
+        <p class="kinetic">We make <span class="roll" id="roll"><span>commercials</span></span> in a converted dog biscuit factory.</p>
+        <div class="ctas">
+          <a class="btn mag" id="reel" href="https://vimeo.com/biscuitbunker" data-cursor="Play">▶&nbsp; Watch the showreel</a>
+          <a class="btn ghost mag" href="#contact">Start a project <span class="arrow">→</span></a>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="strip" aria-hidden="true"><div>
-    <b>Commercials</b><span>●</span>Branded content<span>●</span><b>Corporate film</b><span>●</span>Animation<span>●</span><b>Motion graphics</b><span>●</span>Podcasts<span>●</span>
-    <b>Commercials</b><span>●</span>Branded content<span>●</span><b>Corporate film</b><span>●</span>Animation<span>●</span><b>Motion graphics</b><span>●</span>Podcasts<span>●</span>
-  </div></div>
+  <div class="strip" aria-hidden="true"><div class="row" id="mq"></div></div>
 
-  <section id="services">
-    <div class="wrap rv">
-      <span class="eyebrow mono">What we make</span>
-      <h2>Everything from the pitch deck to the final cut.</h2>
-    </div>
-    <div class="film rv" tabindex="0" aria-label="Services, scroll sideways">
-      <div class="frames">
-        <article class="frame g1"><span class="n mono">Reel 01</span><div><h3>Commercials</h3><p>TV, online and social spots, from treatment through shoot to grade.</p></div></article>
-        <article class="frame g3"><span class="n mono">Reel 02</span><div><h3>Branded content</h3><p>Stories people choose to watch, made for the platforms they actually use.</p></div></article>
-        <article class="frame g4"><span class="n mono">Reel 03</span><div><h3>Corporate film</h3><p>Brand films, internal comms and events that don't feel corporate.</p></div></article>
-        <article class="frame g2"><span class="n mono">Reel 04</span><div><h3>Animation &amp; motion</h3><p>2D, 3D and motion graphics, from explainers to title sequences.</p></div></article>
-        <article class="frame g5"><span class="n mono">Reel 05</span><div><h3>Podcasts</h3><p>Concept, recording, editing, distribution and promotion, all under one roof.</p></div></article>
-      </div>
-    </div>
-    <p class="wrap hint mono">← Drag the reel →</p>
+  <section class="statement wrap" aria-label="About us">
+    <span class="eyebrow mono">Who we are</span>
+    <p id="stmt">We're a full-service production company in a converted dog biscuit factory in Shoreditch. Since 2014 we've made commercials, branded content, corporate film, animation and podcasts for agencies and brands of every size.</p>
   </section>
 
-  <section id="work" class="wrap" style="padding-top:0">
-    <div class="work-head rv">
-      <div><span class="eyebrow mono">Selected work</span><h2>Fresh out the oven.</h2></div>
-      <div class="filters" role="group" aria-label="Filter work">
-        <button aria-pressed="true" data-f="all">All</button>
-        <button aria-pressed="false" data-f="commercial">Commercial</button>
-        <button aria-pressed="false" data-f="animation">Animation</button>
-        <button aria-pressed="false" data-f="podcast">Podcast</button>
+  <section id="services" class="hs" style="padding:0">
+    <div class="pin">
+      <div class="head"><div><span class="eyebrow mono">What we make</span><h2 data-split>Everything from pitch deck to final cut.</h2></div><span class="mono" style="color:var(--muted)">Scroll to roll →</span></div>
+      <div class="track" id="hst">
+        <article class="reel" data-cursor="Watch"><div class="scene s1"><div class="sun"></div><div class="flare"></div></div><div class="meta"><div class="top mono"><span>Reel 01</span><span>00:00:30:00</span></div><div><h3>Commercials</h3><p>TV, online and social spots, from treatment through shoot to grade.</p></div></div></article>
+        <article class="reel" data-cursor="Watch"><div class="scene s2"><div class="ball"></div><div class="floor"></div></div><div class="meta"><div class="top mono"><span>Reel 02</span><span>00:01:00:00</span></div><div><h3>Branded content</h3><p>Stories people choose to watch, made for the platforms they actually use.</p></div></div></article>
+        <article class="reel" data-cursor="Watch"><div class="scene s3"><div class="beam"></div></div><div class="meta"><div class="top mono"><span>Reel 03</span><span>00:02:30:00</span></div><div><h3>Corporate film</h3><p>Brand films, internal comms and events that don't feel corporate.</p></div></div></article>
+        <article class="reel" data-cursor="Watch"><div class="scene s4"><i></i><i></i><i></i></div><div class="meta"><div class="top mono"><span>Reel 04</span><span>00:00:15:00</span></div><div><h3>Animation &amp; motion</h3><p>2D, 3D and motion graphics, from explainers to title sequences.</p></div></div></article>
+        <article class="reel" data-cursor="Listen"><div class="scene s6"><div class="wave"></div></div><div class="meta"><div class="top mono"><span>Reel 05</span><span>00:42:10:00</span></div><div><h3>Podcasts</h3><p>Concept, recording, editing, distribution and promotion, all under one roof.</p></div></div></article>
+      </div>
+      <div class="bar" aria-hidden="true"><i id="hsbar"></i></div>
+    </div>
+  </section>
+
+  <section id="work" class="wrap work">
+    <div class="work-head">
+      <div><span class="eyebrow mono">Selected work</span><h2 data-split>Fresh out the oven.</h2></div>
+      <div class="controls">
+        <div class="filters" role="group" aria-label="Filter work">
+          <button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="commercial">Commercial</button><button aria-pressed="false" data-f="animation">Animation</button><button aria-pressed="false" data-f="podcast">Podcast</button>
+        </div>
+        <div class="seg" role="group" aria-label="Layout"><button aria-pressed="true" data-v="grid">Grid</button><button aria-pressed="false" data-v="list">Index</button></div>
       </div>
     </div>
-    <div class="grid">
-      <a class="tile w rv" data-c="commercial" href="https://vimeo.com/biscuitbunker"><div class="shot g1"><div class="fx"></div><div class="leak"></div><div class="meta-tc mono"><span>A001_C004</span><span>00:00:30:00</span></div><span class="ph mono">Project still</span></div><div class="meta"><h3>Project title</h3><span class="mono">Commercial</span></div></a>
-      <a class="tile rv" data-c="animation" href="https://vimeo.com/biscuitbunker"><div class="shot g2"><div class="fx"></div><div class="leak"></div><div class="meta-tc mono"><span>A002_C011</span><span>00:01:12:08</span></div><span class="ph mono">Project still</span></div><div class="meta"><h3>Project title</h3><span class="mono">Animation</span></div></a>
-      <a class="tile rv" data-c="commercial" href="https://vimeo.com/biscuitbunker"><div class="shot g3"><div class="fx"></div><div class="leak"></div><div class="meta-tc mono"><span>B001_C002</span><span>00:00:20:00</span></div><span class="ph mono">Project still</span></div><div class="meta"><h3>Project title</h3><span class="mono">Branded</span></div></a>
-      <a class="tile rv" data-c="podcast" href="https://vimeo.com/biscuitbunker"><div class="shot g4"><div class="fx"></div><div class="leak"></div><div class="meta-tc mono"><span>EP 01</span><span>00:42:10:00</span></div><span class="ph mono">Project still</span></div><div class="meta"><h3>Project title</h3><span class="mono">Podcast</span></div></a>
-      <a class="tile rv" data-c="animation" href="https://vimeo.com/biscuitbunker"><div class="shot g5"><div class="fx"></div><div class="leak"></div><div class="meta-tc mono"><span>MG_014</span><span>00:00:15:00</span></div><span class="ph mono">Project still</span></div><div class="meta"><h3>Project title</h3><span class="mono">Motion</span></div></a>
-      <a class="tile w rv" data-c="commercial" href="https://vimeo.com/biscuitbunker"><div class="shot g6"><div class="fx"></div><div class="leak"></div><div class="meta-tc mono"><span>C003_C001</span><span>00:02:30:00</span></div><span class="ph mono">Project still</span></div><div class="meta"><h3>Project title</h3><span class="mono">Corporate</span></div></a>
-    </div>
+    <div class="grid" id="grid"></div>
+    <div class="index" id="index"></div>
+    <p class="mono" style="color:var(--muted);margin-top:26px">Placeholder projects. The live site pulls stills and titles from their Vimeo.</p>
   </section>
 
   <section id="story" class="story">
     <div class="wrap cols">
-      <div class="rv">
+      <div>
         <span class="eyebrow mono">Our story</span>
-        <h2>We used to make dog biscuits. Well, the building did.</h2>
-        <p>Biscuit Bunker started in 2014 inside a converted dog biscuit factory. The ovens are long gone, but the idea stuck: make good things, in batches, with care, and make people come back for more.</p>
-        <p>Today we're a full-service production team that partners with global agencies and brands of all sizes, from first idea to final delivery.</p>
-        <div class="facts">
+        <h2 data-split>We used to make dog biscuits. Well, the building did.</h2>
+        <p class="kit-rv">Biscuit Bunker started in 2014 inside a converted dog biscuit factory. The ovens are long gone, but the idea stuck: make good things, in batches, with care, and make people come back for more.</p>
+        <p class="kit-rv">Today we're a full-service production team that partners with global agencies and brands of all sizes, from first idea to final delivery.</p>
+        <div class="facts" data-stagger>
           <div class="fact"><b data-count="2014">2014</b><span>Rolling since</span></div>
           <div class="fact"><b data-count="5">5</b><span>Disciplines, one team</span></div>
         </div>
       </div>
-      <div class="stamp rv" aria-hidden="true">
+      <div class="stamp" data-tilt="10" aria-hidden="true">
         <svg class="ring" viewBox="0 0 200 200"><defs><path id="c" d="M100,100 m-82,0 a82,82 0 1,1 164,0 a82,82 0 1,1 -164,0"/></defs><text font-family="JetBrains Mono,monospace" font-size="11" letter-spacing="5" fill="#D9A566"><textPath href="#c">GOOD CONTENT · FETCHED · SINCE 2014 · SHOREDITCH · </textPath></text></svg>
         <svg class="bone" viewBox="0 0 80 40"><g fill="#D9A566"><circle cx="10" cy="11" r="9"/><circle cx="10" cy="29" r="9"/><circle cx="70" cy="11" r="9"/><circle cx="70" cy="29" r="9"/><rect x="10" y="9" width="60" height="22" rx="4"/></g><circle cx="40" cy="20" r="5" fill="#E8432E"/></svg>
       </div>
     </div>
+    <span class="big" aria-hidden="true" data-speed=".12">BUNKER</span>
   </section>
 
   <section id="process" class="wrap">
-    <div class="rv"><span class="eyebrow mono">How we work</span><h2>Four steps. No surprises.</h2></div>
-    <div class="timeline rv" id="tl" aria-label="Our process">
+    <span class="eyebrow mono">How we work</span><h2 data-split>Four steps. No surprises.</h2>
+    <div class="timeline kit-rv" id="tl" aria-label="Our process">
       <div class="ruler mono" aria-hidden="true"><span></span><span>00:00</span><span>00:15</span><span>00:30</span><span>00:45</span></div>
-      <div class="track"><span class="lab mono">V1</span>
+      <div class="track2"><span class="lab mono">V1</span>
         <div class="clip c1"><h3>Brief</h3><p>The goal, the audience, the budget, and a clear creative route.</p></div>
         <div class="clip c2"><h3>Pre-production</h3><p>Scripts, storyboards, casting, locations and a schedule you can hold us to.</p></div>
         <div class="clip c3"><h3>Production</h3><p>Shoot, record or animate, with a crew sized to the job.</p></div>
         <div class="clip c4"><h3>Post &amp; delivery</h3><p>Edit, grade, sound, and every cut-down for every platform.</p></div>
       </div>
-      <div class="track" aria-hidden="true"><span class="lab mono">A1</span><div class="audio" style="grid-column:span 4"></div></div>
+      <div class="track2" aria-hidden="true"><span class="lab mono">A1</span><div class="audio" style="grid-column:span 4"></div></div>
       <div class="playhead" id="ph" aria-hidden="true"></div>
     </div>
   </section>
 
   <section class="wrap" style="padding-top:0">
-    <blockquote class="rv">"[Client testimonial goes here: one or two sentences about the result.]"</blockquote>
+    <blockquote class="kit-rv">"[Client testimonial goes here: one or two sentences about the result.]"</blockquote>
     <p class="mono">Name, role, company</p>
   </section>
 
   <section id="contact" class="contact wrap" style="padding-top:0">
     <div class="cols">
-      <div class="rv">
+      <div>
         <span class="eyebrow mono">Start a project</span>
-        <h2>Got a brief? Throw us a bone.</h2>
-        <div class="details">
+        <h2 data-split>Got a brief? Throw us a bone.</h2>
+        <div class="details kit-rv">
           <span>Shoreditch, London EC2A 4NE</span>
           <a href="https://vimeo.com/biscuitbunker">Vimeo</a>
           <a href="https://uk.linkedin.com/company/biscuit-bunker">LinkedIn</a>
           <a href="https://www.facebook.com/biscuitbunkeruk/">Facebook</a>
         </div>
       </div>
-      <div class="slate rv">
+      <div class="slate kit-rv" id="slateform">
         <div class="clap" aria-hidden="true"></div>
-        <form onsubmit="event.preventDefault();this.innerHTML='<p style=&quot;padding:24px;font-size:1.2rem&quot;>That&#39;s a wrap. (Concept demo, so nothing was sent.)</p>'">
+        <form id="brief">
           <label>Production<input placeholder="Your company" required></label>
           <label>Director<input placeholder="Your name" required autocomplete="name"></label>
           <label>Contact<input type="email" placeholder="you@company.com" required autocomplete="email"></label>
@@ -346,46 +486,226 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <label>Budget<select><option>Under £10k</option><option>£10k–£25k</option><option>£25k–£50k</option><option>£50k+</option></select></label>
           <label>Deadline<input type="date"></label>
           <label class="full">The brief<textarea placeholder="Tell us what you're making and who it's for"></textarea></label>
-          <div class="send"><button class="btn" type="submit"><span class="dot"></span> Action!</button></div>
+          <div class="send"><button class="btn mag" type="submit"><span class="dot"></span> Action!</button></div>
         </form>
       </div>
     </div>
   </section>
 </main>
 
-<footer><div class="wrap mono"><span>© <span id="y">2026</span> Biscuit Bunker</span><span>Concept by Second Coat</span></div></footer>
+<div class="leader" id="leader" role="dialog" aria-modal="true" aria-label="Showreel">
+  <button class="x" id="lx" aria-label="Close">✕</button>
+  <div class="dial" aria-hidden="true"><span class="n" id="ln">5</span></div>
+  <div class="end"><span class="eyebrow mono" style="justify-content:center">Showreel</span><h2>Roll it.</h2><p>The full reel lives on Vimeo.</p><a class="btn" href="https://vimeo.com/biscuitbunker">▶&nbsp; Play on Vimeo</a></div>
+  <div class="lf" id="lf"></div>
+</div>
+<div class="preview" id="preview" aria-hidden="true"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="bigword" id="bigword" aria-hidden="true">FETCHED<em>.</em></div>
+    <div class="fbar mono"><span>© <span id="y">2026</span> Biscuit Bunker · EC2A 4NE</span><span>LDN <span class="clock">00:00:00</span></span><span><a href="https://vimeo.com/biscuitbunker">Vimeo</a> · <a href="https://uk.linkedin.com/company/biscuit-bunker">LinkedIn</a></span><span>Concept by Second Coat</span></div>
+  </div>
+</footer>
 
 <script>
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-// letterbox bars leave the DOM once the intro has played
-document.querySelectorAll('.letterbox').forEach(l => { l.addEventListener('animationend', () => l.remove()); setTimeout(() => l.remove(), 2200); });
-document.getElementById('y').textContent = new Date().getFullYear();
-// running timecode (25fps)
-const tc = document.getElementById('tc'), t0 = performance.now();
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 const pad = n => String(n).padStart(2, '0');
-(function tick(){ const f = Math.floor((performance.now() - t0) / 40); tc.textContent = `${pad(Math.floor(f/90000))}:${pad(Math.floor(f/1500)%60)}:${pad(Math.floor(f/25)%60)}:${pad(f%25)}`; if(!reduce) requestAnimationFrame(tick); })();
-// reveal on scroll
-const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
-document.querySelectorAll('.rv').forEach(el => reduce ? el.classList.add('in') : io.observe(el));
-// count-up
+$('#y').textContent = new Date().getFullYear();
+
+// ---- preloader: count the reel in once per visit, then open like a letterbox ----
+const pre = $('#pre');
+let seen = false; try { seen = !!sessionStorage.getItem('bb-intro'); sessionStorage.setItem('bb-intro', '1'); } catch (e) {}
+if (reduce || seen) pre.classList.add('skip');
+else { const t0 = performance.now(), D = 1300, pct = $('#pct'), fill = $('#fillr');
+  (function f(n) { const p = Math.min(1, (n - t0) / D), e = 1 - Math.pow(1 - p, 3); pct.textContent = String(Math.round(e * 100)).padStart(3, '0'); fill.setAttribute('y', 40 - e * 40);
+    if (p < 1) requestAnimationFrame(f); else { pre.classList.add('done'); setTimeout(() => pre.classList.add('skip'), 1100); } })(t0); }
+
+// ---- London clocks ----
+const tick = () => { const t = new Date().toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hour12: false }); $$('.clock').forEach(c => c.textContent = t); };
+tick(); setInterval(tick, 1000);
+
+// ---- generated scene content (bokeh orbs, equaliser bars), before scenes are cloned ----
+$$('.s5').forEach(sc => { for (let i = 0; i < 26; i++) { const b = document.createElement('b'); const s = 20 + (i * 37) % 120; b.style.cssText = `width:${s}px;height:${s}px;left:${(i * 53) % 100}%;top:${(i * 29) % 90}%;filter:blur(${2 + i % 7}px);opacity:${.25 + (i % 5) * .12};animation-duration:${6 + i % 7}s;animation-delay:${-i}s`; sc.appendChild(b); } });
+const fillWave = w => { for (let i = 0; i < 48; i++) { const b = document.createElement('i'); b.style.animationDuration = (.35 + ((i * 7) % 10) / 14) + 's'; b.style.animationDelay = (-(i % 9) / 10) + 's'; w.appendChild(b); } };
+$$('.wave').forEach(fillWave);
+
+// ---- the reel: hard cuts every 2.2s, with a flash frame, a slate update and the kinetic word rolling over ----
+const scenes = $$('#stage .scene'), slate = $('#slate'), roll = $('#roll'), flash = $('#flash');
+let sc = 0, heroVisible = true;
+const cut = n => { scenes[sc].classList.remove('on'); sc = n; scenes[sc].classList.add('on'); const name = scenes[sc].dataset.name;
+  slate.textContent = `SC ${pad(sc + 1)} · ${name.toUpperCase()}`;
+  flash.classList.remove('go'); void flash.offsetWidth; flash.classList.add('go');
+  const old = roll.lastElementChild, nw = document.createElement('span'); nw.textContent = name.toLowerCase(); nw.className = 'in'; roll.appendChild(nw);
+  requestAnimationFrame(() => requestAnimationFrame(() => { old.classList.add('out'); nw.classList.remove('in'); })); setTimeout(() => old.remove(), 600); };
+if (!reduce) setInterval(() => { if (!document.hidden && heroVisible) cut((sc + 1) % scenes.length); }, 2200);
+
+// ---- timecode ----
+const tc = $('#tc'), T0 = performance.now();
+(function t() { const f = Math.floor((performance.now() - T0) / 40); tc.textContent = `${pad(Math.floor(f / 90000))}:${pad(Math.floor(f / 1500) % 60)}:${pad(Math.floor(f / 25) % 60)}:${pad(f % 25)}`; if (!reduce) requestAnimationFrame(t); })();
+
+// ---- "Fetched." scrambles in, and again on hover ----
+const scr = $('#scr'), GLY = '!<>-_\\/[]{}=+*^?#01ABCDEFGHJKLMNPQRSTUVWXYZ';
+function scramble() { if (reduce) return; const target = scr.dataset.text; let fr = 0; const q = [...target].map((c, i) => ({ c, s: 6 + i * 3 }));
+  (function f() { scr.textContent = q.map(o => fr >= o.s ? o.c : (o.c === '.' ? '.' : GLY[Math.floor(Math.random() * GLY.length)])).join(''); if (++fr <= q[q.length - 1].s) requestAnimationFrame(f); })(); }
+setTimeout(scramble, seen ? 200 : 1500); scr.addEventListener('pointerenter', scramble);
+
+// ---- scroll-driven pieces, one rAF loop ----
+const stage = $('#stage'), copy = $('#copy'), hdr = $('#hdr');
+const mq = $('#mq'), words = ['Commercials', 'Branded content', 'Corporate film', 'Animation', 'Motion graphics', 'Podcasts'];
+mq.innerHTML = [...words, ...words, ...words, ...words].map(w => `<span>${w}</span><em>●</em>`).join('');
+let mx = 0, vel = 0, lastY = scrollY, dir = 1;
+const stmt = $('#stmt'), HOT = /converted|dog|biscuit|factory|2014/i;
+stmt.innerHTML = stmt.textContent.split(' ').map(w => `<span class="w${HOT.test(w) ? ' hot' : ''}">${w}</span>`).join(' ');
+const sw = $$('#stmt .w');
+const hs = $('#services'), hst = $('#hst'), hsbar = $('#hsbar');
+const pinOn = () => !reduce && innerWidth > 900;
+const sizeHS = () => { hs.style.height = pinOn() ? (hst.scrollWidth - innerWidth + innerHeight) + 'px' : ''; if (!pinOn()) hst.style.transform = ''; };
+addEventListener('resize', sizeHS); addEventListener('load', sizeHS); sizeHS();
+const tl = $('#tl'), ph = $('#ph');
+function frame() {
+  const y = scrollY, vh = innerHeight;
+  hdr.classList.toggle('stuck', y > 40);
+  const p = Math.min(1, Math.max(0, y / vh)); heroVisible = p < 1;
+  if (!reduce) { stage.style.transform = `scale(${1 - p * .1})`; stage.style.borderRadius = `${p * 36}px`; copy.style.transform = `translateY(${p * 120}px)`; copy.style.opacity = 1 - p * 1.4; }
+  const dy = y - lastY; lastY = y; if (dy) dir = dy > 0 ? 1 : -1;
+  vel += (Math.abs(dy) - vel) * .1;
+  if (!reduce) { mx -= (1 + vel * .6) * dir; const w = mq.scrollWidth / 4; if (mx <= -w) mx += w; if (mx > 0) mx -= w; mq.style.transform = `translateX(${mx}px) skewX(${-Math.min(12, vel * .4) * dir}deg)`; }
+  const r = stmt.getBoundingClientRect(), sp = Math.min(1, Math.max(0, (vh * .85 - r.top) / (r.height + vh * .35))), lit = Math.round(sp * sw.length);
+  sw.forEach((w, i) => w.classList.toggle('lit', reduce || i < lit));
+  if (pinOn()) { const hr = hs.getBoundingClientRect(), total = hs.offsetHeight - vh, hp = Math.min(1, Math.max(0, -hr.top / total));
+    hst.style.transform = `translateX(${-hp * (hst.scrollWidth - innerWidth)}px)`; hsbar.style.width = hp * 100 + '%'; }
+  const tr = tl.getBoundingClientRect(), pp = Math.min(1, Math.max(0, (vh - tr.top) / (vh + tr.height))); ph.style.left = `calc(92px + ${pp} * (100% - 114px))`;
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// ---- work: grid + index with a floating preview ----
+const WORK = [['[Client] · Brand launch spot', 'commercial', 'Commercial', 's1', 'w'], ['[Client] · Product explainer', 'animation', 'Animation', 's4', ''], ['[Client] · Social campaign', 'commercial', 'Branded', 's2', ''],
+  ['[Client] · Podcast, season one', 'podcast', 'Podcast', 's6', ''], ['[Client] · Title sequence', 'animation', 'Motion', 's5', ''], ['[Client] · Internal brand film', 'commercial', 'Corporate', 's3', 'w']];
+const sceneHTML = k => $(`#stage .${k}`).outerHTML.replace(' on"', '"').replace(/ data-name="[^"]*"/, '');
+$('#grid').innerHTML = WORK.map(([t, c, lab, k, w], i) => `<a class="tile ${w}" data-c="${c}" href="https://vimeo.com/biscuitbunker" data-cursor="Play"><div class="shot">${sceneHTML(k)}<div class="tcx mono"><span>A00${i + 1}_C00${i + 3}</span><span>00:00:${pad(15 + i * 7)}:00</span></div><span class="ph mono">Project still</span></div><div class="meta"><h3>${t}</h3><span class="mono">${lab}</span></div></a>`).join('');
+$('#index').innerHTML = WORK.map(([t, c, lab, k], i) => `<a class="row-i" data-c="${c}" data-k="${k}" href="https://vimeo.com/biscuitbunker" data-cursor="Play"><span class="mono">${pad(i + 1)}</span><span class="t">${t.replace('[Client] · ', '')}</span><span class="mono hide-sm">${lab}</span><span class="mono hide-sm">[Year]</span></a>`).join('');
+const preview = $('#preview'); preview.innerHTML = ['s1', 's2', 's3', 's4', 's5', 's6'].map(sceneHTML).join('');
+let px = 0, py = 0, tx = 0, ty = 0;
+$$('.row-i').forEach(r => { r.addEventListener('pointerenter', () => { preview.querySelectorAll('.scene').forEach(s => s.classList.toggle('on', s.classList.contains(r.dataset.k))); preview.classList.add('on'); });
+  r.addEventListener('pointerleave', () => preview.classList.remove('on')); });
+addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; });
+if (!reduce) (function follow() { px += (tx - px) * .14; py += (ty - py) * .14; preview.style.transform = `translate(${px + 30}px,${py - 110}px) rotate(${Math.max(-10, Math.min(10, (tx - px) * .08))}deg)`; requestAnimationFrame(follow); })();
+$$('.seg button').forEach(b => b.onclick = () => { $$('.seg button').forEach(x => x.setAttribute('aria-pressed', x === b)); $('.work').classList.toggle('list', b.dataset.v === 'list'); });
+$$('.filters button').forEach(b => b.onclick = () => { $$('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b)); $$('.tile,.row-i').forEach(t => t.hidden = b.dataset.f !== 'all' && t.dataset.c !== b.dataset.f); });
+
+// ---- count-up ----
 const cio = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const el = e.target, end = +el.dataset.count, from = end > 100 ? end - 40 : 0, t = performance.now();
-  (function step(n){ const p = Math.min(1, (n - t) / 1200); el.textContent = Math.round(from + (end - from) * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(step); })(t); cio.unobserve(el); }), { threshold: .6 });
-if (!reduce) document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
-// play cursor on work tiles
-const cur = document.querySelector('.cursor');
-addEventListener('pointermove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; });
-document.querySelectorAll('.tile').forEach(t => { t.addEventListener('pointerenter', () => cur.classList.add('on')); t.addEventListener('pointerleave', () => cur.classList.remove('on')); });
-// filters
-const btns = document.querySelectorAll('.filters button');
-btns.forEach(b => b.addEventListener('click', () => { btns.forEach(x => x.setAttribute('aria-pressed', x === b)); document.querySelectorAll('.tile').forEach(t => t.hidden = b.dataset.f !== 'all' && t.dataset.c !== b.dataset.f); }));
-// playhead follows scroll through the timeline
-const tl = document.getElementById('tl'), ph = document.getElementById('ph');
-addEventListener('scroll', () => { const r = tl.getBoundingClientRect(), vh = innerHeight; const p = Math.min(1, Math.max(0, (vh - r.top) / (vh + r.height))); ph.style.left = `calc(92px + ${p} * (100% - 114px))`; }, { passive: true });
-// drag-to-scroll film strip
-const film = document.querySelector('.film'); let down = false, sx = 0, sl = 0;
-film.addEventListener('pointerdown', e => { down = true; sx = e.clientX; sl = film.scrollLeft; film.setPointerCapture(e.pointerId); });
-film.addEventListener('pointermove', e => { if (down) film.scrollLeft = sl - (e.clientX - sx); });
-film.addEventListener('pointerup', () => down = false);
+  (function s(n) { const p = Math.min(1, (n - t) / 1200); el.textContent = Math.round(from + (end - from) * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(s); })(t); cio.unobserve(el); }), { threshold: .6 });
+if (!reduce) $$('[data-count]').forEach(el => cio.observe(el));
+
+// ---- footer title card wipes in ----
+const bw = $('#bigword'); new IntersectionObserver(es => es.forEach(e => e.isIntersecting && bw.classList.add('in')), { threshold: .3 }).observe(bw); if (reduce) bw.classList.add('in');
+
+// ---- fullscreen menu ----
+const menu = $('#menu'), mb = $('#menubtn');
+const setMenu = open => { menu.classList.toggle('open', open); mb.setAttribute('aria-expanded', open); mb.lastElementChild.textContent = open ? 'Close' : 'Menu'; document.body.style.overflow = open ? 'hidden' : ''; if (open) setTimeout(() => menu.querySelector('a').focus(), 50); };
+mb.onclick = () => setMenu(!menu.classList.contains('open'));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+
+// ---- showreel leader ----
+const leader = $('#leader'), ln = $('#ln'), dial = leader.querySelector('.dial'), lf = $('#lf'); let raf, opener;
+const closeLeader = () => { cancelAnimationFrame(raf); leader.classList.remove('on', 'done'); opener && opener.focus(); };
+$('#reel').addEventListener('click', e => { e.preventDefault(); opener = e.currentTarget; leader.classList.add('on'); $('#lx').focus();
+  if (reduce) { leader.classList.add('done'); return; }
+  const t0 = performance.now(); let last = 5;
+  (function f(n) { const el = (n - t0) / 1000, k = 5 - Math.floor(el); if (k < 1) { leader.classList.add('done'); return; }
+    if (k !== last) { last = k; lf.classList.remove('go'); void lf.offsetWidth; lf.classList.add('go'); }
+    ln.textContent = k; dial.style.setProperty('--a', ((el % 1) * 360) + 'deg'); raf = requestAnimationFrame(f); })(t0); });
+$('#lx').onclick = closeLeader;
+addEventListener('keydown', e => { if (e.key !== 'Escape') return; if (leader.classList.contains('on')) closeLeader(); else if (menu.classList.contains('open')) { setMenu(false); mb.focus(); } });
+
+// ---- clapperboard snaps shut on submit ----
+$('#brief').addEventListener('submit', e => { e.preventDefault(); $('#slateform').classList.add('snap');
+  setTimeout(() => { e.target.innerHTML = '<p style="padding:24px;font-size:1.2rem">That\'s a wrap. (Concept demo, so nothing was sent.)</p>'; }, 380); });
+</script>
+<script id="kit">
+// Second Coat motion kit: shared micro-interactions, inlined into each site by scripts/kit.js.
+//   [data-split]              words rise out of a mask when the element scrolls into view
+//   .kit-rv                   fade-up reveal; siblings stagger via --i
+//   .mag                      magnetic buttons that lean towards the pointer
+//   [data-tilt]               3D tilt that follows the pointer
+//   [data-speed="0.2"]        parallax drift while scrolling
+//   [data-depth="20"]         drifts against the pointer (don't combine with data-speed on one element)
+//   <body data-kit-cursor>    custom dot-and-ring cursor; [data-cursor="Play"] shows a label
+// Everything is skipped under prefers-reduced-motion, and pointer effects only run for a fine pointer.
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const $$ = s => [...document.querySelectorAll(s)];
+
+  // split text into masked words, keeping inline markup (em, b, span) intact
+  $$('[data-split]').forEach(el => {
+    if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+    let i = 0;
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(w => {
+          if (!w) return;
+          if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(w)); return; }
+          const o = document.createElement('span'), inn = document.createElement('span');
+          o.className = 'kw'; o.setAttribute('aria-hidden', 'true'); inn.textContent = w; inn.style.setProperty('--i', i++); o.appendChild(inn); frag.appendChild(o);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && !n.matches('br,svg,img')) { n.setAttribute('aria-hidden', 'true'); walk(n); }
+    });
+    walk(el);
+  });
+  $$('[data-stagger]').forEach(p => [...p.children].forEach((c, i) => { c.classList.add('kit-rv'); c.style.setProperty('--i', i); }));
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('kit-in'); io.unobserve(e.target); } }), { threshold: .15, rootMargin: '0px 0px -5% 0px' });
+  $$('[data-split],.kit-rv').forEach(el => reduce ? el.classList.add('kit-in') : io.observe(el));
+  if (reduce) return;
+
+  // scroll progress + parallax, one rAF per frame
+  const bar = document.createElement('div'); bar.className = 'kit-progress'; bar.setAttribute('aria-hidden', 'true'); document.body.appendChild(bar);
+  const par = $$('[data-speed]'); let ticking = false;
+  const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => {
+    const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+    par.forEach(el => { const r = el.getBoundingClientRect(); const c = r.top + r.height / 2 - innerHeight / 2; el.style.translate = `0 ${(-c * +el.dataset.speed).toFixed(1)}px`; });
+    ticking = false; }); };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  if (!fine) return;
+  // magnetic buttons
+  $$('.mag').forEach(b => {
+    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.translate = `${(e.clientX - r.left - r.width / 2) * .28}px ${(e.clientY - r.top - r.height / 2) * .38}px`; });
+    b.addEventListener('pointerleave', () => { b.style.translate = ''; });
+  });
+  // tilt
+  $$('[data-tilt]').forEach(c => {
+    const k = +c.dataset.tilt || 8;
+    c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `perspective(900px) rotateY(${x * k}deg) rotateX(${-y * k}deg)`; });
+    c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+  });
+  // mouse-depth parallax: [data-depth="20"] drifts up to 20px against the pointer
+  const deep = $$('[data-depth]');
+  if (deep.length) { let mx = 0, my = 0, cx = 0, cy = 0;
+    addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+    (function drift() { cx += (mx - cx) * .06; cy += (my - cy) * .06; deep.forEach(el => { const d = +el.dataset.depth; el.style.translate = `${(-cx * d).toFixed(2)}px ${(-cy * d).toFixed(2)}px`; }); requestAnimationFrame(drift); })(); }
+  // custom cursor
+  if (document.body.hasAttribute('data-kit-cursor')) {
+    const dot = document.createElement('div'), ring = document.createElement('div'), lab = document.createElement('span');
+    dot.className = 'kit-cursor gone'; ring.className = 'kit-ring gone'; ring.appendChild(lab); dot.setAttribute('aria-hidden', 'true'); ring.setAttribute('aria-hidden', 'true');
+    document.body.append(dot, ring); document.documentElement.classList.add('kit-hide-cursor');
+    let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+    addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; dot.classList.remove('gone'); ring.classList.remove('gone');
+      const t = e.target && e.target.closest ? e.target.closest('[data-cursor],a,button,input[type=range],label') : null;
+      ring.classList.toggle('label', !!(t && t.dataset.cursor)); ring.classList.toggle('link', !!(t && !t.dataset.cursor));
+      lab.textContent = t && t.dataset.cursor || ''; });
+    document.addEventListener('pointerleave', () => { dot.classList.add('gone'); ring.classList.add('gone'); });
+    addEventListener('pointerdown', () => ring.classList.add('down')); addEventListener('pointerup', () => ring.classList.remove('down'));
+    (function loop() { rx += (x - rx) * .18; ry += (y - ry) * .18; dot.style.translate = `${x}px ${y}px`; ring.style.translate = `${rx}px ${ry}px`; requestAnimationFrame(loop); })();
+  }
+})();
 </script>
 </body>
 </html>
