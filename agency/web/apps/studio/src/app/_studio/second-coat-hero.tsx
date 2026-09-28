@@ -93,7 +93,7 @@ export function SecondCoatHero() {
   const wetRef = useRef<HTMLCanvasElement>(null);
   const rollerRef = useRef<HTMLDivElement>(null);
   const [done, setDone] = useState(false);
-  const [started, setStarted] = useState(false);
+  const [drying, setDrying] = useState(false);
 
   useEffect(() => {
     const el = host.current!, oc = oldRef.current!, wc = wetRef.current!, roller = rollerRef.current!;
@@ -103,120 +103,77 @@ export function SecondCoatHero() {
     }
     const o = oc.getContext('2d')!, wet = wc.getContext('2d')!;
     const dpr = Math.min(2, window.devicePixelRatio);
-    let w = 0, h = 0, raf = 0, finished = false, last: [number, number] | null = null, painted = 0;
-    const size = () => {
-      w = oc.width = wc.width = el.clientWidth * dpr;
-      h = oc.height = wc.height = el.clientHeight * dpr;
-      drawOldSite(o, w, h, dpr * Math.max(0.6, Math.min(1.4, el.clientWidth / 1150, el.clientHeight / 640)));
-    };
-    size();
-    const ro = new ResizeObserver(size);
-    ro.observe(el);
+    const w = (oc.width = wc.width = el.clientWidth * dpr);
+    const h = (oc.height = wc.height = el.clientHeight * dpr);
+    drawOldSite(o, w, h, dpr * Math.max(0.6, Math.min(1.4, el.clientWidth / 1150, el.clientHeight / 640)));
 
-    // one roller pass between two points: erase the old site, lay wet paint with a ragged edge
-    const roll = (a: [number, number], b: [number, number], width = 150) => {
-      const W = width * dpr;
+    // one stroke of the roller: take the old site off, put wet orange on
+    const roll = (a: [number, number], b: [number, number], W: number) => {
       o.globalCompositeOperation = 'destination-out';
-      o.lineCap = 'round';
+      o.lineCap = wet.lineCap = 'round';
       o.lineWidth = W;
       o.beginPath();
       o.moveTo(a[0], a[1]);
       o.lineTo(b[0], b[1]);
       o.stroke();
-      o.globalCompositeOperation = 'source-over';
-      wet.lineCap = 'round';
-      for (let k = 0; k < 3; k++) {
-        wet.strokeStyle = k ? `rgba(255,79,31,${0.35 / k})` : ORANGE;
-        wet.lineWidth = W * (1 + k * 0.06) + Math.random() * 6;
-        wet.beginPath();
-        wet.moveTo(a[0] + (Math.random() - 0.5) * 4, a[1]);
-        wet.lineTo(b[0] + (Math.random() - 0.5) * 4, b[1]);
-        wet.stroke();
-      }
-      painted += Math.hypot(b[0] - a[0], b[1] - a[1]) * W;
+      wet.strokeStyle = ORANGE;
+      wet.lineWidth = W;
+      wet.beginPath();
+      wet.moveTo(a[0], a[1]);
+      wet.lineTo(b[0], b[1]);
+      wet.stroke();
     };
 
-    // wet paint dries off to reveal the new site underneath
-    const dry = () => {
-      wet.globalCompositeOperation = 'destination-out';
-      wet.fillStyle = 'rgba(0,0,0,0.035)';
-      wet.fillRect(0, 0, w, h);
-      wet.globalCompositeOperation = 'source-over';
-      raf = requestAnimationFrame(dry);
-    };
-    raf = requestAnimationFrame(dry);
-
-    // finish: big overlapping passes, top to bottom, then hand the page over
-    const finish = () => {
-      if (finished) return;
-      finished = true;
-      const rows = Math.ceil(h / (150 * dpr)) + 1;
-      let r = 0;
-      const pass = () => {
-        const y = r * 150 * dpr;
-        const from: [number, number] = r % 2 ? [w + 80, y] : [-80, y];
-        const to: [number, number] = r % 2 ? [-80, y] : [w + 80, y];
-        roll(from, to, 190);
-        if (++r <= rows) window.setTimeout(pass, 70);
-        else
-          window.setTimeout(() => {
-            cancelAnimationFrame(raf);
-            setDone(true);
-          }, 900);
-      };
-      pass();
-    };
-
-    const toLocal = (e: PointerEvent): [number, number] => {
-      const r = el.getBoundingClientRect();
-      return [(e.clientX - r.left) * dpr, (e.clientY - r.top) * dpr];
-    };
+    // the pointer can join in while it runs
+    let last: [number, number] | null = null;
     const move = (e: PointerEvent) => {
-      if (finished) return;
-      const r = el.getBoundingClientRect();
-      roller.style.transform = `translate(${e.clientX - r.left}px, ${e.clientY - r.top}px)`;
       if (e.pointerType !== 'mouse') return;
-      const p = toLocal(e);
-      if (last) roll(last, p);
+      const r = el.getBoundingClientRect();
+      const p: [number, number] = [(e.clientX - r.left) * dpr, (e.clientY - r.top) * dpr];
+      if (last) roll(last, p, 140 * dpr);
       last = p;
-      setStarted(true);
-      if (painted > w * h * 0.5) finish();
     };
-    const leave = () => (last = null);
     el.addEventListener('pointermove', move);
-    el.addEventListener('pointerleave', leave);
 
-    // a first pass on its own so it's obvious what to do; touch screens get the whole job done for them
-    const touch = window.matchMedia('(hover: none)').matches;
-    const demo = window.setTimeout(() => {
-      const y = h * 0.42;
-      let x = -60;
-      const step = () => {
-        if (finished) return;
-        const nx = x + 70 * dpr;
-        roll([x, y + Math.sin(x / 300) * 30], [nx, y + Math.sin(nx / 300) * 30], 170);
-        roller.style.transform = `translate(${nx / dpr}px, ${(y + Math.sin(nx / 300) * 30) / dpr}px)`;
-        x = nx;
-        if (x < w * (touch ? 1.1 : 0.62)) window.setTimeout(step, 16);
-        else if (touch) window.setTimeout(finish, 300);
-      };
-      step();
-    }, 900);
+    // one quick, continuous take: a beat on the old site, then the roller zig-zags down the page
+    const rows = el.clientWidth < 700 ? 5 : 4;
+    const rowH = h / rows, W = rowH * 1.3, pad = W * 0.6;
+    const BEAT = 650, SWEEP = 1100;
+    roller.style.setProperty('--band', `${W / dpr}px`);
+    let raf = 0, start = 0, head: [number, number] | null = null;
+    const at = (t: number): [number, number] => {
+      const k = Math.min(rows - 1e-6, t * rows), r = Math.floor(k), f = k - r;
+      const e = f < 0.5 ? 2 * f * f : 1 - Math.pow(-2 * f + 2, 2) / 2; // ease each pass
+      const x = r % 2 ? w + pad - e * (w + 2 * pad) : -pad + e * (w + 2 * pad);
+      return [x, rowH * (r + 0.5)];
+    };
+    const frame = (now: number) => {
+      if (!start) start = now;
+      const t = (now - start - BEAT) / SWEEP;
+      if (t >= 0) {
+        const p = at(Math.min(1, t));
+        // don't draw the jump from the end of one row to the start of the next
+        if (head && Math.abs(p[1] - head[1]) < 1) roll(head, p, W);
+        else roll(p, p, W);
+        head = p;
+        roller.style.transform = `translate(${p[0] / dpr}px, ${p[1] / dpr}px)`;
+      }
+      if (t < 1) raf = requestAnimationFrame(frame);
+      else {
+        setDrying(true);
+        window.setTimeout(() => setDone(true), 520);
+      }
+    };
+    raf = requestAnimationFrame(frame);
 
-    const onFinish = () => finish();
-    el.addEventListener('second-coat:finish', onFinish);
     return () => {
       cancelAnimationFrame(raf);
-      clearTimeout(demo);
-      ro.disconnect();
       el.removeEventListener('pointermove', move);
-      el.removeEventListener('pointerleave', leave);
-      el.removeEventListener('second-coat:finish', onFinish);
     };
   }, []);
 
   return (
-    <section ref={host} className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden px-5 pt-32 pb-10 md:px-8" data-cursor={done ? undefined : 'Roll'}>
+    <section ref={host} className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden px-5 pt-32 pb-10 md:px-8" >
       {/* the new coat, underneath */}
       <div className="relative mx-auto w-full max-w-[1600px]">
         <p className="mb-8 flex items-center gap-3 text-[14px] text-muted">
@@ -245,21 +202,15 @@ export function SecondCoatHero() {
       {!done && (
         <>
           <canvas ref={oldRef} aria-hidden className="pointer-events-none absolute inset-0 z-10 size-full" />
-          <canvas ref={wetRef} aria-hidden className="pointer-events-none absolute inset-0 z-10 size-full" />
-          <div ref={rollerRef} aria-hidden className="pointer-events-none absolute top-0 left-0 z-20 hidden md:block" style={{ transform: 'translate(55vw, 45vh)' }}>
-            <svg viewBox="0 0 120 200" className="-mt-4 -ml-[60px] h-40 w-24 drop-shadow-[0_14px_20px_rgb(0_0_0/.3)]" fill="none" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="4" y="4" width="112" height="46" rx="18" fill={ORANGE} stroke="#0c0c0c" strokeWidth="5" />
-              <path d="M18 14 H102 M18 27 H102 M18 40 H102" stroke="#0c0c0c" strokeOpacity=".18" strokeWidth="3" />
-              <path d="M60 50 V70 H96 V110" stroke="#0c0c0c" strokeWidth="7" />
-              <rect x="86" y="108" width="20" height="80" rx="10" fill="#0c0c0c" />
-            </svg>
-          </div>
-          <div className="absolute inset-x-0 bottom-6 z-20 flex justify-center px-5">
-            <div className="flex items-center gap-3 rounded-full bg-[#0c0c0c] py-2 pr-2 pl-5 text-[14px] text-white shadow-2xl">
-              <span>{started ? 'Keep rolling…' : 'This is the site most businesses have. Roll a second coat on it.'}</span>
-              <button type="button" onClick={() => host.current?.dispatchEvent(new Event('second-coat:finish'))} className="rounded-full bg-[#FF4F1F] px-4 py-2 font-medium text-white">
-                Paint it for me
-              </button>
+          <canvas ref={wetRef} aria-hidden className={`pointer-events-none absolute inset-0 z-10 size-full transition-opacity duration-500 ease-out ${drying ? 'opacity-0' : 'opacity-100'}`} />
+          <div ref={rollerRef} aria-hidden className={`pointer-events-none absolute top-0 left-0 z-20 transition-opacity duration-300 ${drying ? 'opacity-0' : 'opacity-100'}`} style={{ transform: 'translate(-300px, -300px)' }}>
+            {/* the sleeve is as tall as the stripe it lays, the handle rises off the top */}
+            <div className="relative -translate-x-1/2 -translate-y-1/2" style={{ height: 'var(--band, 200px)' }}>
+              <div className="h-full w-11 rounded-2xl border-4 border-[#0c0c0c] shadow-[0_16px_30px_rgb(0_0_0/.3)]" style={{ background: `repeating-linear-gradient(0deg, ${ORANGE} 0 14px, #d9400f 14px 17px)` }} />
+              <svg viewBox="0 0 80 130" className="absolute bottom-full left-1/2 -mb-1 h-32 w-20 -translate-x-[10px]" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M10 130 V100 H56 V52" stroke="#0c0c0c" strokeWidth="7" />
+                <rect x="46" y="2" width="20" height="54" rx="10" fill="#0c0c0c" />
+              </svg>
             </div>
           </div>
         </>

@@ -11,7 +11,8 @@ export default function Home() {
   return (
     <>
       <Cursor />
-      <MotionKit intro="Second Coat" />
+      {/* no curtain here: the roller hero is the intro */}
+      <MotionKit />
       <StudioChrome />
       <Nav />
       <main>
