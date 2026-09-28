@@ -21,6 +21,14 @@
   ],
   "now": [
     {
+      "t": "Let the chopsticks choose",
+      "d": "Can't decide? One button spins the lazy susan twice round and lands on a dish for you."
+    },
+    {
+      "t": "Steam you can blow away",
+      "d": "Wisps of steam rise from the bowl and part around your cursor."
+    },
+    {
       "t": "A steaming-bowl hero",
       "d": "An illustrated bowl with rising steam, bobbing chopsticks and herbs drifting down the page."
     },
@@ -35,10 +43,6 @@
     {
       "t": "Spin-the-table menu",
       "d": "A lazy susan of nine signature dishes. Tap a plate and the table turns it to you, with the story of that dish."
-    },
-    {
-      "t": "Built for phones",
-      "d": "A sticky Call and Menu bar, Restaurant schema with hours, and a one-tap directions map."
     }
   ],
   "brand": {

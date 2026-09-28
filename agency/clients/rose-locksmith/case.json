@@ -20,6 +20,10 @@
   ],
   "now": [
     {
+      "t": "The key wall",
+      "d": "Rows of key blanks on hooks that swing, with real spring physics, when you brush your cursor or finger along them."
+    },
+    {
       "t": "A working lock, explained",
       "d": "An animated pin-tumbler cross-section. The right key slides in, every pin lifts to the shear line, and it turns green. Try the wrong key and it stays red."
     },

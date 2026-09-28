@@ -15,8 +15,35 @@
 "telephone":"+442085217888","email":"walthamstowosteopaths@gmail.com",
 "availableService":["Structural osteopathy","Cranial osteopathy","Acupuncture","Sports massage","Aromatherapy","Nutritional therapy"]}
 </script>
+<style id="kit">
+/* Second Coat motion kit: shared micro-interactions, inlined into each site by scripts/kit.js.
+   Theme it per site with --kit-accent (progress bar, cursor ring) and --kit-ink (cursor dot). */
+.kit-progress{position:fixed;inset-block-start:0;inset-inline:0;height:3px;z-index:120;pointer-events:none;background:var(--kit-accent,#FF5A36);transform-origin:0 50%;transform:scaleX(0)}
+[data-split] .kw{display:inline-block;overflow:hidden;vertical-align:top;padding-block-end:.08em;margin-block-end:-.08em}
+[data-split] .kw>span{display:inline-block;transform:translateY(105%) rotate(4deg);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 55ms)}
+[data-split].kit-in .kw>span{transform:none}
+.kit-cursor,.kit-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:130;border-radius:50%;transform:translate(-50%,-50%)}
+.kit-cursor{width:8px;height:8px;background:var(--kit-ink,#fff);mix-blend-mode:difference}
+.kit-ring{width:38px;height:38px;border:1.5px solid var(--kit-accent,#FF5A36);display:grid;place-items:center;transition:width .3s cubic-bezier(.2,.8,.2,1),height .3s cubic-bezier(.2,.8,.2,1),background .3s,border-color .3s,opacity .3s}
+.kit-ring span{font:700 .62rem/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--kit-on,#111);opacity:0;transition:opacity .2s}
+.kit-ring.link{width:64px;height:64px;background:color-mix(in srgb,var(--kit-accent,#FF5A36) 18%,transparent)}
+.kit-ring.label{width:92px;height:92px;background:var(--kit-accent,#FF5A36);border-color:transparent}
+.kit-ring.label span{opacity:1}
+.kit-ring.down{width:26px;height:26px}
+.kit-ring.gone,.kit-cursor.gone{opacity:0}
+html.kit-hide-cursor,html.kit-hide-cursor a,html.kit-hide-cursor button,html.kit-hide-cursor [data-cursor]{cursor:none}
+html.kit-hide-cursor input,html.kit-hide-cursor textarea,html.kit-hide-cursor select{cursor:auto}
+.mag.mag{transition:translate .45s cubic-bezier(.2,.8,.2,1),transform .25s,background .25s,color .25s,box-shadow .25s}
+[data-tilt]{transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.kit-rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+.kit-rv.kit-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  [data-split] .kw>span,.kit-rv{transform:none!important;opacity:1!important;transition:none!important}
+  .kit-progress{display:none}
+}
+</style>
 <style>
-:root{
+:root{--kit-accent:#B4583B;--kit-ink:#F4F1EA;--kit-on:#fff;
   --moss:#27413A; --moss-2:#1C2F2A; --lime:#F4F1EA; --lime-2:#EAE4D8; --tile:#B4583B; --tile-dk:#8F4029; --sage:#9DB5A4; --sage-lt:#DCE6DE;
   --ink:#1F2A27; --muted:#56615D; --line:rgba(31,42,39,.14);
   --serif:"Newsreader",Georgia,serif; --sans:"Manrope",system-ui,sans-serif; --max:1200px;
@@ -175,13 +202,22 @@ details p{margin-top:12px;color:var(--muted)}
 
 footer{background:var(--moss-2);border-top:1px solid rgba(244,241,234,.1);color:#9fb0a8;padding-block:28px;font-size:.88rem}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* the quarry-tile floor you can play with */
+.floorsec{background:var(--lime-2);padding-block:70px 0}
+.floorsec .head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:28px}
+.floorsec .head p{color:var(--muted);max-width:30em}
+.qfloor{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));perspective:600px;touch-action:pan-y}
+.qfloor i{aspect-ratio:1;background:var(--tile);transition:background 0s .22s}
+.qfloor i.d{background:var(--moss)}
+.qfloor i.flip{animation:qflip .5s ease-in-out}
+@keyframes qflip{50%{transform:rotateX(90deg) scale(.9)}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rv{opacity:1;transform:none}.step::before{width:100%}
 }
 </style>
 </head>
-<body>
+<body data-kit-cursor>
 <div class="concept" role="note">Concept redesign by Second Coat. This is not the official Walthamstow Osteopaths website. <a href="https://www.walthamstowosteopaths.co.uk/">Visit the real site →</a></div>
 <header>
   <nav class="wrap nav" aria-label="Main">
@@ -190,7 +226,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <span><b>Walthamstow Osteopaths</b><small>No.72 St Mary Road · Est. 2000</small></span>
     </a>
     <ul><li><a href="#treatments">Treatments</a></li><li><a href="#first-visit">First visit</a></li><li><a href="#team">Osteopaths</a></li><li><a href="#no72">No.72</a></li></ul>
-    <a class="btn" href="#book">Book an appointment</a>
+    <a class="btn mag" href="#book">Book an appointment</a>
   </nav>
 </header>
 
@@ -202,10 +238,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
         <span class="kicker">Walthamstow Village · E17</span>
         <h1>Hands-on care at <em>No.72.</em></h1>
         <p class="lede">Osteopathy, acupuncture and massage in a restored Victorian shopfront, close to Walthamstow Central.</p>
-        <div class="ctas"><a class="btn" href="tel:+442085217888">Call 020 8521 7888</a><a class="btn line" href="#first-visit">What to expect</a></div>
+        <div class="ctas"><a class="btn mag" href="tel:+442085217888">Call 020 8521 7888</a><a class="btn line mag" href="#first-visit">What to expect</a></div>
         <div class="stats"><div><b>2000</b><span>Caring for E17 since</span></div><div><b>2</b><span>Founders, still here</span></div><div><b>3</b><span>Treatment rooms</span></div></div>
       </div>
-      <div class="spinebox" aria-hidden="true"><svg id="spine" viewBox="0 0 200 600"></svg></div>
+      <div class="spinebox" aria-hidden="true" data-depth="16"><svg id="spine" viewBox="0 0 200 600"></svg></div>
     </div>
     <div class="scrollhint" aria-hidden="true">Scroll<i></i></div>
   </div>
@@ -214,7 +250,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <div class="tiles" aria-hidden="true"></div>
 
 <section id="treatments" class="wrap">
-  <div class="rv"><span class="eyebrow">Treatments</span><h2>Osteopathy first, with the right <em>support</em> around it.</h2></div>
+  <div class="rv"><span class="eyebrow">Treatments</span><h2 data-split>Osteopathy first, with the right <em>support</em> around it.</h2></div>
   <div class="tx" id="tx">
     <div class="t" data-open="true"><button aria-expanded="true"><span class="num">01</span><h3>Structural osteopathy <span class="tag">Our speciality</span></h3><span class="pm" aria-hidden="true"></span></button><div class="body"><div><p>A hands-on approach to how your muscles, joints and spine work together, using soft tissue work, mobilisation and manipulation.</p></div></div></div>
     <div class="t" data-open="false"><button aria-expanded="false"><span class="num">02</span><h3>Cranial osteopathy</h3><span class="pm" aria-hidden="true"></span></button><div class="body"><div><p>A gentle, subtle form of osteopathy. Both our founders have postgraduate training from the Sutherland Cranial College.</p></div></div></div>
@@ -227,7 +263,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="first-visit" class="visit">
   <div class="wrap">
-    <div class="rv"><span class="eyebrow">Your first visit</span><h2>Never seen an osteopath? Here's what happens.</h2>
+    <div class="rv"><span class="eyebrow">Your first visit</span><h2 data-split>Never seen an osteopath? Here's what happens.</h2>
     <p class="intro">You don't need a GP referral. Wear something comfortable, and bring a list of any medication you take.</p></div>
     <div class="steps">
       <div class="step rv"><b>1</b><h3>We listen</h3><p>We ask about your symptoms, history, work and lifestyle.</p></div>
@@ -239,20 +275,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <section id="team" class="wrap">
-  <div class="rv"><span class="eyebrow">The osteopaths</span><h2>The same two founders, since 2000.</h2></div>
+  <div class="rv"><span class="eyebrow">The osteopaths</span><h2 data-split>The same two founders, since 2000.</h2></div>
   <div class="team">
     <div class="person rv"><div class="ph">Photo</div><div><h3>Iain Chapman</h3><small>Osteopath · Co-founder</small><p>Graduated from Andrew Still College of Osteopathy and Kingston University, with postgraduate training in cranial osteopathy at the Sutherland Cranial College.</p></div></div>
     <div class="person rv"><div class="ph">Photo</div><div><h3>Stephen Moore</h3><small>Osteopath · Co-founder</small><p>Graduated from Andrew Still College of Osteopathy and Kingston University, with postgraduate training in cranial osteopathy at the Sutherland Cranial College.</p></div></div>
   </div>
 </section>
 
-<div class="tiles dark" aria-hidden="true"></div>
+<section class="floorsec" aria-labelledby="flh">
+  <div class="wrap head"><div><span class="eyebrow">The original floor</span><h2 data-split id="flh">Mind the <em>tiles.</em></h2></div><p>The quarry tiles at No.72 are the originals, restored in 2003. These ones you can play with: touch the floor.</p></div>
+  <div class="qfloor" id="qfloor" aria-hidden="true"></div>
+</section>
 
 <section id="no72" class="ages">
   <div class="wrap cols">
     <div class="rv">
       <span class="eyebrow">No.72 St Mary Road</span>
-      <h2>A brewery, a music shop, a hairdresser. <em>Then us.</em></h2>
+      <h2 data-split>A brewery, a music shop, a hairdresser. <em>Then us.</em></h2>
       <p class="lead">Older E17 residents might remember No.72 as a brewery, a music shop and, most recently, a hairdresser. By the time we found it, it had fallen into disrepair.</p>
       <div class="eras" role="group" aria-label="No.72 through the years">
         <button aria-pressed="false" data-e="0">Brewery</button><button aria-pressed="false" data-e="1">Music shop</button><button aria-pressed="false" data-e="2">Hairdresser</button><button aria-pressed="true" data-e="3">Osteopaths</button>
@@ -304,7 +343,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </section>
 
 <section class="wrap">
-  <div class="rv"><span class="eyebrow">Our story</span><h2>Twenty-five years, one street away from the High Street.</h2></div>
+  <div class="rv"><span class="eyebrow">Our story</span><h2 data-split>Twenty-five years, one street away from the High Street.</h2></div>
   <div class="line" id="line"><span class="fill" id="fill"></span>
     <div class="yr rv"><b>2000</b><h3>The practice opens</h3><p>Iain and Stephen start out in a dental centre on Walthamstow High Street.</p></div>
     <div class="yr rv"><b>2002</b><h3>We find No.72</h3><p>With a growing patient list, we take on a run-down Victorian shop on St Mary Road.</p></div>
@@ -315,7 +354,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section class="wrap" style="padding-top:0">
   <div class="faq">
-    <div class="rv"><span class="eyebrow">Questions</span><h2>Good to know.</h2></div>
+    <div class="rv"><span class="eyebrow">Questions</span><h2 data-split>Good to know.</h2></div>
     <details><summary>Do I need a referral from my GP?</summary><p>No. You can book directly with us.</p></details>
     <details><summary>How long is an appointment and how much does it cost?</summary><p>[Add appointment lengths and prices for first and follow-up visits.]</p></details>
     <details><summary>Can I claim on my health insurance?</summary><p>[Confirm which insurers the practice is registered with.]</p></details>
@@ -327,9 +366,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="wrap rv">
     <div class="breath" aria-hidden="true"><i></i><i></i><i></i><span id="bt">breathe in</span></div>
     <span class="eyebrow" style="color:var(--sage)">Book an appointment</span>
-    <h2>Let's get you moving.</h2>
+    <h2 data-split>Let's get you moving.</h2>
     <p>Call or email and we'll find a time that works for you.</p>
-    <div class="ctas"><a class="btn" href="tel:+442085217888">Call 020 8521 7888</a><a class="btn line" href="mailto:walthamstowosteopaths@gmail.com">Email us</a></div>
+    <div class="ctas"><a class="btn mag" href="tel:+442085217888">Call 020 8521 7888</a><a class="btn line mag" href="mailto:walthamstowosteopaths@gmail.com">Email us</a></div>
     <p class="addr">No.72 St Mary Road, Walthamstow, London E17 9RE · <a href="https://www.google.com/maps/search/?api=1&amp;query=72+St+Mary+Road+London+E17+9RE">Get directions →</a></p>
   </div>
 </section>
@@ -386,6 +425,102 @@ addEventListener('scroll', () => { const r = line.getBoundingClientRect(); fill.
 
 // ---- breathing prompt ----
 if (!reduce) { const bt = document.getElementById('bt'); let inn = true; setInterval(() => { inn = !inn; bt.textContent = inn ? 'breathe in' : 'breathe out'; }, 5000); } else document.getElementById('bt').textContent = 'take a breath';
+
+// ---- quarry-tile floor: tiles flip in a ripple from wherever you touch ----
+(() => {
+  const fl = document.getElementById('qfloor'); if (!fl) return;
+  let cols = 0, tiles = [];
+  const build = () => { cols = getComputedStyle(fl).gridTemplateColumns.split(' ').length; const rows = 5; fl.innerHTML = '';
+    tiles = []; for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) { const t = document.createElement('i'); if ((r + c) % 2) t.className = 'd'; t.dataset.r = r; t.dataset.c = c; fl.appendChild(t); tiles.push(t); } };
+  build(); addEventListener('resize', () => { if (getComputedStyle(fl).gridTemplateColumns.split(' ').length !== cols) build(); });
+  if (reduce) return;
+  let last = null;
+  const ripple = (r0, c0) => tiles.forEach(t => { const d = Math.hypot(t.dataset.r - r0, t.dataset.c - c0); if (d > 5) return;
+    setTimeout(() => { t.classList.remove('flip'); void t.offsetWidth; t.classList.add('flip'); t.classList.toggle('d'); }, d * 70); });
+  fl.addEventListener('pointermove', e => { const t = e.target.closest('i'); if (!t || t === last) return; last = t; ripple(+t.dataset.r, +t.dataset.c); });
+  fl.addEventListener('pointerleave', () => { last = null; });
+})();
+</script>
+<script id="kit">
+// Second Coat motion kit: shared micro-interactions, inlined into each site by scripts/kit.js.
+//   [data-split]              words rise out of a mask when the element scrolls into view
+//   .kit-rv                   fade-up reveal; siblings stagger via --i
+//   .mag                      magnetic buttons that lean towards the pointer
+//   [data-tilt]               3D tilt that follows the pointer
+//   [data-speed="0.2"]        parallax drift while scrolling
+//   [data-depth="20"]         drifts against the pointer (don't combine with data-speed on one element)
+//   <body data-kit-cursor>    custom dot-and-ring cursor; [data-cursor="Play"] shows a label
+// Everything is skipped under prefers-reduced-motion, and pointer effects only run for a fine pointer.
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const $$ = s => [...document.querySelectorAll(s)];
+
+  // split text into masked words, keeping inline markup (em, b, span) intact
+  $$('[data-split]').forEach(el => {
+    if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+    let i = 0;
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(w => {
+          if (!w) return;
+          if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(w)); return; }
+          const o = document.createElement('span'), inn = document.createElement('span');
+          o.className = 'kw'; o.setAttribute('aria-hidden', 'true'); inn.textContent = w; inn.style.setProperty('--i', i++); o.appendChild(inn); frag.appendChild(o);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && !n.matches('br,svg,img')) { n.setAttribute('aria-hidden', 'true'); walk(n); }
+    });
+    walk(el);
+  });
+  $$('[data-stagger]').forEach(p => [...p.children].forEach((c, i) => { c.classList.add('kit-rv'); c.style.setProperty('--i', i); }));
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('kit-in'); io.unobserve(e.target); } }), { threshold: .15, rootMargin: '0px 0px -5% 0px' });
+  $$('[data-split],.kit-rv').forEach(el => reduce ? el.classList.add('kit-in') : io.observe(el));
+  if (reduce) return;
+
+  // scroll progress + parallax, one rAF per frame
+  const bar = document.createElement('div'); bar.className = 'kit-progress'; bar.setAttribute('aria-hidden', 'true'); document.body.appendChild(bar);
+  const par = $$('[data-speed]'); let ticking = false;
+  const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => {
+    const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+    par.forEach(el => { const r = el.getBoundingClientRect(); const c = r.top + r.height / 2 - innerHeight / 2; el.style.translate = `0 ${(-c * +el.dataset.speed).toFixed(1)}px`; });
+    ticking = false; }); };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  if (!fine) return;
+  // magnetic buttons
+  $$('.mag').forEach(b => {
+    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.translate = `${(e.clientX - r.left - r.width / 2) * .28}px ${(e.clientY - r.top - r.height / 2) * .38}px`; });
+    b.addEventListener('pointerleave', () => { b.style.translate = ''; });
+  });
+  // tilt
+  $$('[data-tilt]').forEach(c => {
+    const k = +c.dataset.tilt || 8;
+    c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `perspective(900px) rotateY(${x * k}deg) rotateX(${-y * k}deg)`; });
+    c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+  });
+  // mouse-depth parallax: [data-depth="20"] drifts up to 20px against the pointer
+  const deep = $$('[data-depth]');
+  if (deep.length) { let mx = 0, my = 0, cx = 0, cy = 0;
+    addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+    (function drift() { cx += (mx - cx) * .06; cy += (my - cy) * .06; deep.forEach(el => { const d = +el.dataset.depth; el.style.translate = `${(-cx * d).toFixed(2)}px ${(-cy * d).toFixed(2)}px`; }); requestAnimationFrame(drift); })(); }
+  // custom cursor
+  if (document.body.hasAttribute('data-kit-cursor')) {
+    const dot = document.createElement('div'), ring = document.createElement('div'), lab = document.createElement('span');
+    dot.className = 'kit-cursor gone'; ring.className = 'kit-ring gone'; ring.appendChild(lab); dot.setAttribute('aria-hidden', 'true'); ring.setAttribute('aria-hidden', 'true');
+    document.body.append(dot, ring); document.documentElement.classList.add('kit-hide-cursor');
+    let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+    addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; dot.classList.remove('gone'); ring.classList.remove('gone');
+      const t = e.target && e.target.closest ? e.target.closest('[data-cursor],a,button,input[type=range],label') : null;
+      ring.classList.toggle('label', !!(t && t.dataset.cursor)); ring.classList.toggle('link', !!(t && !t.dataset.cursor));
+      lab.textContent = t && t.dataset.cursor || ''; });
+    document.addEventListener('pointerleave', () => { dot.classList.add('gone'); ring.classList.add('gone'); });
+    addEventListener('pointerdown', () => ring.classList.add('down')); addEventListener('pointerup', () => ring.classList.remove('down'));
+    (function loop() { rx += (x - rx) * .18; ry += (y - ry) * .18; dot.style.translate = `${x}px ${y}px`; ring.style.translate = `${rx}px ${ry}px`; requestAnimationFrame(loop); })();
+  }
+})();
 </script>
 </body>
 </html>

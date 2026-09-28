@@ -4,6 +4,7 @@
 //   <style id="kit"></style>        in <head>
 //   <script id="kit"></script>      just before </body>
 // With no slugs, it updates every clients/*/site/index.html containing the markers.
+// Put site CSS/JS in the site's own <style>/<script>, never inside the kit blocks: they are replaced wholesale on every run.
 const fs = require('fs');
 const path = require('path');
 const root = path.join(__dirname, '..');

@@ -17,8 +17,35 @@
 {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"18:00"},
 {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"09:00","closes":"17:00"}]}
 </script>
+<style id="kit">
+/* Second Coat motion kit: shared micro-interactions, inlined into each site by scripts/kit.js.
+   Theme it per site with --kit-accent (progress bar, cursor ring) and --kit-ink (cursor dot). */
+.kit-progress{position:fixed;inset-block-start:0;inset-inline:0;height:3px;z-index:120;pointer-events:none;background:var(--kit-accent,#FF5A36);transform-origin:0 50%;transform:scaleX(0)}
+[data-split] .kw{display:inline-block;overflow:hidden;vertical-align:top;padding-block-end:.08em;margin-block-end:-.08em}
+[data-split] .kw>span{display:inline-block;transform:translateY(105%) rotate(4deg);transition:transform 1s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 55ms)}
+[data-split].kit-in .kw>span{transform:none}
+.kit-cursor,.kit-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:130;border-radius:50%;transform:translate(-50%,-50%)}
+.kit-cursor{width:8px;height:8px;background:var(--kit-ink,#fff);mix-blend-mode:difference}
+.kit-ring{width:38px;height:38px;border:1.5px solid var(--kit-accent,#FF5A36);display:grid;place-items:center;transition:width .3s cubic-bezier(.2,.8,.2,1),height .3s cubic-bezier(.2,.8,.2,1),background .3s,border-color .3s,opacity .3s}
+.kit-ring span{font:700 .62rem/1 system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--kit-on,#111);opacity:0;transition:opacity .2s}
+.kit-ring.link{width:64px;height:64px;background:color-mix(in srgb,var(--kit-accent,#FF5A36) 18%,transparent)}
+.kit-ring.label{width:92px;height:92px;background:var(--kit-accent,#FF5A36);border-color:transparent}
+.kit-ring.label span{opacity:1}
+.kit-ring.down{width:26px;height:26px}
+.kit-ring.gone,.kit-cursor.gone{opacity:0}
+html.kit-hide-cursor,html.kit-hide-cursor a,html.kit-hide-cursor button,html.kit-hide-cursor [data-cursor]{cursor:none}
+html.kit-hide-cursor input,html.kit-hide-cursor textarea,html.kit-hide-cursor select{cursor:auto}
+.mag.mag{transition:translate .45s cubic-bezier(.2,.8,.2,1),transform .25s,background .25s,color .25s,box-shadow .25s}
+[data-tilt]{transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.kit-rv{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1);transition-delay:calc(var(--i,0) * 80ms)}
+.kit-rv.kit-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  [data-split] .kw>span,.kit-rv{transform:none!important;opacity:1!important;transition:none!important}
+  .kit-progress{display:none}
+}
+</style>
 <style>
-:root{
+:root{--kit-accent:#C6A15B;--kit-ink:#FBF6EF;--kit-on:#151314;
   --lacquer:#151314; --lacquer-2:#201C1D; --blush:#F2D4CC; --blush-lt:#FAEDE8; --gold:#C6A15B; --gold-lt:#E7CD93; --gold-ink:#7E5F24;
   --cream:#FBF6EF; --muted:#6E6461; --line:rgba(21,19,20,.14);
   --serif:"Bodoni Moda",Didot,Georgia,serif; --sans:"Jost",system-ui,sans-serif; --max:1200px;
@@ -147,6 +174,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   .callbar a:first-child{background:var(--gold);color:var(--lacquer)}.callbar a:last-child{background:var(--lacquer);color:var(--cream)}
   body{padding-bottom:56px}
 }
+/* gold dust trail + vanity-mirror bulbs */
+.dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
+.bulb{position:absolute;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#4a3d27;box-shadow:inset 0 -2px 3px rgba(0,0,0,.4);transition:background .15s,box-shadow .15s;z-index:2}
+.bulb.on{background:#FFF4D6;box-shadow:0 0 12px 4px rgba(255,226,160,.75),0 0 30px 8px rgba(198,161,91,.35)}
+.door.party .bulb{animation:party .3s steps(1) infinite}
+@keyframes party{50%{background:#FFF4D6;box-shadow:0 0 12px 4px rgba(255,226,160,.75)}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
   .rv{opacity:1;transform:none}.sparkle{display:none}
@@ -154,7 +187,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 }
 </style>
 </head>
-<body>
+<body data-kit-cursor>
 <div class="concept" role="note">Concept redesign by Second Coat. This is not the official Clapton Beauty Parlour website. <a href="https://www.claptonbeautyparlour.co.uk/">Visit the real site →</a></div>
 <header>
   <nav class="wrap nav" aria-label="Main">
@@ -163,27 +196,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
       <span><b>Clapton Beauty Parlour</b><small>Est. 1930 · Lower Clapton Road</small></span>
     </a>
     <ul><li><a href="#services">Services</a></li><li><a href="#story">Our story</a></li><li><a href="#decades">Decades</a></li><li><a href="#visit">Visit</a></li></ul>
-    <a class="btn" href="https://www.fresha.com/lvp/clapton-beauty-parlour-lower-clapton-road-london-8JvwMV">Book online</a>
+    <a class="btn mag" href="https://www.fresha.com/lvp/clapton-beauty-parlour-lower-clapton-road-london-8JvwMV">Book online</a>
   </nav>
 </header>
 
 <main id="top">
 <section class="hero">
+  <canvas class="dust" id="dust" aria-hidden="true"></canvas>
   <div class="burst" aria-hidden="true"></div>
-  <div class="arch" aria-hidden="true"></div>
+  <div class="arch" aria-hidden="true" data-depth="18"></div>
   <div id="sp" aria-hidden="true"></div>
   <div class="wrap in">
     <span class="est">21 Lower Clapton Road · E5</span>
     <h1>Doing Clapton's hair <span class="gold">since 1930.</span></h1>
     <p class="lede">Cuts, colour, extensions and beauty treatments at a family salon that's been on Lower Clapton Road since 1930, with one very famous former guest.</p>
-    <div class="ctas"><a class="btn" href="https://www.fresha.com/lvp/clapton-beauty-parlour-lower-clapton-road-london-8JvwMV">Book online</a><a class="btn line" href="tel:+442089854329">020 8985 4329</a></div>
+    <div class="ctas"><a class="btn mag" href="https://www.fresha.com/lvp/clapton-beauty-parlour-lower-clapton-road-london-8JvwMV">Book online</a><a class="btn line mag" href="tel:+442089854329">020 8985 4329</a></div>
   </div>
 </section>
 
 <div class="press">As featured in <b>Spitalfields Life</b><b>Hackney Gazette</b><b>Hackney Post</b></div>
 
 <section id="services" class="wrap">
-  <div class="rv" style="text-align:center"><span class="eyebrow">Services</span><h2 style="margin-inline:auto">Hair, beauty and <em>a little glamour.</em></h2></div>
+  <div class="rv" style="text-align:center"><span class="eyebrow">Services</span><h2 data-split style="margin-inline:auto">Hair, beauty and <em>a little glamour.</em></h2></div>
   <div class="menu rv">
     <div class="col"><span class="rn">I</span><h3>Hair</h3><ul><li><b>Cut &amp; finish</b><span>£—</span></li><li><b>Colour</b><span>£—</span></li><li><b>Hair extensions</b><span>£—</span></li><li><b>Men's grooming</b><span>£—</span></li><li><b>Wedding hair</b><span>£—</span></li></ul></div>
     <div class="col"><span class="rn">II</span><h3>Beauty</h3><ul><li><b>Facials</b><span>£—</span></li><li><b>Manicure</b><span>£—</span></li><li><b>Pedicure</b><span>£—</span></li><li><b>Beauty therapy</b><span>£—</span></li></ul></div>
@@ -203,7 +237,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     </div>
     <div class="txt rv">
       <span class="eyebrow">A little salon history</span>
-      <h2>Our most <em>famous</em> former guest.</h2>
+      <h2 data-split>Our most <em>famous</em> former guest.</h2>
       <p>Newlyweds Jean and Emanuel Manning opened the Clapton Beauty Parlour in 1930. In the 1940s, a 15-year-old Vidal Sassoon, a relative of the family, needed somewhere to work after bomb damage to his own workplace, and he found it here.</p>
       <p>The Hackney Gazette remembers the Parlour as the "in shop" for the Beverley Sisters.</p>
       <blockquote>"Vidal's aunt was the cousin of my grandmother."<cite>Marcia Linch, daughter of the founders, to the Hackney Gazette</cite></blockquote>
@@ -213,7 +247,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="decades" class="decades" style="padding:0">
   <div class="pin">
-    <div class="head"><span class="eyebrow">Through the decades</span><h2>Ninety-plus years on one road.</h2></div>
+    <div class="head"><span class="eyebrow">Through the decades</span><h2 data-split>Ninety-plus years on one road.</h2></div>
     <div class="track" id="track">
       <article class="era"><div class="yr">1930</div><h3>Doors open</h3><p>Jean and Emanuel Manning open on Lower Clapton Road.</p>
         <div class="scene" aria-hidden="true"><svg viewBox="0 0 300 110"><path d="M20 110 V40 A40 40 0 0 1 100 40 V110" fill="none" stroke="#C6A15B" stroke-width="2"/><g stroke="#C6A15B"><path d="M60 110 V20 M60 110 L30 50 M60 110 L90 50"/></g><text x="130" y="70" font-family="Bodoni Moda,serif" font-style="italic" font-size="19" fill="#E7CD93">Open for business</text></svg></div></article>
@@ -232,16 +266,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
   <div class="cols">
     <div class="rv">
       <span class="eyebrow">Visit the Parlour</span>
-      <h2>Pull up <em>a chair.</em></h2>
+      <h2 data-split>Pull up <em>a chair.</em></h2>
       <p class="addr">21 Lower Clapton Road<br>Hackney, London E5 0NS</p>
-      <div class="ctas" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px"><a class="btn" href="https://www.fresha.com/lvp/clapton-beauty-parlour-lower-clapton-road-london-8JvwMV">Book online</a><a class="btn line" href="https://www.google.com/maps/search/?api=1&amp;query=Clapton+Beauty+Parlour+21+Lower+Clapton+Road+E5+0NS">Directions</a></div>
+      <div class="ctas" style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px"><a class="btn mag" href="https://www.fresha.com/lvp/clapton-beauty-parlour-lower-clapton-road-london-8JvwMV">Book online</a><a class="btn line mag" href="https://www.google.com/maps/search/?api=1&amp;query=Clapton+Beauty+Parlour+21+Lower+Clapton+Road+E5+0NS">Directions</a></div>
       <table class="hours" id="hours" aria-label="Opening hours">
         <tr data-d="1"><td>Monday</td><td>Closed</td></tr><tr data-d="2"><td>Tuesday</td><td>10am – 6pm</td></tr><tr data-d="3"><td>Wednesday</td><td>10am – 6pm</td></tr>
         <tr data-d="4"><td>Thursday</td><td>10am – 6pm</td></tr><tr data-d="5"><td>Friday</td><td>10am – 6pm</td></tr><tr data-d="6"><td>Saturday</td><td>9am – 5pm</td></tr><tr data-d="0"><td>Sunday</td><td>Closed</td></tr>
       </table>
       <p style="margin-top:16px">Call <a href="tel:+442089854329"><b>020 8985 4329</b></a></p>
     </div>
-    <div class="door rv" aria-hidden="true">
+    <div class="door rv" id="door" aria-hidden="true">
       <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid slice"><path d="M150 290 V160" stroke="#C6A15B" stroke-width="1"/><g id="rays" stroke="#C6A15B" stroke-width="1" opacity=".55"></g><circle cx="150" cy="160" r="26" fill="#C6A15B"/><circle cx="150" cy="160" r="40" fill="none" stroke="#C6A15B"/></svg>
       <div class="sign">Clapton Beauty Parlour<small>Since 1930</small></div>
     </div>
@@ -282,6 +316,112 @@ function hscroll() {
   eras.forEach((e, i) => { e.style.filter = `sepia(${i === eras.length - 1 ? (1 - p) * .9 : .9 - i * .25})`; });
 }
 addEventListener('scroll', hscroll, { passive: true }); addEventListener('resize', hscroll); hscroll();
+
+// ---- gold dust follows the cursor across the hero ----
+(() => { if (reduce) return; const cv = document.getElementById('dust'), cx = cv.getContext('2d'), hero = cv.parentElement; let ps = [], W, H, run = false;
+  const size = () => { W = cv.width = hero.clientWidth * devicePixelRatio; H = cv.height = hero.clientHeight * devicePixelRatio; }; size(); addEventListener('resize', size);
+  const star = (x, y, r, a) => { cx.save(); cx.translate(x, y); cx.rotate(a); cx.beginPath(); for (let k = 0; k < 8; k++) { const rr = k % 2 ? r * .28 : r, t = k * Math.PI / 4; cx.lineTo(Math.cos(t) * rr, Math.sin(t) * rr); } cx.closePath(); cx.fill(); cx.restore(); };
+  const loop = () => { cx.clearRect(0, 0, W, H);
+    ps = ps.filter(p => { p.vy += .05 * devicePixelRatio; p.x += p.vx; p.y += p.vy; p.a += p.va; p.life -= .016;
+      cx.globalAlpha = Math.max(0, p.life); cx.fillStyle = p.c; star(p.x, p.y, p.r, p.a); return p.life > 0; });
+    cx.globalAlpha = 1; if (ps.length) requestAnimationFrame(loop); else run = false; };
+  hero.addEventListener('pointermove', e => { const r = cv.getBoundingClientRect(), d = devicePixelRatio;
+    for (let k = 0; k < 2; k++) ps.push({ x: (e.clientX - r.left) * d, y: (e.clientY - r.top) * d, vx: (Math.random() - .5) * 1.6 * d, vy: (Math.random() - .8) * 1.4 * d, r: (3 + Math.random() * 5) * d, a: Math.random() * 3, va: (Math.random() - .5) * .2, life: .9 + Math.random() * .6, c: ['#E7CD93', '#C6A15B', '#FFF4D6'][k % 3] });
+    if (ps.length > 220) ps.splice(0, ps.length - 220); if (!run) { run = true; requestAnimationFrame(loop); } });
+})();
+
+// ---- vanity-mirror bulbs chase around the door; they all flash when you go to book ----
+(() => { const door = document.getElementById('door'); if (!door) return; const bulbs = [];
+  const place = () => { bulbs.forEach(b => b.remove()); bulbs.length = 0; const w = door.clientWidth, h = door.clientHeight, R = w / 2 - 20, cx = w / 2, cy = w / 2, pts = [];
+    for (let k = 0; k <= 12; k++) { const t = Math.PI + k * Math.PI / 12; pts.push([cx + Math.cos(t) * R, cy + Math.sin(t) * R]); }
+    const side = Math.floor((h - cy - 30) / 34); for (let k = 1; k <= side; k++) { pts.unshift([cx - R, cy + k * 34]); pts.push([cx + R, cy + k * 34]); }
+    pts.forEach(([x, y]) => { const b = document.createElement('i'); b.className = 'bulb'; b.style.left = x + 'px'; b.style.top = y + 'px'; door.appendChild(b); bulbs.push(b); }); };
+  place(); addEventListener('resize', place);
+  if (reduce) { bulbs.forEach(b => b.classList.add('on')); return; }
+  let t = 0; setInterval(() => { t++; bulbs.forEach((b, i) => b.classList.toggle('on', (i + t) % 4 === 0 || (i - t + 400) % 4 === 0)); }, 160);
+  document.querySelectorAll('a[href*="fresha"]').forEach(a => { a.addEventListener('pointerenter', () => door.classList.add('party')); a.addEventListener('pointerleave', () => door.classList.remove('party')); });
+})();
+</script>
+<script id="kit">
+// Second Coat motion kit: shared micro-interactions, inlined into each site by scripts/kit.js.
+//   [data-split]              words rise out of a mask when the element scrolls into view
+//   .kit-rv                   fade-up reveal; siblings stagger via --i
+//   .mag                      magnetic buttons that lean towards the pointer
+//   [data-tilt]               3D tilt that follows the pointer
+//   [data-speed="0.2"]        parallax drift while scrolling
+//   [data-depth="20"]         drifts against the pointer (don't combine with data-speed on one element)
+//   <body data-kit-cursor>    custom dot-and-ring cursor; [data-cursor="Play"] shows a label
+// Everything is skipped under prefers-reduced-motion, and pointer effects only run for a fine pointer.
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const $$ = s => [...document.querySelectorAll(s)];
+
+  // split text into masked words, keeping inline markup (em, b, span) intact
+  $$('[data-split]').forEach(el => {
+    if (!el.hasAttribute('aria-label')) el.setAttribute('aria-label', el.textContent.replace(/\s+/g, ' ').trim());
+    let i = 0;
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(w => {
+          if (!w) return;
+          if (/^\s+$/.test(w)) { frag.appendChild(document.createTextNode(w)); return; }
+          const o = document.createElement('span'), inn = document.createElement('span');
+          o.className = 'kw'; o.setAttribute('aria-hidden', 'true'); inn.textContent = w; inn.style.setProperty('--i', i++); o.appendChild(inn); frag.appendChild(o);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1 && !n.matches('br,svg,img')) { n.setAttribute('aria-hidden', 'true'); walk(n); }
+    });
+    walk(el);
+  });
+  $$('[data-stagger]').forEach(p => [...p.children].forEach((c, i) => { c.classList.add('kit-rv'); c.style.setProperty('--i', i); }));
+
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('kit-in'); io.unobserve(e.target); } }), { threshold: .15, rootMargin: '0px 0px -5% 0px' });
+  $$('[data-split],.kit-rv').forEach(el => reduce ? el.classList.add('kit-in') : io.observe(el));
+  if (reduce) return;
+
+  // scroll progress + parallax, one rAF per frame
+  const bar = document.createElement('div'); bar.className = 'kit-progress'; bar.setAttribute('aria-hidden', 'true'); document.body.appendChild(bar);
+  const par = $$('[data-speed]'); let ticking = false;
+  const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => {
+    const h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = `scaleX(${h > 0 ? scrollY / h : 0})`;
+    par.forEach(el => { const r = el.getBoundingClientRect(); const c = r.top + r.height / 2 - innerHeight / 2; el.style.translate = `0 ${(-c * +el.dataset.speed).toFixed(1)}px`; });
+    ticking = false; }); };
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  if (!fine) return;
+  // magnetic buttons
+  $$('.mag').forEach(b => {
+    b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.translate = `${(e.clientX - r.left - r.width / 2) * .28}px ${(e.clientY - r.top - r.height / 2) * .38}px`; });
+    b.addEventListener('pointerleave', () => { b.style.translate = ''; });
+  });
+  // tilt
+  $$('[data-tilt]').forEach(c => {
+    const k = +c.dataset.tilt || 8;
+    c.addEventListener('pointermove', e => { const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5; c.style.transform = `perspective(900px) rotateY(${x * k}deg) rotateX(${-y * k}deg)`; });
+    c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+  });
+  // mouse-depth parallax: [data-depth="20"] drifts up to 20px against the pointer
+  const deep = $$('[data-depth]');
+  if (deep.length) { let mx = 0, my = 0, cx = 0, cy = 0;
+    addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+    (function drift() { cx += (mx - cx) * .06; cy += (my - cy) * .06; deep.forEach(el => { const d = +el.dataset.depth; el.style.translate = `${(-cx * d).toFixed(2)}px ${(-cy * d).toFixed(2)}px`; }); requestAnimationFrame(drift); })(); }
+  // custom cursor
+  if (document.body.hasAttribute('data-kit-cursor')) {
+    const dot = document.createElement('div'), ring = document.createElement('div'), lab = document.createElement('span');
+    dot.className = 'kit-cursor gone'; ring.className = 'kit-ring gone'; ring.appendChild(lab); dot.setAttribute('aria-hidden', 'true'); ring.setAttribute('aria-hidden', 'true');
+    document.body.append(dot, ring); document.documentElement.classList.add('kit-hide-cursor');
+    let x = innerWidth / 2, y = innerHeight / 2, rx = x, ry = y;
+    addEventListener('pointermove', e => { x = e.clientX; y = e.clientY; dot.classList.remove('gone'); ring.classList.remove('gone');
+      const t = e.target && e.target.closest ? e.target.closest('[data-cursor],a,button,input[type=range],label') : null;
+      ring.classList.toggle('label', !!(t && t.dataset.cursor)); ring.classList.toggle('link', !!(t && !t.dataset.cursor));
+      lab.textContent = t && t.dataset.cursor || ''; });
+    document.addEventListener('pointerleave', () => { dot.classList.add('gone'); ring.classList.add('gone'); });
+    addEventListener('pointerdown', () => ring.classList.add('down')); addEventListener('pointerup', () => ring.classList.remove('down'));
+    (function loop() { rx += (x - rx) * .18; ry += (y - ry) * .18; dot.style.translate = `${x}px ${y}px`; ring.style.translate = `${rx}px ${ry}px`; requestAnimationFrame(loop); })();
+  }
+})();
 </script>
 </body>
 </html>

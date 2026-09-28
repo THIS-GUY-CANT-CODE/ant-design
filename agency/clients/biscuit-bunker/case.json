@@ -20,24 +20,28 @@
   ],
   "now": [
     {
-      "t": "A viewfinder hero",
-      "d": "Crop marks, a blinking REC light, a running 25fps timecode and a letterbox intro that opens like a film."
+      "t": "A reel for a hero",
+      "d": "Six generated shots (golden hour, synth neon, studio spotlight, animation, bokeh, podcast waveform) hard-cut every 2.2 seconds with a flash frame, a changing slate and a rolling \"We make …\" line."
     },
     {
-      "t": "Services as a film strip",
-      "d": "Five disciplines laid out as reels on a draggable strip of film."
+      "t": "Preloader to letterbox",
+      "d": "The bone logo fills as the reel counts to 100, then the screen opens like a letterbox. It plays once per visit."
     },
     {
-      "t": "Filterable work grid",
-      "d": "Commercial, animation or podcast, with a red PLAY cursor that follows you over each project."
+      "t": "A work index with a floating preview",
+      "d": "Switch from grid to index and a preview follows your cursor across huge project titles, tilting with your speed."
     },
     {
-      "t": "Process as an edit timeline",
-      "d": "Brief to delivery shown as clips on a timeline, with a playhead that scrubs as you scroll."
+      "t": "Pinned sideways services",
+      "d": "Scroll down and five service reels slide sideways past you, with a red progress bar."
     },
     {
-      "t": "A clapperboard brief form",
-      "d": "Production, director, format, budget and deadline. The slate claps when you focus it, and the button says \"Action!\""
+      "t": "A countdown leader",
+      "d": "\"Watch the showreel\" plays a 5-4-3-2-1 film leader with a sweeping hand before handing you to Vimeo."
+    },
+    {
+      "t": "Details everywhere",
+      "d": "\"Fetched.\" scrambles in, the marquee speeds up with your scroll, the story lights up word by word, the clapperboard snaps shut on submit, and the footer shows the time in London."
     }
   ],
   "brand": {

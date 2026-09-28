@@ -20,6 +20,10 @@
   ],
   "now": [
     {
+      "t": "Floor tiles you can play with",
+      "d": "A band of quarry tiles that flip in a ripple outwards from wherever you touch."
+    },
+    {
       "t": "A spine that straightens as you scroll",
       "d": "Seventeen vertebrae start crooked and settle into line as you move down the page. It's a quiet, physical metaphor, with no claims made."
     },

@@ -43,6 +43,8 @@ The generator gets a site to "good". A case study has to be *memorable*, so ever
 - W J Meade: a dusk terrace that draws itself and lights up, a bedroom slider on the valuation form, a real-coordinates offices map
 - Clapton Beauty Parlour: a deco sunburst, gold shimmer type, a sepia-to-colour decades scroll
 
+**Motion kit.** Every flagship site includes `kit/` (split-text reveals, a context cursor, magnetic buttons, tilt, scroll and mouse-depth parallax, a progress bar). Add `<style id="kit"></style>` in `<head>` and `<script id="kit"></script>` before `</body>`, then run `node scripts/kit.js`. Opt in with `data-split`, `.mag`, `data-tilt`, `data-speed`, `data-depth`, `data-cursor="Play"` and `<body data-kit-cursor>`, and theme it with `--kit-accent`. **Never put site CSS or JS inside the kit blocks: `kit.js` replaces them wholesale.** For sector inspiration, see `research/`.
+
 Rules: it must work with a keyboard and with `prefers-reduced-motion` (give a static final state, because `shot.js` captures in reduced motion). Invent no facts to make it work. Use placeholders instead.
 
 ## 3b. Verify
