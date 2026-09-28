@@ -45,6 +45,11 @@ These outlets profiled most of the businesses in our portfolio. They love local-
 - **Pitch a story** once 2–3 concepts become real clients (with the owners' permission): before/after, the owner's quote, and the history.
 - **Never pitch unsolicited concepts to press.** Only paying or consenting clients.
 
+### 3b. Tower Hamlets Slice / Social Streets CIC (a specific opportunity)
+Tower Hamlets Slice is published by **Social Streets C.I.C.**, a social enterprise that runs Roman Road LDN, Whitechapel LDN, Bethnal Green LDN and Poplar LDN, plus the **Slice Hub** business directory. They've profiled Abbott's, Denningtons, Thompson's, Delan, G. Kelly, Repton and more.
+- **Propose a joint offer:** a "digital makeover" series where one Slice Hub-listed independent a month gets a Second Coat Refresh, and they run the before/after story. We donate the build, they bring the audience.
+- **Or advertise** in their print and online editions, targeted at Tower Hamlets traders (grant-eligible).
+
 ## 4. Accountants and bookkeepers (referral partners)
 
 Every small-business accountant has clients with bad websites.
