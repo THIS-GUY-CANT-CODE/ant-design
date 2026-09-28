@@ -10,7 +10,8 @@ const path = require('path');
   const jobs = [['site/index.html', 'desktop.png', 1440], ['site/index.html', 'mobile.png', 390], ['brand-book/index.html', 'brand-book.png', 1440]];
   let bad = false;
   for (const [src, out, w] of jobs) {
-    const p = await b.newPage({ viewport: { width: w, height: 900 } });
+    // reducedMotion: every site has a static fallback, so full-page captures show final states instead of scroll-pinned gaps
+    const p = await b.newPage({ viewport: { width: w, height: 900 }, reducedMotion: 'reduce' });
     const errs = []; p.on('pageerror', e => errs.push(e.message));
     await p.goto('file://' + path.join(dir, src), { waitUntil: 'load', timeout: 15000 }).catch(() => {});
     await p.waitForTimeout(2200); await p.evaluate(() => document.querySelectorAll('.rv').forEach(e => e.classList.add('in'))); await p.waitForTimeout(1100);
