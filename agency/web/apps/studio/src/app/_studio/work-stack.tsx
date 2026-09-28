@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Reveal, RollText } from '@sc/ui';
 import { BRANDS, brandStyle, ORDER } from '@/brands';
+import { BrandMark } from '@/brands/marks';
 import { CASES } from '@/content/cases';
 
 /** Six case studies as full-bleed cards in each client's own brand, stacking as you scroll. */
@@ -27,6 +28,7 @@ export function WorkStack() {
                     <span>{b.industry} · {b.area}</span>
                   </div>
                   <div>
+                    <BrandMark slug={slug} className="mb-6 size-16 transition-transform duration-700 ease-expo hover:rotate-[-10deg]" />
                     <h3 className="font-display text-[clamp(2.6rem,5.2vw,5.4rem)] leading-[0.88]" style={{ fontWeight: b.display.weight, fontStretch: b.display.stretch, letterSpacing: b.display.tracking }}>
                       {b.name}
                     </h3>

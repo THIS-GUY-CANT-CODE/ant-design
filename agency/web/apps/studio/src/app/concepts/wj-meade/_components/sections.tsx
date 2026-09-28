@@ -1,31 +1,12 @@
 'use client';
-import { ClipReveal, Counter, HoverLetters, Marquee, Reveal, RollText, Spotlight, Stagger, Tilt } from '@sc/ui';
+import { MeadeMark } from '@/brands/marks';
+import { Counter, HoverLetters, Marquee, Reveal, Spotlight, Stagger, Tilt } from '@sc/ui';
+import Link from 'next/link';
 import { useState } from 'react';
+import { BASE, PAGES } from './site';
 
-export function Mark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 46 34" className={className} aria-hidden>
-      <path d="M3 32V14L13 4l10 10L33 4l10 10v18" fill="none" stroke="currentColor" strokeWidth="4" strokeLinejoin="round" />
-    </svg>
-  );
-}
-
-export function Nav() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-bg/85 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-5 md:px-8" aria-label="Main">
-        <a href="#top" className="flex items-center gap-2.5 text-[19px] font-bold tracking-[-0.03em]">
-          <Mark className="h-5 w-7 text-accent" /> W J Meade
-        </a>
-        <div className="hidden gap-8 text-[14px] md:flex">
-          {([['#help', 'Services'], ['#homes', 'Homes'], ['#story', 'Since 1953'], ['#offices', 'Offices']] as const).map(([h, l]) => (
-            <a key={h} href={h} className="text-muted transition-colors hover:text-fg"><RollText>{l}</RollText></a>
-          ))}
-        </div>
-        <a href="#top" className="rounded-full bg-accent px-5 py-2.5 text-[14px] font-semibold text-accent-ink"><RollText>Free valuation</RollText></a>
-      </nav>
-    </header>
-  );
+export function Mark({ className, color }: { className?: string; color?: string }) {
+  return <MeadeMark className={className} color={color} />;
 }
 
 export function Stats() {
@@ -49,11 +30,11 @@ export function Stats() {
 }
 
 const HELP = [
-  ['Sell', 'An honest valuation, strong marketing on every major portal, and negotiators who know your area.'],
-  ['Let', 'Tenant-find or full management from a UKALA-accredited lettings team.'],
-  ['Buy', "Register with us and hear about new homes as soon as they're listed."],
-  ['Rent', 'Flats and houses across East and North London, with a local team you can talk to.'],
-];
+  ['Sell', 'An honest valuation, strong marketing on every major portal, and negotiators who know your area.', '/sell'],
+  ['Let', 'Tenant-find or full management from a UKALA-accredited lettings team.', '/let'],
+  ['Buy', "Register with us and hear about new homes as soon as they're listed.", '/buy'],
+  ['Rent', 'Flats and houses across East and North London, with a local team you can talk to.', '/offices'],
+] as const;
 
 export function Help() {
   return (
@@ -62,13 +43,13 @@ export function Help() {
         Selling, letting, buying or renting. One local team.
       </Reveal>
       <Stagger className="grid gap-3 md:grid-cols-4">
-        {HELP.map(([t, d], i) => (
+        {HELP.map(([t, d, h], i) => (
           <Tilt key={t} max={6} className="group relative flex h-full min-h-80 flex-col justify-between overflow-hidden rounded-[1.75rem] bg-card p-7 transition-colors duration-500 hover:bg-accent hover:text-accent-ink">
             <span className="font-mono text-[12px] opacity-50">0{i + 1}</span>
             <div>
               <h3 className="font-display text-[56px] leading-none font-bold tracking-[-0.05em]">{t}</h3>
               <p className="mt-4 text-[15px] leading-snug opacity-70">{d}</p>
-              <span className="mt-6 inline-flex size-11 items-center justify-center rounded-full border border-current/20 text-[15px] font-semibold transition-[translate,rotate,background-color] duration-500 group-hover:translate-x-2 group-hover:-rotate-45 group-hover:bg-accent-ink group-hover:text-accent">→</span>
+              <Link href={`${BASE}${h}`} aria-label={`${t}: find out more`} className="mt-6 inline-flex size-11 items-center justify-center rounded-full border border-current/20 text-[15px] font-semibold transition-[translate,rotate,background-color] duration-500 group-hover:translate-x-2 group-hover:-rotate-45 group-hover:bg-accent-ink group-hover:text-accent after:absolute after:inset-0">→</Link>
             </div>
           </Tilt>
         ))}
@@ -78,29 +59,32 @@ export function Help() {
 }
 
 export function Homes() {
-  const homes = [['For sale', 'Bow E3'], ['To let', 'Stratford E15'], ['For sale', 'Mile End E3']];
+  const tools = [
+    ['Stamp duty', 'What you’ll pay, with first-time buyer relief.', `${BASE}/buy#stamp-duty`],
+    ['Mortgage', 'Monthly payments for any price, deposit and rate.', `${BASE}/buy#mortgage`],
+    ['Rental yield', 'Gross and net returns for landlords.', `${BASE}/let#yield`],
+    ['Nearest office', 'Put in your postcode, find your branch.', `${BASE}/offices`],
+  ] as const;
   return (
     <section id="homes" className="mx-auto max-w-[1600px] px-5 pb-32 md:px-8">
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
-        <Reveal as="h2" className="font-display text-[clamp(2.8rem,6vw,6rem)] leading-[0.9] font-bold tracking-[-0.05em]">Just listed.</Reveal>
-        <p className="text-[14px] text-muted">Live from the property feed on the real site.</p>
+      <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+        <Reveal as="h2" className="max-w-[14ch] font-display text-[clamp(2.8rem,6vw,6rem)] leading-[0.9] font-bold tracking-[-0.05em]">Tools, not guesswork.</Reveal>
+        <div className="flex flex-wrap gap-2 text-[14px]">
+          <a href="https://www.wjmeade.co.uk/" rel="noopener" className="rounded-full bg-fg px-5 py-3 font-semibold text-bg">See every home on wjmeade.co.uk ↗</a>
+          {[['Rightmove', 'https://www.rightmove.co.uk/'], ['OnTheMarket', 'https://www.onthemarket.com/'], ['PrimeLocation', 'https://www.primelocation.com/']].map(([l, h]) => (
+            <a key={l} href={h} rel="noopener" className="rounded-full border border-line px-5 py-3">{l} ↗</a>
+          ))}
+        </div>
       </div>
-      <Stagger className="grid gap-4 md:grid-cols-3">
-        {homes.map(([tag, area], i) => (
-          <div key={i} className="group" data-cursor="View">
-            <ClipReveal radius={24}>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-[var(--mist)]">
-              <svg viewBox="0 0 200 150" className="absolute inset-x-0 bottom-0 w-full text-accent/25 transition-transform duration-700 ease-expo group-hover:scale-105" aria-hidden>
-                <path d="M20 150V70l45-35 45 35v80M110 150V80l35-28 35 28v70" fill="none" stroke="currentColor" strokeWidth="2" />
-              </svg>
-              <span className={`absolute top-4 left-4 rounded-full px-3 py-1 text-[12px] font-semibold ${tag === 'To let' ? 'bg-fg text-bg' : 'bg-accent text-accent-ink'}`}>{tag}</span>
-              <span className="absolute top-4 right-4 rounded-full bg-card/80 px-3 py-1 text-[12px] text-muted">Property photo</span>
-              <span aria-hidden className="absolute right-4 bottom-4 grid size-11 translate-y-3 place-items-center rounded-full bg-fg text-bg opacity-0 transition-[translate,opacity] duration-500 ease-expo group-hover:translate-y-0 group-hover:opacity-100">♡</span>
+      <Stagger className="grid gap-3 md:grid-cols-4">
+        {tools.map(([t, d, h]) => (
+          <Link key={t} href={h} className="group flex min-h-64 flex-col justify-between rounded-[1.75rem] bg-[var(--mist)] p-7 transition-colors duration-500 hover:bg-accent hover:text-accent-ink">
+            <span className="grid size-12 place-items-center rounded-full bg-card text-[18px] text-fg transition-transform duration-500 group-hover:-rotate-45">→</span>
+            <div>
+              <h3 className="font-display text-[36px] leading-none font-bold tracking-[-0.045em]">{t}</h3>
+              <p className="mt-3 text-[15px] opacity-75">{d}</p>
             </div>
-            </ClipReveal>
-            <p className="mt-4 text-[26px] font-bold tracking-[-0.03em] transition-colors group-hover:text-accent">£[Price]{tag === 'To let' ? ' pcm' : ''}</p>
-            <p className="text-[15px] text-muted">[Bedrooms] · [Street], {area}</p>
-          </div>
+          </Link>
         ))}
       </Stagger>
     </section>
@@ -154,7 +138,10 @@ export function Offices() {
   const [sel, setSel] = useState(4);
   return (
     <section id="offices" className="mx-auto max-w-[1600px] px-5 py-32 md:px-8">
-      <Reveal as="h2" className="mb-14 font-display text-[clamp(2.8rem,6vw,6rem)] leading-[0.9] font-bold tracking-[-0.05em]">Five offices, all local.</Reveal>
+      <div className="mb-14 flex flex-wrap items-end justify-between gap-6">
+        <Reveal as="h2" className="font-display text-[clamp(2.8rem,6vw,6rem)] leading-[0.9] font-bold tracking-[-0.05em]">Five offices, all local.</Reveal>
+        <Link href={`${BASE}/offices`} className="rounded-full bg-fg px-6 py-3.5 text-[15px] font-semibold text-bg">Live map &amp; nearest office →</Link>
+      </div>
       <div className="grid gap-8 md:grid-cols-12">
         <Stagger as="ul" className="grid content-start gap-2 md:col-span-5">
           {OFFICES.map((o, i) => (
@@ -203,11 +190,35 @@ export function Footer() {
         {['Bow', 'Stratford', 'Wood Green', 'Highams Park', 'Enfield', 'Since 1953'].map((w) => (
           <span key={w} className="flex items-center gap-8 pr-8 font-display text-[clamp(1.6rem,3vw,2.6rem)] font-bold tracking-[-0.04em]">
             {w}
-            <Mark className="h-5 w-7" />
+            <Mark className="size-8" color="#FFFFFF" />
           </span>
         ))}
       </Marquee>
       <div className="mx-auto max-w-[1600px] px-5 md:px-8">
+        <div className="grid gap-10 border-b border-white/20 py-14 md:grid-cols-12">
+          <p className="max-w-xs text-[15px] opacity-80 md:col-span-4">Independent estate and letting agents across East and North London since 1953.</p>
+          <nav aria-label="Footer" className="md:col-span-3">
+            <p className="text-[13px] opacity-60">Pages</p>
+            <ul className="mt-3 space-y-2 text-[17px]">
+              <li><Link href={BASE} className="u-draw">Home</Link></li>
+              {PAGES.map((p) => (
+                <li key={p.href}><Link href={p.href} className="u-draw">{p.label}</Link></li>
+              ))}
+            </ul>
+          </nav>
+          <div className="md:col-span-2">
+            <p className="text-[13px] opacity-60">Offices</p>
+            <ul className="mt-3 space-y-1.5 text-[15px]">
+              {['Bow', 'Stratford', 'Wood Green', 'Highams Park', 'Enfield'].map((o) => <li key={o}>{o}</li>)}
+            </ul>
+          </div>
+          <div className="md:col-span-3">
+            <p className="text-[13px] opacity-60">Bow office</p>
+            <a href="tel:+442089813331" className="u-draw mt-3 inline-block text-[22px] font-bold">020 8981 3331</a>
+            <p className="mt-2 text-[14px] opacity-80">391 Mile End Road, Bow, London E3 4QS</p>
+            <p className="mt-3 text-[13px] opacity-60">UKALA member</p>
+          </div>
+        </div>
         <p className="pt-10 font-display text-[18.5vw] leading-[0.8] font-bold tracking-[-0.07em] whitespace-nowrap">
           <HoverLetters className="[--accent:var(--fg)]">W J Meade</HoverLetters>
         </p>

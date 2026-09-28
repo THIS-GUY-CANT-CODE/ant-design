@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ClipReveal, ConceptNotice, Cursor, FadeIn, MotionKit, Parallax, Reveal, RollText, Scramble, Stagger, Tilt } from '@sc/ui';
 import { BRANDS, brandStyle, ORDER, type Slug } from '@/brands';
+import { BrandMark } from '@/brands/marks';
 import { CASES } from '@/content/cases';
 import { gbp, STUDIO } from '@/content/studio';
 
@@ -58,6 +59,7 @@ export default async function CaseStudy({ params }: Props) {
 
       <header className="mx-auto max-w-[1600px] px-5 pt-20 md:px-8">
         <p className="text-[14px] text-muted"><Scramble>{`Unsolicited concept · ${b.industry} · ${b.area}`}</Scramble></p>
+        <BrandMark slug={b.slug} className="mt-8 size-20" />
         <Reveal as="h1" immediate className="mt-6 font-display text-[clamp(3.4rem,10vw,10rem)] leading-[0.84]">
           <span style={display}>{b.name}</span>
         </Reveal>

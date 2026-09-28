@@ -1,74 +1,30 @@
-'use client';
-import { Magnetic, Reveal, RollText } from '@sc/ui';
-import { useState } from 'react';
+import { Magnetic, Reveal } from '@sc/ui';
+import Link from 'next/link';
+import { BASE, VIMEO } from './site';
 
-const FORMATS = ['Commercial', 'Branded content', 'Corporate film', 'Animation', 'Podcast', 'Not sure yet'];
-const BUDGETS = ['Under £10k', '£10k to £25k', '£25k to £50k', '£50k+'];
-
-function Chips({ options, value, onChange, label }: { options: string[]; value: string; onChange: (v: string) => void; label: string }) {
-  return (
-    <fieldset>
-      <legend className="mb-3 font-mono text-[12px] text-muted">{label}</legend>
-      <div className="flex flex-wrap gap-2">
-        {options.map((o) => (
-          <button type="button" key={o} aria-pressed={value === o} onClick={() => onChange(o)} className={`rounded-full border px-4 py-2 text-[14px] transition-colors ${value === o ? 'border-accent bg-accent text-accent-ink' : 'border-line hover:border-fg'}`}>
-            <RollText>{o}</RollText>
-          </button>
-        ))}
-      </div>
-    </fieldset>
-  );
-}
-
+/** Home-page call to action: the brief builder does the real work. */
 export function Contact() {
-  const [format, setFormat] = useState('Commercial');
-  const [budget, setBudget] = useState('£10k to £25k');
-  const [sent, setSent] = useState(false);
-  const field = 'w-full border-b border-line bg-transparent py-4 text-[20px] outline-none transition-colors placeholder:text-muted focus:border-accent';
   return (
     <section id="contact" className="mx-auto max-w-[1600px] px-5 pb-40 md:px-8">
       <div className="grid gap-16 border-t border-line pt-16 md:grid-cols-12">
-        <div className="md:col-span-5">
+        <div className="md:col-span-6">
           <Reveal as="h2" className="font-display text-[clamp(3.4rem,8vw,8rem)] leading-[0.84] font-semibold tracking-[-0.065em]">
             Got a brief?
           </Reveal>
-          <Reveal as="p" delay={0.2} className="mt-2 font-serif text-[clamp(2.4rem,5vw,4.6rem)] leading-none text-accent italic">Throw us a bone.</Reveal>
-          <div className="mt-12 space-y-2 text-[15px] text-muted">
-            <p>Shoreditch, London EC2A 4NE</p>
-            <p className="flex gap-4">
-              <a className="text-fg hover:text-accent" href="https://vimeo.com/biscuitbunker" rel="noopener"><RollText>Vimeo</RollText></a>
-              <a className="text-fg hover:text-accent" href="https://uk.linkedin.com/company/biscuit-bunker" rel="noopener"><RollText>LinkedIn</RollText></a>
-              <a className="text-fg hover:text-accent" href="https://www.facebook.com/biscuitbunkeruk/" rel="noopener"><RollText>Facebook</RollText></a>
-            </p>
-          </div>
+          <Reveal as="p" delay={0.2} className="mt-2 font-serif text-[clamp(2.4rem,5vw,4.6rem)] leading-none text-accent italic">
+            Throw us a bone.
+          </Reveal>
         </div>
-        <div className="md:col-span-7">
-          {sent ? (
-            <p className="font-display text-[40px] font-medium tracking-[-0.04em]">That&apos;s a wrap. <span className="text-muted">Concept demo, so nothing was sent.</span></p>
-          ) : (
-            <form
-              className="space-y-10"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSent(true);
-              }}
-            >
-              <div className="grid gap-2 md:grid-cols-2 md:gap-8">
-                <input className={field} placeholder="Your name" aria-label="Your name" required autoComplete="name" />
-                <input className={field} placeholder="Company" aria-label="Company" />
-                <input className={`${field} md:col-span-2`} type="email" placeholder="Email" aria-label="Email" required autoComplete="email" />
-              </div>
-              <Chips label="What are we making?" options={FORMATS} value={format} onChange={setFormat} />
-              <Chips label="Budget" options={BUDGETS} value={budget} onChange={setBudget} />
-              <textarea className={`${field} min-h-32 resize-y`} placeholder="Tell us about it" aria-label="Tell us about it" />
-              <Magnetic>
-                <button type="submit" className="group flex items-center gap-3 rounded-full bg-accent px-8 py-5 text-[17px] font-medium text-accent-ink">
-                  <RollText>Send the brief</RollText>
-                  <span aria-hidden className="transition-transform duration-500 ease-expo group-hover:translate-x-1.5 group-hover:-rotate-45">→</span>
-                </button>
-              </Magnetic>
-            </form>
-          )}
+        <div className="flex flex-col justify-end gap-6 md:col-span-6">
+          <p className="max-w-md text-[18px] text-muted">Answer five quick questions and we&apos;ll work out every format you need, check your timeline and turn it into a brief you can send.</p>
+          <div className="flex flex-wrap gap-3">
+            <Magnetic>
+              <Link href={`${BASE}/brief`} className="group flex items-center gap-3 rounded-full bg-accent px-8 py-5 text-[17px] font-medium text-accent-ink">
+                Build your brief <span aria-hidden className="transition-transform duration-500 ease-expo group-hover:translate-x-1.5 group-hover:-rotate-45">→</span>
+              </Link>
+            </Magnetic>
+            <a href={VIMEO} rel="noopener" className="rounded-full border border-line px-8 py-5 text-[17px]">Watch on Vimeo ↗</a>
+          </div>
         </div>
       </div>
     </section>

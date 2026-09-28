@@ -6,7 +6,8 @@ export default defineConfig({
   use: { baseURL: 'http://localhost:3100' },
   webServer: { command: 'pnpm start -p 3100', port: 3100, reuseExistingServer: true, timeout: 120_000 },
   projects: [
-    { name: 'desktop', use: { viewport: { width: 1440, height: 900 } } },
-    { name: 'mobile', use: { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true } },
+    { name: 'desktop', use: { viewport: { width: 1440, height: 900 } }, testIgnore: /mobile\.spec/ },
+    // interaction flows run once, at desktop size; phones get every page plus the mobile menu
+    { name: 'mobile', use: { viewport: { width: 390, height: 844 }, hasTouch: true, isMobile: true }, testIgnore: /features\.spec/ },
   ],
 });

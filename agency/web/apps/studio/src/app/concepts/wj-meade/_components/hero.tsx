@@ -1,52 +1,14 @@
 'use client';
 import { gsap, Magnetic, Parallax, Reveal, RollText, Scramble, useGSAP } from '@sc/ui';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
-import { useRef, useState } from 'react';
+import Link from 'next/link';
+import { useRef } from 'react';
+import { BASE } from './site';
 import { skyline } from './skyline';
+import { ValuationForm } from './tools';
 
 gsap.registerPlugin(DrawSVGPlugin);
 const SKY = skyline();
-
-function Valuation() {
-  const [mode, setMode] = useState<'Sell' | 'Let'>('Sell');
-  const [beds, setBeds] = useState(2);
-  const [sent, setSent] = useState(false);
-  const field = 'w-full rounded-xl border border-line bg-bg px-4 py-3.5 text-[16px] outline-none focus:border-accent';
-  return (
-    <div className="rounded-[1.75rem] bg-card p-6 shadow-[0_30px_80px_-40px_rgba(14,14,16,.35)] md:p-8">
-      {sent ? (
-        <p className="py-16 text-center text-[22px] font-semibold">Thanks. <span className="font-normal text-muted">Concept demo, so nothing was sent.</span></p>
-      ) : (
-        <form onSubmit={(e) => (e.preventDefault(), setSent(true))} className="space-y-4">
-          <p className="text-[24px] leading-tight font-semibold tracking-[-0.02em]">What&apos;s your home worth?</p>
-          <div className="grid grid-cols-2 rounded-xl bg-bg p-1" role="group" aria-label="Sell or let">
-            {(['Sell', 'Let'] as const).map((m) => (
-              <button type="button" key={m} aria-pressed={mode === m} onClick={() => setMode(m)} className={`rounded-lg py-2.5 text-[15px] font-medium transition-colors ${mode === m ? 'bg-fg text-bg' : 'text-muted'}`}>
-                {m}
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center justify-between rounded-xl border border-line px-4 py-3">
-            <span className="text-[15px]">Bedrooms</span>
-            <div className="flex items-center gap-3">
-              <button type="button" aria-label="Fewer bedrooms" onClick={() => setBeds((b) => Math.max(0, b - 1))} className="size-9 rounded-full border border-line text-[18px] transition-colors hover:border-fg hover:bg-fg hover:text-bg">−</button>
-              <output key={beds} className="w-16 animate-[pop_.35s_cubic-bezier(.16,1,.3,1)] text-center text-[20px] font-semibold tabular-nums">{beds === 0 ? 'Studio' : beds > 5 ? '6+' : beds}</output>
-              <button type="button" aria-label="More bedrooms" onClick={() => setBeds((b) => Math.min(6, b + 1))} className="size-9 rounded-full border border-line text-[18px] transition-colors hover:border-fg hover:bg-fg hover:text-bg">+</button>
-            </div>
-          </div>
-          <input className={field} placeholder="Your postcode" aria-label="Your postcode" required autoComplete="postal-code" />
-          <input className={field} placeholder="Email or phone" aria-label="Email or phone" required />
-          <button type="submit" data-press className="w-full rounded-xl bg-accent py-4 text-[16px] font-semibold text-accent-ink transition-transform hover:-translate-y-0.5">
-            <RollText>Book my free valuation</RollText>
-          </button>
-          <p className="text-center text-[14px] text-muted">
-            Or call Bow on <a href="tel:+442089813331" className="text-fg underline">020 8981 3331</a>
-          </p>
-        </form>
-      )}
-    </div>
-  );
-}
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -69,15 +31,15 @@ export function Hero() {
           <p className="mt-8 max-w-lg text-[19px] leading-snug text-muted">For more than seventy years we&apos;ve helped East London buy, sell, let and rent. Still independent, and we still know the streets.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Magnetic>
-              <a href="#homes" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg"><RollText>See homes</RollText></a>
+              <a href="#homes" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg"><RollText>Homes &amp; tools</RollText></a>
             </Magnetic>
             <Magnetic>
-              <a href="#offices" className="block rounded-full border border-fg/20 px-7 py-4 text-[16px] font-medium"><RollText>Five local offices</RollText></a>
+              <Link href={`${BASE}/offices`} className="block rounded-full border border-fg/20 px-7 py-4 text-[16px] font-medium"><RollText>Five local offices</RollText></Link>
             </Magnetic>
           </div>
         </div>
         <Parallax speed={-6} className="md:col-span-5 md:col-start-8">
-          <Valuation />
+          <ValuationForm compact />
         </Parallax>
       </div>
       <svg viewBox="0 0 1600 224" className="mt-16 block w-full" data-cursor="Light up" preserveAspectRatio="xMidYMax slice">

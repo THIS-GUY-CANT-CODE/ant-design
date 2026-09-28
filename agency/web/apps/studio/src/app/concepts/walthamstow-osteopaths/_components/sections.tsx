@@ -1,47 +1,14 @@
 'use client';
+import { No72Mark } from '@/brands/marks';
 import { gsap, HoverLetters, Magnetic, Reveal, RollText, Scramble, Skew, SplitText, Spotlight, Stagger, Tilt, useGSAP } from '@sc/ui';
 import { AnimatePresence, motion } from 'motion/react';
+import Link from 'next/link';
 import { useRef, useState } from 'react';
+import { BASE, EMAIL, FAQS, PAGES, PHONE, TREATMENTS } from './site';
 
 export function Mark({ className }: { className?: string }) {
-  // the shopfront arch, with four spine points inside
-  return (
-    <svg viewBox="0 0 28 34" className={className} aria-hidden>
-      <path d="M2 33V14a12 12 0 0 1 24 0v19" fill="none" stroke="currentColor" strokeWidth="2" />
-      {[11, 16.5, 22, 27.5].map((y) => (
-        <circle key={y} cx="14" cy={y} r="1.9" fill="currentColor" />
-      ))}
-    </svg>
-  );
+  return <No72Mark className={className} />;
 }
-
-export function Nav() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <nav className="mx-auto mt-3 flex h-14 max-w-[1560px] items-center justify-between rounded-full border border-line bg-bg/80 px-5 backdrop-blur-md md:mx-8 md:px-6" aria-label="Main">
-        <a href="#top" className="flex items-center gap-2.5 text-[16px] font-medium">
-          <Mark className="h-6 w-5" /> Walthamstow Osteopaths
-        </a>
-        <div className="hidden items-center gap-7 text-[14px] text-muted md:flex">
-          <a href="#treatments" className="hover:text-fg"><RollText>Treatments</RollText></a>
-          <a href="#first-visit" className="hover:text-fg"><RollText>First visit</RollText></a>
-          <a href="#no72" className="hover:text-fg"><RollText>No.72</RollText></a>
-          <a href="#team" className="hover:text-fg"><RollText>Osteopaths</RollText></a>
-        </div>
-        <a href="#book" className="rounded-full bg-accent px-4 py-2 text-[14px] text-accent-ink"><RollText>Book</RollText></a>
-      </nav>
-    </header>
-  );
-}
-
-const TREATMENTS = [
-  ['Structural osteopathy', 'A hands-on approach to how your muscles, joints and spine work together, using soft tissue work, mobilisation and manipulation.', 'Our speciality'],
-  ['Cranial osteopathy', 'A gentle, subtle form of osteopathy. Both our founders have postgraduate training from the Sutherland Cranial College.'],
-  ['Acupuncture', 'Fine needles placed at specific points, as a treatment on its own or alongside osteopathy.'],
-  ['Sports massage', 'Deep, focused massage for people who train, run or just carry a lot of tension.'],
-  ['Aromatherapy', 'Massage with essential oils, for a slower and more relaxing session.'],
-  ['Nutritional therapy', 'Advice on diet and lifestyle, to go with the rest of your care.'],
-] as const;
 
 export function Treatments() {
   const [open, setOpen] = useState(0);
@@ -54,7 +21,7 @@ export function Treatments() {
           </Reveal>
         </div>
         <Stagger as="ul" className="border-t border-line md:col-span-8">
-          {TREATMENTS.map(([t, d, tag], i) => (
+          {TREATMENTS.map(({ name: t, short: d, tag, slug }, i) => (
             <li key={t} className="border-b border-line">
               <button onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i} className="group flex w-full items-baseline gap-6 py-7 text-left">
                 <span className="w-8 shrink-0 font-mono text-[12px] text-muted">0{i + 1}</span>
@@ -65,7 +32,10 @@ export function Treatments() {
               <AnimatePresence initial={false}>
                 {open === i && (
                   <motion.p initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} className="overflow-hidden pl-14 text-[18px] leading-relaxed text-muted">
-                    <span className="block max-w-xl pb-8">{d}</span>
+                    <span className="block max-w-xl pb-8">
+                      {d}{' '}
+                      <Link href={`${BASE}/treatments/${slug}`} className="font-medium text-fg underline underline-offset-4">More about {t.toLowerCase()} →</Link>
+                    </span>
                   </motion.p>
                 )}
               </AnimatePresence>
@@ -177,19 +147,12 @@ export function Team() {
   );
 }
 
-const FAQ = [
-  ['Do I need a referral from my GP?', 'No. You can book directly with us.'],
-  ['How long is an appointment and how much does it cost?', '[Add appointment lengths and prices for first and follow-up visits.]'],
-  ['Can I claim on my health insurance?', '[Confirm which insurers the practice is registered with.]'],
-  ['Where exactly are you?', "72 St Mary Road, E17 9RE, on the edge of Walthamstow Village. It's a short walk from Walthamstow Central (Victoria line and Overground)."],
-];
-
 export function Faq() {
   return (
     <section className="mx-auto grid max-w-[1600px] gap-12 px-5 pb-32 md:grid-cols-12 md:px-8">
       <h2 className="font-display text-[clamp(3rem,5vw,4.6rem)] leading-none tracking-[-0.03em] md:col-span-4">Good to know.</h2>
       <Stagger className="md:col-span-8">
-        {FAQ.map(([q, a]) => (
+        {FAQS.slice(0, 4).map(([q, a]) => (
           <details key={q} className="group border-b border-line py-6 transition-colors hover:border-fg/40">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-[22px]">
               {q}
@@ -215,23 +178,60 @@ export function Book() {
         </Reveal>
         <div className="relative mt-12 flex flex-wrap justify-center gap-3">
           <Magnetic>
-            <a href="tel:+442085217888" className="block rounded-full bg-accent px-8 py-4 text-[16px] text-accent-ink"><RollText>Call 020 8521 7888</RollText></a>
+            <a href={`tel:${PHONE[1]}`} className="block rounded-full bg-accent px-8 py-4 text-[16px] text-accent-ink"><RollText>Call 020 8521 7888</RollText></a>
           </Magnetic>
           <Magnetic>
-            <a href="mailto:walthamstowosteopaths@gmail.com" className="block rounded-full border border-fg/25 bg-bg/40 px-8 py-4 text-[16px]"><RollText>Email us</RollText></a>
+            <a href={`mailto:${EMAIL}`} className="block rounded-full border border-fg/25 bg-bg/40 px-8 py-4 text-[16px]"><RollText>Email us</RollText></a>
           </Magnetic>
         </div>
         <p className="relative mt-10 text-[15px] text-muted">No.72 St Mary Road, Walthamstow, London E17 9RE · <a className="underline" href="https://www.google.com/maps/search/?api=1&query=72+St+Mary+Road+London+E17+9RE" rel="noopener">Directions</a></p>
+      </div>
+
+    </section>
+  );
+}
+
+export function Footer() {
+  return (
+    <footer className="px-3 pb-24 md:px-4 md:pb-4">
+      <div className="grid gap-10 rounded-[2.25rem] bg-card px-6 py-14 md:grid-cols-12 md:px-10">
+        <div className="md:col-span-4">
+          <Mark className="size-14" />
+          <p className="mt-5 max-w-xs text-[15px] text-muted">Osteopathy and natural health in a restored Victorian shopfront in Walthamstow Village, since 2000.</p>
+        </div>
+        <nav aria-label="Footer" className="md:col-span-3">
+          <p className="text-[13px] text-muted">Pages</p>
+          <ul className="mt-3 space-y-2 text-[17px]">
+            <li><Link href={BASE} className="u-draw">Home</Link></li>
+            {PAGES.map((p) => (
+              <li key={p.href}><Link href={p.href} className="u-draw">{p.label}</Link></li>
+            ))}
+          </ul>
+        </nav>
+        <div className="md:col-span-2">
+          <p className="text-[13px] text-muted">Treatments</p>
+          <ul className="mt-3 space-y-1.5 text-[14px]">
+            {TREATMENTS.map((t) => (
+              <li key={t.slug}><Link href={`${BASE}/treatments/${t.slug}`} className="u-draw">{t.name}</Link></li>
+            ))}
+          </ul>
+        </div>
+        <div className="md:col-span-3">
+          <p className="text-[13px] text-muted">Contact</p>
+          <a href={`tel:${PHONE[1]}`} className="u-draw mt-3 inline-block text-[20px]">{PHONE[0]}</a>
+          <a href={`mailto:${EMAIL}`} className="u-draw mt-1 block text-[14px] break-all">{EMAIL}</a>
+          <p className="mt-3 text-[14px] text-muted">72 St Mary Road, Walthamstow, London E17 9RE</p>
+        </div>
       </div>
       <Spotlight className="overflow-hidden rounded-[2.25rem] px-4 pt-16 pb-4 md:px-8">
         <p aria-hidden className="font-display text-[9.5vw] leading-[0.85] tracking-[-0.05em] whitespace-nowrap">
           <HoverLetters>No.72</HoverLetters> <em className="text-accent"><HoverLetters className="[--accent:var(--fg)]">Walthamstow</HoverLetters></em>
         </p>
       </Spotlight>
-      <footer className="flex flex-wrap justify-between gap-4 px-4 pt-6 pb-20 text-[13px] text-muted md:pb-4">
+      <div className="flex flex-wrap justify-between gap-4 px-4 pt-6 text-[13px] text-muted">
         <span>© {new Date().getFullYear()} Walthamstow Osteopaths · 72 St Mary Road, E17 9RE</span>
         <span>Concept by Second Coat</span>
-      </footer>
-    </section>
+      </div>
+    </footer>
   );
 }

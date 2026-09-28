@@ -2,18 +2,9 @@
 import { Magnetic, Reveal, RollText } from '@sc/ui';
 import { useRef, useState } from 'react';
 
-type City = 'hanoi' | 'xian';
-const DISHES: { name: string; city: City; desc: string; fav?: boolean }[] = [
-  { name: 'Banana leaf tilapia', city: 'hanoi', desc: 'Whole tilapia, marinated and grilled in banana leaf.', fav: true },
-  { name: 'Concubine noodles', city: 'xian', desc: 'Dry-fried flat noodles with chicken, potato and house chilli sauce.', fav: true },
-  { name: 'Bún thịt nem nướng', city: 'hanoi', desc: 'Rice vermicelli, grilled pork, spring rolls, herbs and nước chấm.' },
-  { name: 'Zha jiang noodles', city: 'xian', desc: 'Noodles in a rich fermented bean and pork sauce.' },
-  { name: 'Rou jia mo', city: 'xian', desc: 'The Xi\'an "burger": slow-braised pork in a crisp flatbread bun.' },
-  { name: 'Green papaya salad', city: 'hanoi', desc: 'Shredded green papaya, herbs, peanuts, lime and chilli.' },
-  { name: 'Summer rolls', city: 'hanoi', desc: 'Rice paper rolls with fresh herbs and a dipping sauce.' },
-  { name: 'Sweet potato & prawn', city: 'hanoi', desc: 'Crisp sweet potato and prawn fritters, wrapped in lettuce and herbs.' },
-  { name: 'Crispy squid', city: 'xian', desc: 'Salt and pepper squid with chilli and spring onion.' },
-];
+import Link from 'next/link';
+import { BASE, DISHES, type City } from './site';
+
 const FILTERS: [string, 'all' | City][] = [['Everything', 'all'], ['Hà Nội', 'hanoi'], ['西安', 'xian']];
 
 export function Menu() {
@@ -83,7 +74,10 @@ export function Menu() {
             );
           })}
         </ul>
-        <p className="mt-6 text-[13px] opacity-60">Concept preview: prices and the full menu still to add. Please tell staff about any allergies.</p>
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+          <p className="text-[13px] opacity-60">Concept preview: prices and the full menu still to add. Please tell staff about any allergies.</p>
+          <Link href={`${BASE}/menu`} className="rounded-full bg-bg px-6 py-3.5 text-[15px] font-medium text-fg">Search the menu &amp; plan your table →</Link>
+        </div>
       </div>
     </section>
   );

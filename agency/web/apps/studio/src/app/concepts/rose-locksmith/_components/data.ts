@@ -20,3 +20,33 @@ export function bladePath(cuts: number[], x0 = 150, x1 = 860, top = 60, depth = 
   });
   return d + ` L${x1 - 40} ${top} L${x1} ${top + 40} L${x1 - 40} ${top + 90} L${x0 - 30} ${top + 90}`;
 }
+
+export const BASE = '/concepts/rose-locksmith';
+export const ADDRESS = '149 Bethnal Green Road, London E2 7DG';
+export const POSTCODE = 'E2 7DG';
+/** Approximate; refined from the postcode at runtime. */
+export const APPROX = { lat: 51.5266, lng: -0.0684 };
+/** Areas the shop names for emergency call-outs. */
+export const CALLOUT_DISTRICTS = ['Tower Hamlets', 'Hackney'];
+
+export const PAGES = [
+  { href: `${BASE}/keys`, label: 'Keys & remotes', sub: 'Cut while you wait' },
+  { href: `${BASE}/emergency`, label: 'Locks & emergency', sub: 'Lockouts, uPVC doors' },
+  { href: `${BASE}/paint`, label: 'Paint & DIY', sub: 'Dulux mixed in store' },
+  { href: `${BASE}/visit`, label: 'Visit', sub: 'Hours, map, trains' },
+] as const;
+
+/** What the shop sells, from its own listing. Used by "Do you stock…?" */
+export const STOCK: { name: string; words: string[] }[] = [
+  { name: 'Key cutting', words: ['key', 'keys', 'copy', 'spare', 'yale', 'mortice', 'cut'] },
+  { name: 'Garage & parking remotes (433MHz)', words: ['remote', 'fob', 'garage', 'gate', 'parking', 'clicker', '433'] },
+  { name: 'Locks & security', words: ['lock', 'padlock', 'latch', 'deadlock', 'cylinder', 'upvc', 'door'] },
+  { name: 'Dulux paint, mixed to any colour', words: ['paint', 'dulux', 'emulsion', 'gloss', 'colour', 'color', 'primer', 'tester'] },
+  { name: 'Hardware & ironmongery', words: ['screw', 'nail', 'hinge', 'handle', 'bolt', 'bracket', 'hook', 'fixing', 'plug', 'ironmongery', 'hardware'] },
+  { name: 'Tools', words: ['tool', 'drill', 'hammer', 'saw', 'screwdriver', 'spanner', 'tape', 'level', 'brush', 'roller'] },
+  { name: 'Heaters', words: ['heater', 'heating', 'radiator', 'fan heater', 'oil'] },
+  { name: 'Cleaning products', words: ['clean', 'cleaning', 'bleach', 'mop', 'bucket', 'sponge', 'detergent'] },
+  { name: 'Wood & timber', words: ['wood', 'timber', 'plank', 'batten', 'board', 'mdf', 'ply', 'plywood'] },
+];
+
+export const MAP_THEME = { land: '#F2F1EC', water: '#D3DAE0', park: '#E2E5D8', building: '#E7E4DC', road: '#FFFFFF', roadMajor: '#D8D4CC', label: '#6E6D68', halo: '#F2F1EC', pin: '#FF3D7F', pinInk: '#0F0F0F' };

@@ -38,6 +38,12 @@ Add the brand to `web/apps/studio/src/brands/index.ts`: tokens, 4–5 named swat
 - Live data from the browser (open now, clocks): `useLondonTime()` and `isOpenAt()` from `@sc/ui`. Never `setState` in an effect.
 - Reuse `@sc/ui`: `Reveal`, `FadeIn`, `Magnetic`, `Marquee`, `Counter`, `ShaderCanvas`, `gsap`/`useGSAP`. Respect `prefers-reduced-motion` everywhere.
 
+## 3b. Make it a real site, not a landing page
+- Four to six pages with a sitemap footer, breadcrumbs, a phone drawer (`MobileMenu`) and ⌘K search (`CommandMenu` with pages, services and tools).
+- At least three working tools that fit the business, built from the kit: `MapView`, `LiveDepartures`, `lookupPostcode`, `OpenNow`, `AddToCalendar`, `ShareButton`, `useSearch`, `useStored`, and forms with react-hook-form and zod. No fake submissions: send by email or phone where a real address exists, otherwise copy or download.
+- Design the mark on a 64 grid in `src/brands/marks.tsx`, test it at 16px, and export `icon.svg` for the route.
+- Mock every new third-party API in `tests/mocks.ts` and add a flow to `tests/features.spec.ts`.
+
 ## 4. Case study and portfolio
 - Add the case to `content/cases.ts` (was / now / brand / marketing / tier) and the slug to `ORDER`.
 - Add the slug to `scripts/capture.mjs` and `tests/smoke.spec.ts`. Then run `pnpm build && pnpm start -p 3100` and, in another shell, `pnpm --filter studio capture`.

@@ -23,3 +23,10 @@ export function useLondonTime() {
 /** True if `mins` on `day` falls inside any of that day's [open, close) ranges. */
 export const isOpenAt = (hours: Record<number, [number, number][]>, day: number, mins: number) =>
   (hours[day] ?? []).some(([a, b]) => mins >= a && mins < b);
+
+const noop = () => () => {};
+const dayStart = () => Math.floor(Date.now() / 86_400_000) * 86_400_000;
+/** Midnight UTC today, as a timestamp. Stable for the whole day; 0 during server render. */
+export function useToday() {
+  return useSyncExternalStore(noop, dayStart, () => 0);
+}

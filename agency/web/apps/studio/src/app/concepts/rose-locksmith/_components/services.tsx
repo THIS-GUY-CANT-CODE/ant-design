@@ -1,9 +1,10 @@
 'use client';
 import { Reveal, RollText, Stagger, Tilt } from '@sc/ui';
 import { useState } from 'react';
-import { bitting, bladePath, PHONE } from './data';
+import Link from 'next/link';
+import { BASE, bitting, bladePath, PHONE } from './data';
 
-function KeyCutter() {
+export function KeyCutter() {
   const [name, setName] = useState('Bethnal');
   const cuts = bitting(name);
   return (
@@ -34,6 +35,7 @@ export function Services() {
           <span className="font-mono text-[12px] opacity-60">01</span>
           <h3 className="font-display text-[clamp(2rem,3.4vw,3.2rem)] leading-[0.95] font-bold tracking-[-0.045em]">Key cutting, including the awkward ones.</h3>
           <p className="max-w-md opacity-70">Difficult, worn and unusual keys that other shops turn away are what we&apos;re known for.</p>
+          <Link href={`${BASE}/keys`} className="u-draw self-start text-[15px] font-medium">All about keys →</Link>
           <KeyCutter />
         </Tilt>
         <Tilt max={7} className={`${tile} bg-card`}>
@@ -44,21 +46,24 @@ export function Services() {
           </span>
           <h3 className="mt-auto text-[24px] font-bold tracking-[-0.03em] transition-transform duration-500 ease-expo group-hover/tilt:translate-x-1">Remote copying</h3>
           <p className="text-[15px] text-muted">Garage and gate remotes, including 433MHz fobs, copied while you wait.</p>
+          <Link href={`${BASE}/keys#remotes`} className="u-draw self-start text-[15px] font-medium">Check your remote →</Link>
         </Tilt>
         <Tilt max={7} className={`${tile} bg-accent text-accent-ink`}>
           <span className="font-mono text-[12px]">EMERGENCY</span>
           <h3 className="mt-auto text-[24px] font-bold tracking-[-0.03em] transition-transform duration-500 ease-expo group-hover/tilt:translate-x-1">Emergency locksmith</h3>
           <p className="text-[15px]">Lockouts and break-ins across Bethnal Green, Tower Hamlets and Hackney.</p>
+          <Link href={`${BASE}/emergency#coverage`} className="u-draw self-start text-[15px] font-medium">Do we cover you? →</Link>
           <a href={`tel:${PHONE.emergency[1]}`} className="u-draw self-start font-mono text-[15px]">{PHONE.emergency[0]}</a>
         </Tilt>
         <Tilt max={7} className={`${tile} bg-card`}>
           <h3 className="mt-auto text-[24px] font-bold tracking-[-0.03em] transition-transform duration-500 ease-expo group-hover/tilt:translate-x-1">uPVC door repair</h3>
           <p className="text-[15px] text-muted">Sticking, dropped or jammed uPVC doors, mechanisms and multi-point locks.</p>
+          <Link href={`${BASE}/emergency#upvc`} className="u-draw self-start text-[15px] font-medium">Door troubles →</Link>
         </Tilt>
         <Tilt max={7} className={`${tile} bg-card`}>
           <h3 className="mt-auto text-[24px] font-bold tracking-[-0.03em] transition-transform duration-500 ease-expo group-hover/tilt:translate-x-1">Paint &amp; hardware</h3>
           <p className="text-[15px] text-muted">Any Dulux colour mixed while you wait, plus tools, fixings and timber.</p>
-          <a href="#paint" className="u-draw self-start text-[15px] font-medium text-fg"><RollText>Try a colour ↓</RollText></a>
+          <Link href={`${BASE}/paint`} className="u-draw self-start text-[15px] font-medium text-fg"><RollText>Try a colour →</RollText></Link>
         </Tilt>
       </Stagger>
     </section>

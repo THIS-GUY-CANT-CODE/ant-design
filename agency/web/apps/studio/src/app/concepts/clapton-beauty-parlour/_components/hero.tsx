@@ -3,7 +3,8 @@ import { Magnetic, RollText, Scramble, useReducedMotion } from '@sc/ui';
 import { animate, motion, useMotionValue, useSpring } from 'motion/react';
 import { useEffect } from 'react';
 
-export const FRESHA = 'https://www.fresha.com/lvp/clapton-beauty-parlour-lower-clapton-road-london-8JvwMV';
+export { FRESHA } from './site';
+import { FRESHA } from './site';
 
 // The cut runs from 64% down the left edge to 36% on the right.
 const TOP = 'polygon(0 0, 100% 0, 100% 36%, 0 64%)';

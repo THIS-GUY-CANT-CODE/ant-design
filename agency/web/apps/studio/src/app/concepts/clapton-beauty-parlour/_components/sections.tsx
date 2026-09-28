@@ -1,34 +1,12 @@
 'use client';
+import { ClaptonMark } from '@/brands/marks';
 import { FadeIn, gsap, HoverLetters, isOpenAt, Magnetic, Parallax, Reveal, RollText, Scramble, Skew, Stagger, Tilt, useGSAP, useLondonTime } from '@sc/ui';
 import { useRef } from 'react';
-import { FRESHA } from './hero';
+import Link from 'next/link';
+import { BASE, FRESHA, PAGES, PHONE } from './site';
 
-export function Mark({ className }: { className?: string }) {
-  // a circle, cut on the diagonal, the lower half slid across
-  return (
-    <svg viewBox="0 0 36 32" className={className} aria-hidden>
-      <path d="M3 21.2 28.9 7.5A14 14 0 0 0 3 21.2Z" fill="currentColor" />
-      <path d="M8.2 24.3 34.1 10.6A14 14 0 0 1 8.2 24.3Z" fill="var(--accent)" />
-    </svg>
-  );
-}
-
-export function Nav() {
-  return (
-    <header className="fixed inset-x-0 top-0 z-50">
-      <nav className="mx-auto flex h-20 max-w-[1600px] items-center justify-between px-5 md:px-8" aria-label="Main">
-        <a href="#top" className="flex items-center gap-2 rounded-full bg-bg/80 py-2 pr-4 pl-3 font-display text-[21px] tracking-[-0.02em] backdrop-blur-md">
-          <Mark className="h-6 w-7" /> Clapton Beauty Parlour
-        </a>
-        <div className="hidden items-center gap-1 rounded-full bg-bg/80 p-1 text-[14px] backdrop-blur-md md:flex">
-          {([['#services', 'Services'], ['#story', 'Our story'], ['#decades', 'Decades'], ['#visit', 'Visit']] as const).map(([h, l]) => (
-            <a key={h} href={h} className="rounded-full px-4 py-2 transition-colors duration-300 hover:bg-fg hover:text-bg"><RollText>{l}</RollText></a>
-          ))}
-        </div>
-        <a href={FRESHA} rel="noopener" className="rounded-full bg-accent px-5 py-2.5 text-[14px] font-medium text-accent-ink"><RollText>Book</RollText></a>
-      </nav>
-    </header>
-  );
+export function Mark({ className, top, bottom }: { className?: string; top?: string; bottom?: string }) {
+  return <ClaptonMark className={className} top={top} bottom={bottom} />;
 }
 
 const MENU: [string, string, string[]][] = [
@@ -62,7 +40,10 @@ export function Services() {
           </Tilt>
         ))}
       </Stagger>
-      <p className="mt-6 text-[14px] text-muted">Concept preview: prices to come from the salon&apos;s price list.</p>
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+        <p className="text-[14px] text-muted">Concept preview: prices to come from the salon&apos;s price list.</p>
+        <Link href={`${BASE}/services`} className="rounded-full bg-fg px-6 py-3.5 text-[15px] text-bg">Full price list &amp; booking →</Link>
+      </div>
     </section>
   );
 }
@@ -180,7 +161,7 @@ export function Visit() {
               <a href="tel:+442089854329" className="block rounded-full bg-fg px-7 py-4 text-bg"><RollText>Call 020 8985 4329</RollText></a>
             </Magnetic>
             <Magnetic>
-              <a href="https://www.google.com/maps/search/?api=1&query=Clapton+Beauty+Parlour+21+Lower+Clapton+Road+E5+0NS" rel="noopener" className="block rounded-full border border-fg/20 px-7 py-4"><RollText>Directions ↗</RollText></a>
+              <Link href={`${BASE}/visit`} className="block rounded-full border border-fg/20 px-7 py-4"><RollText>Map, trains &amp; directions</RollText></Link>
             </Magnetic>
           </div>
         </div>
@@ -195,17 +176,52 @@ export function Visit() {
           </tbody>
         </table>
       </div>
-      <footer className="overflow-hidden border-t border-line">
-        <div className="mx-auto max-w-[1600px] px-5 md:px-8">
-          <p className="pt-8 font-display text-[17vw] leading-[0.82] tracking-[-0.06em] whitespace-nowrap">
-            <HoverLetters>Since</HoverLetters> <em className="text-accent"><HoverLetters className="[--accent:var(--fg)]">1930</HoverLetters></em>
-          </p>
-          <div className="flex flex-wrap justify-between gap-4 py-8 pb-24 text-[13px] text-muted md:pb-8">
-            <span>© {new Date().getFullYear()} Clapton Beauty Parlour · Est. 1930</span>
-            <span>Concept by Second Coat</span>
+
+    </section>
+  );
+}
+
+export function Footer() {
+  return (
+  <footer className="overflow-hidden border-t border-line">
+      <div className="mx-auto max-w-[1600px] px-5 md:px-8">
+        <div className="grid gap-10 py-14 md:grid-cols-12">
+          <div className="flex items-start gap-4 md:col-span-4">
+            <Mark className="size-12 shrink-0" />
+            <p className="max-w-xs text-[15px] text-muted">A family salon on Lower Clapton Road since 1930.</p>
+          </div>
+          <nav aria-label="Footer" className="md:col-span-3">
+            <p className="text-[13px] text-muted">Pages</p>
+            <ul className="mt-3 space-y-2 text-[17px]">
+              <li><Link href={BASE} className="u-draw">Home</Link></li>
+              {PAGES.map((p) => (
+                <li key={p.href}><Link href={p.href} className="u-draw">{p.label}</Link></li>
+              ))}
+            </ul>
+          </nav>
+          <div className="md:col-span-2">
+            <p className="text-[13px] text-muted">Hours</p>
+            <ul className="mt-3 space-y-1 text-[14px]">
+              <li>Tue to Fri, 10am to 6pm</li>
+              <li>Sat, 9am to 5pm</li>
+              <li>Sun and Mon, closed</li>
+            </ul>
+          </div>
+          <div className="md:col-span-3">
+            <p className="text-[13px] text-muted">Book</p>
+            <a href={FRESHA} rel="noopener" className="u-draw mt-3 inline-block text-[20px]">Online on Fresha ↗</a>
+            <a href={`tel:${PHONE[1]}`} className="u-draw mt-1 block text-[20px]">{PHONE[0]}</a>
+            <p className="mt-2 text-[14px] text-muted">21 Lower Clapton Road, London E5 0NS</p>
           </div>
         </div>
-      </footer>
-    </section>
+        <p className="pt-8 font-display text-[17vw] leading-[0.82] tracking-[-0.06em] whitespace-nowrap">
+          <HoverLetters>Since</HoverLetters> <em className="text-accent"><HoverLetters className="[--accent:var(--fg)]">1930</HoverLetters></em>
+        </p>
+        <div className="flex flex-wrap justify-between gap-4 py-8 pb-24 text-[13px] text-muted md:pb-8">
+          <span>© {new Date().getFullYear()} Clapton Beauty Parlour · Est. 1930</span>
+          <span>Concept by Second Coat</span>
+        </div>
+      </div>
+    </footer>
   );
 }

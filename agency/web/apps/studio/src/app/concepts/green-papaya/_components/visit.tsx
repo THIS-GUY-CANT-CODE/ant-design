@@ -1,8 +1,9 @@
 'use client';
 import { Counter, FadeIn, HoverLetters, isOpenAt, Magnetic, Reveal, RollText, Stagger, Tilt, useLondonTime } from '@sc/ui';
+import Link from 'next/link';
 import { HOURS, HOURS_TEXT } from './hours';
+import { BASE } from './site';
 
-const MAPS = 'https://www.google.com/maps/search/?api=1&query=Green+Papaya+191+Mare+Street+London+E8+3QE';
 
 export function Story() {
   return (
@@ -62,7 +63,7 @@ export function Visit() {
               <a href="tel:+442089855486" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg"><RollText>Call 020 8985 5486</RollText></a>
             </Magnetic>
             <Magnetic>
-              <a href={MAPS} rel="noopener" className="block rounded-full border-2 border-fg px-7 py-4 text-[16px] font-medium"><RollText>Directions ↗</RollText></a>
+              <Link href={`${BASE}/visit`} className="block rounded-full border-2 border-fg px-7 py-4 text-[16px] font-medium"><RollText>Map, trains &amp; planner</RollText></Link>
             </Magnetic>
           </div>
         </div>

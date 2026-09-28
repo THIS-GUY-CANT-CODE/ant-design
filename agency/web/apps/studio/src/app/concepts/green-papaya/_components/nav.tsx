@@ -1,20 +1,25 @@
 'use client';
-import { isOpenAt, Magnetic, useLondonTime, RollText } from '@sc/ui';
+import { GreenPapayaMark } from '@/brands/marks';
+import { isOpenAt, Magnetic, MobileMenu, RollText, SearchButton, useLondonTime } from '@sc/ui';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { BASE, PAGES, PHONE } from './site';
 import { HOURS } from './hours';
 
 export function Nav() {
   const now = useLondonTime();
   const open = now ? isOpenAt(HOURS, now.day, now.mins) : null;
+  const path = usePathname();
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <nav className="mx-auto flex h-20 max-w-[1600px] items-center justify-between px-5 md:px-8" aria-label="Main">
-        <a href="#top" className="group flex items-center gap-2.5 rounded-full bg-bg py-1.5 pr-4 pl-1.5 font-display text-[20px] font-extrabold tracking-[-0.03em]" style={{ fontStretch: '80%' }}>
+        <Link href={BASE} className="group flex items-center gap-2.5 rounded-full bg-bg py-1.5 pr-4 pl-1.5 font-display text-[20px] font-extrabold tracking-[-0.03em]" style={{ fontStretch: '80%' }}>
           <Mark className="size-7 transition-transform duration-700 ease-expo group-hover:rotate-[20deg]" />
           green papaya
-        </a>
+        </Link>
         <div className="hidden items-center gap-1 rounded-full bg-bg p-1 text-[14px] md:flex">
-          {([['#kitchens', 'Kitchens'], ['#menu', 'Menu'], ['#visit', 'Visit']] as const).map(([h, l]) => (
-            <a key={h} href={h} className="rounded-full px-4 py-2 transition-colors hover:bg-fg hover:text-bg"><RollText>{l}</RollText></a>
+          {PAGES.map((p) => (
+            <Link key={p.href} href={p.href} aria-current={path === p.href ? 'page' : undefined} className="rounded-full px-4 py-2 transition-colors hover:bg-fg hover:text-bg aria-[current=page]:bg-accent"><RollText>{p.label}</RollText></Link>
           ))}
           {open !== null && (
             <span className="flex items-center gap-2 px-4 text-[13px]">
@@ -23,9 +28,24 @@ export function Nav() {
             </span>
           )}
         </div>
-        <Magnetic>
-          <a href="tel:+442089855486" className="rounded-full bg-fg px-5 py-2.5 text-[14px] font-medium text-bg ring-2 ring-bg"><RollText>Book a table</RollText></a>
-        </Magnetic>
+        <div className="flex items-center gap-2">
+          <SearchButton className="flex h-10 items-center gap-2 rounded-full bg-bg px-3.5 text-[13px]" />
+          <span className="hidden sm:inline-block"><Magnetic>
+            <a href={`tel:${PHONE[1]}`} className="block rounded-full bg-fg px-5 py-2.5 text-[14px] font-medium text-bg ring-2 ring-bg"><RollText>Book a table</RollText></a>
+          </Magnetic></span>
+          <MobileMenu
+            title="Green Papaya"
+            className="grid size-10 place-items-center rounded-full bg-fg text-bg md:hidden"
+            current={path}
+            links={[{ href: BASE, label: 'Home' }, ...PAGES]}
+            actions={
+              <>
+                <a href={`tel:${PHONE[1]}`} className="rounded-2xl bg-fg py-4 text-center font-medium text-bg">Call</a>
+                <Link href={`${BASE}/menu`} className="rounded-2xl bg-accent py-4 text-center font-medium text-accent-ink">Menu</Link>
+              </>
+            }
+          />
+        </div>
       </nav>
     </header>
   );
@@ -33,13 +53,5 @@ export function Nav() {
 
 /** Papaya half: flesh, and the seed cluster that doubles as a table of friends. */
 export function Mark({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 32 32" className={className} aria-hidden>
-      <ellipse cx="16" cy="16" rx="13" ry="15" fill="#FF6A2B" />
-      <ellipse cx="16" cy="17" rx="5.5" ry="7.5" fill="#FFF4EA" />
-      {[[14, 13], [18, 14], [15, 17.5], [18.5, 18.5], [15.5, 21.5]].map(([x, y]) => (
-        <ellipse key={`${x}${y}`} cx={x} cy={y} rx="1.5" ry="1.9" fill="#1A120D" />
-      ))}
-    </svg>
-  );
+  return <GreenPapayaMark className={className} />;
 }

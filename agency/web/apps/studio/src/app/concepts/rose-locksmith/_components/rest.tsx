@@ -1,6 +1,7 @@
 'use client';
 import { Counter, HoverLetters, isOpenAt, Magnetic, Reveal, RollText, Spotlight, Stagger, useLondonTime } from '@sc/ui';
-import { HOURS, HOURS_TEXT, PHONE } from './data';
+import Link from 'next/link';
+import { ADDRESS, BASE, HOURS, HOURS_TEXT, PAGES, PHONE } from './data';
 import { Mark } from './nav';
 
 export function Story() {
@@ -73,7 +74,7 @@ export function Visit() {
               <a href={`tel:${PHONE.shop[1]}`} className="block rounded-full bg-fg px-7 py-4 text-bg"><RollText>Call the shop</RollText></a>
             </Magnetic>
             <Magnetic>
-              <a href="https://www.google.com/maps/search/?api=1&query=Rose+Locksmith+149+Bethnal+Green+Road+E2+7DG" rel="noopener" className="block rounded-full border border-fg px-7 py-4"><RollText>Directions ↗</RollText></a>
+              <Link href={`${BASE}/visit`} className="block rounded-full border border-fg px-7 py-4"><RollText>Map, trains &amp; directions</RollText></Link>
             </Magnetic>
           </div>
         </div>
@@ -100,10 +101,41 @@ export function Visit() {
 export function Footer() {
   return (
     <footer className="overflow-hidden bg-alt pb-24 text-bg md:pb-10">
-      <div className="mx-auto max-w-[1600px] px-5 md:px-8">
-        <p className="flex items-center gap-[2vw] pt-16 font-display text-[23vw] leading-[0.8] font-bold tracking-[-0.08em] text-accent">
+      <div className="mx-auto max-w-[1600px] px-5 pt-20 md:px-8">
+        <div className="grid gap-12 border-b border-bg/15 pb-14 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <p className="font-display text-[34px] leading-none font-bold tracking-[-0.04em]">Rose Locksmith &amp; DIY</p>
+            <p className="mt-4 max-w-xs text-[15px] opacity-60">Family-run on Bethnal Green Road since 1938. Keys, locks, paint and the part you need.</p>
+          </div>
+          <nav aria-label="Footer" className="md:col-span-3">
+            <p className="font-mono text-[12px] opacity-50">PAGES</p>
+            <ul className="mt-4 space-y-2 text-[16px]">
+              <li><Link href={BASE} className="u-draw">Home</Link></li>
+              {PAGES.map((p) => (
+                <li key={p.href}><Link href={p.href} className="u-draw">{p.label}</Link></li>
+              ))}
+            </ul>
+          </nav>
+          <div className="md:col-span-2">
+            <p className="font-mono text-[12px] opacity-50">HOURS</p>
+            <ul className="mt-4 space-y-1 text-[14px] opacity-80">
+              <li>Mon to Fri, 9am to 6pm</li>
+              <li>Saturday, 10am to 5pm</li>
+              <li>Sunday, closed</li>
+            </ul>
+          </div>
+          <div className="md:col-span-3">
+            <p className="font-mono text-[12px] opacity-50">CONTACT</p>
+            <ul className="mt-4 space-y-2 text-[16px]">
+              <li><a className="u-draw" href={`tel:${PHONE.shop[1]}`}>Shop {PHONE.shop[0]}</a></li>
+              <li><a className="u-draw text-accent" href={`tel:${PHONE.emergency[1]}`}>Emergency {PHONE.emergency[0]}</a></li>
+              <li className="text-[14px] opacity-70">{ADDRESS}</li>
+            </ul>
+          </div>
+        </div>
+        <p className="flex items-center gap-[2vw] pt-12 font-display text-[23vw] leading-[0.8] font-bold tracking-[-0.08em] text-accent">
           <HoverLetters className="[--accent:var(--bg)]">rose</HoverLetters>
-          <Mark className="size-[15vw] shrink-0 transition-transform duration-1000 ease-expo hover:rotate-[200deg]" />
+          <Mark ink="#0F0F0F" className="size-[15vw] shrink-0 transition-transform duration-1000 ease-expo hover:rotate-[20deg]" />
         </p>
         <div className="mt-10 flex flex-wrap justify-between gap-4 text-[13px] opacity-60">
           <span>© {new Date().getFullYear()} Rose Locksmith &amp; DIY · Since 1938</span>

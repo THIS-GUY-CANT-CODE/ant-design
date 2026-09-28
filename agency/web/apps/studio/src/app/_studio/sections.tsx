@@ -1,34 +1,50 @@
-import { HoverLetters, Marquee, Reveal, RollText, Stagger, Tilt } from '@sc/ui';
+import { SecondCoatMark } from '@/brands/marks';
+import { HoverLetters, Marquee, MobileMenu, Reveal, RollText, SearchButton, Stagger, Tilt } from '@sc/ui';
 import Link from 'next/link';
 import { BRANDS, ORDER } from '@/brands';
 import { gbp, PIPELINE, STUDIO } from '@/content/studio';
 import { ContactForm } from './contact-form';
 
 export function Logo({ className }: { className?: string }) {
-  // two strokes of paint, the second coat overlapping the first
-  return (
-    <svg viewBox="0 0 34 22" className={className} aria-hidden>
-      <rect x="1" y="2" width="24" height="9" rx="4.5" fill="currentColor" />
-      <rect x="9" y="11" width="24" height="9" rx="4.5" fill="#FF4F1F" />
-    </svg>
-  );
+  return <SecondCoatMark className={className} />;
 }
 
 export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-4">
-      <nav className="mx-auto flex h-14 max-w-[1600px] items-center justify-between rounded-full bg-bg/80 pr-2 pl-5 ring-1 ring-line backdrop-blur-md" aria-label="Main">
+      <nav className="mx-auto flex h-14 max-w-[1600px] items-center justify-between gap-3 rounded-full bg-bg/80 pr-2 pl-5 ring-1 ring-line backdrop-blur-md" aria-label="Main">
         <Link href="/" className="group flex items-center gap-2.5 text-[17px] font-semibold tracking-[-0.03em]">
-          <Logo className="h-4 w-6 transition-transform duration-500 ease-expo group-hover:-rotate-12" /> Second Coat
+          <Logo className="size-7 transition-transform duration-500 ease-expo group-hover:-rotate-12" /> Second Coat
         </Link>
-        <div className="hidden gap-7 text-[14px] text-muted md:flex">
-          <a href="#work" className="hover:text-fg"><RollText>Work</RollText></a>
-          <a href="#how" className="hover:text-fg"><RollText>How it works</RollText></a>
-          <a href="#reach" className="hover:text-fg"><RollText>Where we work</RollText></a>
-          <a href="#pricing" className="hover:text-fg"><RollText>Pricing</RollText></a>
-          <a href="#faq" className="hover:text-fg"><RollText>FAQ</RollText></a>
+        <div className="hidden gap-6 text-[14px] text-muted lg:flex">
+          <Link href="/#work" className="hover:text-fg"><RollText>Work</RollText></Link>
+          <Link href="/#how" className="hover:text-fg"><RollText>How it works</RollText></Link>
+          <Link href="/#reach" className="hover:text-fg"><RollText>Where we work</RollText></Link>
+          <Link href="/#pricing" className="hover:text-fg"><RollText>Pricing</RollText></Link>
+          <Link href="/check" className="text-fg hover:text-accent"><RollText>Free site check</RollText></Link>
         </div>
-        <a href="#contact" className="rounded-full bg-fg px-5 py-2.5 text-[14px] font-medium text-bg"><RollText>Get a free redesign</RollText></a>
+        <div className="flex items-center gap-2">
+          <SearchButton className="flex h-10 items-center gap-2 rounded-full px-3 text-[13px] text-muted transition-colors hover:text-fg" />
+          <Link href="/#contact" className="hidden rounded-full bg-fg px-5 py-2.5 text-[14px] font-medium text-bg sm:block"><RollText>Get a free redesign</RollText></Link>
+          <MobileMenu
+            title="Second Coat"
+            className="grid size-10 place-items-center rounded-full bg-fg text-bg lg:hidden"
+            links={[
+              { href: '/', label: 'Home' },
+              { href: '/#work', label: 'Work', sub: 'Six concepts' },
+              { href: '/check', label: 'Free site check', sub: '10 seconds' },
+              { href: '/#pricing', label: 'Pricing' },
+              { href: '/#reach', label: 'Where we work' },
+              { href: '/marks', label: 'The marks' },
+            ]}
+            actions={
+              <>
+                <Link href="/#contact" className="rounded-2xl bg-accent py-4 text-center font-medium text-accent-ink">Free redesign</Link>
+                <Link href="/check" className="rounded-2xl bg-fg py-4 text-center font-medium text-bg">Check my site</Link>
+              </>
+            }
+          />
+        </div>
       </nav>
     </header>
   );
@@ -188,7 +204,14 @@ export function Footer() {
         </p>
         <div className="grid gap-4 border-t border-line py-8 text-[13px] text-muted md:grid-cols-12">
           <span className="md:col-span-3">© {new Date().getFullYear()} Second Coat · Made in East London, working UK-wide and worldwide</span>
-          <span className="md:col-span-9">
+          <nav aria-label="Footer" className="flex flex-wrap gap-x-5 gap-y-1 text-fg md:col-span-9">
+            <Link href="/check" className="u-draw">Free site check</Link>
+            <Link href="/#work" className="u-draw">Work</Link>
+            <Link href="/#pricing" className="u-draw">Pricing</Link>
+            <Link href="/marks" className="u-draw">The marks</Link>
+            <Link href="/#contact" className="u-draw">Contact</Link>
+          </nav>
+          <span className="md:col-span-9 md:col-start-4">
             The businesses shown are unsolicited redesign concepts made to show our work. They are not clients and have not endorsed us, and all names and trademarks belong to their owners. If you own one of these businesses and would like your concept taken down, email {STUDIO.email} and we will remove it.
           </span>
         </div>

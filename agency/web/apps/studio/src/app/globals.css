@@ -225,3 +225,136 @@ html.lenis body {
     visibility: hidden;
   }
 }
+
+/* ---------- Map pins and popups (@sc/ui map.tsx) ---------- */
+.sc-pin {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 42px;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.sc-pin span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--pin);
+  box-shadow:
+    0 0 0 3px var(--pin-ink),
+    0 8px 18px rgb(0 0 0 / 0.25);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sc-pin:hover span,
+.sc-pin.is-on span {
+  transform: rotate(-45deg) scale(1.2);
+}
+.maplibregl-popup-content {
+  border-radius: 16px !important;
+  padding: 14px 16px !important;
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.18) !important;
+  font-family: var(--font-sans);
+}
+.sc-pop {
+  display: grid;
+  gap: 2px;
+  font-size: 13px;
+  color: #111;
+}
+.sc-pop b {
+  font-size: 15px;
+}
+.sc-pop em {
+  font-style: normal;
+  opacity: 0.6;
+}
+.sc-pop a {
+  margin-top: 6px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Command menu (@sc/ui kit.tsx, cmdk) ---------- */
+[cmdk-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgb(0 0 0 / 0.45);
+  backdrop-filter: blur(4px);
+}
+.sc-cmdk {
+  position: fixed;
+  top: 12vh;
+  left: 50%;
+  z-index: 501;
+  width: min(640px, calc(100vw - 24px));
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--card);
+  color: var(--fg);
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.35);
+  font-family: var(--font-sans);
+  animation: cmdk-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes cmdk-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px) scale(0.98);
+  }
+}
+.sc-cmdk [cmdk-input] {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding: 22px 24px;
+  font-size: 18px;
+  outline: none;
+  color: var(--fg);
+}
+.sc-cmdk [cmdk-list] {
+  max-height: min(420px, 55vh);
+  overflow: auto;
+  padding: 8px;
+  overscroll-behavior: contain;
+}
+.sc-cmdk [cmdk-group-heading] {
+  padding: 10px 14px 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.sc-cmdk [cmdk-item] {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sc-cmdk [cmdk-item][data-selected='true'] {
+  background: var(--cmdk-accent);
+  color: var(--accent-ink);
+}
+.sc-cmdk-hint {
+  font-size: 13px;
+  opacity: 0.65;
+  text-align: right;
+}
+.sc-cmdk [cmdk-empty] {
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+}
+.sc-cmdk-foot {
+  border-top: 1px solid var(--line);
+  padding: 10px 18px;
+  font-size: 12px;
+  color: var(--muted);
+}
