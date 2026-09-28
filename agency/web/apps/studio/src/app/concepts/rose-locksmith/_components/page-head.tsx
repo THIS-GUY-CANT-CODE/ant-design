@@ -1,7 +1,7 @@
-import { Breadcrumbs, Reveal } from '@sc/ui';
+import { Banner, Breadcrumbs, Reveal, type PhotoSrc, type VideoSrc } from '@sc/ui';
 import { BASE } from './data';
 
-export function PageHead({ eyebrow, title, intro, children }: { eyebrow: string; title: React.ReactNode; intro: string; children?: React.ReactNode }) {
+export function PageHead({ eyebrow, title, intro, children, media }: { eyebrow: string; title: React.ReactNode; intro: string; children?: React.ReactNode; media?: PhotoSrc | VideoSrc }) {
   return (
     <header className="mx-auto max-w-[1600px] px-5 pt-14 pb-16 md:px-8 md:pt-20">
       <Breadcrumbs items={[{ href: BASE, label: 'Home' }, { label: eyebrow }]} />
@@ -10,6 +10,7 @@ export function PageHead({ eyebrow, title, intro, children }: { eyebrow: string;
       </Reveal>
       <p className="mt-8 max-w-xl text-[19px] leading-snug text-muted">{intro}</p>
       {children}
+      {media && <Banner media={media} />}
     </header>
   );
 }

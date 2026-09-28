@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ClipReveal, ConceptNotice, Cursor, FadeIn, MotionKit, Parallax, Reveal, RollText, Scramble, Stagger, Tilt } from '@sc/ui';
+import { ClipReveal, ConceptNotice, Film, PhotoRail, Cursor, FadeIn, MotionKit, Parallax, Reveal, RollText, Scramble, Stagger, Tilt } from '@sc/ui';
 import { BRANDS, brandStyle, ORDER, type Slug } from '@/brands';
 import { BrandMark } from '@/brands/marks';
 import { CASES } from '@/content/cases';
+import { CONCEPT_MEDIA } from '../../_studio/media';
 import { gbp, STUDIO } from '@/content/studio';
 
 type Props = { params: Promise<{ slug: string }> };
@@ -79,6 +80,19 @@ export default async function CaseStudy({ params }: Props) {
           </Parallax>
         </div>
       </header>
+
+      <section aria-label="Photography and film" className="mx-auto max-w-[1600px] px-5 pt-16 md:px-8">
+        <div className="grid gap-6 md:grid-cols-12 md:items-end">
+          <p className="font-mono text-[13px] text-muted md:col-span-2">Pictures</p>
+          <p className="max-w-xl text-[clamp(1.1rem,1.6vw,1.35rem)] leading-snug md:col-span-10">
+            Every page carries photography and film. Until the {b.name} shoot, the concept uses licensed stock picked to match the business; each shot is one line to swap.
+          </p>
+        </div>
+        <ClipReveal className="mt-10 aspect-[4/5] overflow-hidden rounded-[1.75rem] md:aspect-[21/9]">
+          <Film video={CONCEPT_MEDIA[b.slug].film} className="size-full" />
+        </ClipReveal>
+        <PhotoRail photos={CONCEPT_MEDIA[b.slug].photos} label={`${b.name} photography`} className="mt-3" frameClassName="aspect-[4/5] w-[72vw] overflow-hidden rounded-[1.25rem] md:w-[24vw]" />
+      </section>
 
       <main className="mx-auto max-w-[1600px] space-y-36 px-5 py-36 md:px-8">
         <section>

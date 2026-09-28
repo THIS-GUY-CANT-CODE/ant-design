@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { PageHead } from '../_components/page-head';
 import { ValuationForm } from '../_components/tools';
+import { P } from '../_components/media';
 
 export const metadata: Metadata = { title: 'Sell', description: 'Free, honest valuations from an independent East London agent, marketed on Rightmove, OnTheMarket and PrimeLocation.' };
 
@@ -14,7 +15,7 @@ const STEPS = [
 export default function Sell() {
   return (
     <main>
-      <PageHead crumb="Sell" title={<>What&apos;s your home <span className="text-accent">really</span> worth?</>} intro="A free valuation from people who have sold homes on these streets since 1953." />
+      <PageHead media={P.handover} crumb="Sell" title={<>What&apos;s your home <span className="text-accent">really</span> worth?</>} intro="A free valuation from people who have sold homes on these streets since 1953." />
       <section className="mx-auto grid max-w-[1600px] gap-12 px-5 pb-32 md:grid-cols-12 md:px-8">
         <div className="md:col-span-6"><ValuationForm /></div>
         <ol className="grid content-start gap-3 md:col-span-6">

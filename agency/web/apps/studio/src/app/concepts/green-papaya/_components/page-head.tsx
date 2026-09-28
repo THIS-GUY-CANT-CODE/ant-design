@@ -1,7 +1,7 @@
-import { Breadcrumbs, Reveal } from '@sc/ui';
+import { Banner, Breadcrumbs, Reveal, type PhotoSrc, type VideoSrc } from '@sc/ui';
 import { BASE } from './site';
 
-export function PageHead({ crumb, title, intro, children }: { crumb: string; title: React.ReactNode; intro: string; children?: React.ReactNode }) {
+export function PageHead({ crumb, title, intro, children, media }: { crumb: string; title: React.ReactNode; intro: string; children?: React.ReactNode; media?: PhotoSrc | VideoSrc }) {
   return (
     <header className="bg-accent px-4 pt-32 pb-16 md:px-8 md:pt-40">
       <div className="mx-auto max-w-[1600px]">
@@ -11,6 +11,7 @@ export function PageHead({ crumb, title, intro, children }: { crumb: string; tit
         </Reveal>
         <p className="mt-8 max-w-lg text-[18px] leading-snug font-medium">{intro}</p>
         {children}
+        {media && <Banner media={media} />}
       </div>
     </header>
   );

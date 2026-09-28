@@ -3,13 +3,14 @@ import Link from 'next/link';
 import { PageHead } from '../_components/page-head';
 import { Process } from '../_components/process';
 import { BASE, SERVICES } from '../_components/site';
+import { P } from '../_components/media';
 
 export const metadata: Metadata = { title: 'Services', description: 'Commercials, branded content, corporate film, animation and motion, and podcasts.' };
 
 export default function Services() {
   return (
     <main>
-      <PageHead crumbs={[{ label: 'Services' }]} title="Pitch deck" accent="to final cut." intro="Five disciplines under one roof, and one team that sees the job through from the first idea to the last export." />
+      <PageHead media={P.crew} crumbs={[{ label: 'Services' }]} title="Pitch deck" accent="to final cut." intro="Five disciplines under one roof, and one team that sees the job through from the first idea to the last export." />
       <section className="mx-auto max-w-[1600px] px-5 md:px-8">
         <ul className="border-t border-line">
           {SERVICES.map((s, i) => (

@@ -2,13 +2,14 @@ import type { Metadata } from 'next';
 import { PageHead } from '../_components/page-head';
 import { ColourRoom, PaintCalculator, PaintForecast } from '../_components/paint-tools';
 import { STOCK } from '../_components/data';
+import { FILM } from '../_components/media';
 
 export const metadata: Metadata = { title: 'Paint & DIY', description: 'Any Dulux colour mixed while you wait on Bethnal Green Road, plus a paint calculator and a painting forecast for E2.' };
 
 export default function Paint() {
   return (
     <main>
-      <PageHead eyebrow="Paint & DIY" title={<>Any colour. <span className="text-accent">Mixed here.</span></>} intro="Bring a chip, a photo or a colour name and we mix the Dulux shade while you wait. Work out how much you need before you come." />
+      <PageHead media={FILM} eyebrow="Paint & DIY" title={<>Any colour. <span className="text-accent">Mixed here.</span></>} intro="Bring a chip, a photo or a colour name and we mix the Dulux shade while you wait. Work out how much you need before you come." />
       <section className="mx-auto grid max-w-[1600px] gap-3 px-5 md:px-8">
         <ColourRoom />
         <PaintCalculator />

@@ -1,7 +1,7 @@
-import { Breadcrumbs, Reveal } from '@sc/ui';
+import { Banner, Breadcrumbs, Reveal, type PhotoSrc, type VideoSrc } from '@sc/ui';
 import { BASE } from './site';
 
-export function PageHead({ crumbs, title, accent, intro, children }: { crumbs: { href?: string; label: string }[]; title: string; accent?: string; intro: string; children?: React.ReactNode }) {
+export function PageHead({ crumbs, title, accent, intro, children, media }: { crumbs: { href?: string; label: string }[]; title: string; accent?: string; intro: string; children?: React.ReactNode; media?: PhotoSrc | VideoSrc }) {
   return (
     <header className="mx-auto max-w-[1600px] px-5 pt-36 pb-16 md:px-8 md:pt-44">
       <Breadcrumbs items={[{ href: BASE, label: 'Home' }, ...crumbs]} />
@@ -11,6 +11,7 @@ export function PageHead({ crumbs, title, accent, intro, children }: { crumbs: {
       {accent && <Reveal as="p" by="chars" immediate delay={0.3} className="font-serif text-[clamp(3rem,9vw,9rem)] leading-[0.9] tracking-[-0.03em] text-accent italic">{accent}</Reveal>}
       <p className="mt-8 max-w-xl text-[18px] leading-snug text-muted">{intro}</p>
       {children}
+      {media && <Banner media={media} />}
     </header>
   );
 }

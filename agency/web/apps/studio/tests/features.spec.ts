@@ -149,3 +149,23 @@ test('Studio: website check API refuses private addresses', async ({ request }) 
     expect(r.status()).toBeGreaterThanOrEqual(400);
   }
 });
+
+test('every concept home has photos, and films fall back to their still when the video cannot load', async ({ page }) => {
+  for (const site of ['green-papaya', 'rose-locksmith', 'walthamstow-osteopaths', 'wj-meade', 'clapton-beauty-parlour', 'biscuit-bunker']) {
+    await page.goto(`/concepts/${site}`);
+    const photos = page.locator('img[src*="images.pexels.com"]');
+    await photos.nth(5).scrollIntoViewIfNeeded();
+    expect(await photos.count(), site).toBeGreaterThanOrEqual(7);
+    await expect.poll(() => photos.nth(5).evaluate((i: HTMLImageElement) => i.naturalWidth), { message: site }).toBeGreaterThan(0);
+    // Mixkit is mocked as 404: the film swaps to its still and the pause button goes away
+    await page.locator('video').first().scrollIntoViewIfNeeded().catch(() => {});
+    await expect(page.locator('video'), site).toHaveCount(0);
+  }
+});
+
+test('subpages open with a photo or film banner', async ({ page }) => {
+  for (const path of ['/concepts/green-papaya/menu', '/concepts/rose-locksmith/paint', '/concepts/wj-meade/sell', '/concepts/walthamstow-osteopaths/treatments/acupuncture', '/concepts/clapton-beauty-parlour/story', '/concepts/biscuit-bunker/services/podcasts']) {
+    await page.goto(path);
+    await expect(page.locator('header img[src*="images.pexels.com"]').first(), path).toBeVisible();
+  }
+});

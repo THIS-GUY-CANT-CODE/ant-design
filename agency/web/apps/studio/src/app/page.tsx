@@ -1,6 +1,7 @@
-import { Cursor, MotionKit } from '@sc/ui';
+import { Cursor, InPictures, MotionKit } from '@sc/ui';
 import Link from 'next/link';
 import { StudioChrome } from './_studio/chrome';
+import { STUDIO_FILM, STUDIO_PHOTOS } from './_studio/media';
 import { PaintHero } from './_studio/paint-hero';
 import { Reach } from './_studio/reach';
 import { Contact, Faq, Footer, How, Names, Nav, Pipeline, Pricing } from './_studio/sections';
@@ -20,6 +21,15 @@ export default function Home() {
           <WorkStack />
         </div>
         <How />
+        <InPictures
+          title={<>Real places, <span className="font-serif font-normal italic">fresh coats.</span></>}
+          intro="Kitchens, workshops, salons, clinics and high streets. We rebrand the businesses that make a place worth visiting, from East London to wherever you are."
+          film={STUDIO_FILM}
+          photos={STUDIO_PHOTOS}
+          titleClassName="font-semibold tracking-[-0.055em]"
+          frameClassName="rounded-[1.75rem]"
+          className="!px-3 md:!px-4"
+        />
         <section className="mx-auto max-w-[1600px] px-3 md:px-4">
           <Link href="/check" className="group flex flex-wrap items-center justify-between gap-6 rounded-[2rem] bg-fg px-8 py-10 text-bg md:px-14">
             <span>

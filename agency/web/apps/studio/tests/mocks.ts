@@ -58,5 +58,11 @@ export async function mockApis(page: Page) {
   // Map: a minimal valid style so MapLibre initialises without tiles
   await page.route('https://tiles.openfreemap.org/**', (route) => route.fulfill({ json: { version: 8, sources: {}, layers: [{ id: 'background', type: 'background', paint: { 'background-color': '#eee' } }] } }));
   // Anything else external: refuse quietly (analytics, fonts are self-hosted)
+  // Pexels photos: a tinted stand-in labelled with the photo id. Mixkit films: 404, so the still-image fallback is exercised.
+  await page.route('https://images.pexels.com/**', (route) => {
+    const id = route.request().url().match(/photos\/(\d+)/)?.[1] ?? '?';
+    return route.fulfill({ contentType: 'image/svg+xml', body: `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="800" height="600" fill="#b9b3a8"/><text x="400" y="310" font-family="monospace" font-size="28" text-anchor="middle" fill="#3b3833">pexels ${id}</text></svg>` });
+  });
+  await page.route('https://assets.mixkit.co/**', (route) => route.fulfill({ status: 404, body: '' }));
   await page.route(/^https:\/\/(?!localhost)(?!127\.0\.0\.1).*(googleapis|vimeocdn|player\.vimeo)/, (route) => route.fulfill({ status: 204, body: '' }));
 }

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHead } from '../../_components/page-head';
 import { BASE, SERVICES } from '../../_components/site';
+import { P, SERVICE_PHOTO } from '../../_components/media';
 
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -21,7 +22,7 @@ export default async function Service({ params }: Props) {
   const next = SERVICES[(i + 1) % SERVICES.length]!;
   return (
     <main>
-      <PageHead crumbs={[{ href: `${BASE}/services`, label: 'Services' }, { label: s.name }]} title={s.name} intro={s.intro}>
+      <PageHead media={SERVICE_PHOTO[s.slug] ?? P.set} crumbs={[{ href: `${BASE}/services`, label: 'Services' }, { label: s.name }]} title={s.name} intro={s.intro}>
         <Link href={`${BASE}/brief`} className="mt-10 inline-block rounded-full bg-accent px-7 py-4 font-medium text-accent-ink">Brief us on a {s.name.toLowerCase().replace(/s$/, '')} →</Link>
       </PageHead>
       <section className="mx-auto grid max-w-[1600px] gap-3 px-5 md:grid-cols-2 md:px-8">
