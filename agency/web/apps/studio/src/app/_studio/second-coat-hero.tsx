@@ -138,7 +138,7 @@ export function SecondCoatHero() {
     // one quick, continuous take: a beat on the old site, then the roller zig-zags down the page
     const rows = el.clientWidth < 700 ? 5 : 4;
     const rowH = h / rows, W = rowH * 1.3, pad = W * 0.6;
-    const BEAT = 650, SWEEP = 1100;
+    const BEAT = 250, SWEEP = 2000;
     roller.style.setProperty('--band', `${W / dpr}px`);
     let raf = 0, start = 0, head: [number, number] | null = null;
     const at = (t: number): [number, number] => {
@@ -161,7 +161,7 @@ export function SecondCoatHero() {
       if (t < 1) raf = requestAnimationFrame(frame);
       else {
         setDrying(true);
-        window.setTimeout(() => setDone(true), 520);
+        window.setTimeout(() => setDone(true), 720);
       }
     };
     raf = requestAnimationFrame(frame);
@@ -202,7 +202,7 @@ export function SecondCoatHero() {
       {!done && (
         <>
           <canvas ref={oldRef} aria-hidden className="pointer-events-none absolute inset-0 z-10 size-full" />
-          <canvas ref={wetRef} aria-hidden className={`pointer-events-none absolute inset-0 z-10 size-full transition-opacity duration-500 ease-out ${drying ? 'opacity-0' : 'opacity-100'}`} />
+          <canvas ref={wetRef} aria-hidden className={`pointer-events-none absolute inset-0 z-10 size-full transition-opacity duration-700 ease-out ${drying ? 'opacity-0' : 'opacity-100'}`} />
           <div ref={rollerRef} aria-hidden className={`pointer-events-none absolute top-0 left-0 z-20 transition-opacity duration-300 ${drying ? 'opacity-0' : 'opacity-100'}`} style={{ transform: 'translate(-300px, -300px)' }}>
             {/* the sleeve is as tall as the stripe it lays, the handle rises off the top */}
             <div className="relative -translate-x-1/2 -translate-y-1/2" style={{ height: 'var(--band, 200px)' }}>
