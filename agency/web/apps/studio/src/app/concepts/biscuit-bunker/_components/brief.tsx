@@ -1,5 +1,5 @@
 'use client';
-import { CopyButton, toast, useStored } from '@sc/ui';
+import { Annotate, burst, CopyButton, toast, useStored } from '@sc/ui';
 import { AnimatePresence, motion } from 'motion/react';
 import { useMemo, useState } from 'react';
 import { CONTACT_URL } from './site';
@@ -85,7 +85,7 @@ export function BriefBuilder() {
       <div className="grid gap-8 lg:grid-cols-12" aria-live="polite">
         <div className="lg:col-span-5">
           <p className="font-mono text-[12px] text-accent">BRIEF READY</p>
-          <h2 className="mt-4 font-display text-[clamp(2.4rem,5vw,4.4rem)] leading-[0.9] font-semibold tracking-[-0.06em]">That&apos;s a wrap.</h2>
+          <h2 className="mt-4 font-display text-[clamp(2.4rem,5vw,4.4rem)] leading-[0.9] font-semibold tracking-[-0.06em]">That&apos;s a <Annotate type="circle" padding={10} delay={300}>wrap.</Annotate></h2>
           <p className="mt-4 max-w-sm text-[16px] text-muted">Copy it or download it, then send it to the studio through their contact page. It stays saved in this browser until you clear it.</p>
           <div className="mt-8 flex flex-wrap gap-2">
             <CopyButton value={text} label="Brief copied" className="rounded-full bg-accent px-6 py-3.5 text-[15px] font-medium text-accent-ink">Copy brief</CopyButton>
@@ -201,7 +201,14 @@ export function BriefBuilder() {
           {step < STEPS.length - 1 ? (
             <button onClick={() => valid[step] && setStep(step + 1)} disabled={!valid[step]} className="rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-accent-ink disabled:opacity-40">Next →</button>
           ) : (
-            <button onClick={() => valid[4] && setDone(true)} disabled={!valid[4]} className="rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-accent-ink disabled:opacity-40">Build my brief</button>
+            <button
+              onClick={(e) => {
+                if (!valid[4]) return;
+                // a burst of tennis balls: the studio's mark is a ball
+                burst({ from: e.currentTarget, colors: ['#D7FF3F', '#C4EE2C', '#F2F1ED'] });
+                setDone(true);
+              }}
+              disabled={!valid[4]} className="rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-accent-ink disabled:opacity-40">Build my brief</button>
           )}
         </div>
       </div>

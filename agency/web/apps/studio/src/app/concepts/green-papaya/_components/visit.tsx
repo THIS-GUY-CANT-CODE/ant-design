@@ -1,5 +1,5 @@
 'use client';
-import { ClipReveal, Counter, FadeIn, Film, HoverLetters, isOpenAt, Magnetic, Reveal, RollText, Stagger, Tilt, useLondonTime } from '@sc/ui';
+import { Annotate, ClipReveal, Counter, FadeIn, Film, HoverLetters, isOpenAt, Magnetic, Reveal, RollText, Stagger, Tilt, useLondonTime } from '@sc/ui';
 import Link from 'next/link';
 import { HOURS, HOURS_TEXT } from './hours';
 import { FILM } from './media';
@@ -15,7 +15,7 @@ export function Story() {
         </Reveal>
         <FadeIn className="mt-10 max-w-xl space-y-5 text-[18px] leading-relaxed text-muted">
           <p>Green Papaya has been cooking on this corner of Hackney for over twenty years. It started as a Northern Vietnamese kitchen, and over time the family brought in the noodles and street food of Xi&apos;an.</p>
-          <p>It&apos;s still family-run, and everything is still cooked fresh.</p>
+          <p>It&apos;s still family-run, and everything is still <Annotate type="highlight" color="#FFD3BA" multiline>cooked fresh.</Annotate></p>
         </FadeIn>
       </div>
       <Stagger className="grid gap-3 self-end md:col-span-5">

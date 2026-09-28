@@ -1,5 +1,5 @@
 import { SecondCoatMark } from '@/brands/marks';
-import { HoverLetters, Marquee, MobileMenu, Reveal, RollText, SearchButton, Stagger, Tilt } from '@sc/ui';
+import { Annotate, HoverLetters, Marquee, MobileMenu, Reveal, RollText, SearchButton, Stagger, Tilt } from '@sc/ui';
 import Link from 'next/link';
 import { BRANDS, ORDER } from '@/brands';
 import { gbp, PIPELINE, STUDIO } from '@/content/studio';
@@ -74,7 +74,7 @@ export function How() {
   return (
     <section id="how" className="mx-auto max-w-[1600px] px-5 py-32 md:px-8">
       <Reveal as="h2" className="mb-14 max-w-[12ch] font-display text-[clamp(2.8rem,6.5vw,6.6rem)] leading-[0.88] font-semibold tracking-[-0.055em]">
-        See it first. <span className="font-serif font-normal italic">Pay after.</span>
+        See it first. <span className="font-serif font-normal italic"><Annotate type="underline" strokeWidth={3} padding={2} delay={900}>Pay after.</Annotate></span>
       </Reveal>
       <Stagger as="ol" className="grid gap-3 md:grid-cols-4">
         {STEPS.map(([t, d], i) => (

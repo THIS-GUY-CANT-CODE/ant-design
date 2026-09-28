@@ -1,17 +1,20 @@
 import type { Metadata } from 'next';
+import { Chrome } from '@sc/ui';
 import { Lock } from '../_components/lock';
 import { Faq, PageHead } from '../_components/page-head';
 import { RemoteCheck } from '../_components/remote-check';
 import { KeyCutter } from '../_components/services';
 import { HOURS_TEXT, PHONE } from '../_components/data';
-import { P } from '../_components/media';
 
 export const metadata: Metadata = { title: 'Keys & remotes', description: 'Key cutting, including difficult and worn keys, and 433MHz garage and gate remotes copied while you wait. 149 Bethnal Green Road.' };
 
 export default function Keys() {
   return (
     <main>
-      <PageHead media={P.keysLaid} eyebrow="Keys & remotes" title={<>Keys other shops <span className="text-accent">send away.</span></>} intro="Difficult, worn and unusual keys are what we’re known for, and we copy garage and gate remotes while you wait." />
+      <PageHead eyebrow="Keys & remotes" title={<>Keys other shops <span className="text-accent">send away.</span></>} intro="Difficult, worn and unusual keys are what we’re known for, and we copy garage and gate remotes while you wait.">
+        {/* the key as liquid steel, poured into the silhouette of a cut blank */}
+        <Chrome image="/rose/key.svg" colorTint="#FF3D7F" className="mt-10 aspect-[10/3] w-full max-w-5xl" />
+      </PageHead>
       <section className="mx-auto grid max-w-[1600px] gap-3 px-5 md:grid-cols-2 md:px-8">
         <div className="flex flex-col rounded-[2rem] bg-alt p-7 text-bg md:p-10">
           <p className="font-mono text-[12px] opacity-60">JUST FOR FUN</p>

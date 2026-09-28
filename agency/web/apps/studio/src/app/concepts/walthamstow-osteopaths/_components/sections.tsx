@@ -1,10 +1,11 @@
 'use client';
 import { No72Mark } from '@/brands/marks';
-import { gsap, HoverLetters, Magnetic, Photo, Reveal, RollText, Scramble, Skew, SplitText, Spotlight, Stagger, Tilt, useGSAP } from '@sc/ui';
+import { Annotate, gsap, HoverLetters, Magnetic, Photo, Reveal, RollText, Scramble, Skew, SplitText, Spotlight, Stagger, Tilt, useGSAP } from '@sc/ui';
 import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import { TREATMENT_PHOTO } from './media';
+import { Spine } from './spine';
 import { BASE, EMAIL, FAQS, PAGES, PHONE, TREATMENTS } from './site';
 
 export function Mark({ className }: { className?: string }) {
@@ -66,7 +67,8 @@ export function FirstVisit() {
           <Reveal as="h2" className="font-display text-[clamp(3rem,6vw,5.6rem)] leading-[0.92] tracking-[-0.03em] md:col-span-7">
             Never seen an osteopath? Here&apos;s what happens.
           </Reveal>
-          <p className="self-end text-[17px] leading-relaxed opacity-75 md:col-span-4 md:col-start-9">You don&apos;t need a GP referral. Wear something comfortable, and bring a list of any medication you take.</p>
+          <p className="self-end text-[17px] leading-relaxed opacity-75 md:col-span-3 md:col-start-8">You <Annotate type="underline" color="var(--clay)" strokeWidth={2}>don&apos;t need a GP referral.</Annotate> Wear something comfortable, and bring a list of any medication you take.</p>
+          <Spine className="mx-auto h-64 md:col-span-2 md:col-start-11 md:h-72" />
         </div>
         <Stagger as="ol" className="grid gap-3 md:grid-cols-4">
           {STEPS.map(([t, d], i) => (

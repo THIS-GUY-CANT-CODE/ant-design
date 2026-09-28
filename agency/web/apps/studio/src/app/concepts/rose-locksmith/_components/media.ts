@@ -6,8 +6,6 @@ import type { PhotoSrc, VideoSrc } from '@sc/ui';
  * shopfront, the rooms) are never faked; those slots wait for the business's own photos.
  */
 export const P = {
-  /** Keys page header: the awkward keys other shops send away */
-  keysLaid: { id: 7630510, alt: 'Assorted keys laid out on a workbench' },
   /** Poster for the paint film */
   bucket: { id: 2293819, alt: 'A paint tray and rollers ready to go' },
 } satisfies Record<string, PhotoSrc>;

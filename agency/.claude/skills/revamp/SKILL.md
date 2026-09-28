@@ -36,7 +36,7 @@ Add the brand to `web/apps/studio/src/brands/index.ts`: tokens, 4–5 named swat
 - `layout.tsx`: copy an existing one. It needs `robots: noindex`, `brandStyle(slug)`, `overflow-x-clip`, `<Cursor/>` and `<ConceptNotice/>` (required on every concept).
 - `page.tsx` plus `_components/`. Sections, as the business needs them: hero with the signature moment · proof · services/menu · story · reviews · visit/contact · giant-wordmark footer. Add a mobile quick-action bar for anything people call or book.
 - Live data from the browser (open now, clocks): `useLondonTime()` and `isOpenAt()` from `@sc/ui`. Never `setState` in an effect.
-- Reuse `@sc/ui`: `Reveal`, `FadeIn`, `Magnetic`, `Marquee`, `Counter`, `ShaderCanvas`, `gsap`/`useGSAP`. Respect `prefers-reduced-motion` everywhere.
+- Reuse `@sc/ui`: `Reveal`, `FadeIn`, `Magnetic`, `Marquee`, `Counter`, `ShaderCanvas`, `gsap`/`useGSAP`. Flourishes: `LineArt` for a custom line illustration of the trade object (draws itself on scroll), `Annotate` for one hand-drawn mark on a key phrase, `Num` for any calculator output, `Chrome` for liquid metal in a silhouette, `burst` for one earned celebration (e.g. a finished brief). Respect `prefers-reduced-motion` everywhere.
 
 ## 3b. Make it a real site, not a landing page
 - Four to six pages with a sitemap footer, breadcrumbs, a phone drawer (`MobileMenu`) and ⌘K search (`CommandMenu` with pages, services and tools).

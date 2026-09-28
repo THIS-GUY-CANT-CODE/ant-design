@@ -1,5 +1,5 @@
 'use client';
-import { AddToCalendar, Directions, LiveDepartures, londonDate, MapView, OpenNow, useGeocode, useSearch, useToday } from '@sc/ui';
+import { AddToCalendar, Directions, Num, LiveDepartures, londonDate, MapView, OpenNow, useGeocode, useSearch, useToday } from '@sc/ui';
 import { useEffect, useMemo, useState } from 'react';
 import { ADDRESS, APPROX, FRESHA, HOURS, HOURS_TEXT, MAP_THEME, OCCASIONS, PHONE, POSTCODE, SERVICES, type Service } from './site';
 
@@ -169,7 +169,7 @@ export function Centenary() {
       <dl className="mt-10 grid grid-cols-4 gap-2" aria-live="off">
         {parts.map(([l, v]) => (
           <div key={l} className="rounded-2xl bg-white/10 p-4 text-center">
-            <dd className="font-display text-[clamp(2.2rem,6vw,5rem)] leading-none tabular-nums">{now ? String(v).padStart(l === 'days' ? 1 : 2, '0') : '–'}</dd>
+            <dd className="font-display text-[clamp(2.2rem,6vw,5rem)] leading-none tabular-nums">{now ? <Num value={v} format={{ minimumIntegerDigits: l === 'days' ? 1 : 2, useGrouping: false }} /> : '–'}</dd>
             <dt className="mt-2 text-[13px] opacity-80">{l}</dt>
           </div>
         ))}

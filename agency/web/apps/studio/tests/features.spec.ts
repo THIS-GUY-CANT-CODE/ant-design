@@ -27,7 +27,7 @@ test('Rose: postcode coverage check', async ({ page }) => {
 
 test('Rose: paint calculator, palette and forecast', async ({ page }) => {
   await page.goto(`${C}/rose-locksmith/paint`, { waitUntil: 'networkidle' });
-  await expect(page.locator('#calculator')).toContainText('5.5L');
+  await expect(page.locator('#calculator')).toContainText(/need about\s*5\.5/);
   await expect(page.locator('#calculator')).toContainText('1 × 5L + 1 × 1L');
   await page.getByRole('button', { name: 'Olive' }).click();
   await page.getByRole('button', { name: 'Save to palette' }).click();
@@ -170,7 +170,7 @@ test('pictures sit inside the sections they illustrate', async ({ page }) => {
 });
 
 test('only pages where a picture earns its place open with one', async ({ page }) => {
-  for (const path of ['/concepts/rose-locksmith/keys', '/concepts/rose-locksmith/paint', '/concepts/wj-meade/buy', '/concepts/wj-meade/let', '/concepts/walthamstow-osteopaths/treatments/acupuncture']) {
+  for (const path of ['/concepts/rose-locksmith/paint', '/concepts/wj-meade/buy', '/concepts/wj-meade/let', '/concepts/walthamstow-osteopaths/treatments/acupuncture']) {
     await page.goto(path);
     await expect(page.locator('header img[src*="images.pexels.com"]').first(), path).toBeVisible();
   }
@@ -178,4 +178,13 @@ test('only pages where a picture earns its place open with one', async ({ page }
     await page.goto(path);
     await expect(page.locator('header img[src*="images.pexels.com"]'), path).toHaveCount(0);
   }
+});
+
+test('custom illustrations and flourishes render', async ({ page }) => {
+  await page.goto(`${C}/green-papaya`);
+  await expect(page.getByRole('img', { name: /steaming bowl/ })).toBeAttached();
+  await page.goto(`${C}/walthamstow-osteopaths`);
+  await expect(page.getByRole('img', { name: /spine/ })).toBeAttached();
+  await page.goto(`${C}/rose-locksmith/keys`);
+  await expect(page.locator('header canvas, header [data-paper-shader]').first()).toBeAttached();
 });

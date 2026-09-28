@@ -358,3 +358,9 @@ html.lenis body {
   font-size: 12px;
   color: var(--muted);
 }
+
+/* Green Papaya: steam drifts up the bowl drawing */
+.steam path { stroke-dasharray: 40 30; animation: steam 2.8s linear infinite; }
+.steam-busy path { animation-duration: 0.9s; }
+@keyframes steam { from { stroke-dashoffset: 140; opacity: 0.2; } 50% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) { .steam path { animation: none; stroke-dasharray: none; } }

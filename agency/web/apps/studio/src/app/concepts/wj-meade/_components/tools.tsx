@@ -1,10 +1,14 @@
 'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CopyButton, distanceKm, formatMiles, LiveDepartures, lookupPostcode, MapView, useGeocode, type MapPin } from '@sc/ui';
+import { CopyButton, Num, distanceKm, formatMiles, LiveDepartures, lookupPostcode, MapView, useGeocode, type MapPin } from '@sc/ui';
 import { useState } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { z } from 'zod';
 import { BOW, depositCaps, gbp, MAP_THEME, mortgagePayment, OFFICES, ORIGIN, rentalYield, stampDuty, type Buyer } from './site';
+
+const GBP0 = { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 } as const;
+const GBP2 = { style: 'currency', currency: 'GBP', minimumFractionDigits: 2, maximumFractionDigits: 2 } as const;
+const PCT = { style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2 } as const;
 
 const box = 'rounded-[1.75rem] bg-card p-7 md:p-10';
 const input = 'w-full min-w-0 bg-transparent px-4 py-3.5 text-[20px] font-semibold tabular-nums outline-none';
@@ -58,7 +62,7 @@ export function StampDutyCalculator() {
       </div>
       <div className="flex flex-col rounded-[1.5rem] bg-accent p-7 text-accent-ink" aria-live="polite">
         <p className="text-[14px] opacity-80">Stamp duty to pay</p>
-        <p className="mt-2 font-display text-[clamp(3.4rem,7vw,5.6rem)] leading-none font-bold tracking-[-0.05em]">{gbp(r.total)}</p>
+        <p className="mt-2 font-display text-[clamp(3.4rem,7vw,5.6rem)] leading-none font-bold tracking-[-0.05em]"><Num value={r.total} locales="en-GB" format={GBP0} /></p>
         <p className="mt-2 text-[14px] opacity-80">
           {(r.effective * 100).toFixed(2)}% of the price
           {r.ftbApplied && ' · first-time buyer relief applied'}
@@ -107,7 +111,7 @@ export function MortgageCalculator() {
       </div>
       <div className="flex flex-col rounded-[1.5rem] bg-alt p-7 text-bg" aria-live="polite">
         <p className="text-[14px] opacity-60">Monthly payment</p>
-        <p className="mt-2 font-display text-[clamp(3.4rem,7vw,5.6rem)] leading-none font-bold tracking-[-0.05em]">{gbp(m.monthly, 2)}</p>
+        <p className="mt-2 font-display text-[clamp(3.4rem,7vw,5.6rem)] leading-none font-bold tracking-[-0.05em]"><Num value={m.monthly} locales="en-GB" format={GBP2} /></p>
         <dl className="mt-auto grid grid-cols-2 gap-4 pt-8 text-[14px]">
           <div><dt className="opacity-60">Borrowing</dt><dd className="text-[20px] font-bold tabular-nums">{gbp(loan)}</dd></div>
           <div><dt className="opacity-60">Loan to value</dt><dd className="text-[20px] font-bold tabular-nums">{ltv.toFixed(0)}%</dd></div>
@@ -138,8 +142,8 @@ export function LandlordTools() {
           <Money label="Yearly costs" value={costs} onChange={setCosts} hint="Insurance, repairs, service charge, management fees" />
         </div>
         <dl className="mt-8 grid grid-cols-2 gap-3" aria-live="polite">
-          <div className="rounded-2xl bg-accent p-5 text-accent-ink"><dt className="text-[13px] opacity-80">Gross yield</dt><dd className="font-display text-[44px] leading-none font-bold">{y.gross.toFixed(2)}%</dd></div>
-          <div className="rounded-2xl bg-alt p-5 text-bg"><dt className="text-[13px] opacity-60">Net yield</dt><dd className="font-display text-[44px] leading-none font-bold">{y.net.toFixed(2)}%</dd></div>
+          <div className="rounded-2xl bg-accent p-5 text-accent-ink"><dt className="text-[13px] opacity-80">Gross yield</dt><dd className="font-display text-[44px] leading-none font-bold"><Num value={y.gross / 100} locales="en-GB" format={PCT} /></dd></div>
+          <div className="rounded-2xl bg-alt p-5 text-bg"><dt className="text-[13px] opacity-60">Net yield</dt><dd className="font-display text-[44px] leading-none font-bold"><Num value={y.net / 100} locales="en-GB" format={PCT} /></dd></div>
         </dl>
         <p className="mt-3 text-[13px] text-muted">{gbp(y.annual)} a year in rent.</p>
       </div>

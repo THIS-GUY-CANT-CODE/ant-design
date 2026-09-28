@@ -1,5 +1,5 @@
 'use client';
-import { CopyButton, ShareButton, toast, useStored } from '@sc/ui';
+import { CopyButton, Num, ShareButton, toast, useStored } from '@sc/ui';
 import { useEffect, useMemo, useState } from 'react';
 import { APPROX } from './data';
 
@@ -160,7 +160,7 @@ export function PaintCalculator() {
         <div>
           <p className="text-[14px] opacity-60">You&apos;ll need about</p>
           <p className="mt-2 font-display text-[clamp(4rem,9vw,7rem)] leading-none font-bold tracking-[-0.06em]">
-            {r.litres.toFixed(1)}<span className="text-[0.4em]">L</span>
+            <Num value={Math.round(r.litres * 10) / 10} format={{ minimumFractionDigits: 1, maximumFractionDigits: 1 }} /><span className="text-[0.4em]">L</span>
           </p>
           <p className="mt-3 text-[15px] opacity-70">
             {r.area.toFixed(1)}m² to paint{ceiling ? ' including the ceiling' : ''}, {num(f.coats) || 1} coat{num(f.coats) === 1 ? '' : 's'}.

@@ -3,6 +3,7 @@ import { Magnetic, Reveal, RollText } from '@sc/ui';
 import { useRef, useState } from 'react';
 
 import Link from 'next/link';
+import { Bowl } from './bowl';
 import { BASE, DISHES, type City } from './site';
 
 const FILTERS: [string, 'all' | City][] = [['Everything', 'all'], ['Hà Nội', 'hanoi'], ['西安', 'xian']];
@@ -36,9 +37,12 @@ export function Menu() {
     <section id="menu" className="bg-alt text-bg">
       <div className="mx-auto max-w-[1600px] px-4 py-32 md:px-8 md:py-44">
         <div className="mb-12 flex flex-wrap items-end justify-between gap-8">
-          <Reveal as="h2" by="words" className="max-w-[10ch] font-display text-[clamp(3rem,8vw,7.5rem)] leading-[0.85] font-extrabold tracking-[-0.045em]">
-            The ones people come back for.
-          </Reveal>
+          <div className="flex items-end gap-4 md:gap-8">
+            <Reveal as="h2" by="words" className="max-w-[10ch] font-display text-[clamp(3rem,8vw,7.5rem)] leading-[0.85] font-extrabold tracking-[-0.045em]">
+              The ones people come back for.
+            </Reveal>
+            <Bowl busy={rolling} className="w-28 shrink-0 md:w-52" />
+          </div>
           <div className="flex flex-wrap items-center gap-2">
             <div className="flex rounded-full bg-bg/10 p-1" role="group" aria-label="Filter the menu">
               {FILTERS.map(([l, v]) => (

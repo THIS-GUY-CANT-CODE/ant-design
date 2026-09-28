@@ -20,3 +20,4 @@ export { useGeocode } from './use-geocode';
 export { useStored } from './use-stored';
 export { OpenNow, openLine } from './open-now';
 export { Photo, Film, Banner, pexelsUrl, mixkitSources, type PhotoSrc, type VideoSrc } from './media';
+export { Annotate, Num, burst, LineArt, Chrome, Swing } from './extras';

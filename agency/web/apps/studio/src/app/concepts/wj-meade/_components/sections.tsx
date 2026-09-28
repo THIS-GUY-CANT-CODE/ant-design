@@ -1,6 +1,6 @@
 'use client';
 import { MeadeMark } from '@/brands/marks';
-import { Counter, HoverLetters, Marquee, Reveal, Spotlight, Stagger, Tilt } from '@sc/ui';
+import { Counter, HoverLetters, Marquee, Reveal, Spotlight, Stagger, Swing, Tilt } from '@sc/ui';
 import Link from 'next/link';
 import { useState } from 'react';
 import { BASE, PAGES } from './site';
@@ -196,7 +196,17 @@ export function Footer() {
       </Marquee>
       <div className="mx-auto max-w-[1600px] px-5 md:px-8">
         <div className="grid gap-10 border-b border-white/20 py-14 md:grid-cols-12">
-          <p className="max-w-xs text-[15px] opacity-80 md:col-span-4">Independent estate and letting agents across East and North London since 1953.</p>
+          <div className="md:col-span-4">
+            <p className="max-w-xs text-[15px] opacity-80">Independent estate and letting agents across East and North London since 1953.</p>
+            {/* the mark is a key tag, so it hangs on a hook and swings when you brush past */}
+            <div className="mt-8 ml-10 flex w-28 flex-col items-center" data-cursor="Swing">
+              <span aria-hidden className="size-3 rounded-full bg-white/80" />
+              <Swing className="-mt-1.5 flex flex-col items-center">
+                <span aria-hidden className="h-10 w-px bg-white/60" />
+                <Mark className="-mt-9 size-28 drop-shadow-[0_18px_24px_rgb(0_0_0/.25)]" color="#FFFFFF" />
+              </Swing>
+            </div>
+          </div>
           <nav aria-label="Footer" className="md:col-span-3">
             <p className="text-[13px] opacity-60">Pages</p>
             <ul className="mt-3 space-y-2 text-[17px]">
