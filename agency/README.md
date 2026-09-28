@@ -13,7 +13,7 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 | `scripts/shot.js <slug>` | After screenshots plus overflow and JS error checks |
 | `scripts/portfolio.js` | Rebuilds `index.html` from every client's `meta.json` |
 | `outreach/pitches.md` | Pitch emails for every concept |
-| `sales/` | Proposal template, terms, client intake questionnaire, go-live and handover checklist |
+| `sales/` | Proposal, terms, intake questionnaire, handover checklist, and **partners.md** (grants, East End Trades Guild, press, referral partners) |
 | `scripts/site.js <slug>` | Builds the demo site from `site.json` + `brand.json` (default way to build) |
 | `scripts/landing.js` | Builds `/for/<industry>/` landing pages, `sitemap.xml` and `robots.txt` (set `SITE_URL`) |
 | `scripts/leavebehind.js <slug> [previewUrl]` | Printable A5 leave-behind for walk-in pitches (new site, 3 fixes, price, QR code to the preview) |

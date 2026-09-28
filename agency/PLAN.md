@@ -68,6 +68,9 @@ The industries are spread on purpose so the portfolio shows range. Trades and he
 
 ## Growth after proof of concept
 
+**Channels first, then volume.** See `sales/partners.md`. In priority order: borough grants that pay for the site (Tower Hamlets match funding), the East End Trades Guild (about 300 independents), local heritage press once there are real clients, accountant referrals, and street-wide deals via town-centre teams.
+
+
 1. Month 1: 6 portfolio pieces, portfolio site live, 30 demos sent
 2. Month 2: first 3 to 5 paying clients, and turn each one into a real case study with permission
 3. Month 3: go narrow on the best-converting industry (probably trades). Niche templates cut build time in half
