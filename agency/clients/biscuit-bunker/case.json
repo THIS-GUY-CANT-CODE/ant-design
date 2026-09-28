@@ -1,0 +1,107 @@
+{
+  "theme": {
+    "bg": "#0E0D0C",
+    "fg": "#F4EDE3",
+    "accent": "#D9A566",
+    "accentInk": "#D9A566",
+    "muted": "#9C958A",
+    "card": "#1A1917",
+    "line": "rgba(244,237,227,.14)",
+    "font": "Archivo",
+    "fontCss": "family=Archivo:wght@900",
+    "fontWeight": 900,
+    "headTracking": "-.04em"
+  },
+  "headline": "A video company whose website finally moves like one.",
+  "was": [
+    "The best story they have, that the studio started in a converted dog biscuit factory, sits on the About page instead of being the brand.",
+    "Services are spread across separate keyword pages like \"Podcast production London\", which read like SEO filler.",
+    "Search listings show a text-first site. For a video company, the work itself should be the first thing you see."
+  ],
+  "now": [
+    {
+      "t": "A viewfinder hero",
+      "d": "Crop marks, a blinking REC light, a running 25fps timecode and a letterbox intro that opens like a film."
+    },
+    {
+      "t": "Services as a film strip",
+      "d": "Five disciplines laid out as reels on a draggable strip of film."
+    },
+    {
+      "t": "Filterable work grid",
+      "d": "Commercial, animation or podcast, with a red PLAY cursor that follows you over each project."
+    },
+    {
+      "t": "Process as an edit timeline",
+      "d": "Brief to delivery shown as clips on a timeline, with a playhead that scrubs as you scroll."
+    },
+    {
+      "t": "A clapperboard brief form",
+      "d": "Production, director, format, budget and deadline. The slate claps when you focus it, and the button says \"Action!\""
+    }
+  ],
+  "brand": {
+    "idea": "Good content. Fetched.",
+    "body": "The name was already brilliant. We just stopped hiding it. The logo is a dog bone with a red REC dot in the middle, so the factory story and the camera share one mark. Bunker black and biscuit gold do the heavy lifting, with a single hot red saved for anything that means record, play or act now.",
+    "points": [
+      "A dog-bone mark with a REC dot: the story and the craft in one symbol",
+      "Archivo at its heaviest weight for headlines that read like title cards, and JetBrains Mono for timecode and technical detail",
+      "Voice: confident, a bit cheeky, and never corporate. \"Got a brief? Throw us a bone.\"",
+      "A rule for every end card: the bone ident, then \"Good content. Fetched.\""
+    ]
+  },
+  "marketing": {
+    "idea": "Make the studio's own channels the showreel.",
+    "plays": [
+      {
+        "when": "Week 1",
+        "t": "One case study per project",
+        "d": "Turn every Vimeo project into its own page: the brief, the idea and the result. That ranks for \"brand film for [sector]\" searches in a way thin keyword pages rarely do."
+      },
+      {
+        "when": "Month 1",
+        "t": "\"From the Bunker\" on LinkedIn",
+        "d": "A 60-second behind-the-scenes edit every month, cut in the new brand style. Agency producers hire people they've watched work."
+      },
+      {
+        "when": "Month 2",
+        "t": "The biscuit tin mailer",
+        "d": "A tin of dog biscuits sent to 30 target agency producers, with a QR code to the showreel on the lid. It's memorable, cheap and on brand."
+      },
+      {
+        "when": "Ongoing",
+        "t": "Podcast clip engine",
+        "d": "Every podcast they produce gives three vertical clips for the client, which is also a free advert for Bunker's podcast service."
+      },
+      {
+        "when": "Local",
+        "t": "Google Business Profile",
+        "d": "Claim \"video production Shoreditch\" with the showreel as the cover video and a project photo every week."
+      }
+    ]
+  },
+  "tier": "Rebrand",
+  "tierWhy": "Creative agencies judge suppliers on taste. A full identity plus a multi-page site with case studies is the version that wins pitches.",
+  "swatches": [
+    {
+      "name": "Bunker",
+      "hex": "#141311"
+    },
+    {
+      "name": "Biscuit",
+      "hex": "#D9A566"
+    },
+    {
+      "name": "Cream",
+      "hex": "#F4EDE3"
+    },
+    {
+      "name": "REC",
+      "hex": "#E8432E"
+    },
+    {
+      "name": "Crumb",
+      "hex": "#8C857B"
+    }
+  ]
+}

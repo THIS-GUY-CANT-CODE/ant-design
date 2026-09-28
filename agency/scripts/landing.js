@@ -94,5 +94,5 @@ fs.writeFileSync(path.join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="
 ${urls.map(u => `  <url><loc>${base}${u}</loc></url>`).join('\n')}
 </urlset>
 `);
-fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nDisallow: /clients/\nSitemap: ${base}/sitemap.xml\n`);
+fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nDisallow: /clients/\nDisallow: /work/\nSitemap: ${base}/sitemap.xml\n`);
 console.log('wrote sitemap.xml and robots.txt for', base, '(set SITE_URL when you have the domain)');

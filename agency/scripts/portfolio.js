@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const cfg = require('./config');
+const { cases, priceOf } = require('./cases');
 
 const root = path.join(__dirname, '..');
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -13,6 +14,10 @@ const clients = fs.readdirSync(path.join(root, 'clients'))
   .filter(d => fs.existsSync(path.join(root, 'clients', d, 'meta.json')))
   .map(d => JSON.parse(fs.readFileSync(path.join(root, 'clients', d, 'meta.json'), 'utf8')))
   .sort((a, b) => (order.indexOf(a.slug) + 1 || 99) - (order.indexOf(b.slug) + 1 || 99));
+
+const featured = cases();
+const featuredSlugs = new Set(featured.map(x => x.slug));
+const others = clients.filter(c => !featuredSlugs.has(c.slug));
 
 const beforeImg = slug => ['desktop-card.jpg', 'desktop-card.png', 'desktop.png']
   .map(f => `clients/${slug}/before/${f}`).find(p => fs.existsSync(path.join(root, p)));
@@ -45,6 +50,39 @@ const card = (c, i) => {
     </div>
   </article>`;
 };
+
+// One themed band per featured case study, in the client's own colours and display font
+const band = ({ slug, meta, c }, i) => {
+  const t = c.theme, dark = parseInt(t.bg.slice(1, 3), 16) < 90;
+  return `
+  <article class="case" style="--bg:${t.bg};--fg:${t.fg};--ac:${t.accent};--aci:${t.accentInk};--mu:${t.muted};--cd:${t.card};--ln:${t.line};--df:'${t.font}';--dw:${t.fontWeight};--ds:${t.fontStyle || 'normal'};--on:${dark ? t.bg : '#fff'}">
+    <div class="case-in">
+      <div class="case-copy">
+        <div class="case-top"><span class="num">${String(i + 1).padStart(2, '0')}</span><span class="pill">Unsolicited concept</span><span class="where">${esc(meta.industry)} · ${esc(meta.area)}</span></div>
+        <h3>${esc(meta.name)}</h3>
+        <p class="hl">${esc(c.headline)}</p>
+        <dl class="quad">
+          <div><dt>What it was</dt><dd>${esc(c.was[0])}</dd></div>
+          <div><dt>What it is now</dt><dd>${esc(c.now.slice(0, 3).map(f => f.t).join(' · '))}</dd></div>
+          <div><dt>Brand pitch</dt><dd class="idea">${esc(c.brand.idea)}</dd></div>
+          <div><dt>Marketing pitch</dt><dd>${esc(c.marketing.idea)}</dd></div>
+        </dl>
+        <div class="case-links"><a class="cbtn" href="work/${slug}/">Read the case study →</a><a href="clients/${slug}/site/">Live concept</a><a href="clients/${slug}/brand-book/">Brand book</a></div>
+      </div>
+      <a class="case-shot" href="clients/${slug}/site/" aria-label="Open the ${esc(meta.name)} concept">
+        <span class="bw"><span class="bar"><i></i><i></i><i></i></span><img src="clients/${slug}/after/desktop-card.jpg" alt="${esc(meta.name)} redesign on desktop" loading="lazy"></span>
+        <span class="ph"><img src="clients/${slug}/after/mobile-card.jpg" alt="" loading="lazy"></span>
+      </a>
+    </div>
+  </article>`;
+};
+
+const mini = c => `
+  <article class="mini">
+    <a class="mshot" href="clients/${c.slug}/site/"><img src="clients/${c.slug}/after/desktop-card.jpg" alt="${esc(c.name)} redesign" loading="lazy"></a>
+    <h3>${esc(c.name)}</h3><p class="where">${esc(c.industry)} · ${esc(c.area)}</p>
+    <div class="links"><a href="clients/${c.slug}/site/">Site →</a><a href="clients/${c.slug}/brand-book/">Brand book →</a>${c.url ? '' : '<span class="nosite">Had no website</span>'}</div>
+  </article>`;
 
 const html = `<!doctype html>
 <html lang="en-GB">
@@ -128,6 +166,45 @@ h2{font:400 clamp(2.4rem,5.4vw,4.6rem)/1 var(--serif);letter-spacing:-.02em;max-
 .industries a{color:var(--ink);font-weight:600}
 @media (max-width:900px){.work{grid-template-columns:1fr;gap:24px}.work:nth-child(even) .shot{order:0}}
 
+.cases{display:grid;gap:22px;margin-top:56px}
+.case{background:var(--bg);color:var(--fg);border-radius:28px;overflow:hidden;position:relative;isolation:isolate}
+.case::before{content:"";position:absolute;inset:auto -10% -40% auto;width:60%;aspect-ratio:1;border-radius:50%;background:var(--ac);opacity:.12;filter:blur(40px);z-index:-1}
+.case-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;padding:clamp(24px,4vw,52px);align-items:center}
+.case:nth-child(even) .case-shot{order:-1}
+.case-top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.case .num{color:var(--aci);font:400 1.6rem var(--serif)}
+.pill{font:600 .68rem var(--sans);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--ln);border-radius:999px;padding:5px 10px;color:var(--mu)}
+.case .where{color:var(--aci);font-weight:600;font-size:.88rem}
+.case h3{font-family:var(--df),Georgia,serif;font-weight:var(--dw);font-style:var(--ds);font-size:clamp(2.2rem,4.4vw,3.8rem);line-height:.95;letter-spacing:-.02em;margin-block:16px 12px}
+.case .hl{font-size:1.15rem;opacity:.9;max-width:34ch}
+.quad{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;margin-top:24px}
+.quad div{background:var(--cd);border:1px solid var(--ln);border-radius:14px;padding:14px 16px}
+.quad dt{font:600 .68rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--aci);margin-bottom:6px}
+.quad dd{font-size:.9rem;line-height:1.45;color:var(--fg);opacity:.85}
+.quad dd.idea{font-family:var(--df),Georgia,serif;font-weight:var(--dw);font-style:var(--ds);font-size:1.25rem;line-height:1.1;opacity:1}
+.case-links{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.case-links a{font-weight:600;text-decoration:none}
+.case-links a:not(.cbtn){border-bottom:1.5px solid var(--ln)}
+.cbtn{background:var(--ac);color:var(--on);padding:13px 20px;border-radius:999px;transition:transform .2s}
+.cbtn:hover{transform:translateY(-2px)}
+.case-shot{position:relative;display:block;padding-bottom:30px;padding-right:50px}
+.bw{display:block;border-radius:12px;overflow:hidden;box-shadow:0 30px 60px -24px rgba(0,0,0,.55);background:#fff;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.bw .bar{display:flex;gap:5px;height:24px;align-items:center;padding-inline:10px;background:#ECEAE6}
+.bw .bar i{width:8px;height:8px;border-radius:50%;background:#D0CCC5}
+.bw img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.ph{position:absolute;right:0;bottom:0;width:26%;border-radius:18px;padding:5px;background:#111;box-shadow:0 20px 40px -14px rgba(0,0,0,.6);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.ph img{display:block;width:100%;aspect-ratio:9/19;object-fit:cover;object-position:top;border-radius:14px}
+.case-shot:hover .bw{transform:translateY(-6px) rotate(-.6deg)}
+.case-shot:hover .ph{transform:translateY(-14px) rotate(2deg)}
+@media (max-width:900px){.case-in{grid-template-columns:minmax(0,1fr)}.case:nth-child(even) .case-shot{order:0}.quad{grid-template-columns:minmax(0,1fr)}}
+.minis{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:26px;margin-top:44px}
+.mshot{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 40px -30px rgba(0,0,0,.5)}
+.mshot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;transition:transform .5s}
+.mshot:hover img{transform:scale(1.04)}
+.mini h3{font:400 1.6rem/1.1 var(--serif);margin-top:14px}
+.mini .where{color:var(--wet);font-weight:600;font-size:.85rem}
+.mini .links{margin-top:10px;gap:14px}
+
 .pricing{background:var(--ink);color:var(--paper)}
 .pricing h2{color:#fff}
 .pricing .lede{color:#b5b1a9}
@@ -167,7 +244,7 @@ footer .wrap{display:grid;gap:12px}
 <header>
   <nav class="wrap nav" aria-label="Main">
     <a class="logo" href="#top"><i aria-hidden="true"></i>Second Coat</a>
-    <ul><li><a href="#how">How it works</a></li><li><a href="#work">Work</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul>
+    <ul><li><a href="#cases">Case studies</a></li><li><a href="#how">How it works</a></li><li><a href="#work">More work</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li></ul>
     <a class="btn" href="#contact">Get a free redesign</a>
   </nav>
 </header>
@@ -177,11 +254,19 @@ footer .wrap{display:grid;gap:12px}
     <span class="eyebrow">East London web studio</span>
     <h1>Your website, <em>rebuilt</em> before you pay a <span class="stroke">penny.</span></h1>
     <p>We give tired local business websites a second coat: a new brand, a fast modern site and your real story told properly. You see the finished thing first. You only pay if you love it.</p>
-    <div class="ctas"><a class="btn" href="#contact">Get my free redesign</a><a class="btn line" href="#work">See the makeovers</a></div>
+    <div class="ctas"><a class="btn" href="#contact">Get my free redesign</a><a class="btn line" href="#cases">See the case studies</a></div>
     <div class="facts">
       <div><b>${cfg.fmt.refresh}</b><span>for a new site, all in</span></div>
       <div><b>${clients.length}</b><span>East London makeovers so far</span></div>
       <div><b>£0</b><span>until you've seen it</span></div>
+    </div>
+  </section>
+
+  <section id="cases" class="wrap" style="padding-top:0">
+    <span class="eyebrow">Case studies</span>
+    <h2>Six East London businesses. What they had, what they could have.</h2>
+    <p class="lede">Each one: the problems with the old site, a new website with a signature moment only that business could own, a full brand book, and a marketing plan to go with it.</p>
+    <div class="cases">${featured.map(band).join('')}
     </div>
   </section>
 
@@ -197,11 +282,11 @@ footer .wrap{display:grid;gap:12px}
   </section>
 
   <section id="work" class="wrap" style="padding-top:0">
-    <span class="eyebrow">The makeovers</span>
-    <h2>${['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve'][clients.length] || clients.length} East London businesses, rebuilt.</h2>
+    <span class="eyebrow">More concepts</span>
+    <h2>${['Zero','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve'][others.length] || others.length} more, from bookshops to boxing clubs.</h2>
     <p class="lede">Each one comes with a full brand book and a new website. These are unsolicited concepts: we chose businesses we love and showed what their sites could be. None of them are clients unless marked.</p>
     <p class="industries">Browse by industry: <a href="for/restaurants-pubs/">Restaurants &amp; pubs</a> · <a href="for/shops-salons/">Shops &amp; salons</a> · <a href="for/trades-garages/">Trades &amp; garages</a> · <a href="for/health-clinics/">Dentists &amp; clinics</a> · <a href="for/agencies-estate-agents/">Estate agents &amp; firms</a></p>
-    <div class="works">${clients.map(card).join('')}
+    <div class="minis">${others.map(mini).join('')}
     </div>
   </section>
 

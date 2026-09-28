@@ -1,6 +1,6 @@
 // One command for the whole pipeline.
 //   node scripts/build.js <slug>          brand book → site (if site.json) → screenshots + checks → leave-behind
-//   node scripts/build.js --all           every client, then portfolio, landing pages and dashboard
+//   node scripts/build.js --all           every client, then case studies, portfolio, landing pages and dashboard
 //   add --no-shots to skip Playwright (e.g. in CI without a browser)
 // Screenshots need Playwright: `cd scripts && npm install && npx playwright install chromium`
 // (or NODE_PATH pointing at a global install).
@@ -34,6 +34,6 @@ for (const slug of slugs) {
   }
 }
 if (all) {
-  for (const s of ['portfolio.js', 'landing.js', 'dashboard.js']) console.log(run(s).trim().split('\n').map(l => '  ' + l).join('\n'));
+  for (const s of ['cases.js', 'portfolio.js', 'landing.js', 'dashboard.js']) console.log(run(s).trim().split('\n').map(l => '  ' + l).join('\n'));
 }
 process.exit(failed ? 1 : 0);

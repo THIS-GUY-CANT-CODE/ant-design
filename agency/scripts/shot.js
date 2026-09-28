@@ -1,5 +1,5 @@
 // Usage: node scripts/shot.js <slug>
-// Saves after/desktop.png, after/mobile.png and after/brand-book.png, and reports any horizontal overflow or JS errors.
+// Saves after/desktop.png, after/mobile.png and after/brand-book.png (plus -card.jpg and -full.jpg for the site), and reports any horizontal overflow or JS errors.
 const { chromium } = require('playwright');
 const path = require('path');
 (async () => {
@@ -16,6 +16,8 @@ const path = require('path');
     await p.goto('file://' + path.join(dir, src), { waitUntil: 'load', timeout: 15000 }).catch(() => {});
     await p.waitForTimeout(2200); await p.evaluate(() => document.querySelectorAll('.rv').forEach(e => e.classList.add('in'))); await p.waitForTimeout(1100);
     await p.screenshot({ path: path.join(dir, 'after', out), fullPage: true });
+    // Full-page JPEGs (deployed; the PNGs are not) for the case-study pages
+    if (src.startsWith('site/')) await p.screenshot({ path: path.join(dir, 'after', out.replace('.png', '-full.jpg')), fullPage: true, type: 'jpeg', quality: 70 });
     // Viewport-only JPEG previews for the portfolio cards
     if (src.startsWith('site/')) await p.screenshot({ path: path.join(dir, 'after', out.replace('.png', '-card.jpg')), type: 'jpeg', quality: 78 });
     const sw = await p.evaluate(() => document.documentElement.scrollWidth);

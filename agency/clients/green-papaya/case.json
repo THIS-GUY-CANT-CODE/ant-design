@@ -1,0 +1,108 @@
+{
+  "theme": {
+    "bg": "#F6F1E4",
+    "fg": "#17301E",
+    "accent": "#D2452B",
+    "accentInk": "#B8391F",
+    "muted": "#5F5B52",
+    "card": "#FFFFFF",
+    "line": "rgba(27,26,23,.12)",
+    "font": "Fraunces",
+    "fontCss": "family=Fraunces:opsz,wght@9..144,900",
+    "fontWeight": 900,
+    "headTracking": "-.035em"
+  },
+  "headline": "Two cities on one menu, and a website that finally says so.",
+  "was": [
+    "Their real edge, Northern Vietnamese and Xi'an cooking under one roof, isn't the headline in search listings.",
+    "Listings disagree on the address: an old Kingsland Road listing is still out there, which confuses Google and customers.",
+    "Dish names turn up in reviews, not on pages of their own, so \"banana leaf tilapia Hackney\" finds reviewers instead of the restaurant.",
+    "More than twenty years in Hackney and a review from The Infatuation, and that trust isn't doing any work."
+  ],
+  "now": [
+    {
+      "t": "A steaming-bowl hero",
+      "d": "An illustrated bowl with rising steam, bobbing chopsticks and herbs drifting down the page."
+    },
+    {
+      "t": "Live open status",
+      "d": "\"Open now\" or \"Closed right now\", worked out from their real hours in London time, with today's row highlighted."
+    },
+    {
+      "t": "Two cities, one slider",
+      "d": "Drag between Hà Nội green and 西安 red to see both halves of the kitchen."
+    },
+    {
+      "t": "Spin-the-table menu",
+      "d": "A lazy susan of nine signature dishes. Tap a plate and the table turns it to you, with the story of that dish."
+    },
+    {
+      "t": "Built for phones",
+      "d": "A sticky Call and Menu bar, Restaurant schema with hours, and a one-tap directions map."
+    }
+  ],
+  "brand": {
+    "idea": "Two roads. One table.",
+    "body": "A papaya cut in half became the logo, with the seeds as the table. The palette splits the menu in two: leaf green and young herb for Hanoi, chilli red and turmeric for Xi'an, both on warm rice paper. Fraunces gives it a generous, family-kitchen voice that feels nothing like a chain.",
+    "points": [
+      "A papaya cross-section mark that works as a sticker, a stamp or a favicon",
+      "Two colour families, one for each city, so every dish carries its origin",
+      "Voice: warm, specific and proud of the food. Name the dish, not the adjective",
+      "Menu cards and takeaway bags in the same system"
+    ]
+  },
+  "marketing": {
+    "idea": "Win the \"where do we eat tonight\" search on Mare Street.",
+    "plays": [
+      {
+        "when": "Week 1",
+        "t": "Fix Google first",
+        "d": "One address everywhere, the Kingsland Road listing marked closed, hours checked, and the menu added as text with photos of each signature dish."
+      },
+      {
+        "when": "Month 1",
+        "t": "\"Which city are you?\"",
+        "d": "An Instagram series that pairs one Hanoi dish with one Xi'an dish each week. Diners vote, and the winner becomes a weekend special."
+      },
+      {
+        "when": "Month 1",
+        "t": "Reviews at the till",
+        "d": "A small QR card with the bill: \"Enjoyed the concubine noodles? Tell Hackney.\" Fresh reviews are what keep them in the local map pack."
+      },
+      {
+        "when": "Seasonal",
+        "t": "Tết and Lunar New Year",
+        "d": "The one festival both cuisines share. A set menu and a short film of the kitchen cooking it."
+      },
+      {
+        "when": "Local",
+        "t": "Hackney food writers' night",
+        "d": "Invite five local food Instagrammers to taste across both menus, with the spin-the-table site as the follow-up link."
+      }
+    ]
+  },
+  "tier": "Refresh + Care",
+  "tierWhy": "The identity work is light. What matters is accurate hours, menus and Google listings every month, which is exactly what the Care plan covers.",
+  "swatches": [
+    {
+      "name": "Leaf",
+      "hex": "#2F5D3A"
+    },
+    {
+      "name": "Young herb",
+      "hex": "#A8C686"
+    },
+    {
+      "name": "Rice paper",
+      "hex": "#F6F1E4"
+    },
+    {
+      "name": "Chilli",
+      "hex": "#D2452B"
+    },
+    {
+      "name": "Turmeric",
+      "hex": "#E7A83B"
+    }
+  ]
+}

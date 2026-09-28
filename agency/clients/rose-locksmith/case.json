@@ -1,0 +1,85 @@
+{
+  "theme": {
+    "bg": "#1D2433",
+    "fg": "#FBF7F0",
+    "accent": "#C9A24A",
+    "accentInk": "#E6C97A",
+    "muted": "#AEB4C0",
+    "card": "#2A3347",
+    "line": "rgba(251,247,240,.14)",
+    "font": "Bitter",
+    "fontCss": "family=Bitter:wght@900",
+    "fontWeight": 900,
+    "headTracking": "-.02em"
+  },
+  "headline": "88 years and 684 five-star reviews, finally on the front page.",
+  "was": [
+    "Search results show page titles like \"About -\" and \"Contacts -\", meaning the site title was never set up.",
+    "Their two strongest trust signals, since 1938 and 4.9★ from 684 Google reviews, appear in neither the titles nor the search snippets.",
+    "The family story (same family since the shop sold car and cycle parts in 1938) isn't part of how they show up online."
+  ],
+  "now": [
+    {
+      "t": "A working lock, explained",
+      "d": "An animated pin-tumbler cross-section. The right key slides in, every pin lifts to the shear line, and it turns green. Try the wrong key and it stays red."
+    },
+    {
+      "t": "Two front doors",
+      "d": "A red emergency route with the emergency number, and a brass \"pop in\" route for keys, remotes and paint."
+    },
+    {
+      "t": "Your name, cut as a key",
+      "d": "Type any name and it's turned into a unique key profile, with a cutting wheel running along the blade."
+    },
+    {
+      "t": "A Dulux wall mixer",
+      "d": "Tap a paint chip and a whole room repaints itself, while the tin gives a shake."
+    },
+    {
+      "t": "Open or closed, at a glance",
+      "d": "A live status pill, today's hours highlighted, and an OPEN or CLOSED sign in the illustrated shop window."
+    }
+  ],
+  "brand": {
+    "idea": "Same family. Same street. Since 1938.",
+    "body": "Heritage without the dust. Navy and brass come straight from the shopfront and the keys on the wall, and rose red is kept for the emergency line only, so it always means urgent. Bitter is a sturdy slab serif that looks as good painted on a fascia as it does on a phone.",
+    "points": [
+      "A key in a rose roundel: the name and the trade in one mark",
+      "Red means emergency, only ever",
+      "Voice: straight-talking and helpful. \"If it opens, locks or needs fixing, start here.\"",
+      "A window vinyl: Since 1938 · 4.9★ from 684 reviews"
+    ]
+  },
+  "marketing": {
+    "idea": "Own every \"locksmith near me\" search in E2, E1 and Hackney.",
+    "plays": [
+      {
+        "when": "Week 1",
+        "t": "Titles and snippets that sell",
+        "d": "\"Rose Locksmith, Bethnal Green: Key Cutting since 1938 · 4.9★\". It's a one-hour fix that changes every search result they show up in."
+      },
+      {
+        "when": "Month 1",
+        "t": "Awkward key of the week",
+        "d": "A 15-second Reel of the strangest key or remote they copied that week. It proves the \"we cut the ones others can't\" claim without saying it."
+      },
+      {
+        "when": "Month 1",
+        "t": "Emergency pages by area",
+        "d": "Short, honest pages for Bethnal Green, Tower Hamlets and Hackney call-outs, each with the emergency number as the first thing you see."
+      },
+      {
+        "when": "Seasonal",
+        "t": "Spring paint season",
+        "d": "The Dulux colour of the year in the window and on the wall-mixer page, with a \"bring a photo, we'll match it\" offer."
+      },
+      {
+        "when": "2028",
+        "t": "90 years on Bethnal Green Road",
+        "d": "The anniversary is a local-press story with archive photos from the family, and the concept site's timeline is ready for it."
+      }
+    ]
+  },
+  "tier": "Refresh + Care",
+  "tierWhy": "The brand already exists in the shop. They need a site that works hard in search, plus monthly updates to the reviews count and seasonal pages."
+}

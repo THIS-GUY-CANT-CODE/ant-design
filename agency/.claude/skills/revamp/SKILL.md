@@ -34,6 +34,17 @@ Hand-write the HTML only when a concept needs a layout the generator can't do. T
 - Must: mobile-first, CSS custom properties from the brand book, logical properties, `prefers-reduced-motion`, semantic HTML, alt text, visible focus.
 - Must: `<meta name="robots" content="noindex">` and the concept banner (copy the one from `clients/biscuit-bunker/site/index.html`) until they pay.
 
+### 3a. The signature moment (flagship case studies)
+The generator gets a site to "good". A case study has to be *memorable*, so every flagship site gets **one interaction only that business could own**, taken from its real story or trade. Examples in the repo:
+- Biscuit Bunker (video): viewfinder hero with a running timecode, services as a film strip, a clapperboard brief form
+- Green Papaya (restaurant): a lazy-susan menu that turns the chosen dish to you, and a two-cities comparison slider
+- Rose Locksmith: a working pin-tumbler lock animation, a name-to-key cutter, a Dulux wall mixer
+- Walthamstow Osteopaths: a spine that straightens as you scroll, the No.72 facade through its eras
+- W J Meade: a dusk terrace that draws itself and lights up, a bedroom slider on the valuation form, a real-coordinates offices map
+- Clapton Beauty Parlour: a deco sunburst, gold shimmer type, a sepia-to-colour decades scroll
+
+Rules: it must work with a keyboard and with `prefers-reduced-motion` (give a static final state, because `shot.js` captures in reduced motion). Invent no facts to make it work. Use placeholders instead.
+
 ## 3b. Verify
 Shortcut: `node scripts/build.js <slug>` runs brand book → site → checks → leave-behind in one go (`--all` rebuilds everything, plus the portfolio, landing pages and dashboard).
 
@@ -47,6 +58,12 @@ Shortcut: `node scripts/build.js <slug>` runs brand book → site → checks →
 
 ## 4b. Portfolio
 `node scripts/portfolio.js` rebuilds the agency homepage (`index.html`) from every `meta.json`. Once `before/desktop-card.jpg` exists (a 1440×900 screenshot of their current site), the card becomes a before/after slider automatically.
+
+## 4c. Case study (`case.json` → `work/<slug>/`)
+For flagship concepts, write `clients/<slug>/case.json` (copy `clients/rose-locksmith/case.json`) and run `node scripts/cases.js`. The fields are: `theme` (client colours plus display font), `headline`, `was`, `now` (signature features), `brand` (idea, body, points), `marketing` (idea, plus plays with `when`), `tier` and `tierWhy`. The portfolio homepage features every client that has a `case.json`.
+- **`was` may only contain things actually observed**: search titles, listings, or the live site if you've seen it. Never guess what their site "probably" does.
+- Marketing plays are proposals, so name real anniversaries (founding year + 25/50/75/90/100) and real seasons. Never promise numbers.
+- Case pages are `noindex` and disallowed in robots, because they name businesses that aren't clients.
 
 ## 5. After every build — improve this skill
 Add one line to `LEARNINGS.md`: what took longest, what to template next time. If something repeats 3 times, turn it into a reusable snippet under `templates/`.

@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /clients/
+Disallow: /work/
 Sitemap: https://secondcoat.example/sitemap.xml
