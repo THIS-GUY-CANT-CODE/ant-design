@@ -1,0 +1,8 @@
+{
+  "_readme": "Edit this one file, then run: node scripts/build.js --all. Everything public (portfolio, landing pages, leave-behinds, sitemap) reads from here.",
+  "name": "Second Coat",
+  "email": "hello@example.com",
+  "phone": "",
+  "siteUrl": "https://secondcoat.example",
+  "prices": { "refresh": 500, "rebrand": 1200, "care": 49 }
+}

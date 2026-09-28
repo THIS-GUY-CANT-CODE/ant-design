@@ -3,6 +3,7 @@
 // A client shows a before/after slider once clients/<slug>/before/desktop-card.jpg (or .png) exists.
 const fs = require('fs');
 const path = require('path');
+const cfg = require('./config');
 
 const root = path.join(__dirname, '..');
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -51,7 +52,7 @@ const html = `<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Second Coat: Website Makeovers for East London Businesses</title>
-<meta name="description" content="We rebuild your business website before you pay a penny. An East London studio doing brand and website makeovers from £500.">
+<meta name="description" content="We rebuild your business website before you pay a penny. An East London studio doing brand and website makeovers from ${cfg.fmt.refresh}.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -178,7 +179,7 @@ footer .wrap{display:grid;gap:12px}
     <p>We give tired local business websites a second coat: a new brand, a fast modern site and your real story told properly. You see the finished thing first. You only pay if you love it.</p>
     <div class="ctas"><a class="btn" href="#contact">Get my free redesign</a><a class="btn line" href="#work">See the makeovers</a></div>
     <div class="facts">
-      <div><b>£500</b><span>for a new site, all in</span></div>
+      <div><b>${cfg.fmt.refresh}</b><span>for a new site, all in</span></div>
       <div><b>${clients.length}</b><span>East London makeovers so far</span></div>
       <div><b>£0</b><span>until you've seen it</span></div>
     </div>
@@ -210,9 +211,9 @@ footer .wrap{display:grid;gap:12px}
       <h2>Simple, fixed prices.</h2>
       <p class="lede">No hourly rates, no surprises. You see the work before you pay for any of it.</p>
       <div class="tiers">
-        <div class="tier"><h3>Refresh</h3><div class="price">£500</div><ul><li>The new site we built for you</li><li>Set up on your domain</li><li>Contact form and click-to-call</li><li>Google-ready (schema and SEO basics)</li><li>One round of edits</li></ul><a class="btn" href="#contact">Start with a Refresh</a></div>
-        <div class="tier pop"><h3>Rebrand</h3><div class="price">£1,200</div><ul><li>Everything in Refresh</li><li>Full brand book (logo, colour, type, voice)</li><li>Up to 5 pages</li><li>Social media templates</li><li>Two rounds of edits</li></ul><a class="btn" href="#contact">Go for the Rebrand</a></div>
-        <div class="tier"><h3>Care plan</h3><div class="price">£49<small>/month</small></div><ul><li>Hosting and SSL included</li><li>Monthly content updates</li><li>Uptime monitoring</li><li>Quarterly Google report</li><li>Cancel anytime</li></ul><a class="btn" href="#contact">Add Care</a></div>
+        <div class="tier"><h3>Refresh</h3><div class="price">${cfg.fmt.refresh}</div><ul><li>The new site we built for you</li><li>Set up on your domain</li><li>Contact form and click-to-call</li><li>Google-ready (schema and SEO basics)</li><li>One round of edits</li></ul><a class="btn" href="#contact">Start with a Refresh</a></div>
+        <div class="tier pop"><h3>Rebrand</h3><div class="price">${cfg.fmt.rebrand}</div><ul><li>Everything in Refresh</li><li>Full brand book (logo, colour, type, voice)</li><li>Up to 5 pages</li><li>Social media templates</li><li>Two rounds of edits</li></ul><a class="btn" href="#contact">Go for the Rebrand</a></div>
+        <div class="tier"><h3>Care plan</h3><div class="price">${cfg.fmt.care}<small>/month</small></div><ul><li>Hosting and SSL included</li><li>Monthly content updates</li><li>Uptime monitoring</li><li>Quarterly Google report</li><li>Cancel anytime</li></ul><a class="btn" href="#contact">Add Care</a></div>
       </div>
     </div>
   </section>
@@ -236,7 +237,7 @@ footer .wrap{display:grid;gap:12px}
         <span class="eyebrow" style="color:var(--ink)">Free redesign</span>
         <h2 style="margin-top:14px">Want to see your business with a second coat?</h2>
       </div>
-      <form onsubmit="event.preventDefault();location.href='mailto:hello@example.com?subject='+encodeURIComponent('Free redesign: '+this.b.value)+'&body='+encodeURIComponent('Website: '+this.u.value)">
+      <form onsubmit="event.preventDefault();location.href='mailto:${cfg.email}?subject='+encodeURIComponent('Free redesign: '+this.b.value)+'&body='+encodeURIComponent('Website: '+this.u.value)">
         <input name="b" placeholder="Business name" aria-label="Business name" required>
         <input name="u" placeholder="Your current website" aria-label="Current website">
         <button class="btn" type="submit">Request my free redesign</button>

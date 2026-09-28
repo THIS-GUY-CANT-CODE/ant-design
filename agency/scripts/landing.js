@@ -2,6 +2,7 @@
 // Builds SEO landing pages at for/<sector>/index.html, e.g. /for/restaurants-pubs/.
 const fs = require('fs');
 const path = require('path');
+const cfg = require('./config');
 
 const root = path.join(__dirname, '..');
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -35,7 +36,7 @@ for (const [key, s] of Object.entries(sectors)) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Websites for East London ${esc(s.label)} | Second Coat</title>
-<meta name="description" content="Website makeovers for East London ${esc(s.label)}. See your new site before you pay a penny. From £500.">
+<meta name="description" content="Website makeovers for East London ${esc(s.label)}. See your new site before you pay a penny. From ${cfg.fmt.refresh}.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="${fonts}" rel="stylesheet">
@@ -60,7 +61,7 @@ for (const [key, s] of Object.entries(sectors)) {
   <section class="wrap hero">
     <span class="eyebrow">For ${esc(s.label)}</span>
     <h1 style="max-width:16ch">${s.h1}</h1>
-    <p>We rebuild your website, brand and all, <b>before</b> you pay anything. See it, love it, then it's yours from £500.</p>
+    <p>We rebuild your website, brand and all, <b>before</b> you pay anything. See it, love it, then it's yours from ${cfg.fmt.refresh}.</p>
     <div class="ctas"><a class="btn" href="../../#contact">Get my free redesign</a><a class="btn line" href="#examples">See examples</a></div>
   </section>
   <section class="wrap" style="padding-top:0">
@@ -86,7 +87,7 @@ for (const [key, s] of Object.entries(sectors)) {
 }
 
 // sitemap.xml + robots.txt (client concepts are noindex and left out on purpose)
-const base = process.env.SITE_URL || 'https://secondcoat.example';
+const base = cfg.siteUrl;
 const urls = ['/', ...Object.values(sectors).map(s => `/for/${s.slug}/`)];
 fs.writeFileSync(path.join(root, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

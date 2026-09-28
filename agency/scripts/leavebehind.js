@@ -4,6 +4,7 @@
 // Open it in a browser and print at A5 (or A4 at 71%). The QR code needs internet access (loads qrcode from cdnjs).
 const fs = require('fs');
 const path = require('path');
+const cfg = require('./config');
 
 const [slug, preview = ''] = process.argv.slice(2);
 if (!slug) { console.error('usage: node scripts/leavebehind.js <slug> [previewUrl]'); process.exit(1); }
@@ -15,8 +16,8 @@ const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').re
 // Pull the numbered list under the "angle" heading, strip markdown, keep the first 3
 const angle = (audit.split(/^## .*angle.*$/mi)[1] || '').split(/^## /m)[0];
 const fixes = [...angle.matchAll(/^\d+\.\s+(.*)$/gm)].map(m => m[1].replace(/\*\*(.*?)\*\*/g, '$1').replace(/`/g, '')).slice(0, 3);
-const url = preview || meta.previewUrl || `https://<your-domain>/clients/${slug}/site/`;
-if (!preview && !meta.previewUrl) console.warn(`! ${slug}: no previewUrl in meta.json, so the QR code points at a placeholder. Set meta.previewUrl before printing.`);
+const url = preview || meta.previewUrl || `${cfg.siteUrl}/clients/${slug}/site/`;
+if (!preview && !meta.previewUrl) console.warn(`! ${slug}: no previewUrl in meta.json, so the QR code uses ${cfg.siteUrl}. Check it is the live domain before printing.`);
 
 const html = `<!doctype html>
 <html lang="en-GB">
@@ -57,9 +58,9 @@ ol{padding-left:5mm;display:grid;gap:1.5mm;font-size:9.5pt}
   </div>
   <div class="bottom">
     <div>
-      <div class="price">£500 <span class="small">to put it live, all in</span></div>
+      <div class="price">${cfg.fmt.refresh} <span class="small">to put it live, all in</span></div>
       <p class="small">Your domain, hosting set up, one round of changes. No obligation. The preview comes down in 14 days if it's not for you.</p>
-      <p class="small" style="margin-top:2mm"><b>[Your name] · [phone] · [email]</b></p>
+      <p class="small" style="margin-top:2mm"><b>[Your name] · ${esc(cfg.phone || '[phone]')} · ${esc(cfg.email)}</b></p>
     </div>
     <div><div id="qr"></div><p class="small" style="text-align:center;margin-top:1mm">Scan to see it</p></div>
   </div>
