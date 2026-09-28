@@ -7,3 +7,6 @@ next-env.d.ts
 test-results
 playwright-report
 .vercel
+
+# the parent repo ignores lockfiles; this project needs its own for reproducible CI installs
+!pnpm-lock.yaml
