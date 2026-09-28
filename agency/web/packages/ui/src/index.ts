@@ -9,3 +9,4 @@ export { Counter } from './counter';
 export { ConceptNotice } from './concept-notice';
 export { useReducedMotion } from './use-reduced-motion';
 export { gsap, ScrollTrigger, SplitText, useGSAP } from './gsap';
+export { useLondonTime, isOpenAt } from './use-london-time';

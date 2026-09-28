@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+/* workspace packages sit under node_modules, which Tailwind skips by default */
+@source '../../../../packages/ui/src';
 
 /* Every brand (the studio and each concept) sets these variables on its wrapper; Tailwind maps them to utilities. */
 @theme inline {

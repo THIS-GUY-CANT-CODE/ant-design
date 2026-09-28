@@ -1,15 +1,8 @@
 'use client';
-import { Magnetic } from '@sc/ui';
-import { useEffect, useState } from 'react';
+import { Magnetic, useLondonTime } from '@sc/ui';
 
 export function Nav() {
-  const [time, setTime] = useState('');
-  useEffect(() => {
-    const t = () => setTime(new Date().toLocaleTimeString('en-GB', { timeZone: 'Europe/London', hour: '2-digit', minute: '2-digit' }));
-    t();
-    const i = setInterval(t, 10_000);
-    return () => clearInterval(i);
-  }, []);
+  const time = useLondonTime()?.label ?? '';
   return (
     <header className="fixed inset-x-0 top-0 z-50 mix-blend-difference">
       <nav className="mx-auto flex h-20 max-w-[1600px] items-center justify-between px-5 text-[#F2F1ED] md:px-8" aria-label="Main">
