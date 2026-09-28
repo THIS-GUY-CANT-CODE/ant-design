@@ -54,7 +54,7 @@ export function Hero() {
         </span>
       </h1>
       {/* spinning sticker between the two cities */}
-      <div aria-hidden className="absolute top-1/2 left-[58%] grid size-32 -translate-y-1/2 place-items-center md:size-44">
+      <div aria-hidden className="absolute top-[14%] right-5 grid size-28 place-items-center md:top-1/2 md:right-auto md:left-[58%] md:size-44 md:-translate-y-1/2">
         <svg viewBox="0 0 200 200" className="absolute inset-0 animate-[spin_16s_linear_infinite]">
           <defs>
             <path id="gp-ring" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />

@@ -26,7 +26,7 @@ const brand = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div style={brand} className="min-h-screen bg-bg font-sans text-fg">
+    <div style={brand} className="min-h-screen overflow-x-clip bg-bg font-sans text-fg">
       <Cursor color="#1A120D" ink="#FFF4EA" />
       {children}
       <ConceptNotice name="Green Papaya" url="https://green-papaya.com/" className="bottom-20 md:bottom-4" />

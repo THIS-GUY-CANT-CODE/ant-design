@@ -24,7 +24,7 @@ const brand = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div style={brand} className="min-h-screen bg-bg font-sans text-fg selection:bg-accent selection:text-accent-ink">
+    <div style={brand} className="min-h-screen overflow-x-clip bg-bg font-sans text-fg selection:bg-accent selection:text-accent-ink">
       <Cursor />
       {children}
       <ConceptNotice name="Biscuit Bunker" url="https://biscuitbunker.com/" />
