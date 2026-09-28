@@ -20,6 +20,7 @@ We rebuild East London businesses' websites before they pay. See `PLAN.md` for t
 | `scripts/dashboard.js` | Builds `internal/dashboard.html` (lead funnel, next action per lead). Open it locally |
 | `pipeline.csv` | Lead tracker |
 | `LEARNINGS.md` | One line per build: what to improve next time |
+| `finance/` | 12-month financial model (`model.xlsx`) and what it implies (`README.md`) |
 
 ## Build a new client
 ```bash

@@ -16,6 +16,9 @@ Why tiers: £500 on its own only works if a demo takes under 3 hours. The £49/m
 
 ## Unit economics (target)
 
+> **See `finance/README.md`.** The model shows conversion and price, not volume, are what raise the hourly rate. Base plan is about £26k/yr at £28/hr. Warm leads plus a £750 Refresh is about £65k/yr at £57/hr.
+
+
 - Demo build time: 2 to 3 hours with the pipeline in `.claude/skills/`, down to 90 minutes by site 20
 - Demo-to-paid conversion: aim for 1 in 8 cold demos, 1 in 3 warm or referred ones
 - Cost per demo: about £0 (Vercel hobby preview), plus your outreach time
