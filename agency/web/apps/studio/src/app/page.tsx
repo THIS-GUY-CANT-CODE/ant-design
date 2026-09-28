@@ -1,7 +1,7 @@
 import { Cursor, MotionKit } from '@sc/ui';
 import Link from 'next/link';
 import { StudioChrome } from './_studio/chrome';
-import { PaintHero } from './_studio/paint-hero';
+import { SecondCoatHero } from './_studio/second-coat-hero';
 import { Reach } from './_studio/reach';
 import { Roller } from './_studio/roller';
 import { Contact, Faq, Footer, How, Names, Nav, Pipeline, Pricing } from './_studio/sections';
@@ -15,7 +15,7 @@ export default function Home() {
       <StudioChrome />
       <Nav />
       <main>
-        <PaintHero />
+        <SecondCoatHero />
         <Names />
         <div className="pt-24">
           <WorkStack />

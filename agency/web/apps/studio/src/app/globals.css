@@ -364,3 +364,6 @@ html.lenis body {
 .steam-busy path { animation-duration: 0.9s; }
 @keyframes steam { from { stroke-dashoffset: 140; opacity: 0.2; } 50% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 0.2; } }
 @media (prefers-reduced-motion: reduce) { .steam path { animation: none; stroke-dasharray: none; } }
+
+/* Clapton: the cut line flashes and fades */
+@keyframes snip { from { opacity: 1; stroke-width: 3; } to { opacity: 0; stroke-width: 1; } }
