@@ -4,7 +4,7 @@ Run this for every paid client. Tick it off in `clients/<slug>/handover.md` (cop
 
 ## Before go-live
 - [ ] Payment received (or deposit for the Rebrand tier)
-- [ ] All `[placeholder]` and `£—` values replaced (search the site file for `[` and `£—`)
+- [ ] All `[placeholder]`, `£[Price]` and `£ TBC` values replaced (search the concept files for `[` and `TBC`)
 - [ ] Hours, phone, address and prices confirmed **in writing** by the client
 - [ ] Real photos in, with alt text on every image
 - [ ] Concept banner removed

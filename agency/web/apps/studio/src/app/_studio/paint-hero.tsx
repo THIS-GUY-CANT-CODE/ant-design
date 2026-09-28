@@ -1,5 +1,6 @@
 'use client';
-import { Magnetic, Reveal } from '@sc/ui';
+import { Magnetic, Reveal, RollText, Scramble } from '@sc/ui';
+import { PlaceCycle } from './reach';
 import { useEffect, useRef } from 'react';
 
 /** Wet paint: the pointer leaves soft orange brush strokes behind the headline that slowly dry away. */
@@ -64,25 +65,26 @@ export function PaintHero() {
       <PaintCanvas />
       <div className="relative mx-auto w-full max-w-[1600px]">
         <p className="mb-8 flex items-center gap-3 text-[14px] text-muted">
-          <span className="size-2 rounded-full bg-accent" /> East London brand &amp; web studio
+          <span className="size-2 shrink-0 animate-pulse rounded-full bg-accent" /> <Scramble>Brand & web studio · Made in East London · Working UK-wide and worldwide</Scramble>
         </p>
         <Reveal as="h1" immediate className="max-w-[16ch] font-display text-[clamp(3.4rem,9.4vw,10rem)] leading-[0.88] font-semibold tracking-[-0.06em]">
-          We give East London&apos;s best businesses a <span className="font-serif font-normal tracking-[-0.02em] italic">second coat.</span>
+          We give brilliant independent businesses a <span className="font-serif font-normal tracking-[-0.02em] italic">second coat.</span>
         </Reveal>
         <div className="mt-12 grid gap-6 border-t border-line pt-6 md:grid-cols-12">
           <p className="max-w-md text-[18px] leading-snug text-muted md:col-span-6">
-            A new brand and a modern website, built on your real story. You see the finished thing before you pay a penny.
+            A new brand and a modern website, built on your real story. We started on our own high streets in East London. Now we work with independents from <PlaceCycle className="font-medium text-fg" />
+            <span className="mt-3 block">You see the finished thing before you pay a penny.</span>
           </p>
           <div className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
             <Magnetic>
-              <a href="#work" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg">See the work</a>
+              <a href="#work" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg"><RollText>See the work</RollText></a>
             </Magnetic>
             <Magnetic>
-              <a href="#contact" className="block rounded-full bg-accent px-7 py-4 text-[16px] font-medium text-accent-ink">Get a free redesign</a>
+              <a href="#contact" className="block rounded-full bg-accent px-7 py-4 text-[16px] font-medium text-accent-ink"><RollText>Get a free redesign</RollText></a>
             </Magnetic>
           </div>
         </div>
-        <p className="mt-6 hidden text-[12px] text-muted md:block">Go on, move your cursor. Wet paint.</p>
+        <p className="mt-6 hidden text-[12px] text-muted md:block"><Scramble>Go on, move your cursor. Wet paint.</Scramble></p>
       </div>
     </section>
   );

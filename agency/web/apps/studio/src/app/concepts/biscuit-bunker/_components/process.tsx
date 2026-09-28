@@ -1,4 +1,4 @@
-import { FadeIn, Reveal } from '@sc/ui';
+import { Reveal, Stagger, Tilt } from '@sc/ui';
 
 const STEPS = [
   ['Brief', 'The goal, the audience, the budget, and a clear creative route.'],
@@ -13,17 +13,20 @@ export function Process() {
       <Reveal as="h2" className="mb-14 max-w-[14ch] font-display text-[clamp(2.6rem,6vw,6rem)] leading-[0.88] font-semibold tracking-[-0.06em]">
         Four steps. No surprises.
       </Reveal>
-      <div className="grid gap-3 md:grid-cols-4">
+      <Stagger className="grid gap-3 md:grid-cols-4">
         {STEPS.map(([t, d], i) => (
-          <FadeIn key={t} delay={i * 0.08} className="group flex min-h-72 flex-col justify-between rounded-3xl border border-line bg-card p-7 transition-colors duration-500 hover:border-accent">
-            <span className="font-mono text-[12px] text-muted">Step 0{i + 1}</span>
+          <Tilt key={t} className="group flex h-full min-h-72 flex-col justify-between rounded-3xl border border-line bg-card p-7 transition-colors duration-500 hover:border-accent">
+            <span className="flex items-center justify-between font-mono text-[12px] text-muted">
+              Step 0{i + 1}
+              <span aria-hidden className="size-2.5 rounded-full bg-line transition-[background-color,scale] duration-500 group-hover:scale-150 group-hover:bg-accent" />
+            </span>
             <div>
               <h3 className="font-display text-[28px] font-semibold tracking-[-0.04em]">{t}</h3>
               <p className="mt-2 text-[15px] leading-snug text-muted">{d}</p>
             </div>
-          </FadeIn>
+          </Tilt>
         ))}
-      </div>
+      </Stagger>
     </section>
   );
 }

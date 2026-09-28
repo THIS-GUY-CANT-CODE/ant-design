@@ -1,11 +1,11 @@
 export const PHONE = { shop: ['020 7739 6724', '+442077396724'], emergency: ['07944 199472', '07944199472'] } as const;
-// Mon–Fri 9–6, Sat 10–5 (minutes from midnight). 0 = Sunday.
+// Mon to Fri 9 to 6, Sat 10 to 5 (minutes from midnight). 0 = Sunday.
 export const HOURS: Record<number, [number, number][]> = { 1: [[540, 1080]], 2: [[540, 1080]], 3: [[540, 1080]], 4: [[540, 1080]], 5: [[540, 1080]], 6: [[600, 1020]] };
 export const HOURS_TEXT: [number, string, string][] = [
-  [1, 'Monday', '9am – 6pm'], [2, 'Tuesday', '9am – 6pm'], [3, 'Wednesday', '9am – 6pm'], [4, 'Thursday', '9am – 6pm'],
-  [5, 'Friday', '9am – 6pm'], [6, 'Saturday', '10am – 5pm'], [0, 'Sunday', 'Closed'],
+  [1, 'Monday', '9am to 6pm'], [2, 'Tuesday', '9am to 6pm'], [3, 'Wednesday', '9am to 6pm'], [4, 'Thursday', '9am to 6pm'],
+  [5, 'Friday', '9am to 6pm'], [6, 'Saturday', '10am to 5pm'], [0, 'Sunday', 'Closed'],
 ];
-/** Key-cut depths (1–6) from any text, so a name becomes a repeatable bitting code. */
+/** Key-cut depths (1 to 6) from any text, so a name becomes a repeatable bitting code. */
 export function bitting(text: string, n = 6) {
   const s = (text.toUpperCase().replace(/[^A-Z0-9]/g, '') || 'ROSE').split('');
   return Array.from({ length: n }, (_, i) => 1 + ((s[i % s.length]!.charCodeAt(0) * 7 + i * 3) % 6));

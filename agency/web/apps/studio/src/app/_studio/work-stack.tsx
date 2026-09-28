@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Reveal, RollText } from '@sc/ui';
 import { BRANDS, brandStyle, ORDER } from '@/brands';
 import { CASES } from '@/content/cases';
 
@@ -8,10 +9,10 @@ export function WorkStack() {
   return (
     <section id="work" className="mx-auto max-w-[1600px] px-3 pb-32 md:px-4">
       <div className="flex flex-wrap items-end justify-between gap-6 px-2 pb-12 md:px-4">
-        <h2 className="max-w-[14ch] font-display text-[clamp(2.8rem,6.5vw,6.6rem)] leading-[0.88] font-semibold tracking-[-0.055em]">
+        <Reveal as="h2" className="max-w-[14ch] font-display text-[clamp(2.8rem,6.5vw,6.6rem)] leading-[0.88] font-semibold tracking-[-0.055em]">
           Six businesses. Six <span className="font-serif font-normal italic">new brands.</span>
-        </h2>
-        <p className="max-w-sm text-[15px] text-muted">Unsolicited concepts: real East London businesses we love, rebuilt to show what&apos;s possible. None are clients yet.</p>
+        </Reveal>
+        <p className="max-w-sm text-[15px] text-muted">Unsolicited concepts for real businesses on our own doorstep in East London, rebuilt to show what&apos;s possible. None are clients yet. Yours could be next, wherever it is.</p>
       </div>
       <div className="space-y-4">
         {ORDER.map((slug, i) => {
@@ -32,17 +33,17 @@ export function WorkStack() {
                     <p className="mt-5 max-w-md text-[18px] leading-snug opacity-80">{c.headline}</p>
                     <div className="mt-8 flex flex-wrap gap-2">
                       {b.swatches.map(([n, hex]) => (
-                        <span key={n} title={n} className="size-7 rounded-full ring-1 ring-fg/25" style={{ background: hex }} />
+                        <span key={n} title={n} className="size-7 rounded-full ring-1 ring-fg/25 transition-transform duration-500 ease-expo hover:-translate-y-1.5 hover:scale-125" style={{ background: hex }} />
                       ))}
                     </div>
                     <div className="mt-8 flex flex-wrap gap-3">
-                      <Link href={`/work/${slug}`} className="rounded-full bg-accent px-6 py-3.5 text-[15px] font-medium text-accent-ink">Case study →</Link>
-                      <Link href={`/concepts/${slug}`} className="rounded-full border border-fg/20 px-6 py-3.5 text-[15px] font-medium">Live concept ↗</Link>
+                      <Link href={`/work/${slug}`} className="rounded-full bg-accent px-6 py-3.5 text-[15px] font-medium text-accent-ink"><RollText>Case study →</RollText></Link>
+                      <Link href={`/concepts/${slug}`} className="rounded-full border border-fg/20 px-6 py-3.5 text-[15px] font-medium transition-colors hover:bg-fg hover:text-bg"><RollText>Live concept ↗</RollText></Link>
                     </div>
                   </div>
                 </div>
                 <Link href={`/concepts/${slug}`} className="group relative block md:col-span-7" aria-label={`Open the ${b.name} concept`} data-cursor="View">
-                  <div className="overflow-hidden rounded-2xl bg-black/5 ring-1 ring-black/10 transition-transform duration-700 ease-expo group-hover:-translate-y-1">
+                  <div className="overflow-hidden rounded-2xl bg-black/5 ring-1 ring-black/10 transition-transform duration-700 ease-expo group-hover:-translate-y-1 group-hover:rotate-[-0.6deg]">
                     <Image src={`/work/${slug}-desktop.jpg`} alt={`${b.name} concept website`} width={1440} height={900} className="h-auto w-full" sizes="(min-width: 768px) 55vw, 100vw" priority={i < 2} />
                   </div>
                   <div className="absolute -bottom-4 right-4 hidden w-[22%] overflow-hidden rounded-[1.4rem] border-[5px] border-black bg-black shadow-2xl transition-transform duration-700 ease-expo group-hover:-translate-y-3 md:block">

@@ -1,4 +1,4 @@
-import { Marquee } from '@sc/ui';
+import { HoverLetters, Marquee } from '@sc/ui';
 
 export function Footer() {
   return (
@@ -12,8 +12,8 @@ export function Footer() {
         ))}
       </Marquee>
       <div className="mx-auto max-w-[1600px] px-5 md:px-8">
-        <p aria-hidden className="font-display text-[12.4vw] leading-[0.78] font-semibold tracking-[-0.075em] whitespace-nowrap max-[1600px]:text-[12.1vw]">
-          biscuit bunker
+        <p className="font-display text-[12.4vw] leading-[0.78] font-semibold tracking-[-0.075em] whitespace-nowrap max-[1600px]:text-[12.1vw]">
+          <HoverLetters>biscuit bunker</HoverLetters>
         </p>
         <div className="flex flex-wrap justify-between gap-4 border-t border-line py-6 pb-24 text-[13px] text-muted">
           <span>© {new Date().getFullYear()} Biscuit Bunker · EC2A 4NE</span>

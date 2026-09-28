@@ -1,4 +1,4 @@
-# Second Coat — East London Website Revamp Studio
+# Second Coat: a brand and web studio made in East London, working UK-wide and worldwide
 
 > Working name. "Second Coat": we give tired small-business websites a fresh coat. Swap it if you have a better one.
 

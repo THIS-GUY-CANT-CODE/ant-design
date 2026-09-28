@@ -1,5 +1,5 @@
 'use client';
-import { gsap, Magnetic, Reveal, useGSAP } from '@sc/ui';
+import { gsap, Magnetic, Parallax, Reveal, RollText, Scramble, useGSAP } from '@sc/ui';
 import { DrawSVGPlugin } from 'gsap/DrawSVGPlugin';
 import { useRef, useState } from 'react';
 import { skyline } from './skyline';
@@ -29,15 +29,15 @@ function Valuation() {
           <div className="flex items-center justify-between rounded-xl border border-line px-4 py-3">
             <span className="text-[15px]">Bedrooms</span>
             <div className="flex items-center gap-3">
-              <button type="button" aria-label="Fewer bedrooms" onClick={() => setBeds((b) => Math.max(0, b - 1))} className="size-9 rounded-full border border-line text-[18px] hover:border-fg">−</button>
-              <output className="w-16 text-center text-[20px] font-semibold tabular-nums">{beds === 0 ? 'Studio' : beds > 5 ? '6+' : beds}</output>
-              <button type="button" aria-label="More bedrooms" onClick={() => setBeds((b) => Math.min(6, b + 1))} className="size-9 rounded-full border border-line text-[18px] hover:border-fg">+</button>
+              <button type="button" aria-label="Fewer bedrooms" onClick={() => setBeds((b) => Math.max(0, b - 1))} className="size-9 rounded-full border border-line text-[18px] transition-colors hover:border-fg hover:bg-fg hover:text-bg">−</button>
+              <output key={beds} className="w-16 animate-[pop_.35s_cubic-bezier(.16,1,.3,1)] text-center text-[20px] font-semibold tabular-nums">{beds === 0 ? 'Studio' : beds > 5 ? '6+' : beds}</output>
+              <button type="button" aria-label="More bedrooms" onClick={() => setBeds((b) => Math.min(6, b + 1))} className="size-9 rounded-full border border-line text-[18px] transition-colors hover:border-fg hover:bg-fg hover:text-bg">+</button>
             </div>
           </div>
           <input className={field} placeholder="Your postcode" aria-label="Your postcode" required autoComplete="postal-code" />
           <input className={field} placeholder="Email or phone" aria-label="Email or phone" required />
-          <button type="submit" className="w-full rounded-xl bg-accent py-4 text-[16px] font-semibold text-accent-ink transition-transform hover:-translate-y-0.5">
-            Book my free valuation
+          <button type="submit" data-press className="w-full rounded-xl bg-accent py-4 text-[16px] font-semibold text-accent-ink transition-transform hover:-translate-y-0.5">
+            <RollText>Book my free valuation</RollText>
           </button>
           <p className="text-center text-[14px] text-muted">
             Or call Bow on <a href="tel:+442089813331" className="text-fg underline">020 8981 3331</a>
@@ -62,27 +62,27 @@ export function Hero() {
     <section id="top" ref={ref} className="relative overflow-hidden pt-28">
       <div className="mx-auto grid max-w-[1600px] gap-12 px-5 md:grid-cols-12 md:px-8">
         <div className="md:col-span-7">
-          <p className="mb-8 text-[14px] text-muted">Independent estate &amp; letting agents · East London</p>
+          <p className="mb-8 text-[14px] text-muted"><Scramble>Independent estate & letting agents · East London</Scramble></p>
           <Reveal as="h1" immediate className="font-display text-[clamp(3.4rem,8.2vw,8.6rem)] leading-[0.88] font-bold tracking-[-0.05em]">
             East London&apos;s estate agent. <span className="text-accent">Since 1953.</span>
           </Reveal>
           <p className="mt-8 max-w-lg text-[19px] leading-snug text-muted">For more than seventy years we&apos;ve helped East London buy, sell, let and rent. Still independent, and we still know the streets.</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Magnetic>
-              <a href="#homes" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg">See homes</a>
+              <a href="#homes" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg"><RollText>See homes</RollText></a>
             </Magnetic>
             <Magnetic>
-              <a href="#offices" className="block rounded-full border border-fg/20 px-7 py-4 text-[16px] font-medium">Five local offices</a>
+              <a href="#offices" className="block rounded-full border border-fg/20 px-7 py-4 text-[16px] font-medium"><RollText>Five local offices</RollText></a>
             </Magnetic>
           </div>
         </div>
-        <div className="md:col-span-5 md:col-start-8">
+        <Parallax speed={-6} className="md:col-span-5 md:col-start-8">
           <Valuation />
-        </div>
+        </Parallax>
       </div>
-      <svg viewBox="0 0 1600 224" className="mt-16 block w-full" aria-hidden preserveAspectRatio="xMidYMax slice">
+      <svg viewBox="0 0 1600 224" className="mt-16 block w-full" data-cursor="Light up" preserveAspectRatio="xMidYMax slice">
         {SKY.wins.map(([x, y], i) => (
-          <rect key={i} data-win x={x} y={y} width="14" height="18" rx="1.5" fill={i % 4 === 0 ? 'var(--accent)' : 'var(--mist)'} />
+          <rect key={i} data-win x={x} y={y} width="14" height="18" rx="1.5" fill={i % 4 === 0 ? 'var(--accent)' : 'var(--mist)'} className="transition-[fill] duration-300 hover:fill-[var(--accent)]" />
         ))}
         <path data-sky d={SKY.d} fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinejoin="round" />
       </svg>

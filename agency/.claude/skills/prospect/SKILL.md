@@ -15,7 +15,7 @@ Run `node scripts/find-prospects.js` on a machine with `GOOGLE_PLACES_API_KEY` s
 - Industries that convert best: trades, physio/dental/clinics, independent restaurants, salons/barbers, accountants/solicitors, venues, studios.
 - Skip chains, franchises, and anyone whose site was clearly rebuilt in the last 2 years.
 
-## Scoring rubric (current site, out of 50 — lower = better prospect)
+## Scoring rubric (current site, out of 50; lower means a better prospect)
 | Area | 0 (bad) → 10 (good) |
 | --- | --- |
 | Mobile | Broken layout, tiny text, horizontal scroll → flawless |

@@ -1,5 +1,5 @@
 'use client';
-import { Reveal, ShaderCanvas, type ShaderPalette } from '@sc/ui';
+import { Reveal, RollText, ShaderCanvas, Stagger, type ShaderPalette } from '@sc/ui';
 import { AnimatePresence, motion, useMotionValue, useSpring } from 'motion/react';
 import { useState } from 'react';
 
@@ -31,32 +31,35 @@ export function Work() {
         <div className="flex gap-1 rounded-full border border-line p-1" role="group" aria-label="Filter work">
           {FILTERS.map((f) => (
             <button key={f} aria-pressed={filter === f} onClick={() => setFilter(f)} className={`rounded-full px-4 py-2 text-[13px] transition-colors ${filter === f ? 'bg-fg text-bg' : 'text-muted hover:text-fg'}`}>
-              {f}
+              <RollText>{f}</RollText>
             </button>
           ))}
         </div>
       </div>
-      <ul>
+      <Stagger as="ul">
         {list.map((p) => (
-          <li key={p.title} className="border-b border-line">
+          <li key={p.title} className="animate-[pop_.5s_cubic-bezier(.16,1,.3,1)] border-b border-line">
             <a
               href="https://vimeo.com/biscuitbunker"
               rel="noopener"
               data-cursor="Play"
               onPointerEnter={() => setActive(p.i)}
               onPointerLeave={() => setActive(null)}
-              className="group grid grid-cols-[3rem_1fr] items-baseline gap-4 py-7 md:grid-cols-[5rem_1fr_14rem_6rem] md:py-9"
+              className="group grid grid-cols-[3rem_1fr] items-baseline gap-4 py-7 md:grid-cols-[5rem_1fr_14rem_10rem] md:py-9"
             >
               <span className="font-mono text-[12px] text-muted">{String(p.i + 1).padStart(2, '0')}</span>
               <span className="font-display text-[clamp(1.8rem,4.6vw,4.4rem)] leading-none font-medium tracking-[-0.05em] transition-[transform,color] duration-700 ease-expo group-hover:translate-x-4 group-hover:text-accent md:group-hover:translate-x-8">
                 {p.title}
               </span>
               <span className="hidden text-[14px] text-muted md:block">[Client name]</span>
-              <span className="hidden text-right text-[14px] text-muted md:block">{p.type}</span>
+              <span className="hidden items-center justify-end gap-3 text-right text-[14px] text-muted transition-colors group-hover:text-fg md:flex">
+                {p.type}
+                <span aria-hidden className="grid size-8 scale-0 place-items-center rounded-full bg-accent text-[11px] text-accent-ink transition-transform duration-500 ease-expo group-hover:scale-100">▶</span>
+              </span>
             </a>
           </li>
         ))}
-      </ul>
+      </Stagger>
       <p className="mt-6 font-mono text-[12px] text-muted">Placeholder projects. The live site pulls titles and stills from their Vimeo.</p>
 
       {/* floating preview that follows the pointer (desktop only) */}

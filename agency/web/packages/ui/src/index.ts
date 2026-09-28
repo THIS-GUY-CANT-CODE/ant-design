@@ -1,5 +1,5 @@
 export { cn } from './cn';
-export { SmoothScroll } from './smooth-scroll';
+export { SmoothScroll, scrollToTop } from './smooth-scroll';
 export { Reveal, FadeIn } from './reveal';
 export { Magnetic } from './magnetic';
 export { Marquee } from './marquee';
@@ -10,3 +10,4 @@ export { ConceptNotice } from './concept-notice';
 export { useReducedMotion } from './use-reduced-motion';
 export { gsap, ScrollTrigger, SplitText, useGSAP } from './gsap';
 export { useLondonTime, isOpenAt } from './use-london-time';
+export { ScrollProgress, PageIntro, Tilt, Spotlight, RollText, HoverLetters, Scramble, Skew, Parallax, ClipReveal, Stagger, BackToTop, MotionKit } from './motion';

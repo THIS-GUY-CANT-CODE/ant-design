@@ -1,5 +1,5 @@
 'use client';
-import { gsap, SplitText, useGSAP } from '@sc/ui';
+import { gsap, Scramble, SplitText, useGSAP } from '@sc/ui';
 import { useRef } from 'react';
 
 /** Words light up as the paragraph scrolls through the viewport. */
@@ -15,7 +15,7 @@ export function Statement() {
   );
   return (
     <section className="mx-auto max-w-[1600px] px-5 py-40 md:px-8 md:py-56">
-      <p className="mb-10 font-mono text-[12px] text-muted">(About)</p>
+      <p className="mb-10 font-mono text-[12px] text-muted"><Scramble>(About)</Scramble></p>
       <p ref={ref} className="max-w-[20ch] font-display text-[clamp(2.2rem,5.4vw,5.6rem)] leading-[0.98] font-medium tracking-[-0.05em]">
         We make commercials, branded content, corporate film, animation and podcasts, for agencies and brands of every size. <span className="font-serif font-normal tracking-[-0.02em] text-accent italic">From a converted dog biscuit factory.</span>
       </p>

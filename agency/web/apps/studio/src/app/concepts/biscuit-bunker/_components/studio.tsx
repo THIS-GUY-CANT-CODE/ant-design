@@ -1,4 +1,4 @@
-import { Counter, FadeIn, Reveal } from '@sc/ui';
+import { Counter, FadeIn, Reveal, Scramble, Skew } from '@sc/ui';
 
 export function Studio() {
   return (
@@ -6,10 +6,12 @@ export function Studio() {
       <div className="mx-auto grid max-w-[1600px] gap-16 px-5 py-40 md:grid-cols-12 md:px-8">
         <div className="md:col-span-5">
           <div className="md:sticky md:top-28">
-            <p className="font-mono text-[12px] opacity-60">(Studio)</p>
-            <p className="mt-6 font-display text-[clamp(6rem,16vw,15rem)] leading-[0.8] font-semibold tracking-[-0.08em]">
-              <Counter from={1990} to={2014} />
-            </p>
+            <p className="font-mono text-[12px] opacity-60"><Scramble>(Studio)</Scramble></p>
+            <Skew amount={8}>
+              <p className="mt-6 font-display text-[clamp(6rem,16vw,15rem)] leading-[0.8] font-semibold tracking-[-0.08em]">
+                <Counter from={1990} to={2014} />
+              </p>
+            </Skew>
             <p className="mt-4 text-[15px] opacity-60">Rolling since.</p>
           </div>
         </div>
@@ -27,8 +29,8 @@ export function Studio() {
               ['5 disciplines', 'One team'],
               ['Dog biscuits', 'Formerly'],
             ].map(([a, b]) => (
-              <div key={a} className="bg-alt p-6">
-                <dt className="font-display text-[22px] font-semibold tracking-[-0.03em]">{a}</dt>
+              <div key={a} className="group bg-alt p-6 transition-colors duration-500 hover:bg-accent hover:text-accent-ink">
+                <dt className="font-display text-[22px] font-semibold tracking-[-0.03em] transition-transform duration-500 ease-expo group-hover:translate-x-1">{a}</dt>
                 <dd className="mt-1 text-[14px] opacity-60">{b}</dd>
               </div>
             ))}

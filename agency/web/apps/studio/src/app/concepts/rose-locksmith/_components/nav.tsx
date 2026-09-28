@@ -1,5 +1,5 @@
 'use client';
-import { isOpenAt, Magnetic, useLondonTime } from '@sc/ui';
+import { isOpenAt, Magnetic, useLondonTime, RollText } from '@sc/ui';
 import { HOURS, PHONE } from './data';
 
 export function Mark({ className }: { className?: string }) {
@@ -30,10 +30,10 @@ export function Nav() {
             <Mark className="size-7" /> Rose Locksmith <span className="font-normal text-muted">&amp; DIY</span>
           </a>
           <div className="hidden items-center gap-7 text-[14px] md:flex">
-            <a href="#services" className="hover:text-accent">Services</a>
-            <a href="#lock" className="hover:text-accent">How locks work</a>
-            <a href="#paint" className="hover:text-accent">Paint</a>
-            <a href="#visit" className="hover:text-accent">Visit</a>
+            <a href="#services" className="hover:text-accent"><RollText>Services</RollText></a>
+            <a href="#lock" className="hover:text-accent"><RollText>How locks work</RollText></a>
+            <a href="#paint" className="hover:text-accent"><RollText>Paint</RollText></a>
+            <a href="#visit" className="hover:text-accent"><RollText>Visit</RollText></a>
             {open !== null && (
               <span className="flex items-center gap-2 font-mono text-[12px]">
                 <span className={`size-2 rounded-full ${open ? 'bg-[#16A34A]' : 'bg-fg/30'}`} /> {open ? 'OPEN' : 'CLOSED'}

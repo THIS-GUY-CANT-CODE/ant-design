@@ -1,5 +1,5 @@
 'use client';
-import { Counter, FadeIn, Marquee, Reveal } from '@sc/ui';
+import { ClipReveal, Counter, HoverLetters, Marquee, Reveal, RollText, Spotlight, Stagger, Tilt } from '@sc/ui';
 import { useState } from 'react';
 
 export function Mark({ className }: { className?: string }) {
@@ -18,11 +18,11 @@ export function Nav() {
           <Mark className="h-5 w-7 text-accent" /> W J Meade
         </a>
         <div className="hidden gap-8 text-[14px] md:flex">
-          {[['#help', 'Services'], ['#homes', 'Homes'], ['#story', 'Since 1953'], ['#offices', 'Offices']].map(([h, l]) => (
-            <a key={h} href={h} className="text-muted hover:text-fg">{l}</a>
+          {([['#help', 'Services'], ['#homes', 'Homes'], ['#story', 'Since 1953'], ['#offices', 'Offices']] as const).map(([h, l]) => (
+            <a key={h} href={h} className="text-muted transition-colors hover:text-fg"><RollText>{l}</RollText></a>
           ))}
         </div>
-        <a href="#top" className="rounded-full bg-accent px-5 py-2.5 text-[14px] font-semibold text-accent-ink">Free valuation</a>
+        <a href="#top" className="rounded-full bg-accent px-5 py-2.5 text-[14px] font-semibold text-accent-ink"><RollText>Free valuation</RollText></a>
       </nav>
     </header>
   );
@@ -38,10 +38,10 @@ export function Stats() {
           [<Counter key="c" to={5} />, 'Local offices'],
           [<Counter key="d" to={3} />, 'Owners in our whole history'],
         ].map(([n, l], i) => (
-          <div key={i} className="border-line p-6 odd:border-r md:border-r md:p-8 md:last:border-r-0">
+          <Spotlight key={i} className="border-line p-6 odd:border-r md:border-r md:p-8 md:last:border-r-0">
             <dd className="font-display text-[clamp(3rem,6vw,5.6rem)] leading-none font-bold tracking-[-0.05em]">{n}</dd>
             <dt className="mt-3 text-[14px] text-muted">{l}</dt>
-          </div>
+          </Spotlight>
         ))}
       </dl>
     </section>
@@ -61,18 +61,18 @@ export function Help() {
       <Reveal as="h2" className="mb-14 max-w-[16ch] font-display text-[clamp(2.8rem,6vw,6rem)] leading-[0.9] font-bold tracking-[-0.05em]">
         Selling, letting, buying or renting. One local team.
       </Reveal>
-      <div className="grid gap-3 md:grid-cols-4">
+      <Stagger className="grid gap-3 md:grid-cols-4">
         {HELP.map(([t, d], i) => (
-          <FadeIn key={t} delay={i * 0.08} className="group relative flex min-h-80 flex-col justify-between overflow-hidden rounded-[1.75rem] bg-card p-7 transition-colors duration-500 hover:bg-accent hover:text-accent-ink">
+          <Tilt key={t} max={6} className="group relative flex h-full min-h-80 flex-col justify-between overflow-hidden rounded-[1.75rem] bg-card p-7 transition-colors duration-500 hover:bg-accent hover:text-accent-ink">
             <span className="font-mono text-[12px] opacity-50">0{i + 1}</span>
             <div>
               <h3 className="font-display text-[56px] leading-none font-bold tracking-[-0.05em]">{t}</h3>
               <p className="mt-4 text-[15px] leading-snug opacity-70">{d}</p>
-              <span className="mt-6 inline-block text-[15px] font-semibold transition-transform duration-500 group-hover:translate-x-1">→</span>
+              <span className="mt-6 inline-flex size-11 items-center justify-center rounded-full border border-current/20 text-[15px] font-semibold transition-[translate,rotate,background-color] duration-500 group-hover:translate-x-2 group-hover:-rotate-45 group-hover:bg-accent-ink group-hover:text-accent">→</span>
             </div>
-          </FadeIn>
+          </Tilt>
         ))}
-      </div>
+      </Stagger>
     </section>
   );
 }
@@ -85,21 +85,24 @@ export function Homes() {
         <Reveal as="h2" className="font-display text-[clamp(2.8rem,6vw,6rem)] leading-[0.9] font-bold tracking-[-0.05em]">Just listed.</Reveal>
         <p className="text-[14px] text-muted">Live from the property feed on the real site.</p>
       </div>
-      <div className="grid gap-4 md:grid-cols-3">
+      <Stagger className="grid gap-4 md:grid-cols-3">
         {homes.map(([tag, area], i) => (
-          <FadeIn key={i} delay={i * 0.08} className="group">
+          <div key={i} className="group" data-cursor="View">
+            <ClipReveal radius={24}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-[var(--mist)]">
               <svg viewBox="0 0 200 150" className="absolute inset-x-0 bottom-0 w-full text-accent/25 transition-transform duration-700 ease-expo group-hover:scale-105" aria-hidden>
                 <path d="M20 150V70l45-35 45 35v80M110 150V80l35-28 35 28v70" fill="none" stroke="currentColor" strokeWidth="2" />
               </svg>
               <span className={`absolute top-4 left-4 rounded-full px-3 py-1 text-[12px] font-semibold ${tag === 'To let' ? 'bg-fg text-bg' : 'bg-accent text-accent-ink'}`}>{tag}</span>
               <span className="absolute top-4 right-4 rounded-full bg-card/80 px-3 py-1 text-[12px] text-muted">Property photo</span>
+              <span aria-hidden className="absolute right-4 bottom-4 grid size-11 translate-y-3 place-items-center rounded-full bg-fg text-bg opacity-0 transition-[translate,opacity] duration-500 ease-expo group-hover:translate-y-0 group-hover:opacity-100">♡</span>
             </div>
-            <p className="mt-4 text-[26px] font-bold tracking-[-0.03em]">£—{tag === 'To let' ? ' pcm' : ''}</p>
+            </ClipReveal>
+            <p className="mt-4 text-[26px] font-bold tracking-[-0.03em] transition-colors group-hover:text-accent">£[Price]{tag === 'To let' ? ' pcm' : ''}</p>
             <p className="text-[15px] text-muted">[Bedrooms] · [Street], {area}</p>
-          </FadeIn>
+          </div>
         ))}
-      </div>
+      </Stagger>
     </section>
   );
 }
@@ -118,19 +121,19 @@ export function Story() {
           Seventy years. Three owners. <span className="text-accent">One name.</span>
         </Reveal>
         <p className="mt-8 max-w-xl text-[18px] leading-relaxed opacity-60">Most agents on the high street are chains. W J Meade has only changed hands twice since Walter Joseph Meade opened the doors.</p>
-        <ol className="mt-20 grid border-t border-bg/15 md:grid-cols-4">
-          {years.map(([y, t, d], i) => (
-            <FadeIn key={y} delay={i * 0.1} className="border-bg/15 py-8 md:border-r md:pr-8 md:last:border-r-0 [&:not(:first-child)]:md:pl-8">
-              <p className="font-display text-[56px] leading-none font-bold tracking-[-0.05em]">{y}</p>
+        <Stagger as="ol" className="mt-20 grid border-t border-bg/15 md:grid-cols-4">
+          {years.map(([y, t, d]) => (
+            <li key={y} className="group border-bg/15 py-8 md:border-r md:pr-8 md:last:border-r-0 [&:not(:first-child)]:md:pl-8">
+              <p className="font-display text-[56px] leading-none font-bold tracking-[-0.05em] transition-[color,translate] duration-500 group-hover:-translate-y-1 group-hover:text-accent">{y}</p>
               <h3 className="mt-8 text-[18px] font-semibold">{t}</h3>
               <p className="mt-2 text-[15px] opacity-60">{d}</p>
-            </FadeIn>
+            </li>
           ))}
-        </ol>
-        <blockquote className="mt-24 max-w-[24ch] font-display text-[clamp(2rem,4vw,3.6rem)] leading-[1.02] font-semibold tracking-[-0.035em]">
+        </Stagger>
+        <Reveal as="blockquote" className="mt-24 max-w-[24ch] font-display text-[clamp(2rem,4vw,3.6rem)] leading-[1.02] font-semibold tracking-[-0.035em]">
           &ldquo;The most trusted and straightforward estate agent I&apos;ve worked with.&rdquo;
           <footer className="mt-5 text-[14px] font-normal tracking-normal opacity-50">Client review · UKALA accredited</footer>
-        </blockquote>
+        </Reveal>
       </div>
     </section>
   );
@@ -153,16 +156,16 @@ export function Offices() {
     <section id="offices" className="mx-auto max-w-[1600px] px-5 py-32 md:px-8">
       <Reveal as="h2" className="mb-14 font-display text-[clamp(2.8rem,6vw,6rem)] leading-[0.9] font-bold tracking-[-0.05em]">Five offices, all local.</Reveal>
       <div className="grid gap-8 md:grid-cols-12">
-        <ul className="grid content-start gap-2 md:col-span-5">
+        <Stagger as="ul" className="grid content-start gap-2 md:col-span-5">
           {OFFICES.map((o, i) => (
             <li key={o.name}>
-              <button onPointerEnter={() => setSel(i)} onFocus={() => setSel(i)} onClick={() => setSel(i)} className={`flex w-full items-baseline justify-between gap-4 rounded-2xl px-5 py-4 text-left transition-colors ${sel === i ? 'bg-accent text-accent-ink' : 'bg-card'}`}>
+              <button onPointerEnter={() => setSel(i)} onFocus={() => setSel(i)} onClick={() => setSel(i)} className={`flex w-full items-baseline justify-between gap-4 rounded-2xl px-5 py-4 text-left transition-[background-color,color,padding] duration-500 ease-expo ${sel === i ? 'bg-accent pl-7 text-accent-ink' : 'bg-card'}`}>
                 <span className="text-[22px] font-bold tracking-[-0.03em]">{o.name}</span>
                 <span className={`text-right text-[13px] ${sel === i ? 'opacity-80' : 'text-muted'}`}>{o.addr}</span>
               </button>
             </li>
           ))}
-        </ul>
+        </Stagger>
         <div className="overflow-hidden rounded-[1.75rem] bg-[var(--mist)] md:col-span-7">
           <svg viewBox="0 0 420 620" className="h-full max-h-[640px] w-full" role="img" aria-label="Map of W J Meade offices across East and North London">
             <path d="M350 0 C 330 120, 360 200, 330 300 S 340 480, 320 560 L 330 620" fill="none" stroke="#fff" strokeWidth="10" strokeLinecap="round" />
@@ -173,7 +176,12 @@ export function Offices() {
               const on = sel === i;
               return (
                 <g key={o.name} onPointerEnter={() => setSel(i)} className="cursor-pointer">
-                  {on && <circle cx={x} cy={y} r="22" fill="var(--accent)" opacity=".15" />}
+                  {on && (
+                    <circle cx={x} cy={y} r="22" fill="var(--accent)" opacity=".15">
+                      <animate attributeName="r" values="12;30;12" dur="2.4s" repeatCount="indefinite" />
+                      <animate attributeName="opacity" values=".3;0;.3" dur="2.4s" repeatCount="indefinite" />
+                    </circle>
+                  )}
                   <circle cx={x} cy={y} r={on ? 9 : 6} fill={o.past ? 'var(--fg)' : 'var(--accent)'} stroke="#fff" strokeWidth="2.5" style={{ transition: 'r .3s' }} />
                   <text x={x + (x > 300 ? -16 : 16)} y={y + 5} textAnchor={x > 300 ? 'end' : 'start'} className={`text-[14px] ${on ? 'font-bold' : ''}`} fill="var(--fg)">
                     {o.name}
@@ -200,7 +208,9 @@ export function Footer() {
         ))}
       </Marquee>
       <div className="mx-auto max-w-[1600px] px-5 md:px-8">
-        <p aria-hidden className="pt-10 font-display text-[18.5vw] leading-[0.8] font-bold tracking-[-0.07em] whitespace-nowrap">W J Meade</p>
+        <p className="pt-10 font-display text-[18.5vw] leading-[0.8] font-bold tracking-[-0.07em] whitespace-nowrap">
+          <HoverLetters className="[--accent:var(--fg)]">W J Meade</HoverLetters>
+        </p>
         <div className="flex flex-wrap justify-between gap-4 py-8 pb-24 text-[13px] opacity-70 md:pb-8">
           <span>© {new Date().getFullYear()} W J Meade Estate Agents · Established 1953</span>
           <span>Concept by Second Coat</span>

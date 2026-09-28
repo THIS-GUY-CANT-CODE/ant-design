@@ -1,5 +1,5 @@
 'use client';
-import { useReducedMotion } from '@sc/ui';
+import { useReducedMotion, RollText } from '@sc/ui';
 import { useEffect, useRef, useState } from 'react';
 
 // Pin-tumbler cross-section. Shear line at y=170. A key pin of length L rests with its tip at y=250;
@@ -49,8 +49,8 @@ export function Lock() {
             Each cut lifts a pin to exactly the shear line. One cut out and the lock stays shut. That&apos;s why a badly copied key sticks, and why we take the time to cut it properly.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <button onClick={() => run(RIGHT)} className="rounded-full bg-bg px-6 py-3.5 text-[15px] font-medium text-fg">Try the right key</button>
-            <button onClick={() => run(L.map(() => 205 + Math.round(Math.random() * 25)))} className="rounded-full border border-bg/30 px-6 py-3.5 text-[15px] font-medium">Try a bad copy</button>
+            <button onClick={() => run(RIGHT)} className="rounded-full bg-bg px-6 py-3.5 text-[15px] font-medium text-fg"><RollText>Try the right key</RollText></button>
+            <button onClick={() => run(L.map(() => 205 + Math.round(Math.random() * 25)))} className="rounded-full border border-bg/30 px-6 py-3.5 text-[15px] font-medium"><RollText>Try a bad copy</RollText></button>
           </div>
           <p className="mt-8 font-mono text-[13px]" aria-live="polite">
             STATUS: <span style={{ color: shear }}>{state === 'idle' ? 'READY' : state === 'in' ? 'INSERTING…' : state === 'open' ? 'UNLOCKED' : 'STILL LOCKED'}</span>

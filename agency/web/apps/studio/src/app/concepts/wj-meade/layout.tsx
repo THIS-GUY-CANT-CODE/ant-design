@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { ConceptNotice, Cursor } from '@sc/ui';
+import { ConceptNotice, Cursor, MotionKit } from '@sc/ui';
 import { brandStyle } from '@/brands';
 
 export const metadata: Metadata = {
@@ -13,6 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div style={brandStyle('wj-meade')} className="min-h-screen overflow-x-clip bg-bg font-sans text-fg">
       <Cursor color="#2F49FF" ink="#FFFFFF" />
+      <MotionKit intro="W J Meade" introClassName="bg-accent text-accent-ink" />
       {children}
       <ConceptNotice name="W J Meade" url="https://www.wjmeade.co.uk/" />
     </div>

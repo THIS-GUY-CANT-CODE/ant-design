@@ -25,10 +25,12 @@ export function Paint() {
           <p className="max-w-xs text-[16px] leading-snug opacity-80">Bring a chip, a photo or a colour name and we&apos;ll mix it while you wait. No trip to a retail park.</p>
         </div>
         <div>
-          <p className="font-display text-[clamp(5rem,18vw,18rem)] leading-[0.8] font-bold tracking-[-0.06em]" aria-live="polite">{name}</p>
+          <p className="overflow-hidden font-display text-[clamp(5rem,18vw,18rem)] leading-[0.8] font-bold tracking-[-0.06em]" aria-live="polite">
+            <span key={name} className="block animate-[rise_.7s_cubic-bezier(.16,1,.3,1)]">{name}</span>
+          </p>
           <div className="mt-10 flex flex-wrap items-center gap-3" role="group" aria-label="Try a colour">
             {COLOURS.map(([n, h], k) => (
-              <button key={n} onClick={() => setI(k)} aria-pressed={i === k} aria-label={n} className="size-14 rounded-full transition-transform duration-300 hover:scale-110" style={{ background: h, boxShadow: i === k ? `0 0 0 3px ${hex}, 0 0 0 5px ${ink}` : `inset 0 0 0 1px ${ink}33` }} />
+              <button key={n} onClick={() => setI(k)} aria-pressed={i === k} aria-label={n} data-cursor="Mix" className="size-14 rounded-full transition-transform duration-500 ease-expo hover:-translate-y-2 hover:scale-110 active:scale-90" style={{ background: h, boxShadow: i === k ? `0 0 0 3px ${hex}, 0 0 0 5px ${ink}` : `inset 0 0 0 1px ${ink}33` }} />
             ))}
             <span className="ml-2 font-mono text-[12px] opacity-70">Inspiration only · we mix the exact shade in store</span>
           </div>

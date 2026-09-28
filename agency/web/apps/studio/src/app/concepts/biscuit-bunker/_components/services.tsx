@@ -1,4 +1,4 @@
-import { Reveal } from '@sc/ui';
+import { Reveal, Stagger } from '@sc/ui';
 
 const SERVICES = [
   ['Commercials', 'TV, online and social spots, from treatment through shoot to grade.'],
@@ -17,19 +17,20 @@ export function Services() {
         </Reveal>
         <span className="font-mono text-[12px] text-muted">(05)</span>
       </div>
-      <ul className="border-t border-line">
+      <Stagger as="ul" className="border-t border-line">
         {SERVICES.map(([name, desc], i) => (
           <li key={name} className="group relative overflow-hidden border-b border-line">
             {/* accent fill wipes in from the left on hover */}
             <span aria-hidden className="absolute inset-0 origin-left scale-x-0 bg-accent transition-transform duration-700 ease-expo group-hover:scale-x-100" />
             <div className="relative grid gap-3 py-8 transition-colors duration-500 group-hover:text-accent-ink md:grid-cols-12 md:items-center md:py-10">
               <span className="font-mono text-[12px] opacity-60 md:col-span-1">0{i + 1}</span>
-              <h3 className="font-display text-[clamp(2rem,4vw,3.6rem)] leading-none font-medium tracking-[-0.05em] md:col-span-6">{name}</h3>
-              <p className="max-w-md text-[15px] leading-snug opacity-70 md:col-span-5">{desc}</p>
+              <h3 className="font-display text-[clamp(2rem,4vw,3.6rem)] leading-none font-medium tracking-[-0.05em] transition-transform duration-700 ease-expo group-hover:translate-x-4 md:col-span-6">{name}</h3>
+              <p className="max-w-md text-[15px] leading-snug opacity-70 md:col-span-4">{desc}</p>
+              <span aria-hidden className="hidden size-12 -translate-x-4 place-items-center justify-self-end rounded-full bg-accent-ink text-accent opacity-0 transition-[translate,opacity,rotate] duration-700 ease-expo group-hover:translate-x-0 group-hover:-rotate-45 group-hover:opacity-100 md:col-span-1 md:grid">→</span>
             </div>
           </li>
         ))}
-      </ul>
+      </Stagger>
     </section>
   );
 }

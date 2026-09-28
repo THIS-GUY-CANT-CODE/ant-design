@@ -1,5 +1,5 @@
 'use client';
-import { Reveal } from '@sc/ui';
+import { Magnetic, Reveal, RollText } from '@sc/ui';
 import { useRef, useState } from 'react';
 
 type City = 'hanoi' | 'xian';
@@ -52,27 +52,30 @@ export function Menu() {
             <div className="flex rounded-full bg-bg/10 p-1" role="group" aria-label="Filter the menu">
               {FILTERS.map(([l, v]) => (
                 <button key={v} aria-pressed={filter === v} onClick={() => setFilter(v)} className={`rounded-full px-4 py-2 text-[14px] transition-colors ${filter === v ? 'bg-bg text-fg' : 'opacity-70 hover:opacity-100'}`}>
-                  {l}
+                  <RollText>{l}</RollText>
                 </button>
               ))}
             </div>
-            <button onClick={roll} className="rounded-full bg-accent px-5 py-3 text-[14px] font-semibold text-accent-ink transition-transform hover:-translate-y-0.5">
-              {rolling ? 'Choosing…' : 'Pick for me'}
-            </button>
+            <Magnetic>
+              <button onClick={roll} data-cursor="Roll" className="flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-[14px] font-semibold text-accent-ink">
+                <span aria-hidden className={`inline-block ${rolling ? 'animate-spin' : ''}`}>✺</span>
+                <RollText>{rolling ? 'Choosing…' : 'Pick for me'}</RollText>
+              </button>
+            </Magnetic>
           </div>
         </div>
         <ul className="border-t border-bg/15" aria-live="polite">
           {list.map((d) => {
             const on = pick === d.i;
             return (
-              <li key={d.name} className={`group relative grid gap-2 border-b border-bg/15 py-6 transition-colors duration-300 md:grid-cols-12 md:items-center md:py-7 ${on ? 'bg-accent text-accent-ink' : ''}`}>
-                <span className="px-2 font-display text-[clamp(1.9rem,4vw,3.6rem)] leading-none font-bold tracking-[-0.04em] md:col-span-6" style={{ fontStretch: '85%' }}>
+              <li key={d.name} className={`group relative grid animate-[pop_.5s_cubic-bezier(.16,1,.3,1)] gap-2 border-b border-bg/15 py-6 transition-colors duration-300 hover:bg-bg/5 md:grid-cols-12 md:items-center md:py-7 ${on ? 'bg-accent text-accent-ink' : ''}`}>
+                <span className="px-2 font-display text-[clamp(1.9rem,4vw,3.6rem)] leading-none font-bold tracking-[-0.04em] transition-transform duration-500 ease-expo group-hover:translate-x-3 md:col-span-6" style={{ fontStretch: '85%' }}>
                   {d.name}
                   {d.fav && <sup className="ml-2 align-super text-[13px] font-semibold tracking-normal">★ Favourite</sup>}
                 </span>
                 <span className={`px-2 text-[15px] md:col-span-4 ${on ? '' : 'opacity-65'}`}>{d.desc}</span>
                 <span className="px-2 md:col-span-2 md:text-right">
-                  <span className="inline-block rounded-full px-3 py-1 text-[12px] font-semibold" style={{ background: d.city === 'hanoi' ? 'var(--hanoi)' : 'var(--xian)', color: d.city === 'hanoi' ? '#1A120D' : '#FFF4EA' }}>
+                  <span className="inline-block rounded-full px-3 py-1 text-[12px] font-semibold transition-transform duration-500 ease-expo group-hover:-rotate-6 group-hover:scale-110" style={{ background: d.city === 'hanoi' ? 'var(--hanoi)' : 'var(--xian)', color: d.city === 'hanoi' ? '#1A120D' : '#FFF4EA' }}>
                     {d.city === 'hanoi' ? 'Hà Nội' : '西安'}
                   </span>
                 </span>

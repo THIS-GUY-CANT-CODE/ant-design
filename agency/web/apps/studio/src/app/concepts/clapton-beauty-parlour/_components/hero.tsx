@@ -1,5 +1,5 @@
 'use client';
-import { Magnetic, useReducedMotion } from '@sc/ui';
+import { Magnetic, RollText, Scramble, useReducedMotion } from '@sc/ui';
 import { animate, motion, useMotionValue, useSpring } from 'motion/react';
 import { useEffect } from 'react';
 
@@ -33,10 +33,10 @@ export function Hero() {
       onPointerLeave={() => raw.set(0)}
     >
       <p className="mb-10 flex items-center justify-between text-[14px] text-muted">
-        <span>21 Lower Clapton Road · London E5</span>
-        <span className="hidden md:inline">Hair · Beauty · Electrolysis</span>
+        <Scramble>21 Lower Clapton Road · London E5</Scramble>
+        <span className="hidden md:inline"><Scramble>Hair · Beauty · Electrolysis</Scramble></span>
       </p>
-      <div className="relative">
+      <div className="relative" data-cursor="Cut">
         <h1 className={cls} style={{ clipPath: TOP }}>{headline}</h1>
         <motion.p aria-hidden className={`absolute inset-0 ${cls}`} style={{ clipPath: BOTTOM, x }}>
           {headline}
@@ -51,10 +51,10 @@ export function Hero() {
         </p>
         <div className="flex flex-wrap gap-3 md:col-span-6 md:justify-end">
           <Magnetic>
-            <a href={FRESHA} rel="noopener" className="block rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-accent-ink">Book online</a>
+            <a href={FRESHA} rel="noopener" className="block rounded-full bg-accent px-8 py-4 text-[16px] font-medium text-accent-ink"><RollText>Book online</RollText></a>
           </Magnetic>
           <Magnetic>
-            <a href="tel:+442089854329" className="block rounded-full border border-fg/20 px-8 py-4 text-[16px] font-medium">020 8985 4329</a>
+            <a href="tel:+442089854329" className="block rounded-full border border-fg/20 px-8 py-4 text-[16px] font-medium"><RollText>020 8985 4329</RollText></a>
           </Magnetic>
         </div>
       </div>

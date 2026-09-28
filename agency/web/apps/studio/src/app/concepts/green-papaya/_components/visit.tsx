@@ -1,5 +1,5 @@
 'use client';
-import { Counter, FadeIn, isOpenAt, Magnetic, Reveal, useLondonTime } from '@sc/ui';
+import { Counter, FadeIn, HoverLetters, isOpenAt, Magnetic, Reveal, RollText, Stagger, Tilt, useLondonTime } from '@sc/ui';
 import { HOURS, HOURS_TEXT } from './hours';
 
 const MAPS = 'https://www.google.com/maps/search/?api=1&query=Green+Papaya+191+Mare+Street+London+E8+3QE';
@@ -16,22 +16,24 @@ export function Story() {
           <p>It&apos;s still family-run, and everything is still cooked fresh.</p>
         </FadeIn>
       </div>
-      <dl className="grid gap-3 self-end md:col-span-5">
+      <Stagger className="grid gap-3 self-end md:col-span-5">
         {[
           [<><Counter to={20} />+</>, 'years on Mare Street'],
           [<Counter key="c" to={2} />, 'cuisines, one kitchen'],
           [<Counter key="f" to={1} />, 'family, still cooking'],
         ].map(([n, l], i) => (
-          <div key={i} className="flex items-baseline justify-between rounded-3xl bg-card px-7 py-6">
-            <dt className="order-2 text-[15px] text-muted">{l}</dt>
-            <dd className="font-display text-[64px] leading-none font-extrabold tracking-[-0.05em]">{n}</dd>
-          </div>
+          <Tilt key={i} max={6} className="flex items-baseline justify-between rounded-3xl bg-card px-7 py-6">
+            <dl className="contents">
+              <dt className="order-2 text-[15px] text-muted">{l}</dt>
+              <dd className="font-display text-[64px] leading-none font-extrabold tracking-[-0.05em] transition-colors duration-500 group-hover/tilt:text-accent">{n}</dd>
+            </dl>
+          </Tilt>
         ))}
-      </dl>
+      </Stagger>
       <blockquote className="border-t border-line pt-12 md:col-span-12">
-        <p className="max-w-[26ch] font-display text-[clamp(2rem,4.2vw,4rem)] leading-[1] font-bold tracking-[-0.035em]">
+        <Reveal as="p" className="max-w-[26ch] font-display text-[clamp(2rem,4.2vw,4rem)] leading-[1] font-bold tracking-[-0.035em]">
           &ldquo;One of the greatest Vietnamese restaurants I&apos;ve been to in London. Totally fresh ingredients.&rdquo;
-        </p>
+        </Reveal>
         <footer className="mt-5 text-[14px] text-muted">Tripadvisor review</footer>
       </blockquote>
     </section>
@@ -51,24 +53,24 @@ export function Visit() {
             {open === null ? 'Hours' : open ? 'Open now' : 'Closed right now'}
           </p>
           <h2 className="font-display text-[clamp(3.4rem,9vw,9rem)] leading-[0.82] font-extrabold tracking-[-0.05em]" style={{ fontStretch: '80%' }}>
-            191 Mare Street
+            <HoverLetters className="[--accent:var(--bg)]">191 Mare Street</HoverLetters>
             <br />
-            London E8 3QE
+            <HoverLetters className="[--accent:var(--bg)]">London E8 3QE</HoverLetters>
           </h2>
           <div className="mt-10 flex flex-wrap gap-3">
             <Magnetic>
-              <a href="tel:+442089855486" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg">Call 020 8985 5486</a>
+              <a href="tel:+442089855486" className="block rounded-full bg-fg px-7 py-4 text-[16px] font-medium text-bg"><RollText>Call 020 8985 5486</RollText></a>
             </Magnetic>
             <Magnetic>
-              <a href={MAPS} rel="noopener" className="block rounded-full border-2 border-fg px-7 py-4 text-[16px] font-medium">Directions ↗</a>
+              <a href={MAPS} rel="noopener" className="block rounded-full border-2 border-fg px-7 py-4 text-[16px] font-medium"><RollText>Directions ↗</RollText></a>
             </Magnetic>
           </div>
         </div>
         <table className="self-end text-[16px] md:col-span-5" aria-label="Opening hours">
           <tbody>
             {HOURS_TEXT.map(([d, name, h]) => (
-              <tr key={d} className={`border-b border-fg/15 ${today === d ? 'font-bold' : ''}`}>
-                <td className="py-3">{name}{today === d && <span className="ml-2 rounded-full bg-fg px-2 py-0.5 text-[11px] text-bg">Today</span>}</td>
+              <tr key={d} className={`border-b border-fg/15 transition-[padding] duration-500 ease-expo hover:[&>td:first-child]:pl-3 ${today === d ? 'font-bold' : ''}`}>
+                <td className="py-3 transition-[padding] duration-500 ease-expo">{name}{today === d && <span className="ml-2 rounded-full bg-fg px-2 py-0.5 text-[11px] text-bg">Today</span>}</td>
                 <td className="py-3 text-right">{h}</td>
               </tr>
             ))}

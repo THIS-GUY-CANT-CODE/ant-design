@@ -10,10 +10,10 @@ export const HOURS: Record<number, [number, number][]> = {
 };
 export const HOURS_TEXT: [number, string, string][] = [
   [1, 'Monday', 'Closed'],
-  [2, 'Tuesday', '12–3pm · 5–10:30pm'],
-  [3, 'Wednesday', '12–3pm · 5–10:30pm'],
-  [4, 'Thursday', '12–3pm · 5–10:30pm'],
-  [5, 'Friday', '12–3pm · 5–10:30pm'],
-  [6, 'Saturday', '1–10:30pm'],
-  [0, 'Sunday', '1–10pm'],
+  [2, 'Tuesday', '12 to 3pm · 5 to 10:30pm'],
+  [3, 'Wednesday', '12 to 3pm · 5 to 10:30pm'],
+  [4, 'Thursday', '12 to 3pm · 5 to 10:30pm'],
+  [5, 'Friday', '12 to 3pm · 5 to 10:30pm'],
+  [6, 'Saturday', '1 to 10:30pm'],
+  [0, 'Sunday', '1 to 10pm'],
 ];

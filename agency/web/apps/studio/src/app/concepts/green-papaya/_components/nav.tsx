@@ -1,5 +1,5 @@
 'use client';
-import { isOpenAt, Magnetic, useLondonTime } from '@sc/ui';
+import { isOpenAt, Magnetic, useLondonTime, RollText } from '@sc/ui';
 import { HOURS } from './hours';
 
 export function Nav() {
@@ -8,13 +8,13 @@ export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <nav className="mx-auto flex h-20 max-w-[1600px] items-center justify-between px-5 md:px-8" aria-label="Main">
-        <a href="#top" className="flex items-center gap-2.5 rounded-full bg-bg py-1.5 pr-4 pl-1.5 font-display text-[20px] font-extrabold tracking-[-0.03em]" style={{ fontStretch: '80%' }}>
-          <Mark className="size-7" />
+        <a href="#top" className="group flex items-center gap-2.5 rounded-full bg-bg py-1.5 pr-4 pl-1.5 font-display text-[20px] font-extrabold tracking-[-0.03em]" style={{ fontStretch: '80%' }}>
+          <Mark className="size-7 transition-transform duration-700 ease-expo group-hover:rotate-[20deg]" />
           green papaya
         </a>
         <div className="hidden items-center gap-1 rounded-full bg-bg p-1 text-[14px] md:flex">
-          {[['#kitchens', 'Kitchens'], ['#menu', 'Menu'], ['#visit', 'Visit']].map(([h, l]) => (
-            <a key={h} href={h} className="rounded-full px-4 py-2 transition-colors hover:bg-fg hover:text-bg">{l}</a>
+          {([['#kitchens', 'Kitchens'], ['#menu', 'Menu'], ['#visit', 'Visit']] as const).map(([h, l]) => (
+            <a key={h} href={h} className="rounded-full px-4 py-2 transition-colors hover:bg-fg hover:text-bg"><RollText>{l}</RollText></a>
           ))}
           {open !== null && (
             <span className="flex items-center gap-2 px-4 text-[13px]">
@@ -24,7 +24,7 @@ export function Nav() {
           )}
         </div>
         <Magnetic>
-          <a href="tel:+442089855486" className="rounded-full bg-fg px-5 py-2.5 text-[14px] font-medium text-bg ring-2 ring-bg">Book a table</a>
+          <a href="tel:+442089855486" className="rounded-full bg-fg px-5 py-2.5 text-[14px] font-medium text-bg ring-2 ring-bg"><RollText>Book a table</RollText></a>
         </Magnetic>
       </nav>
     </header>

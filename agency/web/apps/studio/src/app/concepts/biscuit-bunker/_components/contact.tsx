@@ -1,9 +1,9 @@
 'use client';
-import { Magnetic, Reveal } from '@sc/ui';
+import { Magnetic, Reveal, RollText } from '@sc/ui';
 import { useState } from 'react';
 
 const FORMATS = ['Commercial', 'Branded content', 'Corporate film', 'Animation', 'Podcast', 'Not sure yet'];
-const BUDGETS = ['< £10k', '£10–25k', '£25–50k', '£50k+'];
+const BUDGETS = ['Under £10k', '£10k to £25k', '£25k to £50k', '£50k+'];
 
 function Chips({ options, value, onChange, label }: { options: string[]; value: string; onChange: (v: string) => void; label: string }) {
   return (
@@ -12,7 +12,7 @@ function Chips({ options, value, onChange, label }: { options: string[]; value: 
       <div className="flex flex-wrap gap-2">
         {options.map((o) => (
           <button type="button" key={o} aria-pressed={value === o} onClick={() => onChange(o)} className={`rounded-full border px-4 py-2 text-[14px] transition-colors ${value === o ? 'border-accent bg-accent text-accent-ink' : 'border-line hover:border-fg'}`}>
-            {o}
+            <RollText>{o}</RollText>
           </button>
         ))}
       </div>
@@ -22,7 +22,7 @@ function Chips({ options, value, onChange, label }: { options: string[]; value: 
 
 export function Contact() {
   const [format, setFormat] = useState('Commercial');
-  const [budget, setBudget] = useState('£10–25k');
+  const [budget, setBudget] = useState('£10k to £25k');
   const [sent, setSent] = useState(false);
   const field = 'w-full border-b border-line bg-transparent py-4 text-[20px] outline-none transition-colors placeholder:text-muted focus:border-accent';
   return (
@@ -32,13 +32,13 @@ export function Contact() {
           <Reveal as="h2" className="font-display text-[clamp(3.4rem,8vw,8rem)] leading-[0.84] font-semibold tracking-[-0.065em]">
             Got a brief?
           </Reveal>
-          <p className="mt-2 font-serif text-[clamp(2.4rem,5vw,4.6rem)] leading-none text-accent italic">Throw us a bone.</p>
+          <Reveal as="p" delay={0.2} className="mt-2 font-serif text-[clamp(2.4rem,5vw,4.6rem)] leading-none text-accent italic">Throw us a bone.</Reveal>
           <div className="mt-12 space-y-2 text-[15px] text-muted">
             <p>Shoreditch, London EC2A 4NE</p>
             <p className="flex gap-4">
-              <a className="text-fg hover:text-accent" href="https://vimeo.com/biscuitbunker" rel="noopener">Vimeo</a>
-              <a className="text-fg hover:text-accent" href="https://uk.linkedin.com/company/biscuit-bunker" rel="noopener">LinkedIn</a>
-              <a className="text-fg hover:text-accent" href="https://www.facebook.com/biscuitbunkeruk/" rel="noopener">Facebook</a>
+              <a className="text-fg hover:text-accent" href="https://vimeo.com/biscuitbunker" rel="noopener"><RollText>Vimeo</RollText></a>
+              <a className="text-fg hover:text-accent" href="https://uk.linkedin.com/company/biscuit-bunker" rel="noopener"><RollText>LinkedIn</RollText></a>
+              <a className="text-fg hover:text-accent" href="https://www.facebook.com/biscuitbunkeruk/" rel="noopener"><RollText>Facebook</RollText></a>
             </p>
           </div>
         </div>
@@ -62,8 +62,9 @@ export function Contact() {
               <Chips label="Budget" options={BUDGETS} value={budget} onChange={setBudget} />
               <textarea className={`${field} min-h-32 resize-y`} placeholder="Tell us about it" aria-label="Tell us about it" />
               <Magnetic>
-                <button type="submit" className="flex items-center gap-3 rounded-full bg-accent px-8 py-5 text-[17px] font-medium text-accent-ink">
-                  Send the brief <span aria-hidden>→</span>
+                <button type="submit" className="group flex items-center gap-3 rounded-full bg-accent px-8 py-5 text-[17px] font-medium text-accent-ink">
+                  <RollText>Send the brief</RollText>
+                  <span aria-hidden className="transition-transform duration-500 ease-expo group-hover:translate-x-1.5 group-hover:-rotate-45">→</span>
                 </button>
               </Magnetic>
             </form>

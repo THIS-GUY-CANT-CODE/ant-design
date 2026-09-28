@@ -1,4 +1,4 @@
-import { Marquee } from '@sc/ui';
+import { HoverLetters, Marquee } from '@sc/ui';
 import { Mark } from './nav';
 
 export function Footer() {
@@ -13,8 +13,8 @@ export function Footer() {
         ))}
       </Marquee>
       <div className="mx-auto max-w-[1600px] px-4 md:px-8">
-        <p aria-hidden className="pt-10 font-display text-[21.6vw] leading-[0.76] font-extrabold tracking-[-0.06em] whitespace-nowrap text-accent uppercase" style={{ fontStretch: '75%' }}>
-          Green Papaya
+        <p className="pt-10 font-display text-[21.6vw] leading-[0.76] font-extrabold tracking-[-0.06em] whitespace-nowrap text-accent uppercase" style={{ fontStretch: '75%' }}>
+          <HoverLetters className="[--accent:var(--hanoi)]">Green Papaya</HoverLetters>
         </p>
         <div className="mt-8 flex flex-wrap justify-between gap-4 text-[13px] opacity-60">
           <span>© {new Date().getFullYear()} Green Papaya Xi&apos;Viet · 191 Mare Street, E8</span>
