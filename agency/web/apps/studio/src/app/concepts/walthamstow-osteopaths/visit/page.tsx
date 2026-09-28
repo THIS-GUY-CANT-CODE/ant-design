@@ -2,14 +2,13 @@ import type { Metadata } from 'next';
 import { PageHead } from '../_components/page-head';
 import { ADDRESS, EMAIL, PHONE } from '../_components/site';
 import { VisitDirections, VisitMap, VisitTrains } from '../_components/visit-live';
-import { FILM } from '../_components/media';
 
 export const metadata: Metadata = { title: 'Visit', description: '72 St Mary Road, Walthamstow Village, London E17 9RE. Map, directions and live trains from Walthamstow Central.' };
 
 export default function Visit() {
   return (
     <main>
-      <PageHead media={FILM} crumbs={[{ label: 'Visit' }]} title={<>No.72 St Mary Road.</>} intro="On the edge of Walthamstow Village, a short walk from Walthamstow Central." />
+      <PageHead crumbs={[{ label: 'Visit' }]} title={<>No.72 St Mary Road.</>} intro="On the edge of Walthamstow Village, a short walk from Walthamstow Central." />
       <section className="mx-auto grid max-w-[1600px] gap-3 px-5 md:grid-cols-12 md:px-8">
         <VisitMap className="min-h-[420px] rounded-[1.75rem] md:col-span-7 md:min-h-[600px]" />
         <div className="grid gap-3 md:col-span-5">

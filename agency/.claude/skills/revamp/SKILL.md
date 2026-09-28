@@ -43,6 +43,7 @@ Add the brand to `web/apps/studio/src/brands/index.ts`: tokens, 4–5 named swat
 - At least three working tools that fit the business, built from the kit: `MapView`, `LiveDepartures`, `lookupPostcode`, `OpenNow`, `AddToCalendar`, `ShareButton`, `useSearch`, `useStored`, and forms with react-hook-form and zod. No fake submissions: send by email or phone where a real address exists, otherwise copy or download.
 - Design the mark on a 64 grid in `src/brands/marks.tsx`, test it at 16px, and export `icon.svg` for the route.
 - Mock every new third-party API in `tests/mocks.ts` and add a flow to `tests/features.spec.ts`.
+- Pictures: give each one a job. It should answer a question its own section raises (what does this kitchen cook? what does acupuncture look like?) and sit inside that section, beside the words it illustrates. Never add a generic gallery block or a banner on every page. Pull the business's own photos and films first: staff, shopfront, rooms and work. Stock (Pexels, Mixkit via `@sc/ui` `Photo`/`Film`) may only stand in for generic subjects (food, hands, keys). Never let stock pose as the people or places a visitor will meet. Where a real photo is missing, leave the slot for it or use type (see the Clapton "Body" numeral). Each concept's picks live in `_components/media.ts` with the job written next to each one.
 
 ## 4. Case study and portfolio
 - Add the case to `content/cases.ts` (was / now / brand / marketing / tier) and the slug to `ORDER`.

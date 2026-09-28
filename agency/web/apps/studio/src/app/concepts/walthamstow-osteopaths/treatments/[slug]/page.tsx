@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHead } from '../../_components/page-head';
 import { BASE, EMAIL, PHONE, TREATMENTS } from '../../_components/site';
-import { P, TREATMENT_PHOTO } from '../../_components/media';
+import { TREATMENT_PHOTO } from '../../_components/media';
 
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
@@ -23,7 +23,7 @@ export default async function Treatment({ params }: Props) {
   const mail = `mailto:${EMAIL}?subject=${encodeURIComponent(`Booking: ${t.name}`)}&body=${encodeURIComponent(`Hello,\n\nI'd like to book ${t.name.toLowerCase()}.\n\nName:\nPhone:\nBest days and times:\n`)}`;
   return (
     <main>
-      <PageHead media={TREATMENT_PHOTO[t.slug] ?? P.examine} crumbs={[{ href: `${BASE}/treatments`, label: 'Treatments' }, { label: t.name }]} title={t.name} intro={t.short}>
+      <PageHead media={TREATMENT_PHOTO[t.slug]} crumbs={[{ href: `${BASE}/treatments`, label: 'Treatments' }, { label: t.name }]} title={t.name} intro={t.short}>
         <div className="mt-10 flex flex-wrap gap-3">
           <a href={`tel:${PHONE[1]}`} className="rounded-full bg-accent px-7 py-4 text-[16px] text-accent-ink">Book: {PHONE[0]}</a>
           <a href={mail} className="rounded-full border border-fg/25 px-7 py-4 text-[16px]">Email to book</a>

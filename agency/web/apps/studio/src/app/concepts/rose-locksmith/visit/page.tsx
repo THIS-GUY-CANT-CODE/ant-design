@@ -4,14 +4,13 @@ import { OpenNow } from '../_components/open-now';
 import { StockSearch } from '../_components/stock-search';
 import { VisitDirections, VisitMap, VisitTrains } from '../_components/visit-live';
 import { ADDRESS, PHONE } from '../_components/data';
-import { P } from '../_components/media';
 
 export const metadata: Metadata = { title: 'Visit', description: '149 Bethnal Green Road, London E2 7DG. Opening hours, map, directions and live trains from Bethnal Green.' };
 
 export default function Visit() {
   return (
     <main>
-      <PageHead media={P.keys} eyebrow="Visit" title={<>149 Bethnal Green Road.</>} intro="A short walk from Bethnal Green and Shoreditch High Street. Open six days a week.">
+      <PageHead eyebrow="Visit" title={<>149 Bethnal Green Road.</>} intro="A short walk from Bethnal Green and Shoreditch High Street. Open six days a week.">
         <div className="mt-8"><OpenNow /></div>
       </PageHead>
       <section className="mx-auto grid max-w-[1600px] gap-3 px-5 md:grid-cols-12 md:px-8">

@@ -27,3 +27,24 @@ export async function getVideos(user = 'biscuitbunker'): Promise<Video[] | null>
     return null;
   }
 }
+
+/** Words that mark a film as an example of each service, matched against title, tags and description. */
+const SERVICE_WORDS: Record<string, string[]> = {
+  commercials: ['commercial', 'advert', 'ad', 'campaign', 'tvc', 'spot'],
+  'branded-content': ['branded', 'brand', 'social', 'content', 'launch'],
+  'corporate-film': ['corporate', 'company', 'event', 'conference', 'testimonial', 'documentary', 'interview'],
+  'animation-motion': ['animation', 'animated', 'motion', 'graphics', 'explainer', '2d', '3d'],
+  podcasts: ['podcast', 'episode', 'audio'],
+};
+
+/** The studio's own films that show a given service, best matches first. */
+export function filmsFor(videos: Video[], service: string, limit = 3) {
+  const words = SERVICE_WORDS[service] ?? [];
+  const re = new RegExp(`\\b(${words.join('|')})s?\\b`, 'gi');
+  return videos
+    .map((v) => ({ v, score: `${v.title} ${v.tags.join(' ')} ${v.description}`.match(re)?.length ?? 0 }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.v);
+}

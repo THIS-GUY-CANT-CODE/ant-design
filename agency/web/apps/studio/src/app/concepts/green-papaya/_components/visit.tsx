@@ -1,7 +1,8 @@
 'use client';
-import { Counter, FadeIn, HoverLetters, isOpenAt, Magnetic, Reveal, RollText, Stagger, Tilt, useLondonTime } from '@sc/ui';
+import { ClipReveal, Counter, FadeIn, Film, HoverLetters, isOpenAt, Magnetic, Reveal, RollText, Stagger, Tilt, useLondonTime } from '@sc/ui';
 import Link from 'next/link';
 import { HOURS, HOURS_TEXT } from './hours';
+import { FILM } from './media';
 import { BASE } from './site';
 
 
@@ -31,6 +32,12 @@ export function Story() {
           </Tilt>
         ))}
       </Stagger>
+      <figure className="md:col-span-12">
+        <ClipReveal className="aspect-[4/5] overflow-hidden rounded-[2rem] md:aspect-[21/9]">
+          <Film video={FILM} className="size-full" />
+        </ClipReveal>
+        <figcaption className="mt-4 text-[14px] text-muted">Cooked fresh, to order, every time.</figcaption>
+      </figure>
       <blockquote className="border-t border-line pt-12 md:col-span-12">
         <Reveal as="p" className="max-w-[26ch] font-display text-[clamp(2rem,4.2vw,4rem)] leading-[1] font-bold tracking-[-0.035em]">
           &ldquo;One of the greatest Vietnamese restaurants I&apos;ve been to in London. Totally fresh ingredients.&rdquo;

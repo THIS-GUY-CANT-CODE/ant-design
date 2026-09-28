@@ -3,7 +3,6 @@ import { CoverageCheck } from '../_components/coverage';
 import { Lock } from '../_components/lock';
 import { Faq, PageHead } from '../_components/page-head';
 import { PHONE } from '../_components/data';
-import { P } from '../_components/media';
 
 export const metadata: Metadata = { title: 'Locks & emergency', description: 'Emergency locksmith for lockouts and break-ins across Bethnal Green, Tower Hamlets and Hackney, plus uPVC door repair.' };
 
@@ -17,7 +16,7 @@ const STEPS = [
 export default function Emergency() {
   return (
     <main>
-      <PageHead media={P.keyInLock} eyebrow="Locks & emergency" title={<>Locked out? <span className="text-accent">Call now.</span></>} intro="Lockouts and break-ins across Bethnal Green, Tower Hamlets and Hackney, and uPVC doors that stick, drop or won’t lock.">
+      <PageHead eyebrow="Locks & emergency" title={<>Locked out? <span className="text-accent">Call now.</span></>} intro="Lockouts and break-ins across Bethnal Green, Tower Hamlets and Hackney, and uPVC doors that stick, drop or won’t lock.">
         <a href={`tel:${PHONE.emergency[1]}`} className="mt-10 inline-flex items-center gap-4 rounded-full bg-accent py-3 pr-8 pl-3 text-[20px] font-bold text-accent-ink">
           <span className="relative grid size-12 place-items-center rounded-full bg-fg text-bg">
             <span className="absolute inset-0 animate-ping rounded-full bg-fg/40" />☎

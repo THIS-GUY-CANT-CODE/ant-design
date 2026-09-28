@@ -19,4 +19,4 @@ export { Toaster, toast, ShareButton, CopyButton, AddToCalendar, useSearch, Comm
 export { useGeocode } from './use-geocode';
 export { useStored } from './use-stored';
 export { OpenNow, openLine } from './open-now';
-export { Photo, Film, PhotoMosaic, PhotoRail, Banner, InPictures, pexelsUrl, mixkitSources, type PhotoSrc, type VideoSrc } from './media';
+export { Photo, Film, Banner, pexelsUrl, mixkitSources, type PhotoSrc, type VideoSrc } from './media';

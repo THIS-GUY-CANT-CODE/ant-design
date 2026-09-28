@@ -150,22 +150,32 @@ test('Studio: website check API refuses private addresses', async ({ request }) 
   }
 });
 
-test('every concept home has photos, and films fall back to their still when the video cannot load', async ({ page }) => {
-  for (const site of ['green-papaya', 'rose-locksmith', 'walthamstow-osteopaths', 'wj-meade', 'clapton-beauty-parlour', 'biscuit-bunker']) {
-    await page.goto(`/concepts/${site}`);
-    const photos = page.locator('img[src*="images.pexels.com"]');
-    await photos.nth(5).scrollIntoViewIfNeeded();
-    expect(await photos.count(), site).toBeGreaterThanOrEqual(7);
-    await expect.poll(() => photos.nth(5).evaluate((i: HTMLImageElement) => i.naturalWidth), { message: site }).toBeGreaterThan(0);
-    // Mixkit is mocked as 404: the film swaps to its still and the pause button goes away
-    await page.locator('video').first().scrollIntoViewIfNeeded().catch(() => {});
-    await expect(page.locator('video'), site).toHaveCount(0);
-  }
+test('pictures sit inside the sections they illustrate', async ({ page }) => {
+  const pexels = 'img[src*="images.pexels.com"]';
+  // Green Papaya: each kitchen shows its own dish
+  await page.goto(`${C}/green-papaya`);
+  const kitchens = page.locator('#kitchens article');
+  await kitchens.first().scrollIntoViewIfNeeded();
+  for (const k of [0, 1]) await expect.poll(() => kitchens.nth(k).locator(pexels).evaluate((i: HTMLImageElement) => i.naturalWidth)).toBeGreaterThan(0);
+  // Walthamstow: opening a treatment shows what it looks like
+  await page.goto(`${C}/walthamstow-osteopaths`);
+  await page.getByRole('button', { name: /Acupuncture/ }).click();
+  await expect(page.locator(`#treatments ${pexels}`).first()).toBeVisible();
+  // Clapton: the hair card's film falls back to its still when the video can't load (Mixkit is mocked as 404)
+  await page.goto(`${C}/clapton-beauty-parlour`);
+  const services = page.locator('#services');
+  await services.scrollIntoViewIfNeeded();
+  await expect(services.locator('video')).toHaveCount(0);
+  await expect(services.locator(pexels)).toHaveCount(2);
 });
 
-test('subpages open with a photo or film banner', async ({ page }) => {
-  for (const path of ['/concepts/green-papaya/menu', '/concepts/rose-locksmith/paint', '/concepts/wj-meade/sell', '/concepts/walthamstow-osteopaths/treatments/acupuncture', '/concepts/clapton-beauty-parlour/story', '/concepts/biscuit-bunker/services/podcasts']) {
+test('only pages where a picture earns its place open with one', async ({ page }) => {
+  for (const path of ['/concepts/rose-locksmith/keys', '/concepts/rose-locksmith/paint', '/concepts/wj-meade/buy', '/concepts/wj-meade/let', '/concepts/walthamstow-osteopaths/treatments/acupuncture']) {
     await page.goto(path);
     await expect(page.locator('header img[src*="images.pexels.com"]').first(), path).toBeVisible();
+  }
+  for (const path of ['/concepts/green-papaya/menu', '/concepts/wj-meade/sell', '/concepts/biscuit-bunker/studio']) {
+    await page.goto(path);
+    await expect(page.locator('header img[src*="images.pexels.com"]'), path).toHaveCount(0);
   }
 });

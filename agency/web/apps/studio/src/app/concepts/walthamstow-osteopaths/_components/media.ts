@@ -1,21 +1,19 @@
-import type { PhotoSrc, VideoSrc } from '@sc/ui';
+import type { PhotoSrc } from '@sc/ui';
 
-/** Stand-ins from Pexels and Mixkit until the clinic's own shoot. Swap an id to swap the shot. */
-export const P = {
+/**
+ * Every picture here has one job, named beside it. Stock (Pexels photos, Mixkit film) only stands in for
+ * generic subjects: food, hands at work, keys. People and places a visitor will actually meet (staff, the
+ * shopfront, the rooms) are never faked; those slots wait for the business's own photos.
+ */
+const P = {
   examine: { id: 4506107, alt: 'An osteopath examining a patient’s back' },
   table: { id: 5793909, alt: 'A practitioner treating a patient lying on the treatment table' },
   shoulders: { id: 5473182, alt: 'Hands working on a patient’s shoulders' },
   shoulder: { id: 275768, alt: 'A shoulder massage, close up' },
   acupunctureBack: { id: 6193366, alt: 'Acupuncture needles along a patient’s back' },
-  acupuncture: { id: 8313427, alt: 'Acupuncture treatment, close up' },
-  acupunctureMan: { id: 8312859, alt: 'A man having acupuncture' },
 } satisfies Record<string, PhotoSrc>;
 
-export const FILM: VideoSrc = { id: 24753, slug: 'older-man-having-a-back-massage', alt: 'An older man having his back treated', poster: P.table };
-
-export const HOME_PHOTOS = [P.examine, P.shoulders, P.acupunctureBack, P.table, P.shoulder, P.acupuncture];
-
-/** One picture per treatment slug; anything not listed falls back to the examination shot. */
+/** What each treatment looks like: shown when it opens in the list, and at the top of its own page. */
 export const TREATMENT_PHOTO: Record<string, PhotoSrc> = {
   'structural-osteopathy': P.examine,
   'cranial-osteopathy': P.table,

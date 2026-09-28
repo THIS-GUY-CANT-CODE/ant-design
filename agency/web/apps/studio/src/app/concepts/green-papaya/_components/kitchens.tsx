@@ -1,10 +1,11 @@
 'use client';
-import { Reveal, Scramble } from '@sc/ui';
+import { Photo, Reveal, Scramble } from '@sc/ui';
 import { useState } from 'react';
+import { P } from './media';
 
 const K = [
-  { key: 'hanoi', label: 'Hà Nội', sub: 'Northern Vietnamese', bg: 'var(--hanoi)', ink: '#1A120D', text: "Fresh herbs, fish sauce, grilled meats and banana leaf. It's the north's cooking, with plenty you won't find at other Viet places in town." },
-  { key: 'xian', label: '西安', sub: "Xi'an street food", bg: 'var(--xian)', ink: '#FFF4EA', text: 'Hand-pulled and flat noodles, chilli oil, cumin and slow-braised pork in a crisp bun. The food of the old Silk Road city.' },
+  { key: 'hanoi', label: 'Hà Nội', sub: 'Northern Vietnamese', photo: P.herbs, bg: 'var(--hanoi)', ink: '#1A120D', text: "Fresh herbs, fish sauce, grilled meats and banana leaf. It's the north's cooking, with plenty you won't find at other Viet places in town." },
+  { key: 'xian', label: '西安', sub: "Xi'an street food", photo: P.noodles, bg: 'var(--xian)', ink: '#FFF4EA', text: 'Hand-pulled and flat noodles, chilli oil, cumin and slow-braised pork in a crisp bun. The food of the old Silk Road city.' },
 ];
 
 export function Kitchens() {
@@ -30,6 +31,10 @@ export function Kitchens() {
             style={{ background: k.bg, color: k.ink, flexGrow: hot === k.key ? 1.7 : hot ? 0.8 : 1, flexBasis: 0 }}
           >
             <span className="flex items-center justify-between text-[13px] font-semibold tracking-wide uppercase opacity-80">{k.sub}<span aria-hidden className={`grid size-12 place-items-center rounded-full border border-current text-[18px] transition-[rotate,scale] duration-700 ease-expo ${hot === k.key ? 'scale-110 -rotate-45' : ''}`}>→</span></span>
+            {/* each kitchen shows what it cooks; the photo opens up as the card widens */}
+            <div className="relative my-6 min-h-44 flex-1 overflow-hidden rounded-[1.25rem] md:my-8">
+              <Photo photo={k.photo} sizes="(min-width: 768px) 50vw, 100vw" className={`absolute inset-0 transition-[scale,filter] duration-[1.2s] ease-expo ${hot === k.key ? 'scale-105 saturate-100' : hot ? 'saturate-50' : ''}`} />
+            </div>
             <div>
               <p className={`font-display text-[clamp(4.5rem,11vw,11rem)] leading-[0.82] font-extrabold tracking-[-0.05em] transition-transform duration-700 ease-expo ${hot === k.key ? '-translate-y-2 scale-105' : ''}`} style={{ fontStretch: '75%', transformOrigin: 'left bottom' }}>
                 {k.label}

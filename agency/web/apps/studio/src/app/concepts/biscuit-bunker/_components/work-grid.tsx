@@ -9,8 +9,8 @@ import { VIMEO } from './site';
 const KEYS = ['title', 'description', 'tags'];
 const mmss = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 
-/** Real videos from Vimeo: search, filter by tag, play in place. */
-export function WorkGrid({ videos }: { videos: Video[] }) {
+/** Real videos from Vimeo: search, filter by tag, play in place. `bare` drops the search and footer for short, pre-filtered lists. */
+export function WorkGrid({ videos, bare = false }: { videos: Video[]; bare?: boolean }) {
   const [q, setQ] = useState('');
   const [tag, setTag] = useState('All');
   const [playing, setPlaying] = useState<Video | null>(null);
@@ -29,6 +29,7 @@ export function WorkGrid({ videos }: { videos: Video[] }) {
   }, [playing]);
   return (
     <>
+      {!bare && (
       <div className="flex flex-wrap items-center gap-2 border-b border-line pb-6">
         <label htmlFor="work-q" className="sr-only">Search the work</label>
         <input id="work-q" value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search the work" className="min-w-0 flex-1 rounded-full border border-line bg-card px-5 py-3.5 text-[16px] outline-none focus:border-accent" />
@@ -42,7 +43,8 @@ export function WorkGrid({ videos }: { videos: Video[] }) {
           </div>
         )}
       </div>
-      <p className="mt-4 font-mono text-[12px] text-muted" aria-live="polite">{list.length} FILMS</p>
+      )}
+      {!bare && <p className="mt-4 font-mono text-[12px] text-muted" aria-live="polite">{list.length} FILMS</p>}
       <ul className="mt-6 grid gap-x-4 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
         {list.map((v) => (
           <li key={v.id}>
@@ -79,9 +81,11 @@ export function WorkGrid({ videos }: { videos: Video[] }) {
           </motion.div>
         )}
       </AnimatePresence>
+      {!bare && (
       <p className="mt-16 text-[14px] text-muted">
         Everything here comes straight from <a href={VIMEO} rel="noopener" className="underline">our Vimeo</a>.
       </p>
+      )}
     </>
   );
 }

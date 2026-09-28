@@ -3,10 +3,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { PageHead } from '../../_components/page-head';
 import { BASE, SERVICES } from '../../_components/site';
-import { P, SERVICE_PHOTO } from '../../_components/media';
+import { filmsFor, getVideos } from '../../_components/vimeo';
+import { WorkGrid } from '../../_components/work-grid';
 
 type Props = { params: Promise<{ slug: string }> };
 export const dynamicParams = false;
+export const revalidate = 3600;
 export const generateStaticParams = () => SERVICES.map((s) => ({ slug: s.slug }));
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
@@ -20,9 +22,10 @@ export default async function Service({ params }: Props) {
   if (!s) notFound();
   const i = SERVICES.indexOf(s);
   const next = SERVICES[(i + 1) % SERVICES.length]!;
+  const films = filmsFor((await getVideos()) ?? [], s.slug);
   return (
     <main>
-      <PageHead media={SERVICE_PHOTO[s.slug] ?? P.set} crumbs={[{ href: `${BASE}/services`, label: 'Services' }, { label: s.name }]} title={s.name} intro={s.intro}>
+      <PageHead crumbs={[{ href: `${BASE}/services`, label: 'Services' }, { label: s.name }]} title={s.name} intro={s.intro}>
         <Link href={`${BASE}/brief`} className="mt-10 inline-block rounded-full bg-accent px-7 py-4 font-medium text-accent-ink">Brief us on a {s.name.toLowerCase().replace(/s$/, '')} →</Link>
       </PageHead>
       <section className="mx-auto grid max-w-[1600px] gap-3 px-5 md:grid-cols-2 md:px-8">
@@ -43,6 +46,14 @@ export default async function Service({ params }: Props) {
           </ul>
         </div>
       </section>
+      {films.length > 0 && (
+        <section aria-labelledby="films" className="mx-auto max-w-[1600px] px-5 pt-32 md:px-8">
+          <h2 id="films" className="mb-10 font-display text-[clamp(2.6rem,6vw,6rem)] leading-[0.88] font-semibold tracking-[-0.06em]">
+            {s.name}, <span className="font-serif font-normal text-accent italic">as we&apos;ve made it.</span>
+          </h2>
+          <WorkGrid videos={films} bare />
+        </section>
+      )}
       <section className="mx-auto max-w-[1600px] px-5 py-32 md:px-8">
         <h2 className="font-display text-[clamp(2.6rem,6vw,6rem)] leading-[0.88] font-semibold tracking-[-0.06em]">How it runs.</h2>
         <ol className="mt-12 grid gap-3 md:grid-cols-4">

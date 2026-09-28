@@ -1,17 +1,18 @@
 'use client';
 import { ClaptonMark } from '@/brands/marks';
-import { FadeIn, gsap, HoverLetters, isOpenAt, Magnetic, Parallax, Reveal, RollText, Scramble, Skew, Stagger, Tilt, useGSAP, useLondonTime } from '@sc/ui';
+import { FadeIn, Film, gsap, HoverLetters, isOpenAt, Magnetic, Parallax, Photo, Reveal, RollText, Scramble, Skew, Stagger, Tilt, useGSAP, useLondonTime, type PhotoSrc, type VideoSrc } from '@sc/ui';
 import { useRef } from 'react';
 import Link from 'next/link';
+import { FILM, P } from './media';
 import { BASE, FRESHA, PAGES, PHONE } from './site';
 
 export function Mark({ className, top, bottom }: { className?: string; top?: string; bottom?: string }) {
   return <ClaptonMark className={className} top={top} bottom={bottom} />;
 }
 
-const MENU: [string, string, string[]][] = [
-  ['I', 'Hair', ['Cut & finish', 'Colour', 'Hair extensions', "Men's grooming", 'Wedding hair']],
-  ['II', 'Beauty', ['Facials', 'Manicure', 'Pedicure', 'Beauty therapy']],
+const MENU: [string, string, string[], (PhotoSrc | VideoSrc)?][] = [
+  ['I', 'Hair', ['Cut & finish', 'Colour', 'Hair extensions', "Men's grooming", 'Wedding hair'], FILM],
+  ['II', 'Beauty', ['Facials', 'Manicure', 'Pedicure', 'Beauty therapy'], P.manicure],
   ['III', 'Body', ['Advanced electrolysis', 'Spray tanning', 'Sunbeds (18+)']],
 ];
 
@@ -22,8 +23,18 @@ export function Services() {
         Hair, beauty and <em className="text-accent">a little glamour.</em>
       </Reveal>
       <Stagger className="grid gap-3 md:grid-cols-3">
-        {MENU.map(([n, t, items]) => (
-          <Tilt key={t} max={5} className="h-full rounded-[1.75rem] bg-card p-7 md:p-9">
+        {MENU.map(([n, t, items, media]) => (
+          <Tilt key={t} max={5} className="h-full overflow-hidden rounded-[1.75rem] bg-card p-7 md:p-9">
+            {/* hair and beauty show the work; body treatments are better named than pictured, so the numeral stands in */}
+            <div className="-mx-7 -mt-7 mb-7 aspect-[16/10] overflow-hidden md:-mx-9 md:-mt-9 md:mb-9">
+              {!media ? (
+                <span aria-hidden className="grid size-full place-items-center bg-alt font-display text-[clamp(7rem,12vw,11rem)] leading-none text-accent italic">{n}</span>
+              ) : 'slug' in media ? (
+                <Film video={media} className="size-full" />
+              ) : (
+                <Photo photo={media} sizes="(min-width: 768px) 33vw, 100vw" className="size-full" />
+              )}
+            </div>
             <div className="flex items-baseline justify-between border-b border-line pb-6">
               <h3 className="font-display text-[48px] leading-none">{t}</h3>
               <span className="font-display text-[28px] text-accent transition-transform duration-700 ease-expo group-hover/tilt:rotate-[-12deg] group-hover/tilt:scale-125">{n}</span>

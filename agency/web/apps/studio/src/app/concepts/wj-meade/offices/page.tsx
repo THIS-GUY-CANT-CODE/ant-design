@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 import { PageHead } from '../_components/page-head';
 import { BowTrains, OfficeFinder } from '../_components/tools';
-import { FILM } from '../_components/media';
 
 export const metadata: Metadata = { title: 'Offices', description: 'Five W J Meade offices: Bow, Stratford, Wood Green, Highams Park and Enfield. Find your nearest by postcode.' };
 
 export default function Offices() {
   return (
     <main>
-      <PageHead media={FILM} crumb="Offices" title={<>Five offices, <span className="text-accent">all local.</span></>} intro="Put in your postcode to find your nearest branch, or explore them on the map." />
+      <PageHead crumb="Offices" title={<>Five offices, <span className="text-accent">all local.</span></>} intro="Put in your postcode to find your nearest branch, or explore them on the map." />
       <section className="mx-auto max-w-[1600px] px-5 md:px-8">
         <OfficeFinder />
       </section>

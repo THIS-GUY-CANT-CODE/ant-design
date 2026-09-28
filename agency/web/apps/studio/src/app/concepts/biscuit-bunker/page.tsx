@@ -1,4 +1,4 @@
-import { InPictures, Reveal } from '@sc/ui';
+import { Reveal } from '@sc/ui';
 import { Contact } from './_components/contact';
 import { Hero } from './_components/hero';
 import { Process } from './_components/process';
@@ -7,7 +7,6 @@ import { Statement } from './_components/statement';
 import { Studio } from './_components/studio';
 import { getVideos } from './_components/vimeo';
 import { Work } from './_components/work';
-import { FILM, HOME_PHOTOS } from './_components/media';
 
 export const revalidate = 3600;
 
@@ -17,7 +16,6 @@ export default async function BiscuitBunker() {
     <main>
       <Hero />
       <Statement />
-      <InPictures title={<>On set, <span className="font-serif italic text-accent">in the edit.</span></>} intro="Crews, studios and suites for commercials, branded content and podcasts, all under one Shoreditch roof." film={FILM} photos={HOME_PHOTOS} titleClassName="font-semibold tracking-[-0.06em]" frameClassName="rounded-2xl" />
       <Work videos={videos} />
       <Services />
       <Studio />

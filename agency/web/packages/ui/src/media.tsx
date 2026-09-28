@@ -32,7 +32,7 @@ export function Photo({ photo, className, sizes = '100vw', priority = false, zoo
     if (img?.complete && img.naturalWidth === 0) queueMicrotask(() => setFailed(true));
   }, []);
   return (
-    <span className={`relative block overflow-hidden bg-[color-mix(in_srgb,var(--fg)_9%,var(--bg))] ${className ?? ''}`}>
+    <span className={`${/\b(absolute|fixed)\b/.test(className ?? '') ? '' : 'relative'} block overflow-hidden bg-[color-mix(in_srgb,var(--fg)_9%,var(--bg))] ${className ?? ''}`}>
       {failed ? (
         <span role="img" aria-label={photo.alt} className="absolute inset-0 grid place-items-center p-4 text-center font-mono text-[11px] leading-snug text-fg/50">
           {photo.alt}
@@ -127,56 +127,7 @@ export function Film({ video, className, children, priority = false }: { video: 
   );
 }
 
-/** Editorial mosaic: the first shot is big, the rest tile around it. Captions slide up on hover. */
-export function PhotoMosaic({ photos, className, captions = true, frameClassName = 'rounded-2xl' }: { photos: PhotoSrc[]; className?: string; captions?: boolean; frameClassName?: string }) {
-  const spans = ['col-span-2 md:row-span-2', '', '', 'md:col-span-2', 'md:col-span-2', 'col-span-2'];
-  return (
-    <div className={`grid auto-rows-[42vw] grid-cols-2 gap-2 md:auto-rows-[19vw] md:grid-cols-4 md:gap-3 ${className ?? ''}`}>
-      {photos.slice(0, 6).map((p, i) => (
-        <figure key={p.id} className={`group/photo relative overflow-hidden ${frameClassName} ${spans[i] ?? ''}`}>
-          <Photo photo={p} zoom sizes={i === 0 ? '(min-width: 768px) 50vw, 100vw' : '(min-width: 768px) 25vw, 50vw'} className="size-full" />
-          {captions && (
-            <figcaption className="pointer-events-none absolute inset-x-2 bottom-2 translate-y-2 rounded-lg bg-black/55 px-3 py-2 text-[12px] leading-snug text-white opacity-0 backdrop-blur transition duration-500 ease-expo group-hover/photo:translate-y-0 group-hover/photo:opacity-100">
-              {p.alt}
-            </figcaption>
-          )}
-        </figure>
-      ))}
-    </div>
-  );
-}
 
-/** A swipeable row of photos that snaps to each frame. Scrolls with trackpad, touch, or the arrow buttons. */
-export function PhotoRail({ photos, label, className, frameClassName = 'aspect-[4/5] w-[72vw] md:w-[28vw]' }: { photos: PhotoSrc[]; label: string; className?: string; frameClassName?: string }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const step = (dir: number) => {
-    const el = ref.current;
-    if (!el) return;
-    const frame = el.firstElementChild as HTMLElement | null;
-    el.scrollBy({ left: dir * ((frame?.offsetWidth ?? 300) + 12), behavior: 'smooth' });
-  };
-  return (
-    <section aria-label={label} className={className}>
-      <div ref={ref} tabIndex={0} className="relative flex snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain pb-2 [scrollbar-width:none] focus-visible:outline-2 [&::-webkit-scrollbar]:hidden">
-        {photos.map((p) => (
-          <figure key={p.id} className={`group/photo relative shrink-0 snap-start ${frameClassName}`}>
-            <Photo photo={p} zoom sizes="(min-width: 768px) 28vw, 72vw" className="size-full rounded-[inherit]" />
-            <figcaption className="sr-only">{p.alt}</figcaption>
-          </figure>
-        ))}
-      </div>
-      <div className="mt-4 flex gap-2">
-        {[-1, 1].map((d) => (
-          <button key={d} type="button" aria-label={d < 0 ? 'Previous photos' : 'Next photos'} onClick={() => step(d)} className="grid size-11 place-items-center rounded-full border border-line transition hover:bg-fg hover:text-bg">
-            <svg viewBox="0 0 16 16" className={`size-4 ${d < 0 ? 'rotate-180' : ''}`} aria-hidden>
-              <path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
-        ))}
-      </div>
-    </section>
-  );
-}
 
 const isFilm = (m: PhotoSrc | VideoSrc): m is VideoSrc => 'slug' in m;
 
@@ -189,20 +140,3 @@ export function Banner({ media, className = 'mt-12 aspect-[4/3] rounded-3xl md:a
   );
 }
 
-/** Home page "in pictures" block: a heading, a wide film, and a photo mosaic, in the site's own type and colours. */
-export function InPictures({ title, intro, film, photos, titleClassName = '', frameClassName = 'rounded-2xl', className = '' }: { title: ReactNode; intro?: string; film?: VideoSrc; photos: PhotoSrc[]; titleClassName?: string; frameClassName?: string; className?: string }) {
-  return (
-    <section className={`mx-auto max-w-[1600px] px-4 py-24 md:px-8 md:py-32 ${className}`}>
-      <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-        <h2 className={`max-w-[18ch] font-display text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.92] ${titleClassName}`}>{title}</h2>
-        {intro && <p className="max-w-sm text-[17px] leading-snug text-muted">{intro}</p>}
-      </div>
-      {film && (
-        <ClipReveal className={`mb-2 aspect-[4/5] overflow-hidden md:mb-3 md:aspect-[21/9] ${frameClassName}`} radius={24}>
-          <Film video={film} className="size-full" />
-        </ClipReveal>
-      )}
-      <PhotoMosaic photos={photos} frameClassName={frameClassName} />
-    </section>
-  );
-}

@@ -1,9 +1,10 @@
 'use client';
 import { No72Mark } from '@/brands/marks';
-import { gsap, HoverLetters, Magnetic, Reveal, RollText, Scramble, Skew, SplitText, Spotlight, Stagger, Tilt, useGSAP } from '@sc/ui';
+import { gsap, HoverLetters, Magnetic, Photo, Reveal, RollText, Scramble, Skew, SplitText, Spotlight, Stagger, Tilt, useGSAP } from '@sc/ui';
 import { AnimatePresence, motion } from 'motion/react';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
+import { TREATMENT_PHOTO } from './media';
 import { BASE, EMAIL, FAQS, PAGES, PHONE, TREATMENTS } from './site';
 
 export function Mark({ className }: { className?: string }) {
@@ -31,12 +32,15 @@ export function Treatments() {
               </button>
               <AnimatePresence initial={false}>
                 {open === i && (
-                  <motion.p initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} className="overflow-hidden pl-14 text-[18px] leading-relaxed text-muted">
-                    <span className="block max-w-xl pb-8">
-                      {d}{' '}
-                      <Link href={`${BASE}/treatments/${slug}`} className="font-medium text-fg underline underline-offset-4">More about {t.toLowerCase()} →</Link>
-                    </span>
-                  </motion.p>
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} className="overflow-hidden pl-14 text-[18px] leading-relaxed text-muted">
+                    <div className="grid gap-6 pb-8 md:grid-cols-[1fr_220px] md:items-start">
+                      <p className="max-w-xl">
+                        {d}{' '}
+                        <Link href={`${BASE}/treatments/${slug}`} className="font-medium text-fg underline underline-offset-4">More about {t.toLowerCase()} →</Link>
+                      </p>
+                      {TREATMENT_PHOTO[slug] && <Photo photo={TREATMENT_PHOTO[slug]} sizes="220px" className="aspect-[4/5] w-40 rounded-[999px_999px_1rem_1rem] md:w-full" />}
+                    </div>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </li>
