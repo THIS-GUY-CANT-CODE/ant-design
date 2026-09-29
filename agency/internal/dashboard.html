@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Second Coat Pipeline</title>
+<style>
+:root{--bg:#F5F3EE;--surface:#fff;--ink:#111110;--ink-2:#4a4843;--muted:#77736b;--line:rgba(17,17,16,.12);--bar:#D9472B;--track:#ECE8DF}
+@media (prefers-color-scheme:dark){:root{--bg:#141412;--surface:#1d1c1a;--ink:#F2F0EA;--ink-2:#c9c5bc;--muted:#9a958b;--line:rgba(242,240,234,.14);--bar:#FF7A5C;--track:#2a2926}}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:32px 16px}
+.wrap{max-width:1180px;margin-inline:auto}
+h1{font-size:1.6rem;font-weight:700;letter-spacing:-.01em}
+.sub{color:var(--muted);margin-top:4px}
+h2{font-size:1rem;font-weight:650;margin-bottom:14px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:24px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px}
+.tile .v{font-size:2.2rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile .l{color:var(--muted);font-size:.85rem;margin-top:4px}
+@media (max-width:760px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;margin-top:16px}
+.funnel{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:120px minmax(0,1fr) 40px;gap:12px;align-items:center;padding-block:2px}
+.row .name{color:var(--ink-2);font-size:.9rem}
+.row .val{font-variant-numeric:tabular-nums;color:var(--ink-2);text-align:end}
+.track{height:14px;background:var(--track);border-radius:4px;overflow:hidden}
+.fill{height:100%;background:var(--bar);border-radius:0 4px 4px 0}
+.row:hover .name,.row:hover .val{color:var(--ink)}
+.row:hover .fill{filter:brightness(1.08)}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem;min-width:760px}
+th{text-align:start;color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:hover td{background:color-mix(in srgb,var(--track) 60%,transparent)}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 9px;font-size:.78rem;white-space:nowrap;color:var(--ink-2)}
+td a{color:var(--ink)}
+.muted{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Pipeline</h1>
+  <p class="sub">Generated 2026-09-28 from pipeline.csv · 23 leads</p>
+
+  <div class="tiles">
+    <div class="tile"><div class="v">18</div><div class="l">Demos in play</div></div>
+    <div class="tile"><div class="v">£9,000</div><div class="l">Pipeline at £500 each (Refresh tier)</div></div>
+    <div class="tile"><div class="v">0</div><div class="l">Paid clients</div></div>
+    <div class="tile"><div class="v">£0</div><div class="l">Monthly recurring (care plans)</div></div>
+  </div>
+
+  <div class="card">
+    <h2>Leads that have reached each stage</h2>
+    <div class="funnel">
+      <div class="row" title="Prospect: 23 of 23 leads"><span class="name">Prospect</span><div class="track"><div class="fill" style="width:100%"></div></div><span class="val">23</span></div><div class="row" title="Demo built: 18 of 23 leads"><span class="name">Demo built</span><div class="track"><div class="fill" style="width:78.26086956521739%"></div></div><span class="val">18</span></div><div class="row" title="Demo sent: 0 of 23 leads"><span class="name">Demo sent</span><div class="track"><div class="fill" style="width:0%"></div></div><span class="val">0</span></div><div class="row" title="Replied: 0 of 23 leads"><span class="name">Replied</span><div class="track"><div class="fill" style="width:0%"></div></div><span class="val">0</span></div><div class="row" title="Paid: 0 of 23 leads"><span class="name">Paid</span><div class="track"><div class="fill" style="width:0%"></div></div><span class="val">0</span></div><div class="row" title="Live: 0 of 23 leads"><span class="name">Live</span><div class="track"><div class="fill" style="width:0%"></div></div><span class="val">0</span></div><div class="row" title="On care plan: 0 of 23 leads"><span class="name">On care plan</span><div class="track"><div class="fill" style="width:0%"></div></div><span class="val">0</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>All leads</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Business</th><th>Area</th><th>Industry</th><th>Status</th><th>Next action</th><th>Links</th></tr></thead>
+      <tbody>
+      <tr>
+        <td><b>Biscuit Bunker</b></td>
+        <td>Shoreditch EC2A</td>
+        <td>Video production</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="https://secondcoat.example/concepts/biscuit-bunker/">Concept</a> · <a href="https://secondcoat.example/work/biscuit-bunker/">Case study</a> · <a href="../clients/biscuit-bunker/audit.md">Audit</a> · <a href="https://biscuitbunker.com/">Current site</a></td>
+      </tr><tr>
+        <td><b>Green Papaya Xi'Viet</b></td>
+        <td>Hackney E8</td>
+        <td>Restaurant</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="https://secondcoat.example/concepts/green-papaya/">Concept</a> · <a href="https://secondcoat.example/work/green-papaya/">Case study</a> · <a href="../clients/green-papaya/audit.md">Audit</a> · <a href="https://green-papaya.com/">Current site</a></td>
+      </tr><tr>
+        <td><b>Rose Locksmith &amp; DIY</b><div class="muted">684 reviews</div></td>
+        <td>Bethnal Green E2</td>
+        <td>Locksmith &amp; hardware</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="https://secondcoat.example/concepts/rose-locksmith/">Concept</a> · <a href="https://secondcoat.example/work/rose-locksmith/">Case study</a> · <a href="../clients/rose-locksmith/audit.md">Audit</a> · <a href="https://rosediy.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Walthamstow Osteopathy &amp; Natural Health Centre</b><div class="muted">72 reviews</div></td>
+        <td>Walthamstow E17</td>
+        <td>Health &amp; osteopathy</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="https://secondcoat.example/concepts/walthamstow-osteopaths/">Concept</a> · <a href="https://secondcoat.example/work/walthamstow-osteopaths/">Case study</a> · <a href="../clients/walthamstow-osteopaths/audit.md">Audit</a> · <a href="https://www.walthamstowosteopaths.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>W J Meade Estate Agents</b></td>
+        <td>Bow E3</td>
+        <td>Estate agent</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="https://secondcoat.example/concepts/wj-meade/">Concept</a> · <a href="https://secondcoat.example/work/wj-meade/">Case study</a> · <a href="../clients/wj-meade/audit.md">Audit</a> · <a href="https://www.wjmeade.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Clapton Beauty Parlour</b></td>
+        <td>Lower Clapton E5</td>
+        <td>Hair &amp; beauty</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="https://secondcoat.example/concepts/clapton-beauty-parlour/">Concept</a> · <a href="https://secondcoat.example/work/clapton-beauty-parlour/">Case study</a> · <a href="../clients/clapton-beauty-parlour/audit.md">Audit</a> · <a href="https://www.claptonbeautyparlour.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Thompson's</b></td>
+        <td>Roman Road E3</td>
+        <td>Locksmith &amp; hardware</td>
+        <td><span class="pill">Prospect</span></td>
+        <td>Score it with the prospect skill</td>
+        <td><a href="https://www.thompsonsdiy.london/">Current site</a></td>
+      </tr><tr>
+        <td><b>Paul Robinson Solicitors</b></td>
+        <td>Stratford E15</td>
+        <td>Solicitor</td>
+        <td><span class="pill">Prospect</span></td>
+        <td>Score it with the prospect skill</td>
+        <td><a href="https://paulrobinson.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Physio Answers Leyton</b></td>
+        <td>Leyton E10</td>
+        <td>Physiotherapy</td>
+        <td><span class="pill">Prospect</span></td>
+        <td>Score it with the prospect skill</td>
+        <td><a href="https://physio-answers.co.uk/clinics/leyton-physiotherapy-london/">Current site</a></td>
+      </tr><tr>
+        <td><b>Khans Locksmith &amp; DIY</b></td>
+        <td>Roman Road E2</td>
+        <td>Locksmith &amp; hardware</td>
+        <td><span class="pill">Prospect</span></td>
+        <td>Score it with the prospect skill</td>
+        <td><a href="https://www.khansdiy.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Healthy Stuff</b></td>
+        <td>Hackney</td>
+        <td>Cafe &amp; health food</td>
+        <td><span class="pill">Prospect</span></td>
+        <td>Score it with the prospect skill</td>
+        <td></td>
+      </tr><tr>
+        <td><b>The Thatched House Dental Practice</b><div class="muted">105 reviews</div></td>
+        <td>Leytonstone E15</td>
+        <td>Private dentist</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/thatched-house-dental/audit.md">Audit</a> · <a href="https://www.thatchedhousedental.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>The Queen's Head Limehouse</b></td>
+        <td>Limehouse E14</td>
+        <td>Community pub</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/queens-head-limehouse/audit.md">Audit</a></td>
+      </tr><tr>
+        <td><b>Kelly's Florist</b></td>
+        <td>Well Street E9</td>
+        <td>Florist</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/kellys-florist/audit.md">Audit</a> · <a href="https://kellys-florist.ueniweb.com/">Current site</a></td>
+      </tr><tr>
+        <td><b>Well Heeled</b></td>
+        <td>Bethnal Green E2</td>
+        <td>Shoe repair</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/well-heeled/audit.md">Audit</a></td>
+      </tr><tr>
+        <td><b>Newham Bookshop</b></td>
+        <td>Upton Park E13</td>
+        <td>Independent bookshop</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/newham-bookshop/audit.md">Audit</a> · <a href="https://www.newhambooks.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Repton Boxing Club</b></td>
+        <td>Bethnal Green E2</td>
+        <td>Amateur boxing club</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/repton-boxing-club/audit.md">Audit</a> · <a href="https://www.reptonboxingclub.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Abbott's Interiors</b></td>
+        <td>Roman Road E3</td>
+        <td>Blinds shutters &amp; flooring</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/abbotts-interiors/audit.md">Audit</a> · <a href="https://abbottsinteriors.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Driving Force</b></td>
+        <td>Walthamstow E17</td>
+        <td>MOT &amp; used cars</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/driving-force/audit.md">Audit</a> · <a href="https://drivingforcelondon.com/">Current site</a></td>
+      </tr><tr>
+        <td><b>Brick Lane Bookshop</b></td>
+        <td>Brick Lane E1</td>
+        <td>Independent bookshop</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/brick-lane-bookshop/audit.md">Audit</a> · <a href="https://bricklanebookshop.org/">Current site</a></td>
+      </tr><tr>
+        <td><b>Bowling &amp; Co Solicitors</b></td>
+        <td>Stratford E15</td>
+        <td>Solicitors</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/bowling-and-co/audit.md">Audit</a> · <a href="https://www.bowlinglaw.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>Denningtons Florist</b></td>
+        <td>Roman Road E3</td>
+        <td>Florist</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/denningtons/audit.md">Audit</a> · <a href="https://www.denningtonsflowers.co.uk/">Current site</a></td>
+      </tr><tr>
+        <td><b>F. Cooke</b></td>
+        <td>Hoxton N1</td>
+        <td>Pie &amp; mash shop</td>
+        <td><span class="pill">Demo built</span></td>
+        <td>Deploy preview, then send pitch email</td>
+        <td><a href="../clients/f-cooke/audit.md">Audit</a></td>
+      </tr>
+      </tbody>
+    </table></div>
+  </div>
+</div>
+</body>
+</html>

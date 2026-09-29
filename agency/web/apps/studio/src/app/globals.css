@@ -1,0 +1,369 @@
+@import 'tailwindcss';
+/* workspace packages sit under node_modules, which Tailwind skips by default */
+@source '../../../../packages/ui/src';
+
+/* Every brand (the studio and each concept) sets these variables on its wrapper; Tailwind maps them to utilities. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-card: var(--card);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-alt: var(--alt);
+  --font-display: var(--f-display), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--f-body), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--f-mono), ui-monospace, monospace;
+  --font-serif: var(--f-serif), ui-serif, Georgia, serif;
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+:root {
+  --bg: #f3f2ee;
+  --fg: #0c0c0c;
+  --muted: #6b6a66;
+  --line: rgb(12 12 12 / 0.12);
+  --card: #ffffff;
+  --accent: #ff4f1f;
+  --accent-ink: #ffffff;
+  --alt: #0c0c0c;
+  --f-display: var(--ff-geist);
+  --f-body: var(--ff-geist);
+  --f-mono: var(--ff-geist-mono);
+  --f-serif: var(--ff-instrument-serif);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+}
+::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* custom cursor hides the system one, except where typing */
+html.has-cursor,
+html.has-cursor a,
+html.has-cursor button {
+  cursor: none;
+}
+html.has-cursor input,
+html.has-cursor textarea,
+html.has-cursor select {
+  cursor: auto;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+/* ---------- Motion kit (components in @sc/ui/motion) ---------- */
+
+/* PageIntro: name rises, panel wipes up. CSS only, so it clears itself without JS. */
+.intro {
+  animation: intro-out 0.9s cubic-bezier(0.76, 0, 0.24, 1) 0.75s forwards;
+}
+.intro-label > span {
+  animation: intro-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes intro-rise {
+  from {
+    transform: translateY(110%);
+  }
+}
+@keyframes intro-out {
+  to {
+    transform: translateY(-100%);
+    visibility: hidden;
+  }
+}
+
+/* RollText: every letter swaps for a copy from below, staggered, when its link or button is hovered */
+.roll {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: top;
+  line-height: 1.15;
+}
+.roll-inner {
+  display: inline-flex;
+}
+.roll-inner > span {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.roll-inner > span::after {
+  content: attr(data-t);
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+:is(a, button, .roll-host):hover .roll-inner > span,
+:is(a, button, .roll-host):focus-visible .roll-inner > span {
+  transform: translateY(-100%);
+}
+
+/* HoverLetters: giant wordmarks where each letter lifts as you pass */
+.hover-letters [data-l] {
+  display: inline-block;
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    color 0.3s;
+}
+.hover-letters [data-l]:hover {
+  transform: translateY(-0.09em) rotate(-4deg);
+  color: var(--accent);
+}
+
+/* Pill buttons and links squash slightly when pressed (uses `scale`, so it stacks with transforms) */
+:is(a, button)[class*='rounded-full']:active,
+[data-press]:active {
+  scale: 0.96;
+}
+
+/* Underline that draws in from the left on hover, and out to the right */
+.u-draw {
+  background: linear-gradient(currentColor, currentColor) no-repeat right bottom / 0 1px;
+  transition: background-size 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.u-draw:hover,
+.u-draw:focus-visible {
+  background-size: 100% 1px;
+  background-position: left bottom;
+}
+
+/* Hover lift for cards */
+.lift {
+  transition:
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 50px -20px rgb(0 0 0 / 0.25);
+}
+
+/* Slow wobble and float for small decorative marks */
+@keyframes float {
+  50% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+}
+.float {
+  animation: float 5s ease-in-out infinite;
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* ---------- Map pins and popups (@sc/ui map.tsx) ---------- */
+.sc-pin {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 42px;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.sc-pin span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--pin);
+  box-shadow:
+    0 0 0 3px var(--pin-ink),
+    0 8px 18px rgb(0 0 0 / 0.25);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.sc-pin:hover span,
+.sc-pin.is-on span {
+  transform: rotate(-45deg) scale(1.2);
+}
+.maplibregl-popup-content {
+  border-radius: 16px !important;
+  padding: 14px 16px !important;
+  box-shadow: 0 16px 40px rgb(0 0 0 / 0.18) !important;
+  font-family: var(--font-sans);
+}
+.sc-pop {
+  display: grid;
+  gap: 2px;
+  font-size: 13px;
+  color: #111;
+}
+.sc-pop b {
+  font-size: 15px;
+}
+.sc-pop em {
+  font-style: normal;
+  opacity: 0.6;
+}
+.sc-pop a {
+  margin-top: 6px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Command menu (@sc/ui kit.tsx, cmdk) ---------- */
+[cmdk-overlay] {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  background: rgb(0 0 0 / 0.45);
+  backdrop-filter: blur(4px);
+}
+.sc-cmdk {
+  position: fixed;
+  top: 12vh;
+  left: 50%;
+  z-index: 501;
+  width: min(640px, calc(100vw - 24px));
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--card);
+  color: var(--fg);
+  box-shadow: 0 30px 80px rgb(0 0 0 / 0.35);
+  font-family: var(--font-sans);
+  animation: cmdk-in 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes cmdk-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(12px) scale(0.98);
+  }
+}
+.sc-cmdk [cmdk-input] {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding: 22px 24px;
+  font-size: 18px;
+  outline: none;
+  color: var(--fg);
+}
+.sc-cmdk [cmdk-list] {
+  max-height: min(420px, 55vh);
+  overflow: auto;
+  padding: 8px;
+  overscroll-behavior: contain;
+}
+.sc-cmdk [cmdk-group-heading] {
+  padding: 10px 14px 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.sc-cmdk [cmdk-item] {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 16px;
+  cursor: pointer;
+}
+.sc-cmdk [cmdk-item][data-selected='true'] {
+  background: var(--cmdk-accent);
+  color: var(--accent-ink);
+}
+.sc-cmdk-hint {
+  font-size: 13px;
+  opacity: 0.65;
+  text-align: right;
+}
+.sc-cmdk [cmdk-empty] {
+  padding: 28px;
+  text-align: center;
+  color: var(--muted);
+}
+.sc-cmdk-foot {
+  border-top: 1px solid var(--line);
+  padding: 10px 18px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Green Papaya: steam drifts up the bowl drawing */
+.steam path { stroke-dasharray: 40 30; animation: steam 2.8s linear infinite; }
+.steam-busy path { animation-duration: 0.9s; }
+@keyframes steam { from { stroke-dashoffset: 140; opacity: 0.2; } 50% { opacity: 1; } to { stroke-dashoffset: 0; opacity: 0.2; } }
+@media (prefers-reduced-motion: reduce) { .steam path { animation: none; stroke-dasharray: none; } }
+
+/* Clapton: the cut line flashes and fades */
+@keyframes snip { from { opacity: 1; stroke-width: 3; } to { opacity: 0; stroke-width: 1; } }

@@ -1,0 +1,14 @@
+{
+  "name": "second-coat-scripts",
+  "private": true,
+  "description": "Prospecting and sales tools for Second Coat (the websites themselves live in ../web).",
+  "scripts": {
+    "prospects": "node find-prospects.js",
+    "health": "node healthcheck.js",
+    "before": "node before.js",
+    "dashboard": "node dashboard.js"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}
